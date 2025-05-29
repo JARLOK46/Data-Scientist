@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="300" viewBox="0 0 800 300">
+  <!-- Estilos -->
+  <style>
+    .box { fill: #f0f8ff; stroke: #4682b4; stroke-width: 2; }
+    .arrow { stroke: #4682b4; stroke-width: 2; fill: none; }
+    .arrowhead { fill: #4682b4; }
+    .text { font-family: Arial, sans-serif; font-size: 14px; fill: #333; text-anchor: middle; }
+    .title { font-family: Arial, sans-serif; font-size: 16px; font-weight: bold; fill: #333; text-anchor: middle; }
+  </style>
+  
+  <!-- Cajas de proceso -->
+  <rect x="50" y="100" width="120" height="60" rx="10" class="box" />
+  <rect x="200" y="100" width="120" height="60" rx="10" class="box" />
+  <rect x="350" y="100" width="120" height="60" rx="10" class="box" />
+  <rect x="500" y="100" width="120" height="60" rx="10" class="box" />
+  <rect x="650" y="100" width="120" height="60" rx="10" class="box" />
+  
+  <!-- Flechas de conexión -->
+  <path d="M170 130 L200 130" class="arrow" />
+  <polygon points="200,130 190,125 190,135" class="arrowhead" />
+  
+  <path d="M320 130 L350 130" class="arrow" />
+  <polygon points="350,130 340,125 340,135" class="arrowhead" />
+  
+  <path d="M470 130 L500 130" class="arrow" />
+  <polygon points="500,130 490,125 490,135" class="arrowhead" />
+  
+  <path d="M620 130 L650 130" class="arrow" />
+  <polygon points="650,130 640,125 640,135" class="arrowhead" />
+  
+  <!-- Textos -->
+  <text x="110" y="130" class="text">Carga y</text>
+  <text x="110" y="150" class="text">Limpieza</text>
+  
+  <text x="260" y="130" class="text">Análisis</text>
+  <text x="260" y="150" class="text">Exploratorio</text>
+  
+  <text x="410" y="130" class="text">Visualización</text>
+  
+  <text x="560" y="130" class="text">Análisis</text>
+  <text x="560" y="150" class="text">Avanzado</text>
+  
+  <text x="710" y="130" class="text">Presentación</text>
+  <text x="710" y="150" class="text">de Resultados</text>
+  
+  <!-- Título -->
+  <text x="400" y="50" class="title">Flujo de Trabajo - UN PASO AL ÉXITO</text>
+  
+  <!-- Módulos relacionados -->
+  <text x="110" y="180" class="text" style="font-size: 12px; fill: #666;">limpiar_analizar_csv</text>
+  <text x="260" y="180" class="text" style="font-size: 12px; fill: #666;">analizar_csv</text>
+  <text x="410" y="180" class="text" style="font-size: 12px; fill: #666;">visualizar_datos</text>
+  <text x="560" y="180" class="text" style="font-size: 12px; fill: #666;">analisis_predictivo</text>
+  <text x="710" y="180" class="text" style="font-size: 12px; fill: #666;">dashboard_interactivo</text>
+  
+  <!-- Descripción -->
+  <text x="400" y="230" class="text" style="font-size: 13px; fill: #555;">El sistema permite un flujo de trabajo flexible, donde cada etapa puede ejecutarse</text>
+  <text x="400" y="250" class="text" style="font-size: 13px; fill: #555;">de forma independiente o como parte de un proceso completo de análisis de datos.</text>
+</svg>

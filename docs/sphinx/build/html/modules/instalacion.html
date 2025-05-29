@@ -1,0 +1,441 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guía de Instalación &mdash; documentación de Analisis de Datos y Visualizacion - 1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=4936afed"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=f85f4cfb"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="Casos de Uso" href="casos_uso.html" />
+    <link rel="prev" title="Documentación del Proyecto de Análisis de Datos y Visualización" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Analisis de Datos y Visualizacion
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guías de Usuario:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Guía de Instalación</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#requisitos-del-sistema">Requisitos del Sistema</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#requisitos-minimos">Requisitos Mínimos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#requisitos-recomendados">Requisitos Recomendados</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#instalacion-de-python">Instalación de Python</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#windows">Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#macos">macOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#linux">Linux</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#configuracion-del-entorno-virtual">Configuración del Entorno Virtual</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#macos-linux">macOS/Linux</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#instalacion-de-dependencias-basicas">Instalación de Dependencias Básicas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#instalacion-de-dependencias-especificas">Instalación de Dependencias Específicas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#para-el-dashboard-interactivo">Para el Dashboard Interactivo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#para-el-analisis-geoespacial">Para el Análisis Geoespacial</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#instalacion-de-sphinx-para-documentacion">Instalación de Sphinx para Documentación</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#verificacion-de-la-instalacion">Verificación de la Instalación</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#solucion-de-problemas-comunes">Solución de Problemas Comunes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#python-no-es-reconocido-como-un-comando">Python no es reconocido como un comando</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#error-al-instalar-dependencias">Error al instalar dependencias</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#problemas-con-el-dashboard-interactivo">Problemas con el Dashboard Interactivo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#problemas-con-el-analisis-geoespacial">Problemas con el Análisis Geoespacial</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#configuracion-avanzada">Configuración Avanzada</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#configuracion-para-grandes-conjuntos-de-datos">Configuración para Grandes Conjuntos de Datos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuracion-para-desarrollo">Configuración para Desarrollo</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#proximos-pasos">Próximos Pasos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="casos_uso.html">Casos de Uso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preguntas_frecuentes.html">Preguntas Frecuentes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Módulos Principales:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="analysis.html">Módulo de Análisis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geospatial.html">Módulo Geoespacial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="web.html">Módulo Web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dashboard.html">Módulo de Dashboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization.html">Módulo de Visualización</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">Módulo de Utilidades</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentación Técnica:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="guia_analisis_avanzado.html">Guía de Análisis Avanzado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optimizacion_rendimiento.html">Optimización de Rendimiento</a></li>
+<li class="toctree-l1"><a class="reference internal" href="seguridad_datos.html">Seguridad de Datos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="referencia_tecnica_detallada.html">Referencia Técnica Detallada</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integracion_herramientas.html">Integración de Herramientas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/modules.html">src</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Analisis de Datos y Visualizacion</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Guía de Instalación</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/instalacion.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="guia-de-instalacion">
+<h1>Guía de Instalación<a class="headerlink" href="#guia-de-instalacion" title="Link to this heading"></a></h1>
+<p>Este documento proporciona instrucciones detalladas para instalar y configurar el entorno necesario para ejecutar el sistema de análisis de datos.</p>
+<section id="requisitos-del-sistema">
+<h2>Requisitos del Sistema<a class="headerlink" href="#requisitos-del-sistema" title="Link to this heading"></a></h2>
+<section id="requisitos-minimos">
+<h3>Requisitos Mínimos<a class="headerlink" href="#requisitos-minimos" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Sistema Operativo</strong>: Windows 10/11, macOS 10.14+, o Linux (Ubuntu 18.04+, CentOS 7+)</p></li>
+<li><p><strong>Procesador</strong>: Intel Core i3 / AMD Ryzen 3 o superior</p></li>
+<li><p><strong>Memoria RAM</strong>: 8 GB (16 GB recomendado para análisis de conjuntos de datos grandes)</p></li>
+<li><p><strong>Espacio en Disco</strong>: 2 GB para la instalación básica + espacio para datos</p></li>
+<li><p><strong>Python</strong>: Versión 3.7 o superior</p></li>
+</ul>
+</section>
+<section id="requisitos-recomendados">
+<h3>Requisitos Recomendados<a class="headerlink" href="#requisitos-recomendados" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Procesador</strong>: Intel Core i5/i7 o AMD Ryzen 5/7</p></li>
+<li><p><strong>Memoria RAM</strong>: 16 GB o más</p></li>
+<li><p><strong>Espacio en Disco</strong>: 5 GB + espacio para datos</p></li>
+<li><p><strong>Tarjeta Gráfica</strong>: No es esencial, pero puede acelerar ciertos análisis predictivos</p></li>
+</ul>
+</section>
+</section>
+<section id="instalacion-de-python">
+<h2>Instalación de Python<a class="headerlink" href="#instalacion-de-python" title="Link to this heading"></a></h2>
+<section id="windows">
+<h3>Windows<a class="headerlink" href="#windows" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Descargar Python</strong>:
+- Visita <a class="reference external" href="https://www.python.org/downloads/">python.org</a>
+- Descarga la última versión de Python 3.x (3.7 o superior)</p></li>
+<li><p><strong>Instalar Python</strong>:
+- Ejecuta el instalador descargado
+- <strong>¡IMPORTANTE!</strong> Marca la casilla «Add Python to PATH»
+- Selecciona «Install Now» para una instalación estándar</p></li>
+<li><p><strong>Verificar la instalación</strong>:
+- Abre PowerShell o Símbolo del sistema
+- Ejecuta: <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">--version</span></code>
+- Deberías ver la versión de Python instalada</p></li>
+</ol>
+</section>
+<section id="macos">
+<h3>macOS<a class="headerlink" href="#macos" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p><strong>Usando Homebrew</strong> (recomendado):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instalar Homebrew si no está instalado</span>
+</pre></div>
+</div>
+<p>/bin/bash -c «$(curl -fsSL <a class="reference external" href="https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh">https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh</a>)»</p>
+<p># Instalar Python
+brew install python</p>
+</li>
+<li><p><strong>Desde python.org</strong>:
+- Visita <a class="reference external" href="https://www.python.org/downloads/">python.org</a>
+- Descarga e instala la última versión de Python 3.x</p></li>
+<li><p><strong>Verificar la instalación</strong>:</p>
+<p>python3 –version</p>
+</li>
+</ol>
+</section>
+<section id="linux">
+<h3>Linux<a class="headerlink" href="#linux" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p><strong>Ubuntu/Debian</strong>:</p>
+<p>sudo apt update
+sudo apt install python3 python3-pip python3-venv</p>
+</li>
+<li><p><strong>CentOS/RHEL</strong>:</p>
+<p>sudo yum install python3 python3-pip</p>
+</li>
+<li><p><strong>Verificar la instalación</strong>:</p>
+<p>python3 –version</p>
+</li>
+</ol>
+</section>
+</section>
+<section id="configuracion-del-entorno-virtual">
+<h2>Configuración del Entorno Virtual<a class="headerlink" href="#configuracion-del-entorno-virtual" title="Link to this heading"></a></h2>
+<p>Se recomienda utilizar entornos virtuales para aislar las dependencias del proyecto.</p>
+<section id="id2">
+<h3>Windows<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Navegar al directorio del proyecto</span>
+<span class="n">cd</span> <span class="s2">&quot;c:</span><span class="se">\r</span><span class="s2">uta</span><span class="se">\a</span><span class="s2">\UN PASO AL EXITO&quot;</span>
+
+<span class="c1"># Crear entorno virtual</span>
+<span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="n">venv</span>
+
+<span class="c1"># Activar entorno virtual</span>
+<span class="o">.</span>\<span class="n">venv</span>\<span class="n">Scripts</span>\<span class="n">activate</span>
+</pre></div>
+</div>
+</section>
+<section id="macos-linux">
+<h3>macOS/Linux<a class="headerlink" href="#macos-linux" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Navegar al directorio del proyecto</span>
+<span class="n">cd</span> <span class="o">/</span><span class="n">ruta</span><span class="o">/</span><span class="n">a</span><span class="o">/</span><span class="n">UN</span>\ <span class="n">PASO</span>\ <span class="n">AL</span>\ <span class="n">EXITO</span>
+
+<span class="c1"># Crear entorno virtual</span>
+<span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="n">venv</span>
+
+<span class="c1"># Activar entorno virtual</span>
+<span class="n">source</span> <span class="n">venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="instalacion-de-dependencias-basicas">
+<h2>Instalación de Dependencias Básicas<a class="headerlink" href="#instalacion-de-dependencias-basicas" title="Link to this heading"></a></h2>
+<p>Una vez activado el entorno virtual, instala las dependencias básicas:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Actualizar pip</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">upgrade</span> <span class="n">pip</span>
+
+<span class="c1"># Instalar dependencias básicas</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">pandas</span> <span class="n">numpy</span> <span class="n">matplotlib</span> <span class="n">seaborn</span>
+</pre></div>
+</div>
+</section>
+<section id="instalacion-de-dependencias-especificas">
+<h2>Instalación de Dependencias Específicas<a class="headerlink" href="#instalacion-de-dependencias-especificas" title="Link to this heading"></a></h2>
+<section id="para-el-dashboard-interactivo">
+<h3>Para el Dashboard Interactivo<a class="headerlink" href="#para-el-dashboard-interactivo" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">config</span><span class="o">/</span><span class="n">requirements_dashboard</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>O ejecutar el script de configuración automática:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">src</span><span class="o">/</span><span class="n">dashboard</span><span class="o">/</span><span class="n">setup_dashboard</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+</section>
+<section id="para-el-analisis-geoespacial">
+<h3>Para el Análisis Geoespacial<a class="headerlink" href="#para-el-analisis-geoespacial" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">config</span><span class="o">/</span><span class="n">requirements_geoespacial</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="instalacion-de-sphinx-para-documentacion">
+<h2>Instalación de Sphinx para Documentación<a class="headerlink" href="#instalacion-de-sphinx-para-documentacion" title="Link to this heading"></a></h2>
+<p>Para generar o actualizar la documentación:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">sphinx</span> <span class="n">sphinx</span><span class="o">-</span><span class="n">rtd</span><span class="o">-</span><span class="n">theme</span> <span class="n">sphinx</span><span class="o">-</span><span class="n">autodoc</span><span class="o">-</span><span class="n">typehints</span>
+</pre></div>
+</div>
+</section>
+<section id="verificacion-de-la-instalacion">
+<h2>Verificación de la Instalación<a class="headerlink" href="#verificacion-de-la-instalacion" title="Link to this heading"></a></h2>
+<p>Para verificar que todo está correctamente instalado y configurado:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ejecutar el script de utilidades</span>
+<span class="n">python</span> <span class="n">src</span><span class="o">/</span><span class="n">utils</span><span class="o">/</span><span class="n">ejecutar_analisis</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>Deberías ver el menú principal del sistema de análisis de datos.</p>
+</section>
+<section id="solucion-de-problemas-comunes">
+<h2>Solución de Problemas Comunes<a class="headerlink" href="#solucion-de-problemas-comunes" title="Link to this heading"></a></h2>
+<section id="python-no-es-reconocido-como-un-comando">
+<h3>Python no es reconocido como un comando<a class="headerlink" href="#python-no-es-reconocido-como-un-comando" title="Link to this heading"></a></h3>
+<p><strong>Windows</strong>:</p>
+<ol class="arabic simple">
+<li><p>Verifica que Python esté en el PATH:
+- Busca «Variables de entorno» en el menú de inicio
+- En Variables de sistema, edita la variable PATH
+- Asegúrate de que la ruta a Python (ej. C:Python39) esté incluida</p></li>
+</ol>
+<p><strong>macOS/Linux</strong>:</p>
+<ol class="arabic">
+<li><p>Verifica la ubicación de Python:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">which</span> <span class="n">python3</span>
+</pre></div>
+</div>
+</li>
+<li><p>Añade la ruta a tu archivo .bashrc o .zshrc si es necesario</p></li>
+</ol>
+</section>
+<section id="error-al-instalar-dependencias">
+<h3>Error al instalar dependencias<a class="headerlink" href="#error-al-instalar-dependencias" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p>Asegúrate de que pip esté actualizado:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">upgrade</span> <span class="n">pip</span>
+</pre></div>
+</div>
+</li>
+<li><p>Si hay errores con paquetes que requieren compilación:
+- <strong>Windows</strong>: Instala Visual C++ Build Tools
+- <strong>macOS</strong>: Instala Xcode Command Line Tools
+- <strong>Linux</strong>: Instala paquetes de desarrollo esenciales:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ubuntu/Debian</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">build</span><span class="o">-</span><span class="n">essential</span> <span class="n">python3</span><span class="o">-</span><span class="n">dev</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="problemas-con-el-dashboard-interactivo">
+<h3>Problemas con el Dashboard Interactivo<a class="headerlink" href="#problemas-con-el-dashboard-interactivo" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p>Verifica que todas las dependencias estén instaladas:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">dash</span> <span class="n">plotly</span> <span class="n">pandas</span>
+</pre></div>
+</div>
+</li>
+<li><p>Comprueba si hay puertos en uso:
+- El dashboard utiliza el puerto 8050 por defecto
+- Si está en uso, modifica el código en <code class="docutils literal notranslate"><span class="pre">dashboard_interactivo.py</span></code> para usar otro puerto</p></li>
+</ol>
+</section>
+<section id="problemas-con-el-analisis-geoespacial">
+<h3>Problemas con el Análisis Geoespacial<a class="headerlink" href="#problemas-con-el-analisis-geoespacial" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p>Para problemas con geopandas:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Windows (usando conda, recomendado para geopandas)</span>
+<span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">geopandas</span>
+
+<span class="c1"># Linux</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">libgdal</span><span class="o">-</span><span class="n">dev</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">geopandas</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+</section>
+<section id="configuracion-avanzada">
+<h2>Configuración Avanzada<a class="headerlink" href="#configuracion-avanzada" title="Link to this heading"></a></h2>
+<section id="configuracion-para-grandes-conjuntos-de-datos">
+<h3>Configuración para Grandes Conjuntos de Datos<a class="headerlink" href="#configuracion-para-grandes-conjuntos-de-datos" title="Link to this heading"></a></h3>
+<p>Si trabajas con conjuntos de datos muy grandes, considera estas optimizaciones:</p>
+<ol class="arabic">
+<li><p><strong>Aumentar la memoria disponible para Python</strong>:
+- En Windows, crea un archivo <code class="docutils literal notranslate"><span class="pre">.bat</span></code> con:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@echo</span> <span class="n">off</span>
+<span class="nb">set</span> <span class="n">PYTHONMEMORY</span><span class="o">=</span><span class="mi">4096</span>
+<span class="n">python</span> <span class="n">src</span><span class="o">/</span><span class="n">utils</span><span class="o">/</span><span class="n">ejecutar_analisis</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Usar procesamiento en paralelo</strong>:
+- Instala bibliotecas para procesamiento paralelo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">joblib</span> <span class="n">dask</span><span class="p">[</span><span class="n">complete</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="configuracion-para-desarrollo">
+<h3>Configuración para Desarrollo<a class="headerlink" href="#configuracion-para-desarrollo" title="Link to this heading"></a></h3>
+<p>Si vas a contribuir al desarrollo del proyecto:</p>
+<ol class="arabic">
+<li><p><strong>Instalar herramientas de desarrollo</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pytest</span> <span class="n">flake8</span> <span class="n">black</span> <span class="n">isort</span> <span class="n">mypy</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Configurar pre-commit hooks</strong> (opcional):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pre</span><span class="o">-</span><span class="n">commit</span>
+<span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">install</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+</section>
+<section id="proximos-pasos">
+<h2>Próximos Pasos<a class="headerlink" href="#proximos-pasos" title="Link to this heading"></a></h2>
+<p>Una vez completada la instalación, consulta los siguientes recursos:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="../../../docs/README.md">Guía de Inicio Rápido</a> - Para comenzar a usar el sistema</p></li>
+<li><p><a class="reference external" href="../../../docs/casos_uso.md">Casos de Uso</a> - Para ejemplos prácticos</p></li>
+<li><p><a class="reference external" href="../../../docs/arquitectura_proyecto.md">Arquitectura del Proyecto</a> - Para entender la estructura</p></li>
+</ul>
+<hr class="docutils" />
+<p>Si encuentras problemas durante la instalación, consulta la sección de <a class="reference external" href="../../../docs/preguntas_frecuentes.md">Preguntas Frecuentes</a> o crea un issue en el repositorio del proyecto.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="../index.html" class="btn btn-neutral float-left" title="Documentación del Proyecto de Análisis de Datos y Visualización" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="casos_uso.html" class="btn btn-neutral float-right" title="Casos de Uso" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, UN PASO AL EXITO.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

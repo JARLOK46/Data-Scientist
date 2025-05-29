@@ -1,0 +1,688 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Casos de Uso &mdash; documentación de Analisis de Datos y Visualizacion - 1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=4936afed"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=f85f4cfb"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="Preguntas Frecuentes" href="preguntas_frecuentes.html" />
+    <link rel="prev" title="Guía de Instalación" href="instalacion.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Analisis de Datos y Visualizacion
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guías de Usuario:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="instalacion.html">Guía de Instalación</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Casos de Uso</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#casos-de-uso">Casos de Uso</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#caso-1-analisis-exploratorio-de-datos-para-identificar-patrones">Caso 1: Análisis Exploratorio de Datos para Identificar Patrones</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#escenario">Escenario</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solucion">Solución</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#codigo-de-ejemplo-para-uso-programatico">Código de ejemplo para uso programático</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#caso-2-creacion-de-un-dashboard-para-presentacion-a-directivos">Caso 2: Creación de un Dashboard para Presentación a Directivos</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Escenario</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Solución</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#codigo-de-ejemplo-para-personalizar-el-dashboard">Código de ejemplo para personalizar el dashboard</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#caso-3-analisis-geoespacial-para-identificar-clusters-regionales">Caso 3: Análisis Geoespacial para Identificar Clusters Regionales</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Escenario</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Solución</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#codigo-de-ejemplo-para-analisis-personalizado">Código de ejemplo para análisis personalizado</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#caso-4-analisis-predictivo-para-estimar-valores-futuros">Caso 4: Análisis Predictivo para Estimar Valores Futuros</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id5">Escenario</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">Solución</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#codigo-de-ejemplo-para-predicciones-personalizadas">Código de ejemplo para predicciones personalizadas</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#caso-5-analisis-de-contenido-web-para-identificar-dominios-relevantes">Caso 5: Análisis de Contenido Web para Identificar Dominios Relevantes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id7">Escenario</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">Solución</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">Código de ejemplo para análisis personalizado</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#caso-6-automatizacion-de-analisis-periodicos">Caso 6: Automatización de Análisis Periódicos</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id10">Escenario</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">Solución</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#caso-7-integracion-con-sistemas-existentes">Caso 7: Integración con Sistemas Existentes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id12">Escenario</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id13">Solución</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="preguntas_frecuentes.html">Preguntas Frecuentes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Módulos Principales:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="analysis.html">Módulo de Análisis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geospatial.html">Módulo Geoespacial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="web.html">Módulo Web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dashboard.html">Módulo de Dashboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization.html">Módulo de Visualización</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">Módulo de Utilidades</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentación Técnica:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="guia_analisis_avanzado.html">Guía de Análisis Avanzado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optimizacion_rendimiento.html">Optimización de Rendimiento</a></li>
+<li class="toctree-l1"><a class="reference internal" href="seguridad_datos.html">Seguridad de Datos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="referencia_tecnica_detallada.html">Referencia Técnica Detallada</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integracion_herramientas.html">Integración de Herramientas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/modules.html">src</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Analisis de Datos y Visualizacion</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Casos de Uso</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/casos_uso.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="casos-de-uso">
+<h1>Casos de Uso<a class="headerlink" href="#casos-de-uso" title="Link to this heading"></a></h1>
+<section id="casos-de-uso">
+<h2>Casos de Uso<a class="headerlink" href="#casos-de-uso" title="Link to this heading"></a></h2>
+<p>Este documento presenta escenarios prácticos que ilustran cómo utilizar el sistema de análisis de datos para resolver problemas específicos.</p>
+<section id="caso-1-analisis-exploratorio-de-datos-para-identificar-patrones">
+<h3>Caso 1: Análisis Exploratorio de Datos para Identificar Patrones<a class="headerlink" href="#caso-1-analisis-exploratorio-de-datos-para-identificar-patrones" title="Link to this heading"></a></h3>
+<section id="escenario">
+<h4>Escenario<a class="headerlink" href="#escenario" title="Link to this heading"></a></h4>
+<p>Un analista necesita comprender rápidamente la estructura y patrones principales en un conjunto de datos CSV recién recibido.</p>
+</section>
+<section id="solucion">
+<h4>Solución<a class="headerlink" href="#solucion" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p><strong>Ejecutar el análisis exploratorio básico:</strong></p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>src/utils/ejecutar_analisis.py
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Seleccionar la opción 1: «Análisis Exploratorio y Visualizaciones»</p></li>
+<li><p><strong>Resultados obtenidos:</strong></p>
+<ul class="simple">
+<li><p>Estadísticas descriptivas de todas las variables</p></li>
+<li><p>Identificación de valores faltantes</p></li>
+<li><p>Distribuciones de variables numéricas</p></li>
+<li><p>Correlaciones entre variables</p></li>
+<li><p>Visualizaciones automáticas guardadas en el directorio <code class="docutils literal notranslate"><span class="pre">visualizaciones/</span></code></p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="codigo-de-ejemplo-para-uso-programatico">
+<h4>Código de ejemplo para uso programático<a class="headerlink" href="#codigo-de-ejemplo-para-uso-programatico" title="Link to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.analysis.limpiar_analizar_csv</span><span class="w"> </span><span class="kn">import</span> <span class="n">analizar_csv</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">src.visualization.visualizar_datos</span><span class="w"> </span><span class="kn">import</span> <span class="n">visualizar_datos</span>
+
+<span class="c1"># Ejecutar análisis exploratorio</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">analizar_csv</span><span class="p">(</span><span class="s1">&#39;src/data/20250525.export.CSV&#39;</span><span class="p">)</span>
+
+<span class="c1"># Generar visualizaciones</span>
+<span class="n">visualizar_datos</span><span class="p">()</span>
+
+<span class="c1"># Análisis personalizado adicional</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Variables con más valores faltantes:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Estadísticas de las variables numéricas:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="caso-2-creacion-de-un-dashboard-para-presentacion-a-directivos">
+<h3>Caso 2: Creación de un Dashboard para Presentación a Directivos<a class="headerlink" href="#caso-2-creacion-de-un-dashboard-para-presentacion-a-directivos" title="Link to this heading"></a></h3>
+<section id="id1">
+<h4>Escenario<a class="headerlink" href="#id1" title="Link to this heading"></a></h4>
+<p>Un gerente de proyecto necesita presentar los resultados del análisis de datos a directivos que no tienen conocimientos técnicos.</p>
+</section>
+<section id="id2">
+<h4>Solución<a class="headerlink" href="#id2" title="Link to this heading"></a></h4>
+<section id="opcion-1-dashboard-estatico-sin-dependencias-adicionales">
+<h5>Opción 1: Dashboard Estático (sin dependencias adicionales)<a class="headerlink" href="#opcion-1-dashboard-estatico-sin-dependencias-adicionales" title="Link to this heading"></a></h5>
+<ol class="arabic simple">
+<li><p><strong>Ejecutar el dashboard adaptativo:</strong></p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>src/dashboard/dashboard_adaptativo.py
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p><strong>Resultados obtenidos:</strong></p>
+<ul class="simple">
+<li><p>Informe HTML generado en <code class="docutils literal notranslate"><span class="pre">dashboard_estatico/informe_analisis.html</span></code></p></li>
+<li><p>Visualizaciones estáticas en formato PNG</p></li>
+<li><p>Tablas de resumen con estadísticas clave</p></li>
+</ul>
+</li>
+<li><p><strong>Presentación:</strong></p>
+<ul class="simple">
+<li><p>Compartir el archivo HTML con los directivos</p></li>
+<li><p>Incorporar las imágenes PNG en presentaciones de PowerPoint</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="opcion-2-dashboard-interactivo-requiere-dependencias-adicionales">
+<h5>Opción 2: Dashboard Interactivo (requiere dependencias adicionales)<a class="headerlink" href="#opcion-2-dashboard-interactivo-requiere-dependencias-adicionales" title="Link to this heading"></a></h5>
+<ol class="arabic simple">
+<li><p><strong>Instalar dependencias y ejecutar el dashboard interactivo:</strong></p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>src/dashboard/setup_dashboard.py
+python<span class="w"> </span>src/dashboard/dashboard_interactivo.py
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p><strong>Resultados obtenidos:</strong></p>
+<ul class="simple">
+<li><p>Dashboard interactivo accesible en http://127.0.0.1:8050/</p></li>
+<li><p>Filtros dinámicos para explorar los datos</p></li>
+<li><p>Gráficos interactivos que responden a selecciones del usuario</p></li>
+</ul>
+</li>
+<li><p><strong>Presentación:</strong></p>
+<ul class="simple">
+<li><p>Realizar una demostración en vivo durante la reunión</p></li>
+<li><p>Permitir a los directivos explorar los datos según sus intereses</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+<section id="codigo-de-ejemplo-para-personalizar-el-dashboard">
+<h4>Código de ejemplo para personalizar el dashboard<a class="headerlink" href="#codigo-de-ejemplo-para-personalizar-el-dashboard" title="Link to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Modificar el archivo dashboard_interactivo.py para añadir nuevas visualizaciones</span>
+
+<span class="c1"># Añadir un nuevo gráfico al layout</span>
+<span class="n">nuevo_grafico</span> <span class="o">=</span> <span class="n">dcc</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span>
+    <span class="nb">id</span><span class="o">=</span><span class="s1">&#39;grafico-personalizado&#39;</span><span class="p">,</span>
+    <span class="n">figure</span><span class="o">=</span><span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;variable_x&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;variable_y&#39;</span><span class="p">,</span>
+                     <span class="n">color</span><span class="o">=</span><span class="s1">&#39;categoria&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s1">&#39;valor&#39;</span><span class="p">,</span>
+                     <span class="n">hover_name</span><span class="o">=</span><span class="s1">&#39;identificador&#39;</span><span class="p">,</span>
+                     <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Gráfico Personalizado para Directivos&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1"># Añadir el gráfico al layout</span>
+<span class="n">app</span><span class="o">.</span><span class="n">layout</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">([</span>
+    <span class="c1"># ... componentes existentes ...</span>
+    <span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">([</span>
+        <span class="n">html</span><span class="o">.</span><span class="n">H3</span><span class="p">(</span><span class="s2">&quot;Análisis Personalizado&quot;</span><span class="p">),</span>
+        <span class="n">nuevo_grafico</span>
+    <span class="p">],</span> <span class="n">className</span><span class="o">=</span><span class="s1">&#39;row&#39;</span><span class="p">)</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="caso-3-analisis-geoespacial-para-identificar-clusters-regionales">
+<h3>Caso 3: Análisis Geoespacial para Identificar Clusters Regionales<a class="headerlink" href="#caso-3-analisis-geoespacial-para-identificar-clusters-regionales" title="Link to this heading"></a></h3>
+<section id="id3">
+<h4>Escenario<a class="headerlink" href="#id3" title="Link to this heading"></a></h4>
+<p>Un investigador necesita identificar patrones geográficos y clusters en los datos para entender la distribución regional.</p>
+</section>
+<section id="id4">
+<h4>Solución<a class="headerlink" href="#id4" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p><strong>Ejecutar el análisis geoespacial adaptativo (sin dependencias especiales):</strong></p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>src/geospatial/analisis_geoespacial_adaptativo.py
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p><strong>Alternativamente, para análisis más avanzado (requiere dependencias adicionales):</strong></p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>config/requirements_geoespacial.txt
+python<span class="w"> </span>src/geospatial/analisis_geoespacial.py
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p><strong>Resultados obtenidos:</strong></p>
+<ul class="simple">
+<li><p>Mapas de distribución geográfica</p></li>
+<li><p>Identificación de clusters mediante K-means</p></li>
+<li><p>Estadísticas por región</p></li>
+<li><p>Visualizaciones guardadas en <code class="docutils literal notranslate"><span class="pre">geospatial/output/</span></code></p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="codigo-de-ejemplo-para-analisis-personalizado">
+<h4>Código de ejemplo para análisis personalizado<a class="headerlink" href="#codigo-de-ejemplo-para-analisis-personalizado" title="Link to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.geospatial.analisis_geoespacial</span><span class="w"> </span><span class="kn">import</span> <span class="n">cargar_datos</span><span class="p">,</span> <span class="n">analizar_clusters</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">folium</span>
+
+<span class="c1"># Cargar datos con coordenadas</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">cargar_datos</span><span class="p">(</span><span class="s1">&#39;src/data/20250525.export.CSV&#39;</span><span class="p">)</span>
+
+<span class="c1"># Realizar clustering personalizado</span>
+<span class="n">df_clusters</span> <span class="o">=</span> <span class="n">analizar_clusters</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">n_clusters</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">variables</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;latitud&#39;</span><span class="p">,</span> <span class="s1">&#39;longitud&#39;</span><span class="p">,</span> <span class="s1">&#39;variable_interes&#39;</span><span class="p">])</span>
+
+<span class="c1"># Crear mapa personalizado</span>
+<span class="n">mapa</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;latitud&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;longitud&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()],</span> <span class="n">zoom_start</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># Añadir marcadores por cluster</span>
+<span class="k">for</span> <span class="n">cluster</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">datos_cluster</span> <span class="o">=</span> <span class="n">df_clusters</span><span class="p">[</span><span class="n">df_clusters</span><span class="p">[</span><span class="s1">&#39;cluster&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">cluster</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">datos_cluster</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="n">folium</span><span class="o">.</span><span class="n">CircleMarker</span><span class="p">(</span>
+            <span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;latitud&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;longitud&#39;</span><span class="p">]],</span>
+            <span class="n">radius</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+            <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">][</span><span class="n">cluster</span><span class="p">],</span>
+            <span class="n">fill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">popup</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Cluster: </span><span class="si">{</span><span class="n">cluster</span><span class="si">}</span><span class="s2">&lt;br&gt;Valor: </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;variable_interes&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">mapa</span><span class="p">)</span>
+
+<span class="c1"># Guardar mapa personalizado</span>
+<span class="n">mapa</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;mapa_clusters_personalizado.html&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="caso-4-analisis-predictivo-para-estimar-valores-futuros">
+<h3>Caso 4: Análisis Predictivo para Estimar Valores Futuros<a class="headerlink" href="#caso-4-analisis-predictivo-para-estimar-valores-futuros" title="Link to this heading"></a></h3>
+<section id="id5">
+<h4>Escenario<a class="headerlink" href="#id5" title="Link to this heading"></a></h4>
+<p>Un analista de datos necesita desarrollar un modelo predictivo para estimar valores futuros basados en datos históricos.</p>
+</section>
+<section id="id6">
+<h4>Solución<a class="headerlink" href="#id6" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p><strong>Ejecutar el análisis predictivo:</strong></p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>src/analysis/analisis_predictivo.py
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p><strong>Resultados obtenidos:</strong></p>
+<ul class="simple">
+<li><p>Modelos de regresión entrenados (Random Forest, Gradient Boosting, etc.)</p></li>
+<li><p>Evaluación de rendimiento de los modelos</p></li>
+<li><p>Importancia de características</p></li>
+<li><p>Modelos guardados para uso futuro</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="codigo-de-ejemplo-para-predicciones-personalizadas">
+<h4>Código de ejemplo para predicciones personalizadas<a class="headerlink" href="#codigo-de-ejemplo-para-predicciones-personalizadas" title="Link to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.analysis.analisis_predictivo</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_and_prepare_data</span><span class="p">,</span> <span class="n">train_models</span><span class="p">,</span> <span class="n">evaluate_models</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">joblib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># Cargar y preparar datos</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">load_and_prepare_data</span><span class="p">(</span><span class="s1">&#39;src/data/20250525.export.CSV&#39;</span><span class="p">)</span>
+
+<span class="c1"># Definir variables predictoras y objetivo</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;variable1&#39;</span><span class="p">,</span> <span class="s1">&#39;variable2&#39;</span><span class="p">,</span> <span class="s1">&#39;variable3&#39;</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;variable_objetivo&#39;</span><span class="p">]</span>
+
+<span class="c1"># Entrenar modelos personalizados</span>
+<span class="n">modelos</span> <span class="o">=</span> <span class="n">train_models</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">modelos</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;random_forest&#39;</span><span class="p">,</span> <span class="s1">&#39;gradient_boosting&#39;</span><span class="p">])</span>
+
+<span class="c1"># Evaluar modelos</span>
+<span class="n">resultados</span> <span class="o">=</span> <span class="n">evaluate_models</span><span class="p">(</span><span class="n">modelos</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Resultados de evaluación:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">nombre</span><span class="p">,</span> <span class="n">metricas</span> <span class="ow">in</span> <span class="n">resultados</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">nombre</span><span class="si">}</span><span class="s2">: R² = </span><span class="si">{</span><span class="n">metricas</span><span class="p">[</span><span class="s1">&#39;r2&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, RMSE = </span><span class="si">{</span><span class="n">metricas</span><span class="p">[</span><span class="s1">&#39;rmse&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Guardar el mejor modelo</span>
+<span class="n">mejor_modelo</span> <span class="o">=</span> <span class="n">modelos</span><span class="p">[</span><span class="s1">&#39;gradient_boosting&#39;</span><span class="p">]</span>
+<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">mejor_modelo</span><span class="p">,</span> <span class="s1">&#39;mejor_modelo_predictivo.pkl&#39;</span><span class="p">)</span>
+
+<span class="c1"># Usar el modelo para nuevas predicciones</span>
+<span class="n">df_nuevos</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;variable1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">valor1</span><span class="p">,</span> <span class="n">valor2</span><span class="p">],</span>
+    <span class="s1">&#39;variable2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">valor3</span><span class="p">,</span> <span class="n">valor4</span><span class="p">],</span>
+    <span class="s1">&#39;variable3&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">valor5</span><span class="p">,</span> <span class="n">valor6</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="n">predicciones</span> <span class="o">=</span> <span class="n">mejor_modelo</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">df_nuevos</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Predicciones para nuevos datos:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">predicciones</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="caso-5-analisis-de-contenido-web-para-identificar-dominios-relevantes">
+<h3>Caso 5: Análisis de Contenido Web para Identificar Dominios Relevantes<a class="headerlink" href="#caso-5-analisis-de-contenido-web-para-identificar-dominios-relevantes" title="Link to this heading"></a></h3>
+<section id="id7">
+<h4>Escenario<a class="headerlink" href="#id7" title="Link to this heading"></a></h4>
+<p>Un especialista en marketing digital necesita analizar las URLs presentes en los datos para identificar dominios relevantes y patrones de contenido.</p>
+</section>
+<section id="id8">
+<h4>Solución<a class="headerlink" href="#id8" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p><strong>Ejecutar el análisis de contenido web:</strong></p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>src/web/analisis_contenido_web.py
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p><strong>Resultados obtenidos:</strong></p>
+<ul class="simple">
+<li><p>Distribución de dominios</p></li>
+<li><p>Análisis de palabras clave en URLs</p></li>
+<li><p>Clasificación de contenido</p></li>
+<li><p>Visualizaciones de nubes de palabras</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="id9">
+<h4>Código de ejemplo para análisis personalizado<a class="headerlink" href="#id9" title="Link to this heading"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.web.analisis_contenido_web</span><span class="w"> </span><span class="kn">import</span> <span class="n">extraer_dominios</span><span class="p">,</span> <span class="n">analizar_contenido</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">urllib.parse</span><span class="w"> </span><span class="kn">import</span> <span class="n">urlparse</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Cargar datos con URLs</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;src/data/datos_limpios.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># Extraer y analizar dominios</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;dominio&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">urlparse</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">netloc</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="c1"># Contar dominios más frecuentes</span>
+<span class="n">top_dominios</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;dominio&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+
+<span class="c1"># Visualizar dominios más frecuentes</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">top_dominios</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Dominios más frecuentes&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Dominio&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frecuencia&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;top_dominios_personalizado.png&#39;</span><span class="p">)</span>
+
+<span class="c1"># Análisis de palabras clave en URLs</span>
+<span class="n">palabras_clave</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;producto&#39;</span><span class="p">,</span> <span class="s1">&#39;servicio&#39;</span><span class="p">,</span> <span class="s1">&#39;oferta&#39;</span><span class="p">,</span> <span class="s1">&#39;descuento&#39;</span><span class="p">,</span> <span class="s1">&#39;promocion&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">palabra</span> <span class="ow">in</span> <span class="n">palabras_clave</span><span class="p">:</span>
+    <span class="n">df</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;contiene_</span><span class="si">{</span><span class="n">palabra</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">palabra</span><span class="p">,</span> <span class="n">case</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Resumen de URLs que contienen palabras clave</span>
+<span class="n">resumen_palabras</span> <span class="o">=</span> <span class="p">{</span><span class="n">palabra</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;contiene_</span><span class="si">{</span><span class="n">palabra</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="k">for</span> <span class="n">palabra</span> <span class="ow">in</span> <span class="n">palabras_clave</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;URLs que contienen palabras clave de marketing:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">palabra</span><span class="p">,</span> <span class="n">cantidad</span> <span class="ow">in</span> <span class="n">resumen_palabras</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">palabra</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">cantidad</span><span class="si">}</span><span class="s2"> URLs&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="caso-6-automatizacion-de-analisis-periodicos">
+<h3>Caso 6: Automatización de Análisis Periódicos<a class="headerlink" href="#caso-6-automatizacion-de-analisis-periodicos" title="Link to this heading"></a></h3>
+<section id="id10">
+<h4>Escenario<a class="headerlink" href="#id10" title="Link to this heading"></a></h4>
+<p>Un equipo necesita ejecutar análisis de forma periódica (diaria/semanal) sobre nuevos datos que se reciben regularmente.</p>
+</section>
+<section id="id11">
+<h4>Solución<a class="headerlink" href="#id11" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p><strong>Crear un script de automatización:</strong></p></li>
+</ol>
+<p>Guardar el siguiente código como <code class="docutils literal notranslate"><span class="pre">automatizar_analisis.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">schedule</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="c1"># Añadir el directorio raíz del proyecto al path</span>
+<span class="n">proyecto_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">proyecto_dir</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">ejecutar_analisis_completo</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">[</span><span class="si">{</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="si">}</span><span class="s2">] Iniciando análisis automático...&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Definir rutas</span>
+    <span class="n">archivo_datos</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">proyecto_dir</span><span class="p">,</span> <span class="s1">&#39;src/data/20250525.export.CSV&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Importar funciones necesarias</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">src.analysis.limpiar_analizar_csv</span><span class="w"> </span><span class="kn">import</span> <span class="n">limpiar_datos</span><span class="p">,</span> <span class="n">analizar_csv</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">src.analysis.analisis_predictivo</span><span class="w"> </span><span class="kn">import</span> <span class="n">ejecutar_analisis</span> <span class="k">as</span> <span class="n">ejecutar_predictivo</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">src.visualization.visualizar_datos</span><span class="w"> </span><span class="kn">import</span> <span class="n">visualizar_datos</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">src.dashboard.dashboard_adaptativo</span><span class="w"> </span><span class="kn">import</span> <span class="n">generar_dashboard</span>
+
+    <span class="c1"># Ejecutar pipeline de análisis</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1. Limpieza y análisis exploratorio...&quot;</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">limpiar_datos</span><span class="p">(</span><span class="n">archivo_datos</span><span class="p">)</span>
+    <span class="n">analizar_csv</span><span class="p">(</span><span class="n">archivo_datos</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2. Generando visualizaciones...&quot;</span><span class="p">)</span>
+    <span class="n">visualizar_datos</span><span class="p">()</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;3. Ejecutando análisis predictivo...&quot;</span><span class="p">)</span>
+    <span class="n">ejecutar_predictivo</span><span class="p">()</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;4. Generando dashboard estático...&quot;</span><span class="p">)</span>
+    <span class="n">generar_dashboard</span><span class="p">()</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="si">}</span><span class="s2">] Análisis completado. Resultados guardados en los directorios correspondientes.&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Opcional: Enviar notificación por email</span>
+    <span class="c1"># enviar_notificacion(&quot;Análisis completado&quot;, &quot;El análisis automático ha finalizado correctamente.&quot;)</span>
+
+<span class="c1"># Programar ejecución diaria a las 2:00 AM</span>
+<span class="n">schedule</span><span class="o">.</span><span class="n">every</span><span class="p">()</span><span class="o">.</span><span class="n">day</span><span class="o">.</span><span class="n">at</span><span class="p">(</span><span class="s2">&quot;02:00&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="n">ejecutar_analisis_completo</span><span class="p">)</span>
+
+<span class="c1"># Alternativamente, para ejecución semanal los lunes</span>
+<span class="c1"># schedule.every().monday.at(&quot;02:00&quot;).do(ejecutar_analisis_completo)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Servicio de análisis automático iniciado. Presione Ctrl+C para detener.&quot;</span><span class="p">)</span>
+
+<span class="c1"># Ejecutar inmediatamente la primera vez</span>
+<span class="n">ejecutar_analisis_completo</span><span class="p">()</span>
+
+<span class="c1"># Mantener el script en ejecución</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">schedule</span><span class="o">.</span><span class="n">run_pending</span><span class="p">()</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>  <span class="c1"># Verificar cada minuto</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p><strong>Ejecutar el script de automatización:</strong></p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>schedule
+python<span class="w"> </span>automatizar_analisis.py
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p><strong>Para entornos de producción:</strong></p>
+<ul class="simple">
+<li><p>Configurar como servicio del sistema o tarea programada</p></li>
+<li><p>Implementar registro de eventos y manejo de errores robusto</p></li>
+<li><p>Añadir notificaciones por email o mensajería</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+<section id="caso-7-integracion-con-sistemas-existentes">
+<h3>Caso 7: Integración con Sistemas Existentes<a class="headerlink" href="#caso-7-integracion-con-sistemas-existentes" title="Link to this heading"></a></h3>
+<section id="id12">
+<h4>Escenario<a class="headerlink" href="#id12" title="Link to this heading"></a></h4>
+<p>Una empresa necesita integrar el sistema de análisis con su infraestructura existente (base de datos, sistema de BI, etc.).</p>
+</section>
+<section id="id13">
+<h4>Solución<a class="headerlink" href="#id13" title="Link to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p><strong>Exportación a base de datos:</strong></p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sqlalchemy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="c1"># Configurar conexión a la base de datos</span>
+<span class="n">db_user</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DB_USER&#39;</span><span class="p">,</span> <span class="s1">&#39;usuario&#39;</span><span class="p">)</span>
+<span class="n">db_pass</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DB_PASS&#39;</span><span class="p">,</span> <span class="s1">&#39;contraseña&#39;</span><span class="p">)</span>
+<span class="n">db_host</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DB_HOST&#39;</span><span class="p">,</span> <span class="s1">&#39;localhost&#39;</span><span class="p">)</span>
+<span class="n">db_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DB_NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;analisis_datos&#39;</span><span class="p">)</span>
+
+<span class="c1"># Crear string de conexión (ejemplo para PostgreSQL)</span>
+<span class="n">connection_string</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;postgresql://</span><span class="si">{</span><span class="n">db_user</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">db_pass</span><span class="si">}</span><span class="s2">@</span><span class="si">{</span><span class="n">db_host</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">db_name</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="n">engine</span> <span class="o">=</span> <span class="n">sqlalchemy</span><span class="o">.</span><span class="n">create_engine</span><span class="p">(</span><span class="n">connection_string</span><span class="p">)</span>
+
+<span class="c1"># Cargar resultados del análisis</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">src.analysis.analisis_predictivo</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_and_prepare_data</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">load_and_prepare_data</span><span class="p">(</span><span class="s1">&#39;src/data/20250525.export.CSV&#39;</span><span class="p">)</span>
+
+<span class="c1"># Exportar a la base de datos</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">exportar_resultados</span><span class="p">():</span>
+    <span class="c1"># Tabla principal de datos</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="s1">&#39;datos_analizados&#39;</span><span class="p">,</span> <span class="n">engine</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># Tabla de estadísticas</span>
+    <span class="n">estadisticas</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+        <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span>
+        <span class="s1">&#39;media&#39;</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+        <span class="s1">&#39;mediana&#39;</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">median</span><span class="p">(),</span>
+        <span class="s1">&#39;desviacion&#39;</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">std</span><span class="p">(),</span>
+        <span class="s1">&#39;minimo&#39;</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span>
+        <span class="s1">&#39;maximo&#39;</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    <span class="p">})</span>
+    <span class="n">estadisticas</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="s1">&#39;estadisticas&#39;</span><span class="p">,</span> <span class="n">engine</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Datos exportados correctamente a la base de datos.&quot;</span><span class="p">)</span>
+
+<span class="c1"># Ejecutar exportación</span>
+<span class="n">exportar_resultados</span><span class="p">()</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p><strong>Integración con API REST:</strong></p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># Cargar resultados del análisis</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">src.analysis.analisis_predictivo</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_and_prepare_data</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">load_and_prepare_data</span><span class="p">(</span><span class="s1">&#39;src/data/20250525.export.CSV&#39;</span><span class="p">)</span>
+
+<span class="c1"># Configurar endpoint de la API</span>
+<span class="n">api_url</span> <span class="o">=</span> <span class="s2">&quot;https://api.empresa.com/datos/actualizar&quot;</span>
+<span class="n">api_key</span> <span class="o">=</span> <span class="s2">&quot;su_clave_api&quot;</span>
+
+<span class="c1"># Preparar datos para envío</span>
+<span class="n">datos_json</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s1">&#39;records&#39;</span><span class="p">)</span>
+
+<span class="c1"># Enviar datos a la API</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+    <span class="n">api_url</span><span class="p">,</span>
+    <span class="n">headers</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;Bearer </span><span class="si">{</span><span class="n">api_key</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="p">},</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span>
+        <span class="s1">&#39;datos&#39;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">datos_json</span><span class="p">),</span>
+        <span class="s1">&#39;fecha_analisis&#39;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">isoformat</span><span class="p">(),</span>
+        <span class="s1">&#39;version&#39;</span><span class="p">:</span> <span class="s1">&#39;1.0&#39;</span>
+    <span class="p">})</span>
+<span class="p">)</span>
+
+<span class="c1"># Verificar respuesta</span>
+<span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Datos enviados correctamente a la API.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Respuesta: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error al enviar datos: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Detalle: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>Estos casos de uso ilustran diferentes escenarios prácticos donde el sistema de análisis de datos puede aplicarse para resolver problemas específicos. Cada caso incluye instrucciones paso a paso y ejemplos de código que pueden adaptarse a necesidades particulares.</p>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="instalacion.html" class="btn btn-neutral float-left" title="Guía de Instalación" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="preguntas_frecuentes.html" class="btn btn-neutral float-right" title="Preguntas Frecuentes" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, UN PASO AL EXITO.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

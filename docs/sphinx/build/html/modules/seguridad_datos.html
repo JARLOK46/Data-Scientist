@@ -1,0 +1,682 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seguridad de Datos &mdash; documentación de Analisis de Datos y Visualizacion - 1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=4936afed"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=f85f4cfb"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="Referencia Técnica Detallada" href="referencia_tecnica_detallada.html" />
+    <link rel="prev" title="Optimización de Rendimiento" href="optimizacion_rendimiento.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Analisis de Datos y Visualizacion
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guías de Usuario:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="instalacion.html">Guía de Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="casos_uso.html">Casos de Uso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preguntas_frecuentes.html">Preguntas Frecuentes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Módulos Principales:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="analysis.html">Módulo de Análisis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geospatial.html">Módulo Geoespacial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="web.html">Módulo Web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dashboard.html">Módulo de Dashboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization.html">Módulo de Visualización</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">Módulo de Utilidades</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentación Técnica:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="guia_analisis_avanzado.html">Guía de Análisis Avanzado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optimizacion_rendimiento.html">Optimización de Rendimiento</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Seguridad de Datos</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#guia-de-seguridad-de-datos">Guía de Seguridad de Datos</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#indice">Índice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#principios-fundamentales">Principios Fundamentales</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#principio-de-minimo-privilegio">Principio de Mínimo Privilegio</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#defensa-en-profundidad">Defensa en Profundidad</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#privacidad-por-diseno">Privacidad por Diseño</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#transparencia">Transparencia</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#seguridad-en-la-ingesta-de-datos">Seguridad en la Ingesta de Datos</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#validacion-de-fuentes">Validación de Fuentes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sanitizacion-de-entradas">Sanitización de Entradas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#canales-seguros">Canales Seguros</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#seguridad-en-el-almacenamiento">Seguridad en el Almacenamiento</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cifrado-de-datos-en-reposo">Cifrado de Datos en Reposo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gestion-de-claves">Gestión de Claves</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#control-de-acceso-a-archivos">Control de Acceso a Archivos</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#seguridad-en-el-procesamiento">Seguridad en el Procesamiento</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#aislamiento-de-entornos">Aislamiento de Entornos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#prevencion-de-fugas-de-memoria">Prevención de Fugas de Memoria</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#registro-de-operaciones-sensibles">Registro de Operaciones Sensibles</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#seguridad-en-la-visualizacion-y-exportacion">Seguridad en la Visualización y Exportación</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#control-de-acceso-a-dashboards">Control de Acceso a Dashboards</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#filtrado-de-datos-sensibles-en-visualizaciones">Filtrado de Datos Sensibles en Visualizaciones</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#marcas-de-agua-y-metadatos-de-seguridad">Marcas de Agua y Metadatos de Seguridad</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#anonimizacion-y-seudonimizacion">Anonimización y Seudonimización</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tecnicas-de-anonimizacion">Técnicas de Anonimización</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#k-anonimato-y-otras-garantias-de-privacidad">K-Anonimato y Otras Garantías de Privacidad</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reidentificacion-y-pruebas-de-ataque">Reidentificación y Pruebas de Ataque</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#auditoria-y-cumplimiento">Auditoría y Cumplimiento</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#registro-de-auditoria">Registro de Auditoría</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cumplimiento-normativo">Cumplimiento Normativo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#documentacion-de-impacto-en-la-privacidad">Documentación de Impacto en la Privacidad</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#respuesta-a-incidentes">Respuesta a Incidentes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#plan-de-respuesta">Plan de Respuesta</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#deteccion-de-incidentes">Detección de Incidentes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#simulacros-y-formacion">Simulacros y Formación</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#conclusion">Conclusión</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="referencia_tecnica_detallada.html">Referencia Técnica Detallada</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integracion_herramientas.html">Integración de Herramientas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/modules.html">src</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Analisis de Datos y Visualizacion</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Seguridad de Datos</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/seguridad_datos.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="seguridad-de-datos">
+<h1>Seguridad de Datos<a class="headerlink" href="#seguridad-de-datos" title="Link to this heading"></a></h1>
+<section id="guia-de-seguridad-de-datos">
+<h2>Guía de Seguridad de Datos<a class="headerlink" href="#guia-de-seguridad-de-datos" title="Link to this heading"></a></h2>
+<p>Este documento proporciona directrices y mejores prácticas para garantizar la seguridad de los datos durante todo el ciclo de análisis en el sistema «UN PASO AL EXITO». La seguridad de datos es un aspecto crítico en cualquier proyecto de análisis de datos, especialmente cuando se trabaja con información sensible o confidencial.</p>
+<section id="indice">
+<h3>Índice<a class="headerlink" href="#indice" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#principios-fundamentales"><span class="xref myst">Principios Fundamentales</span></a></p></li>
+<li><p><a class="reference internal" href="#seguridad-en-la-ingesta-de-datos"><span class="xref myst">Seguridad en la Ingesta de Datos</span></a></p></li>
+<li><p><a class="reference internal" href="#seguridad-en-el-almacenamiento"><span class="xref myst">Seguridad en el Almacenamiento</span></a></p></li>
+<li><p><a class="reference internal" href="#seguridad-en-el-procesamiento"><span class="xref myst">Seguridad en el Procesamiento</span></a></p></li>
+<li><p><a class="reference internal" href="#seguridad-en-la-visualizaci%C3%B3n-y-exportaci%C3%B3n"><span class="xref myst">Seguridad en la Visualización y Exportación</span></a></p></li>
+<li><p><a class="reference internal" href="#anonimizaci%C3%B3n-y-seudonimizaci%C3%B3n"><span class="xref myst">Anonimización y Seudonimización</span></a></p></li>
+<li><p><a class="reference internal" href="#auditor%C3%ADa-y-cumplimiento"><span class="xref myst">Auditoría y Cumplimiento</span></a></p></li>
+<li><p><a class="reference internal" href="#respuesta-a-incidentes"><span class="xref myst">Respuesta a Incidentes</span></a></p></li>
+</ol>
+</section>
+<section id="principios-fundamentales">
+<h3>Principios Fundamentales<a class="headerlink" href="#principios-fundamentales" title="Link to this heading"></a></h3>
+<section id="principio-de-minimo-privilegio">
+<h4>Principio de Mínimo Privilegio<a class="headerlink" href="#principio-de-minimo-privilegio" title="Link to this heading"></a></h4>
+<p>Siempre opere bajo el principio de mínimo privilegio: cada componente del sistema debe tener acceso únicamente a los datos y recursos que necesita para realizar su función específica.</p>
+</section>
+<section id="defensa-en-profundidad">
+<h4>Defensa en Profundidad<a class="headerlink" href="#defensa-en-profundidad" title="Link to this heading"></a></h4>
+<p>Implemente múltiples capas de seguridad para proteger los datos. No confíe en una sola medida de seguridad.</p>
+</section>
+<section id="privacidad-por-diseno">
+<h4>Privacidad por Diseño<a class="headerlink" href="#privacidad-por-diseno" title="Link to this heading"></a></h4>
+<p>Incorpore consideraciones de privacidad desde el inicio del proyecto, no como una reflexión posterior.</p>
+</section>
+<section id="transparencia">
+<h4>Transparencia<a class="headerlink" href="#transparencia" title="Link to this heading"></a></h4>
+<p>Mantenga documentación clara sobre qué datos se recopilan, cómo se procesan y quién tiene acceso a ellos.</p>
+</section>
+</section>
+<section id="seguridad-en-la-ingesta-de-datos">
+<h3>Seguridad en la Ingesta de Datos<a class="headerlink" href="#seguridad-en-la-ingesta-de-datos" title="Link to this heading"></a></h3>
+<section id="validacion-de-fuentes">
+<h4>Validación de Fuentes<a class="headerlink" href="#validacion-de-fuentes" title="Link to this heading"></a></h4>
+<p>Verifique siempre la autenticidad y confiabilidad de las fuentes de datos antes de incorporarlas al sistema.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.security</span><span class="w"> </span><span class="kn">import</span> <span class="n">validate_data_source</span>
+
+<span class="c1"># Verificar la fuente de datos antes de la ingesta</span>
+<span class="n">source_validation</span> <span class="o">=</span> <span class="n">validate_data_source</span><span class="p">(</span>
+    <span class="n">source_url</span><span class="o">=</span><span class="s2">&quot;https://ejemplo.com/datos.csv&quot;</span><span class="p">,</span>
+    <span class="n">expected_hash</span><span class="o">=</span><span class="s2">&quot;a1b2c3d4e5f6...&quot;</span><span class="p">,</span>  <span class="c1"># Hash SHA-256 esperado</span>
+    <span class="n">validate_ssl</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">check_reputation</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">source_validation</span><span class="p">[</span><span class="s1">&#39;is_valid&#39;</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Advertencia: Fuente de datos no confiable: </span><span class="si">{</span><span class="n">source_validation</span><span class="p">[</span><span class="s1">&#39;reason&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="c1"># Decidir si continuar o no</span>
+</pre></div>
+</div>
+</section>
+<section id="sanitizacion-de-entradas">
+<h4>Sanitización de Entradas<a class="headerlink" href="#sanitizacion-de-entradas" title="Link to this heading"></a></h4>
+<p>Sanitice todas las entradas para prevenir ataques de inyección, especialmente cuando se trabaja con consultas SQL o comandos del sistema.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.security</span><span class="w"> </span><span class="kn">import</span> <span class="n">sanitize_input</span>
+
+<span class="c1"># Sanitizar entrada antes de usarla en una consulta SQL</span>
+<span class="n">user_input</span> <span class="o">=</span> <span class="s2">&quot;datos; DROP TABLE usuarios;&quot;</span>
+<span class="n">sanitized_input</span> <span class="o">=</span> <span class="n">sanitize_input</span><span class="p">(</span><span class="n">user_input</span><span class="p">,</span> <span class="n">input_type</span><span class="o">=</span><span class="s2">&quot;sql&quot;</span><span class="p">)</span>
+
+<span class="c1"># Ahora es seguro usar sanitized_input en una consulta SQL</span>
+</pre></div>
+</div>
+</section>
+<section id="canales-seguros">
+<h4>Canales Seguros<a class="headerlink" href="#canales-seguros" title="Link to this heading"></a></h4>
+<p>Utilice siempre canales seguros (HTTPS, SSH, etc.) para la transferencia de datos.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.security</span><span class="w"> </span><span class="kn">import</span> <span class="n">secure_download</span>
+
+<span class="c1"># Descargar datos usando un canal seguro</span>
+<span class="n">data_file</span> <span class="o">=</span> <span class="n">secure_download</span><span class="p">(</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://ejemplo.com/datos.csv&quot;</span><span class="p">,</span>
+    <span class="n">verify_ssl</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+    <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="s2">&quot;Bearer YOUR_TOKEN&quot;</span><span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="seguridad-en-el-almacenamiento">
+<h3>Seguridad en el Almacenamiento<a class="headerlink" href="#seguridad-en-el-almacenamiento" title="Link to this heading"></a></h3>
+<section id="cifrado-de-datos-en-reposo">
+<h4>Cifrado de Datos en Reposo<a class="headerlink" href="#cifrado-de-datos-en-reposo" title="Link to this heading"></a></h4>
+<p>Cifre los datos sensibles cuando estén almacenados, ya sea en archivos locales o en bases de datos.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.security</span><span class="w"> </span><span class="kn">import</span> <span class="n">encrypt_file</span><span class="p">,</span> <span class="n">decrypt_file</span>
+
+<span class="c1"># Cifrar un archivo de datos sensibles</span>
+<span class="n">encrypt_file</span><span class="p">(</span>
+    <span class="n">input_file</span><span class="o">=</span><span class="s2">&quot;datos_sensibles.csv&quot;</span><span class="p">,</span>
+    <span class="n">output_file</span><span class="o">=</span><span class="s2">&quot;datos_sensibles.enc&quot;</span><span class="p">,</span>
+    <span class="n">encryption_key</span><span class="o">=</span><span class="n">get_encryption_key</span><span class="p">(),</span>  <span class="c1"># Obtener clave de un almacén seguro</span>
+    <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;AES-256-GCM&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Descifrar cuando sea necesario para el análisis</span>
+<span class="n">decrypted_data</span> <span class="o">=</span> <span class="n">decrypt_file</span><span class="p">(</span>
+    <span class="n">input_file</span><span class="o">=</span><span class="s2">&quot;datos_sensibles.enc&quot;</span><span class="p">,</span>
+    <span class="n">encryption_key</span><span class="o">=</span><span class="n">get_encryption_key</span><span class="p">(),</span>
+    <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;AES-256-GCM&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="gestion-de-claves">
+<h4>Gestión de Claves<a class="headerlink" href="#gestion-de-claves" title="Link to this heading"></a></h4>
+<p>Implemente un sistema robusto de gestión de claves para proteger las claves de cifrado.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.security</span><span class="w"> </span><span class="kn">import</span> <span class="n">KeyManager</span>
+
+<span class="c1"># Inicializar gestor de claves</span>
+<span class="n">key_manager</span> <span class="o">=</span> <span class="n">KeyManager</span><span class="p">(</span>
+    <span class="n">key_store_type</span><span class="o">=</span><span class="s2">&quot;vault&quot;</span><span class="p">,</span>  <span class="c1"># Alternativas: &quot;file&quot;, &quot;database&quot;, &quot;kms&quot;</span>
+    <span class="n">key_store_path</span><span class="o">=</span><span class="s2">&quot;/ruta/segura/keystore&quot;</span><span class="p">,</span>
+    <span class="n">master_key_env_var</span><span class="o">=</span><span class="s2">&quot;MASTER_KEY_ENV&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Obtener clave para una operación específica</span>
+<span class="n">encryption_key</span> <span class="o">=</span> <span class="n">key_manager</span><span class="o">.</span><span class="n">get_key</span><span class="p">(</span><span class="s2">&quot;datos_sensibles_key&quot;</span><span class="p">)</span>
+
+<span class="c1"># Rotar clave periódicamente</span>
+<span class="n">key_manager</span><span class="o">.</span><span class="n">rotate_key</span><span class="p">(</span><span class="s2">&quot;datos_sensibles_key&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="control-de-acceso-a-archivos">
+<h4>Control de Acceso a Archivos<a class="headerlink" href="#control-de-acceso-a-archivos" title="Link to this heading"></a></h4>
+<p>Asegúrese de que los permisos de archivos estén correctamente configurados para limitar el acceso.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.security</span><span class="w"> </span><span class="kn">import</span> <span class="n">set_secure_permissions</span>
+
+<span class="c1"># Establecer permisos seguros para un archivo de datos</span>
+<span class="n">set_secure_permissions</span><span class="p">(</span>
+    <span class="n">file_path</span><span class="o">=</span><span class="s2">&quot;datos_sensibles.csv&quot;</span><span class="p">,</span>
+    <span class="n">owner_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># Solo el propietario puede acceder</span>
+    <span class="n">prevent_execution</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="seguridad-en-el-procesamiento">
+<h3>Seguridad en el Procesamiento<a class="headerlink" href="#seguridad-en-el-procesamiento" title="Link to this heading"></a></h3>
+<section id="aislamiento-de-entornos">
+<h4>Aislamiento de Entornos<a class="headerlink" href="#aislamiento-de-entornos" title="Link to this heading"></a></h4>
+<p>Utilice entornos aislados (contenedores, entornos virtuales, etc.) para el procesamiento de datos sensibles.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.security</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_secure_environment</span>
+
+<span class="c1"># Crear un entorno aislado para procesamiento seguro</span>
+<span class="k">with</span> <span class="n">create_secure_environment</span><span class="p">(</span><span class="n">isolation_level</span><span class="o">=</span><span class="s2">&quot;container&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">env</span><span class="p">:</span>
+    <span class="c1"># Ejecutar análisis dentro del entorno aislado</span>
+    <span class="n">env</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">(</span>
+        <span class="n">script_path</span><span class="o">=</span><span class="s2">&quot;analisis_sensible.py&quot;</span><span class="p">,</span>
+        <span class="n">input_data</span><span class="o">=</span><span class="n">encrypted_data</span><span class="p">,</span>
+        <span class="n">allow_network</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="c1"># Prevenir conexiones de red</span>
+        <span class="n">allow_file_write</span><span class="o">=</span><span class="kc">False</span>  <span class="c1"># Prevenir escritura de archivos fuera del entorno</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="prevencion-de-fugas-de-memoria">
+<h4>Prevención de Fugas de Memoria<a class="headerlink" href="#prevencion-de-fugas-de-memoria" title="Link to this heading"></a></h4>
+<p>Implemente medidas para prevenir fugas de datos sensibles a través de la memoria.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.security</span><span class="w"> </span><span class="kn">import</span> <span class="n">SecureDataFrame</span>
+
+<span class="c1"># Usar un DataFrame seguro que limpia la memoria después de su uso</span>
+<span class="k">with</span> <span class="n">SecureDataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="k">as</span> <span class="n">secure_df</span><span class="p">:</span>
+    <span class="c1"># Realizar análisis</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">analyze_data</span><span class="p">(</span><span class="n">secure_df</span><span class="p">)</span>
+
+<span class="c1"># Al salir del bloque with, secure_df limpia automáticamente la memoria</span>
+</pre></div>
+</div>
+</section>
+<section id="registro-de-operaciones-sensibles">
+<h4>Registro de Operaciones Sensibles<a class="headerlink" href="#registro-de-operaciones-sensibles" title="Link to this heading"></a></h4>
+<p>Mantenga un registro detallado de todas las operaciones realizadas sobre datos sensibles.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.security</span><span class="w"> </span><span class="kn">import</span> <span class="n">AuditLogger</span>
+
+<span class="c1"># Inicializar logger de auditoría</span>
+<span class="n">audit_logger</span> <span class="o">=</span> <span class="n">AuditLogger</span><span class="p">(</span>
+    <span class="n">log_file</span><span class="o">=</span><span class="s2">&quot;audit.log&quot;</span><span class="p">,</span>
+    <span class="n">log_level</span><span class="o">=</span><span class="s2">&quot;INFO&quot;</span><span class="p">,</span>
+    <span class="n">include_user_info</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+
+<span class="c1"># Registrar operación sensible</span>
+<span class="n">audit_logger</span><span class="o">.</span><span class="n">log_operation</span><span class="p">(</span>
+    <span class="n">operation</span><span class="o">=</span><span class="s2">&quot;data_analysis&quot;</span><span class="p">,</span>
+    <span class="n">data_source</span><span class="o">=</span><span class="s2">&quot;datos_sensibles.csv&quot;</span><span class="p">,</span>
+    <span class="n">operation_details</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;predictive_analysis&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;columns_accessed&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;columna1&quot;</span><span class="p">,</span> <span class="s2">&quot;columna2&quot;</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="seguridad-en-la-visualizacion-y-exportacion">
+<h3>Seguridad en la Visualización y Exportación<a class="headerlink" href="#seguridad-en-la-visualizacion-y-exportacion" title="Link to this heading"></a></h3>
+<section id="control-de-acceso-a-dashboards">
+<h4>Control de Acceso a Dashboards<a class="headerlink" href="#control-de-acceso-a-dashboards" title="Link to this heading"></a></h4>
+<p>Implemente autenticación y autorización para el acceso a dashboards y visualizaciones.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.dashboard.security</span><span class="w"> </span><span class="kn">import</span> <span class="n">secure_dashboard</span>
+
+<span class="c1"># Crear dashboard con seguridad</span>
+<span class="n">dashboard</span> <span class="o">=</span> <span class="n">secure_dashboard</span><span class="p">(</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Dashboard de Análisis Sensible&quot;</span><span class="p">,</span>
+    <span class="n">authentication_required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">authorization_roles</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;analyst&quot;</span><span class="p">,</span> <span class="s2">&quot;manager&quot;</span><span class="p">],</span>
+    <span class="n">session_timeout</span><span class="o">=</span><span class="mi">30</span>  <span class="c1"># Minutos</span>
+<span class="p">)</span>
+
+<span class="c1"># Añadir componentes al dashboard</span>
+<span class="n">dashboard</span><span class="o">.</span><span class="n">add_component</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="filtrado-de-datos-sensibles-en-visualizaciones">
+<h4>Filtrado de Datos Sensibles en Visualizaciones<a class="headerlink" href="#filtrado-de-datos-sensibles-en-visualizaciones" title="Link to this heading"></a></h4>
+<p>Asegúrese de que las visualizaciones no revelen datos sensibles inadvertidamente.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.visualization.security</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_privacy_preserving_visualization</span>
+
+<span class="c1"># Crear visualización que protege la privacidad</span>
+<span class="n">visualization</span> <span class="o">=</span> <span class="n">create_privacy_preserving_visualization</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">sensitive_data</span><span class="p">,</span>
+    <span class="n">visualization_type</span><span class="o">=</span><span class="s2">&quot;scatter&quot;</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;feature1&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;feature2&quot;</span><span class="p">,</span>
+    <span class="n">privacy_methods</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;k_anonymity&quot;</span><span class="p">,</span> <span class="s2">&quot;k&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;noise_addition&quot;</span><span class="p">,</span> <span class="s2">&quot;level&quot;</span><span class="p">:</span> <span class="s2">&quot;low&quot;</span><span class="p">}</span>
+    <span class="p">],</span>
+    <span class="n">prevent_zoom_to_individual</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="marcas-de-agua-y-metadatos-de-seguridad">
+<h4>Marcas de Agua y Metadatos de Seguridad<a class="headerlink" href="#marcas-de-agua-y-metadatos-de-seguridad" title="Link to this heading"></a></h4>
+<p>Incluya marcas de agua y metadatos de seguridad en los informes y visualizaciones exportados.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.export</span><span class="w"> </span><span class="kn">import</span> <span class="n">secure_export</span>
+
+<span class="c1"># Exportar visualización con marcas de seguridad</span>
+<span class="n">secure_export</span><span class="p">(</span>
+    <span class="n">visualization</span><span class="o">=</span><span class="n">visualization</span><span class="p">,</span>
+    <span class="n">output_path</span><span class="o">=</span><span class="s2">&quot;informe_analisis.pdf&quot;</span><span class="p">,</span>
+    <span class="n">security_features</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;watermark&quot;</span><span class="p">:</span> <span class="s2">&quot;CONFIDENCIAL&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;creator&quot;</span><span class="p">:</span> <span class="s2">&quot;Sistema de Análisis&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;security_level&quot;</span><span class="p">:</span> <span class="s2">&quot;Confidencial&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;expiration_date&quot;</span><span class="p">:</span> <span class="s2">&quot;2023-12-31&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;prevent_copy&quot;</span><span class="p">:</span> <span class="kc">True</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="anonimizacion-y-seudonimizacion">
+<h3>Anonimización y Seudonimización<a class="headerlink" href="#anonimizacion-y-seudonimizacion" title="Link to this heading"></a></h3>
+<section id="tecnicas-de-anonimizacion">
+<h4>Técnicas de Anonimización<a class="headerlink" href="#tecnicas-de-anonimizacion" title="Link to this heading"></a></h4>
+<p>Implemente técnicas de anonimización para proteger la identidad de los individuos en los datos.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.privacy</span><span class="w"> </span><span class="kn">import</span> <span class="n">anonymize_data</span>
+
+<span class="c1"># Anonimizar datos antes del análisis</span>
+<span class="n">anonymized_data</span> <span class="o">=</span> <span class="n">anonymize_data</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">sensitive_data</span><span class="p">,</span>
+    <span class="n">identifying_columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;nombre&quot;</span><span class="p">,</span> <span class="s2">&quot;email&quot;</span><span class="p">,</span> <span class="s2">&quot;telefono&quot;</span><span class="p">,</span> <span class="s2">&quot;direccion&quot;</span><span class="p">],</span>
+    <span class="n">methods</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;nombre&quot;</span><span class="p">:</span> <span class="s2">&quot;replacement&quot;</span><span class="p">,</span>  <span class="c1"># Reemplazar con valores ficticios</span>
+        <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;masking&quot;</span><span class="p">,</span>      <span class="c1"># Enmascarar (e.g., j***@e***.com)</span>
+        <span class="s2">&quot;telefono&quot;</span><span class="p">:</span> <span class="s2">&quot;hashing&quot;</span><span class="p">,</span>   <span class="c1"># Aplicar hash</span>
+        <span class="s2">&quot;direccion&quot;</span><span class="p">:</span> <span class="s2">&quot;generalization&quot;</span>  <span class="c1"># Generalizar (e.g., solo ciudad)</span>
+    <span class="p">},</span>
+    <span class="n">preserve_relationships</span><span class="o">=</span><span class="kc">True</span>  <span class="c1"># Mantener relaciones entre registros</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="k-anonimato-y-otras-garantias-de-privacidad">
+<h4>K-Anonimato y Otras Garantías de Privacidad<a class="headerlink" href="#k-anonimato-y-otras-garantias-de-privacidad" title="Link to this heading"></a></h4>
+<p>Implemente garantías formales de privacidad como k-anonimato, l-diversidad o privacidad diferencial.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.privacy</span><span class="w"> </span><span class="kn">import</span> <span class="n">apply_privacy_model</span>
+
+<span class="c1"># Aplicar modelo de privacidad formal</span>
+<span class="n">private_data</span> <span class="o">=</span> <span class="n">apply_privacy_model</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">sensitive_data</span><span class="p">,</span>
+    <span class="n">privacy_model</span><span class="o">=</span><span class="s2">&quot;k_anonymity&quot;</span><span class="p">,</span>
+    <span class="n">model_parameters</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;k&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span>
+    <span class="n">quasi_identifiers</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;edad&quot;</span><span class="p">,</span> <span class="s2">&quot;codigo_postal&quot;</span><span class="p">,</span> <span class="s2">&quot;genero&quot;</span><span class="p">],</span>
+    <span class="n">sensitive_attributes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;diagnostico&quot;</span><span class="p">,</span> <span class="s2">&quot;salario&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># Verificar que se cumple la garantía de privacidad</span>
+<span class="n">verification</span> <span class="o">=</span> <span class="n">verify_privacy_guarantee</span><span class="p">(</span><span class="n">private_data</span><span class="p">,</span> <span class="s2">&quot;k_anonymity&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;k&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;¿Se cumple k-anonimato? </span><span class="si">{</span><span class="n">verification</span><span class="p">[</span><span class="s1">&#39;is_satisfied&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="reidentificacion-y-pruebas-de-ataque">
+<h4>Reidentificación y Pruebas de Ataque<a class="headerlink" href="#reidentificacion-y-pruebas-de-ataque" title="Link to this heading"></a></h4>
+<p>Realice pruebas de reidentificación para evaluar la efectividad de sus técnicas de anonimización.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.privacy</span><span class="w"> </span><span class="kn">import</span> <span class="n">reidentification_risk_assessment</span>
+
+<span class="c1"># Evaluar riesgo de reidentificación</span>
+<span class="n">risk_assessment</span> <span class="o">=</span> <span class="n">reidentification_risk_assessment</span><span class="p">(</span>
+    <span class="n">anonymized_data</span><span class="o">=</span><span class="n">anonymized_data</span><span class="p">,</span>
+    <span class="n">original_data</span><span class="o">=</span><span class="n">sensitive_data</span><span class="p">,</span>
+    <span class="n">external_data_sources</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;public_records.csv&quot;</span><span class="p">],</span>
+    <span class="n">attack_methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;linkage_attack&quot;</span><span class="p">,</span> <span class="s2">&quot;background_knowledge_attack&quot;</span><span class="p">],</span>
+    <span class="n">num_simulations</span><span class="o">=</span><span class="mi">1000</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Riesgo de reidentificación: </span><span class="si">{</span><span class="n">risk_assessment</span><span class="p">[</span><span class="s1">&#39;overall_risk&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Registros vulnerables: </span><span class="si">{</span><span class="n">risk_assessment</span><span class="p">[</span><span class="s1">&#39;vulnerable_records&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="auditoria-y-cumplimiento">
+<h3>Auditoría y Cumplimiento<a class="headerlink" href="#auditoria-y-cumplimiento" title="Link to this heading"></a></h3>
+<section id="registro-de-auditoria">
+<h4>Registro de Auditoría<a class="headerlink" href="#registro-de-auditoria" title="Link to this heading"></a></h4>
+<p>Mantenga registros detallados de auditoría para todas las operaciones relacionadas con datos.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.compliance</span><span class="w"> </span><span class="kn">import</span> <span class="n">setup_audit_system</span>
+
+<span class="c1"># Configurar sistema de auditoría</span>
+<span class="n">audit_system</span> <span class="o">=</span> <span class="n">setup_audit_system</span><span class="p">(</span>
+    <span class="n">log_storage</span><span class="o">=</span><span class="s2">&quot;database&quot;</span><span class="p">,</span>  <span class="c1"># Alternativas: &quot;file&quot;, &quot;cloud&quot;</span>
+    <span class="n">retention_period</span><span class="o">=</span><span class="mi">365</span><span class="p">,</span>    <span class="c1"># Días</span>
+    <span class="n">tamper_proof</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>       <span class="c1"># Prevenir modificación de logs</span>
+    <span class="n">alert_on_suspicious</span><span class="o">=</span><span class="kc">True</span> <span class="c1"># Alertar sobre actividades sospechosas</span>
+<span class="p">)</span>
+
+<span class="c1"># El sistema registrará automáticamente las operaciones</span>
+<span class="c1"># También se puede registrar manualmente</span>
+<span class="n">audit_system</span><span class="o">.</span><span class="n">log_event</span><span class="p">(</span>
+    <span class="n">event_type</span><span class="o">=</span><span class="s2">&quot;data_export&quot;</span><span class="p">,</span>
+    <span class="n">user</span><span class="o">=</span><span class="s2">&quot;analista1&quot;</span><span class="p">,</span>
+    <span class="n">details</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;format&quot;</span><span class="p">:</span> <span class="s2">&quot;csv&quot;</span><span class="p">,</span> <span class="s2">&quot;records&quot;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span> <span class="s2">&quot;purpose&quot;</span><span class="p">:</span> <span class="s2">&quot;monthly_report&quot;</span><span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="cumplimiento-normativo">
+<h4>Cumplimiento Normativo<a class="headerlink" href="#cumplimiento-normativo" title="Link to this heading"></a></h4>
+<p>Implemente medidas para asegurar el cumplimiento de regulaciones como GDPR, HIPAA, etc.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.compliance</span><span class="w"> </span><span class="kn">import</span> <span class="n">compliance_check</span>
+
+<span class="c1"># Verificar cumplimiento normativo</span>
+<span class="n">compliance_report</span> <span class="o">=</span> <span class="n">compliance_check</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span>
+    <span class="n">regulations</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;GDPR&quot;</span><span class="p">,</span> <span class="s2">&quot;HIPAA&quot;</span><span class="p">],</span>
+    <span class="n">data_processing_activities</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;activity&quot;</span><span class="p">:</span> <span class="s2">&quot;collection&quot;</span><span class="p">,</span> <span class="s2">&quot;purpose&quot;</span><span class="p">:</span> <span class="s2">&quot;analysis&quot;</span><span class="p">,</span> <span class="s2">&quot;legal_basis&quot;</span><span class="p">:</span> <span class="s2">&quot;consent&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;activity&quot;</span><span class="p">:</span> <span class="s2">&quot;storage&quot;</span><span class="p">,</span> <span class="s2">&quot;duration&quot;</span><span class="p">:</span> <span class="s2">&quot;6 months&quot;</span><span class="p">,</span> <span class="s2">&quot;security_measures&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;encryption&quot;</span><span class="p">]},</span>
+        <span class="p">{</span><span class="s2">&quot;activity&quot;</span><span class="p">:</span> <span class="s2">&quot;processing&quot;</span><span class="p">,</span> <span class="s2">&quot;purpose&quot;</span><span class="p">:</span> <span class="s2">&quot;predictive_modeling&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;activity&quot;</span><span class="p">:</span> <span class="s2">&quot;sharing&quot;</span><span class="p">,</span> <span class="s2">&quot;recipients&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;internal_team&quot;</span><span class="p">]}</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;¿Cumple con GDPR? </span><span class="si">{</span><span class="n">compliance_report</span><span class="p">[</span><span class="s1">&#39;GDPR&#39;</span><span class="p">][</span><span class="s1">&#39;compliant&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Acciones recomendadas: </span><span class="si">{</span><span class="n">compliance_report</span><span class="p">[</span><span class="s1">&#39;GDPR&#39;</span><span class="p">][</span><span class="s1">&#39;recommendations&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="documentacion-de-impacto-en-la-privacidad">
+<h4>Documentación de Impacto en la Privacidad<a class="headerlink" href="#documentacion-de-impacto-en-la-privacidad" title="Link to this heading"></a></h4>
+<p>Realice y documente evaluaciones de impacto en la privacidad para proyectos que involucren datos sensibles.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.compliance</span><span class="w"> </span><span class="kn">import</span> <span class="n">privacy_impact_assessment</span>
+
+<span class="c1"># Realizar evaluación de impacto en la privacidad</span>
+<span class="n">pia_report</span> <span class="o">=</span> <span class="n">privacy_impact_assessment</span><span class="p">(</span>
+    <span class="n">project_name</span><span class="o">=</span><span class="s2">&quot;Análisis Predictivo de Salud&quot;</span><span class="p">,</span>
+    <span class="n">data_types</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;health_records&quot;</span><span class="p">,</span> <span class="s2">&quot;demographic_data&quot;</span><span class="p">],</span>
+    <span class="n">processing_purposes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;disease_prediction&quot;</span><span class="p">,</span> <span class="s2">&quot;treatment_recommendation&quot;</span><span class="p">],</span>
+    <span class="n">data_subjects</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;patients&quot;</span><span class="p">],</span>
+    <span class="n">risks_and_mitigations</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;risk&quot;</span><span class="p">:</span> <span class="s2">&quot;unauthorized_access&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;likelihood&quot;</span><span class="p">:</span> <span class="s2">&quot;medium&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;impact&quot;</span><span class="p">:</span> <span class="s2">&quot;high&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;mitigation&quot;</span><span class="p">:</span> <span class="s2">&quot;encryption_and_access_control&quot;</span>
+        <span class="p">},</span>
+        <span class="c1"># Más riesgos y mitigaciones...</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># Exportar informe para documentación</span>
+<span class="n">pia_report</span><span class="o">.</span><span class="n">export_to_pdf</span><span class="p">(</span><span class="s2">&quot;evaluacion_impacto_privacidad.pdf&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="respuesta-a-incidentes">
+<h3>Respuesta a Incidentes<a class="headerlink" href="#respuesta-a-incidentes" title="Link to this heading"></a></h3>
+<section id="plan-de-respuesta">
+<h4>Plan de Respuesta<a class="headerlink" href="#plan-de-respuesta" title="Link to this heading"></a></h4>
+<p>Desarrolle un plan de respuesta a incidentes de seguridad de datos.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.security</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_incident_response_plan</span>
+
+<span class="c1"># Crear plan de respuesta a incidentes</span>
+<span class="n">response_plan</span> <span class="o">=</span> <span class="n">create_incident_response_plan</span><span class="p">(</span>
+    <span class="n">team_members</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Ana López&quot;</span><span class="p">,</span> <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;Security Lead&quot;</span><span class="p">,</span> <span class="s2">&quot;contact&quot;</span><span class="p">:</span> <span class="s2">&quot;ana@ejemplo.com&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Carlos Ruiz&quot;</span><span class="p">,</span> <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;Data Officer&quot;</span><span class="p">,</span> <span class="s2">&quot;contact&quot;</span><span class="p">:</span> <span class="s2">&quot;carlos@ejemplo.com&quot;</span><span class="p">}</span>
+    <span class="p">],</span>
+    <span class="n">incident_types</span><span class="o">=</span><span class="p">[</span>
+        <span class="s2">&quot;data_breach&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;unauthorized_access&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;data_loss&quot;</span>
+    <span class="p">],</span>
+    <span class="n">response_procedures</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;data_breach&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;1. Aislar sistemas afectados&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;2. Evaluar alcance de la brecha&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;3. Notificar a las partes afectadas&quot;</span><span class="p">,</span>
+            <span class="c1"># Más pasos...</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="n">notification_templates</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;internal&quot;</span><span class="p">:</span> <span class="s2">&quot;templates/internal_breach_notification.txt&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;external&quot;</span><span class="p">:</span> <span class="s2">&quot;templates/external_breach_notification.txt&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;regulatory&quot;</span><span class="p">:</span> <span class="s2">&quot;templates/regulatory_breach_notification.txt&quot;</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="c1"># Exportar plan para distribución</span>
+<span class="n">response_plan</span><span class="o">.</span><span class="n">export_to_document</span><span class="p">(</span><span class="s2">&quot;plan_respuesta_incidentes.docx&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="deteccion-de-incidentes">
+<h4>Detección de Incidentes<a class="headerlink" href="#deteccion-de-incidentes" title="Link to this heading"></a></h4>
+<p>Implemente sistemas para detectar posibles incidentes de seguridad.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.security</span><span class="w"> </span><span class="kn">import</span> <span class="n">setup_security_monitoring</span>
+
+<span class="c1"># Configurar monitoreo de seguridad</span>
+<span class="n">monitoring</span> <span class="o">=</span> <span class="n">setup_security_monitoring</span><span class="p">(</span>
+    <span class="n">monitored_resources</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;data_files&quot;</span><span class="p">,</span> <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/ruta/a/datos/&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;database&quot;</span><span class="p">,</span> <span class="s2">&quot;connection&quot;</span><span class="p">:</span> <span class="s2">&quot;postgresql://user:pass@host/db&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;api_access&quot;</span><span class="p">,</span> <span class="s2">&quot;endpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;https://api.ejemplo.com/datos&quot;</span><span class="p">}</span>
+    <span class="p">],</span>
+    <span class="n">alert_thresholds</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;unusual_access_patterns&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;sensitivity&quot;</span><span class="p">:</span> <span class="s2">&quot;medium&quot;</span><span class="p">},</span>
+        <span class="s2">&quot;data_exfiltration&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;sensitivity&quot;</span><span class="p">:</span> <span class="s2">&quot;high&quot;</span><span class="p">},</span>
+        <span class="s2">&quot;unauthorized_modifications&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;sensitivity&quot;</span><span class="p">:</span> <span class="s2">&quot;high&quot;</span><span class="p">}</span>
+    <span class="p">},</span>
+    <span class="n">notification_channels</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;email&quot;</span><span class="p">,</span> <span class="s2">&quot;recipient&quot;</span><span class="p">:</span> <span class="s2">&quot;seguridad@ejemplo.com&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;sms&quot;</span><span class="p">,</span> <span class="s2">&quot;recipient&quot;</span><span class="p">:</span> <span class="s2">&quot;+1234567890&quot;</span><span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># Iniciar monitoreo</span>
+<span class="n">monitoring</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="simulacros-y-formacion">
+<h4>Simulacros y Formación<a class="headerlink" href="#simulacros-y-formacion" title="Link to this heading"></a></h4>
+<p>Realice simulacros periódicos y proporcione formación sobre respuesta a incidentes.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.security</span><span class="w"> </span><span class="kn">import</span> <span class="n">run_security_drill</span>
+
+<span class="c1"># Ejecutar simulacro de incidente de seguridad</span>
+<span class="n">drill_results</span> <span class="o">=</span> <span class="n">run_security_drill</span><span class="p">(</span>
+    <span class="n">scenario</span><span class="o">=</span><span class="s2">&quot;data_breach&quot;</span><span class="p">,</span>
+    <span class="n">participants</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;team_member1&quot;</span><span class="p">,</span> <span class="s2">&quot;team_member2&quot;</span><span class="p">,</span> <span class="s2">&quot;team_member3&quot;</span><span class="p">],</span>
+    <span class="n">inject_surprise_elements</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">record_response_times</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+
+<span class="c1"># Analizar resultados del simulacro</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tiempo promedio de respuesta: </span><span class="si">{</span><span class="n">drill_results</span><span class="p">[</span><span class="s1">&#39;avg_response_time&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> minutos&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Áreas de mejora: </span><span class="si">{</span><span class="n">drill_results</span><span class="p">[</span><span class="s1">&#39;improvement_areas&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="conclusion">
+<h3>Conclusión<a class="headerlink" href="#conclusion" title="Link to this heading"></a></h3>
+<p>La seguridad de los datos debe ser una prioridad en todo proyecto de análisis de datos. Siguiendo las directrices y mejores prácticas descritas en este documento, puede minimizar significativamente los riesgos asociados con el manejo de datos sensibles.</p>
+<p>Recuerde que la seguridad es un proceso continuo, no un estado final. Revise y actualice regularmente sus medidas de seguridad para adaptarse a nuevas amenazas y cambios en el entorno.</p>
+<hr class="docutils" />
+<p><strong>Nota</strong>: Los ejemplos de código en esta guía asumen que las funciones mencionadas están implementadas en el sistema. Si alguna funcionalidad específica no está disponible, consulte la sección de extensibilidad en la documentación para implementar sus propias soluciones de seguridad personalizadas.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="optimizacion_rendimiento.html" class="btn btn-neutral float-left" title="Optimización de Rendimiento" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="referencia_tecnica_detallada.html" class="btn btn-neutral float-right" title="Referencia Técnica Detallada" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, UN PASO AL EXITO.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

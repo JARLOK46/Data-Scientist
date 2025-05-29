@@ -1,0 +1,562 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Preguntas Frecuentes &mdash; documentación de Analisis de Datos y Visualizacion - 1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=4936afed"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=f85f4cfb"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="Módulo de Análisis" href="analysis.html" />
+    <link rel="prev" title="Casos de Uso" href="casos_uso.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Analisis de Datos y Visualizacion
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guías de Usuario:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="instalacion.html">Guía de Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="casos_uso.html">Casos de Uso</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Preguntas Frecuentes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#preguntas-frecuentes-faq">Preguntas Frecuentes (FAQ)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#indice">Índice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#preguntas-generales">Preguntas Generales</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#que-es-este-proyecto-y-para-que-sirve">¿Qué es este proyecto y para qué sirve?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#que-tipos-de-datos-puedo-analizar-con-esta-herramienta">¿Qué tipos de datos puedo analizar con esta herramienta?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#necesito-conocimientos-avanzados-de-programacion-para-usar-este-proyecto">¿Necesito conocimientos avanzados de programación para usar este proyecto?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#instalacion-y-configuracion">Instalación y Configuración</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cuales-son-los-requisitos-minimos-del-sistema">¿Cuáles son los requisitos mínimos del sistema?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#como-instalo-todas-las-dependencias-necesarias">¿Cómo instalo todas las dependencias necesarias?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#como-configuro-el-proyecto-para-mi-caso-de-uso-especifico">¿Cómo configuro el proyecto para mi caso de uso específico?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#carga-y-procesamiento-de-datos">Carga y Procesamiento de Datos</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#que-formatos-de-archivo-csv-son-compatibles">¿Qué formatos de archivo CSV son compatibles?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#como-maneja-el-proyecto-los-valores-faltantes-o-incorrectos">¿Cómo maneja el proyecto los valores faltantes o incorrectos?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#puedo-procesar-archivos-csv-muy-grandes">¿Puedo procesar archivos CSV muy grandes?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#analisis-de-datos">Análisis de Datos</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#que-tipos-de-analisis-puedo-realizar">¿Qué tipos de análisis puedo realizar?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#como-interpreto-los-resultados-del-analisis-predictivo">¿Cómo interpreto los resultados del análisis predictivo?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#puedo-personalizar-los-algoritmos-utilizados">¿Puedo personalizar los algoritmos utilizados?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#visualizacion-y-dashboards">Visualización y Dashboards</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#como-puedo-personalizar-las-visualizaciones">¿Cómo puedo personalizar las visualizaciones?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#como-comparto-mi-dashboard-con-otros-usuarios">¿Cómo comparto mi dashboard con otros usuarios?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#el-dashboard-funciona-en-dispositivos-moviles">¿El dashboard funciona en dispositivos móviles?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#analisis-geoespacial">Análisis Geoespacial</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#que-formato-deben-tener-mis-datos-para-el-analisis-geoespacial">¿Qué formato deben tener mis datos para el análisis geoespacial?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#necesito-conexion-a-internet-para-los-mapas-interactivos">¿Necesito conexión a internet para los mapas interactivos?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#como-interpreto-los-resultados-del-clustering-espacial">¿Cómo interpreto los resultados del clustering espacial?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#analisis-web">Análisis Web</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#que-informacion-puedo-extraer-de-urls-en-mis-datos">¿Qué información puedo extraer de URLs en mis datos?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#el-analisis-web-requiere-conexion-a-internet">¿El análisis web requiere conexión a internet?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#como-maneja-el-proyecto-urls-que-ya-no-estan-disponibles">¿Cómo maneja el proyecto URLs que ya no están disponibles?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#solucion-de-problemas">Solución de Problemas</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#el-programa-se-cierra-al-procesar-archivos-grandes">El programa se cierra al procesar archivos grandes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#obtengo-errores-de-codificacion-al-cargar-archivos-csv">Obtengo errores de codificación al cargar archivos CSV</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#el-dashboard-interactivo-no-muestra-graficos-o-muestra-errores">El dashboard interactivo no muestra gráficos o muestra errores</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#los-mapas-geoespaciales-no-se-cargan-o-muestran-correctamente">Los mapas geoespaciales no se cargan o muestran correctamente</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#donde-puedo-encontrar-mas-ayuda">¿Dónde puedo encontrar más ayuda?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Módulos Principales:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="analysis.html">Módulo de Análisis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geospatial.html">Módulo Geoespacial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="web.html">Módulo Web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dashboard.html">Módulo de Dashboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization.html">Módulo de Visualización</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">Módulo de Utilidades</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentación Técnica:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="guia_analisis_avanzado.html">Guía de Análisis Avanzado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optimizacion_rendimiento.html">Optimización de Rendimiento</a></li>
+<li class="toctree-l1"><a class="reference internal" href="seguridad_datos.html">Seguridad de Datos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="referencia_tecnica_detallada.html">Referencia Técnica Detallada</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integracion_herramientas.html">Integración de Herramientas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/modules.html">src</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Analisis de Datos y Visualizacion</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Preguntas Frecuentes</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/preguntas_frecuentes.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="preguntas-frecuentes">
+<h1>Preguntas Frecuentes<a class="headerlink" href="#preguntas-frecuentes" title="Link to this heading"></a></h1>
+<section id="preguntas-frecuentes-faq">
+<h2>Preguntas Frecuentes (FAQ)<a class="headerlink" href="#preguntas-frecuentes-faq" title="Link to this heading"></a></h2>
+<p>Este documento responde a las preguntas más comunes sobre el uso del proyecto de Análisis de Datos y Visualización. Si no encuentras respuesta a tu pregunta aquí, considera revisar la documentación técnica o crear un issue en el repositorio.</p>
+<section id="indice">
+<h3>Índice<a class="headerlink" href="#indice" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#preguntas-generales"><span class="xref myst">Preguntas Generales</span></a></p></li>
+<li><p><a class="reference internal" href="#instalaci%C3%B3n-y-configuraci%C3%B3n"><span class="xref myst">Instalación y Configuración</span></a></p></li>
+<li><p><a class="reference internal" href="#carga-y-procesamiento-de-datos"><span class="xref myst">Carga y Procesamiento de Datos</span></a></p></li>
+<li><p><a class="reference internal" href="#an%C3%A1lisis-de-datos"><span class="xref myst">Análisis de Datos</span></a></p></li>
+<li><p><a class="reference internal" href="#visualizaci%C3%B3n-y-dashboards"><span class="xref myst">Visualización y Dashboards</span></a></p></li>
+<li><p><a class="reference internal" href="#an%C3%A1lisis-geoespacial"><span class="xref myst">Análisis Geoespacial</span></a></p></li>
+<li><p><a class="reference internal" href="#an%C3%A1lisis-web"><span class="xref myst">Análisis Web</span></a></p></li>
+<li><p><a class="reference internal" href="#soluci%C3%B3n-de-problemas"><span class="xref myst">Solución de Problemas</span></a></p></li>
+</ol>
+</section>
+<section id="preguntas-generales">
+<h3>Preguntas Generales<a class="headerlink" href="#preguntas-generales" title="Link to this heading"></a></h3>
+<section id="que-es-este-proyecto-y-para-que-sirve">
+<h4>¿Qué es este proyecto y para qué sirve?<a class="headerlink" href="#que-es-este-proyecto-y-para-que-sirve" title="Link to this heading"></a></h4>
+<p>Este proyecto es una suite de herramientas para análisis de datos y visualización, diseñada para facilitar el procesamiento, análisis y presentación de datos en diversos formatos. Incluye capacidades para análisis exploratorio, predictivo, geoespacial, análisis de contenido web y creación de dashboards interactivos.</p>
+</section>
+<section id="que-tipos-de-datos-puedo-analizar-con-esta-herramienta">
+<h4>¿Qué tipos de datos puedo analizar con esta herramienta?<a class="headerlink" href="#que-tipos-de-datos-puedo-analizar-con-esta-herramienta" title="Link to this heading"></a></h4>
+<p>La herramienta está diseñada principalmente para trabajar con datos tabulares en formato CSV, pero puede adaptarse para otros formatos. Es especialmente útil para datos que incluyen:</p>
+<ul class="simple">
+<li><p>Información numérica y categórica para análisis estadístico</p></li>
+<li><p>Coordenadas geográficas para análisis espacial</p></li>
+<li><p>URLs y contenido web para análisis de dominios y texto</p></li>
+<li><p>Series temporales para análisis de tendencias</p></li>
+</ul>
+</section>
+<section id="necesito-conocimientos-avanzados-de-programacion-para-usar-este-proyecto">
+<h4>¿Necesito conocimientos avanzados de programación para usar este proyecto?<a class="headerlink" href="#necesito-conocimientos-avanzados-de-programacion-para-usar-este-proyecto" title="Link to this heading"></a></h4>
+<p>No necesariamente. El proyecto está diseñado con diferentes niveles de acceso:</p>
+<ul class="simple">
+<li><p><strong>Usuarios básicos</strong>: Pueden utilizar los scripts principales y el dashboard interactivo sin modificar código</p></li>
+<li><p><strong>Usuarios intermedios</strong>: Pueden ajustar parámetros y combinar diferentes módulos</p></li>
+<li><p><strong>Usuarios avanzados</strong>: Pueden extender la funcionalidad y personalizar los análisis</p></li>
+</ul>
+</section>
+</section>
+<section id="instalacion-y-configuracion">
+<h3>Instalación y Configuración<a class="headerlink" href="#instalacion-y-configuracion" title="Link to this heading"></a></h3>
+<section id="cuales-son-los-requisitos-minimos-del-sistema">
+<h4>¿Cuáles son los requisitos mínimos del sistema?<a class="headerlink" href="#cuales-son-los-requisitos-minimos-del-sistema" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Python 3.7 o superior</p></li>
+<li><p>4GB de RAM (8GB recomendado para conjuntos de datos grandes)</p></li>
+<li><p>Espacio en disco: 500MB para la instalación básica, más espacio adicional para datos y resultados</p></li>
+</ul>
+</section>
+<section id="como-instalo-todas-las-dependencias-necesarias">
+<h4>¿Cómo instalo todas las dependencias necesarias?<a class="headerlink" href="#como-instalo-todas-las-dependencias-necesarias" title="Link to this heading"></a></h4>
+<p>Puedes instalar todas las dependencias utilizando pip y el archivo requirements.txt:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</pre></div>
+</div>
+<p>Para una instalación mínima con funcionalidades básicas:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements-minimal.txt
+</pre></div>
+</div>
+</section>
+<section id="como-configuro-el-proyecto-para-mi-caso-de-uso-especifico">
+<h4>¿Cómo configuro el proyecto para mi caso de uso específico?<a class="headerlink" href="#como-configuro-el-proyecto-para-mi-caso-de-uso-especifico" title="Link to this heading"></a></h4>
+<p>El proyecto utiliza archivos de configuración en el directorio <code class="docutils literal notranslate"><span class="pre">config/</span></code> que puedes modificar según tus necesidades:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">config/analysis_config.json</span></code>: Configuración para módulos de análisis</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">config/visualization_config.json</span></code>: Parámetros para visualizaciones</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">config/dashboard_config.json</span></code>: Configuración del dashboard interactivo</p></li>
+</ol>
+<p>Puedes editar estos archivos para ajustar parámetros como colores, tamaños de gráficos, algoritmos utilizados, etc.</p>
+</section>
+</section>
+<section id="carga-y-procesamiento-de-datos">
+<h3>Carga y Procesamiento de Datos<a class="headerlink" href="#carga-y-procesamiento-de-datos" title="Link to this heading"></a></h3>
+<section id="que-formatos-de-archivo-csv-son-compatibles">
+<h4>¿Qué formatos de archivo CSV son compatibles?<a class="headerlink" href="#que-formatos-de-archivo-csv-son-compatibles" title="Link to this heading"></a></h4>
+<p>El proyecto puede manejar archivos CSV con diferentes configuraciones:</p>
+<ul class="simple">
+<li><p>Delimitadores: coma (,) o punto y coma (;) - detectados automáticamente</p></li>
+<li><p>Codificaciones: UTF-8, Latin-1 (ISO-8859-1), y otras codificaciones comunes</p></li>
+<li><p>Con o sin encabezados</p></li>
+<li><p>Con o sin comillas en los campos</p></li>
+</ul>
+</section>
+<section id="como-maneja-el-proyecto-los-valores-faltantes-o-incorrectos">
+<h4>¿Cómo maneja el proyecto los valores faltantes o incorrectos?<a class="headerlink" href="#como-maneja-el-proyecto-los-valores-faltantes-o-incorrectos" title="Link to this heading"></a></h4>
+<p>El proyecto incluye varias estrategias para manejar datos incompletos o incorrectos:</p>
+<ol class="arabic simple">
+<li><p><strong>Detección automática</strong>: Identifica valores faltantes, atípicos y formatos incorrectos</p></li>
+<li><p><strong>Limpieza</strong>: Ofrece opciones para eliminar o imputar valores faltantes</p></li>
+<li><p><strong>Transformación</strong>: Normaliza formatos inconsistentes (fechas, números, texto)</p></li>
+<li><p><strong>Registro</strong>: Documenta todas las transformaciones aplicadas para transparencia</p></li>
+</ol>
+</section>
+<section id="puedo-procesar-archivos-csv-muy-grandes">
+<h4>¿Puedo procesar archivos CSV muy grandes?<a class="headerlink" href="#puedo-procesar-archivos-csv-muy-grandes" title="Link to this heading"></a></h4>
+<p>Sí, el proyecto incluye opciones para manejar archivos grandes:</p>
+<ol class="arabic simple">
+<li><p><strong>Procesamiento por lotes</strong>: Carga y procesa el archivo en fragmentos</p></li>
+<li><p><strong>Muestreo</strong>: Analiza una muestra representativa para conjuntos muy grandes</p></li>
+<li><p><strong>Versiones adaptativas</strong>: Módulos con menor consumo de memoria para entornos limitados</p></li>
+</ol>
+<p>Para archivos extremadamente grandes (&gt;1GB), se recomienda utilizar las funciones con el parámetro <code class="docutils literal notranslate"><span class="pre">low_memory=True</span></code> o considerar herramientas complementarias como Dask.</p>
+</section>
+</section>
+<section id="analisis-de-datos">
+<h3>Análisis de Datos<a class="headerlink" href="#analisis-de-datos" title="Link to this heading"></a></h3>
+<section id="que-tipos-de-analisis-puedo-realizar">
+<h4>¿Qué tipos de análisis puedo realizar?<a class="headerlink" href="#que-tipos-de-analisis-puedo-realizar" title="Link to this heading"></a></h4>
+<p>El proyecto soporta diversos tipos de análisis:</p>
+<ol class="arabic simple">
+<li><p><strong>Análisis exploratorio</strong>: Estadísticas descriptivas, distribuciones, correlaciones</p></li>
+<li><p><strong>Análisis predictivo</strong>: Modelos de regresión, clasificación y clustering</p></li>
+<li><p><strong>Análisis geoespacial</strong>: Mapas, clustering espacial, análisis de densidad</p></li>
+<li><p><strong>Análisis de contenido web</strong>: Extracción de dominios, análisis de texto</p></li>
+<li><p><strong>Análisis temporal</strong>: Tendencias, estacionalidad, detección de anomalías</p></li>
+</ol>
+</section>
+<section id="como-interpreto-los-resultados-del-analisis-predictivo">
+<h4>¿Cómo interpreto los resultados del análisis predictivo?<a class="headerlink" href="#como-interpreto-los-resultados-del-analisis-predictivo" title="Link to this heading"></a></h4>
+<p>Los resultados del análisis predictivo incluyen:</p>
+<ol class="arabic simple">
+<li><p><strong>Métricas de rendimiento</strong>: Precisión, recall, F1-score para clasificación; RMSE, MAE, R² para regresión</p></li>
+<li><p><strong>Importancia de características</strong>: Qué variables tienen mayor impacto en las predicciones</p></li>
+<li><p><strong>Visualizaciones</strong>: Matrices de confusión, curvas ROC, gráficos de residuos</p></li>
+<li><p><strong>Informes</strong>: Resúmenes en formato HTML y PDF con interpretaciones</p></li>
+</ol>
+<p>Consulta la documentación específica en <code class="docutils literal notranslate"><span class="pre">docs/mejores_practicas_analisis.md</span></code> para guías detalladas sobre interpretación.</p>
+</section>
+<section id="puedo-personalizar-los-algoritmos-utilizados">
+<h4>¿Puedo personalizar los algoritmos utilizados?<a class="headerlink" href="#puedo-personalizar-los-algoritmos-utilizados" title="Link to this heading"></a></h4>
+<p>Sí, puedes personalizar los algoritmos de varias maneras:</p>
+<ol class="arabic simple">
+<li><p><strong>Parámetros en línea de comandos</strong>: Muchos scripts aceptan parámetros para ajustar algoritmos</p></li>
+<li><p><strong>Archivos de configuración</strong>: Modifica <code class="docutils literal notranslate"><span class="pre">config/analysis_config.json</span></code> para cambios permanentes</p></li>
+<li><p><strong>Modificación de código</strong>: Extiende las clases existentes para implementar algoritmos personalizados</p></li>
+</ol>
+</section>
+</section>
+<section id="visualizacion-y-dashboards">
+<h3>Visualización y Dashboards<a class="headerlink" href="#visualizacion-y-dashboards" title="Link to this heading"></a></h3>
+<section id="como-puedo-personalizar-las-visualizaciones">
+<h4>¿Cómo puedo personalizar las visualizaciones?<a class="headerlink" href="#como-puedo-personalizar-las-visualizaciones" title="Link to this heading"></a></h4>
+<p>Las visualizaciones se pueden personalizar de varias formas:</p>
+<ol class="arabic simple">
+<li><p><strong>Parámetros de función</strong>: La mayoría de funciones de visualización aceptan parámetros como colores, tamaños, títulos</p></li>
+<li><p><strong>Archivo de configuración</strong>: Edita <code class="docutils literal notranslate"><span class="pre">config/visualization_config.json</span></code> para cambios globales</p></li>
+<li><p><strong>Estilos de matplotlib</strong>: Utiliza <code class="docutils literal notranslate"><span class="pre">plt.style.use()</span></code> para aplicar estilos predefinidos o personalizados</p></li>
+<li><p><strong>Post-procesamiento</strong>: Las funciones devuelven objetos de figura que puedes modificar antes de guardar</p></li>
+</ol>
+</section>
+<section id="como-comparto-mi-dashboard-con-otros-usuarios">
+<h4>¿Cómo comparto mi dashboard con otros usuarios?<a class="headerlink" href="#como-comparto-mi-dashboard-con-otros-usuarios" title="Link to this heading"></a></h4>
+<p>Hay varias opciones para compartir dashboards:</p>
+<ol class="arabic simple">
+<li><p><strong>Dashboard interactivo</strong>:</p>
+<ul class="simple">
+<li><p>Ejecuta localmente y comparte la URL (http://localhost:8050 por defecto)</p></li>
+<li><p>Despliega en servicios como Heroku o PythonAnywhere</p></li>
+</ul>
+</li>
+<li><p><strong>Dashboard estático</strong>:</p>
+<ul class="simple">
+<li><p>Genera un archivo HTML autónomo con <code class="docutils literal notranslate"><span class="pre">dashboard_adaptativo.py</span></code></p></li>
+<li><p>Comparte el archivo HTML por correo o servicios de almacenamiento</p></li>
+</ul>
+</li>
+<li><p><strong>Informes</strong>:</p>
+<ul class="simple">
+<li><p>Genera informes en PDF con visualizaciones y análisis</p></li>
+<li><p>Exporta visualizaciones individuales como imágenes PNG o SVG</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="el-dashboard-funciona-en-dispositivos-moviles">
+<h4>¿El dashboard funciona en dispositivos móviles?<a class="headerlink" href="#el-dashboard-funciona-en-dispositivos-moviles" title="Link to this heading"></a></h4>
+<p>Sí, el dashboard interactivo está diseñado con un diseño responsivo que se adapta a diferentes tamaños de pantalla. Sin embargo, para una mejor experiencia en dispositivos móviles, considera:</p>
+<ol class="arabic simple">
+<li><p>Utilizar la versión adaptativa (<code class="docutils literal notranslate"><span class="pre">dashboard_adaptativo.py</span></code>) que está optimizada para pantallas pequeñas</p></li>
+<li><p>Limitar el número de gráficos mostrados simultáneamente</p></li>
+<li><p>Preferir visualizaciones simples sobre complejas para pantallas pequeñas</p></li>
+</ol>
+</section>
+</section>
+<section id="analisis-geoespacial">
+<h3>Análisis Geoespacial<a class="headerlink" href="#analisis-geoespacial" title="Link to this heading"></a></h3>
+<section id="que-formato-deben-tener-mis-datos-para-el-analisis-geoespacial">
+<h4>¿Qué formato deben tener mis datos para el análisis geoespacial?<a class="headerlink" href="#que-formato-deben-tener-mis-datos-para-el-analisis-geoespacial" title="Link to this heading"></a></h4>
+<p>Para el análisis geoespacial básico, tus datos deben incluir:</p>
+<ol class="arabic simple">
+<li><p>Columnas con coordenadas geográficas:</p>
+<ul class="simple">
+<li><p>Latitud (valores entre -90 y 90)</p></li>
+<li><p>Longitud (valores entre -180 y 180)</p></li>
+</ul>
+</li>
+<li><p>Opcionalmente, columnas adicionales para análisis y visualización:</p>
+<ul class="simple">
+<li><p>Categorías para colorear puntos</p></li>
+<li><p>Valores numéricos para tamaños o colores graduados</p></li>
+<li><p>Texto para etiquetas o popups</p></li>
+</ul>
+</li>
+</ol>
+<p>Para análisis más avanzados, también se aceptan formatos GeoJSON, Shapefile y otros formatos geoespaciales estándar.</p>
+</section>
+<section id="necesito-conexion-a-internet-para-los-mapas-interactivos">
+<h4>¿Necesito conexión a internet para los mapas interactivos?<a class="headerlink" href="#necesito-conexion-a-internet-para-los-mapas-interactivos" title="Link to this heading"></a></h4>
+<p>Sí, los mapas interactivos generados con Folium utilizan bibliotecas JavaScript y tiles de mapas que requieren conexión a internet para cargarse correctamente. Sin embargo, una vez cargado, el mapa puede ser utilizado sin conexión.</p>
+<p>Para uso completamente offline, el proyecto incluye opciones para generar mapas estáticos que no requieren conexión a internet después de ser generados.</p>
+</section>
+<section id="como-interpreto-los-resultados-del-clustering-espacial">
+<h4>¿Cómo interpreto los resultados del clustering espacial?<a class="headerlink" href="#como-interpreto-los-resultados-del-clustering-espacial" title="Link to this heading"></a></h4>
+<p>El clustering espacial agrupa puntos geográficamente cercanos. Para interpretar los resultados:</p>
+<ol class="arabic simple">
+<li><p><strong>Asignación de clusters</strong>: Cada punto se asigna a un cluster (número o color)</p></li>
+<li><p><strong>Centros de clusters</strong>: Representan la ubicación promedio de cada grupo</p></li>
+<li><p><strong>Métricas</strong>: Incluyen cohesión interna (qué tan cercanos están los puntos dentro de un cluster) y separación (qué tan distintos son los clusters)</p></li>
+</ol>
+<p>Los mapas generados muestran los puntos coloreados por cluster y, opcionalmente, los centros de cada cluster.</p>
+</section>
+</section>
+<section id="analisis-web">
+<h3>Análisis Web<a class="headerlink" href="#analisis-web" title="Link to this heading"></a></h3>
+<section id="que-informacion-puedo-extraer-de-urls-en-mis-datos">
+<h4>¿Qué información puedo extraer de URLs en mis datos?<a class="headerlink" href="#que-informacion-puedo-extraer-de-urls-en-mis-datos" title="Link to this heading"></a></h4>
+<p>El módulo de análisis web puede extraer y analizar:</p>
+<ol class="arabic simple">
+<li><p><strong>Componentes de URL</strong>: Dominio, subdominio, ruta, parámetros</p></li>
+<li><p><strong>Metadatos</strong>: Título, descripción, palabras clave (cuando está disponible)</p></li>
+<li><p><strong>Contenido</strong>: Texto principal, imágenes, enlaces</p></li>
+<li><p><strong>Estadísticas</strong>: Longitud, densidad de palabras clave, estructura</p></li>
+</ol>
+</section>
+<section id="el-analisis-web-requiere-conexion-a-internet">
+<h4>¿El análisis web requiere conexión a internet?<a class="headerlink" href="#el-analisis-web-requiere-conexion-a-internet" title="Link to this heading"></a></h4>
+<p>Sí, para analizar el contenido actual de las URLs se requiere conexión a internet. Sin embargo:</p>
+<ol class="arabic simple">
+<li><p>Los resultados se almacenan en caché para análisis posteriores</p></li>
+<li><p>Puedes limitar el análisis solo a los componentes de URL (sin descargar contenido)</p></li>
+<li><p>Para conjuntos grandes, puedes analizar solo una muestra de URLs</p></li>
+</ol>
+</section>
+<section id="como-maneja-el-proyecto-urls-que-ya-no-estan-disponibles">
+<h4>¿Cómo maneja el proyecto URLs que ya no están disponibles?<a class="headerlink" href="#como-maneja-el-proyecto-urls-que-ya-no-estan-disponibles" title="Link to this heading"></a></h4>
+<p>El proyecto implementa varias estrategias:</p>
+<ol class="arabic simple">
+<li><p><strong>Timeouts configurables</strong>: Evita esperas largas por URLs no disponibles</p></li>
+<li><p><strong>Reintentos</strong>: Intenta múltiples veces con intervalos crecientes</p></li>
+<li><p><strong>Registro</strong>: Documenta URLs fallidas para análisis posterior</p></li>
+<li><p><strong>Modo robusto</strong>: Continúa el análisis incluso cuando algunas URLs fallan</p></li>
+</ol>
+</section>
+</section>
+<section id="solucion-de-problemas">
+<h3>Solución de Problemas<a class="headerlink" href="#solucion-de-problemas" title="Link to this heading"></a></h3>
+<section id="el-programa-se-cierra-al-procesar-archivos-grandes">
+<h4>El programa se cierra al procesar archivos grandes<a class="headerlink" href="#el-programa-se-cierra-al-procesar-archivos-grandes" title="Link to this heading"></a></h4>
+<p>Esto generalmente indica un problema de memoria. Soluciones:</p>
+<ol class="arabic">
+<li><p>Utiliza procesamiento por lotes:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.analysis.limpiar_analizar_csv</span><span class="w"> </span><span class="kn">import</span> <span class="n">analyze_csv_in_batches</span>
+<span class="n">analyze_csv_in_batches</span><span class="p">(</span><span class="s1">&#39;archivo_grande.csv&#39;</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Utiliza la versión adaptativa con menor consumo de memoria:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.analysis.limpiar_analizar_csv</span><span class="w"> </span><span class="kn">import</span> <span class="n">analyze_csv_low_memory</span>
+<span class="n">analyze_csv_low_memory</span><span class="p">(</span><span class="s1">&#39;archivo_grande.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Reduce el alcance del análisis especificando solo las columnas necesarias:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.analysis.limpiar_analizar_csv</span><span class="w"> </span><span class="kn">import</span> <span class="n">analyze_csv</span>
+<span class="n">analyze_csv</span><span class="p">(</span><span class="s1">&#39;archivo.csv&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;col1&#39;</span><span class="p">,</span> <span class="s1">&#39;col2&#39;</span><span class="p">,</span> <span class="s1">&#39;col3&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="obtengo-errores-de-codificacion-al-cargar-archivos-csv">
+<h4>Obtengo errores de codificación al cargar archivos CSV<a class="headerlink" href="#obtengo-errores-de-codificacion-al-cargar-archivos-csv" title="Link to this heading"></a></h4>
+<p>Los problemas de codificación son comunes con archivos CSV. Soluciones:</p>
+<ol class="arabic">
+<li><p>Especifica la codificación manualmente:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.analysis.limpiar_analizar_csv</span><span class="w"> </span><span class="kn">import</span> <span class="n">analyze_csv</span>
+<span class="n">analyze_csv</span><span class="p">(</span><span class="s1">&#39;archivo.csv&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin1&#39;</span><span class="p">)</span>  <span class="c1"># o &#39;utf-8-sig&#39;, &#39;cp1252&#39;, etc.</span>
+</pre></div>
+</div>
+</li>
+<li><p>Utiliza la función de detección automática de codificación:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.helpers</span><span class="w"> </span><span class="kn">import</span> <span class="n">detect_encoding</span>
+<span class="n">encoding</span> <span class="o">=</span> <span class="n">detect_encoding</span><span class="p">(</span><span class="s1">&#39;archivo.csv&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;La codificación detectada es: </span><span class="si">{</span><span class="n">encoding</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Pre-procesa el archivo para convertirlo a UTF-8:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.helpers</span><span class="w"> </span><span class="kn">import</span> <span class="n">convert_to_utf8</span>
+<span class="n">convert_to_utf8</span><span class="p">(</span><span class="s1">&#39;archivo_original.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;archivo_utf8.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="el-dashboard-interactivo-no-muestra-graficos-o-muestra-errores">
+<h4>El dashboard interactivo no muestra gráficos o muestra errores<a class="headerlink" href="#el-dashboard-interactivo-no-muestra-graficos-o-muestra-errores" title="Link to this heading"></a></h4>
+<p>Problemas comunes con el dashboard:</p>
+<ol class="arabic">
+<li><p><strong>Puerto en uso</strong>: Cambia el puerto predeterminado:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.dashboard.dashboard_interactivo</span><span class="w"> </span><span class="kn">import</span> <span class="n">run_dashboard</span>
+<span class="n">run_dashboard</span><span class="p">(</span><span class="s1">&#39;datos.csv&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">8051</span><span class="p">)</span>  <span class="c1"># en lugar del predeterminado 8050</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Tipos de datos incompatibles</strong>: Asegúrate de que las columnas tienen los tipos correctos:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.dashboard.dashboard_interactivo</span><span class="w"> </span><span class="kn">import</span> <span class="n">run_dashboard</span>
+<span class="n">run_dashboard</span><span class="p">(</span><span class="s1">&#39;datos.csv&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;columna_numerica&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="s1">&#39;columna_fecha&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">})</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Memoria insuficiente</strong>: Utiliza la versión ligera del dashboard:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.dashboard.dashboard_adaptativo</span><span class="w"> </span><span class="kn">import</span> <span class="n">run_lightweight_dashboard</span>
+<span class="n">run_lightweight_dashboard</span><span class="p">(</span><span class="s1">&#39;datos.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="los-mapas-geoespaciales-no-se-cargan-o-muestran-correctamente">
+<h4>Los mapas geoespaciales no se cargan o muestran correctamente<a class="headerlink" href="#los-mapas-geoespaciales-no-se-cargan-o-muestran-correctamente" title="Link to this heading"></a></h4>
+<p>Problemas comunes con mapas:</p>
+<ol class="arabic">
+<li><p><strong>Coordenadas inválidas</strong>: Verifica y limpia las coordenadas:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.geospatial.analisis_geoespacial</span><span class="w"> </span><span class="kn">import</span> <span class="n">clean_coordinates</span>
+<span class="n">df_cleaned</span> <span class="o">=</span> <span class="n">clean_coordinates</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;latitud&#39;</span><span class="p">,</span> <span class="s1">&#39;longitud&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Bibliotecas faltantes</strong>: Instala dependencias adicionales:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>folium<span class="w"> </span>geopandas<span class="w"> </span>rtree<span class="w"> </span>shapely
+</pre></div>
+</div>
+</li>
+<li><p><strong>Problemas de renderizado</strong>: Utiliza mapas estáticos en lugar de interactivos:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.geospatial.analisis_geoespacial_adaptativo</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_static_map</span>
+<span class="n">create_static_map</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;latitud&#39;</span><span class="p">,</span> <span class="s1">&#39;longitud&#39;</span><span class="p">,</span> <span class="s1">&#39;mapa.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="donde-puedo-encontrar-mas-ayuda">
+<h4>¿Dónde puedo encontrar más ayuda?<a class="headerlink" href="#donde-puedo-encontrar-mas-ayuda" title="Link to this heading"></a></h4>
+<p>Si sigues teniendo problemas:</p>
+<ol class="arabic simple">
+<li><p>Consulta la documentación detallada en el directorio <code class="docutils literal notranslate"><span class="pre">docs/</span></code></p></li>
+<li><p>Revisa los ejemplos en el directorio <code class="docutils literal notranslate"><span class="pre">examples/</span></code></p></li>
+<li><p>Busca problemas similares en la sección de issues del repositorio</p></li>
+<li><p>Crea un nuevo issue con una descripción detallada del problema, incluyendo:</p>
+<ul class="simple">
+<li><p>Pasos para reproducir</p></li>
+<li><p>Mensajes de error completos</p></li>
+<li><p>Información del sistema (versión de Python, sistema operativo)</p></li>
+<li><p>Muestra de datos (si es posible, sin información sensible)</p></li>
+</ul>
+</li>
+</ol>
+<hr class="docutils" />
+<p>Esperamos que estas preguntas frecuentes te ayuden a resolver los problemas más comunes. La documentación se actualiza regularmente con nuevas preguntas y soluciones.</p>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="casos_uso.html" class="btn btn-neutral float-left" title="Casos de Uso" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="analysis.html" class="btn btn-neutral float-right" title="Módulo de Análisis" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, UN PASO AL EXITO.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

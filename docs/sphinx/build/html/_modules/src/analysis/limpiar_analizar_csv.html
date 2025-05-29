@@ -1,0 +1,221 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>src.analysis.limpiar_analizar_csv &mdash; documentación de Analisis de Datos y Visualizacion - 1.0</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=4936afed"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/translations.js?v=f85f4cfb"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Analisis de Datos y Visualizacion
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guías de Usuario:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/instalacion.html">Guía de Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/casos_uso.html">Casos de Uso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/preguntas_frecuentes.html">Preguntas Frecuentes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Módulos Principales:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/analysis.html">Módulo de Análisis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/geospatial.html">Módulo Geoespacial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/web.html">Módulo Web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/dashboard.html">Módulo de Dashboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/visualization.html">Módulo de Visualización</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/utils.html">Módulo de Utilidades</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentación Técnica:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/guia_analisis_avanzado.html">Guía de Análisis Avanzado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/optimizacion_rendimiento.html">Optimización de Rendimiento</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/seguridad_datos.html">Seguridad de Datos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/referencia_tecnica_detallada.html">Referencia Técnica Detallada</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/integracion_herramientas.html">Integración de Herramientas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/modules.html">src</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Analisis de Datos y Visualizacion</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Código de módulo</a></li>
+      <li class="breadcrumb-item active">src.analysis.limpiar_analizar_csv</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Código fuente para src.analysis.limpiar_analizar_csv</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="c1"># Añadir el directorio raíz del proyecto al path para poder importar módulos</span>
+<span class="n">proyecto_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s1">&#39;../..&#39;</span><span class="p">))</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">proyecto_dir</span><span class="p">)</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Módulo para limpieza avanzada de archivos CSV.</span>
+
+<span class="sd">Este script permite limpiar, renombrar y filtrar datos de archivos CSV para análisis coherente y visualización.</span>
+
+<span class="sd">Autor: Tu Nombre</span>
+<span class="sd">Fecha: 2025</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="limpiar_analizar_csv">
+<a class="viewcode-back" href="../../../modules/analysis.html#src.analysis.limpiar_analizar_csv.limpiar_analizar_csv">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">limpiar_analizar_csv</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Limpieza avanzada: asigna nombres claros, elimina columnas/filas innecesarias,</span>
+<span class="sd">    y deja el DataFrame listo para análisis geográfico, temporal y de eventos.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">proyecto_dir</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;20250525.export.CSV&#39;</span><span class="p">)</span>
+    <span class="n">output_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">proyecto_dir</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;datos_limpios.csv&#39;</span><span class="p">)</span>
+
+    <span class="c1"># 1. Detectar delimitador</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">contenido</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">5000</span><span class="p">)</span>
+        <span class="n">tabs</span> <span class="o">=</span> <span class="n">contenido</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">comas</span> <span class="o">=</span> <span class="n">contenido</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+        <span class="n">puntoycoma</span> <span class="o">=</span> <span class="n">contenido</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">tabs</span> <span class="o">&gt;</span> <span class="n">comas</span> <span class="ow">and</span> <span class="n">tabs</span> <span class="o">&gt;</span> <span class="n">puntoycoma</span><span class="p">:</span>
+            <span class="n">delimitador</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span>
+        <span class="k">elif</span> <span class="n">comas</span> <span class="o">&gt;</span> <span class="n">tabs</span> <span class="ow">and</span> <span class="n">comas</span> <span class="o">&gt;</span> <span class="n">puntoycoma</span><span class="p">:</span>
+            <span class="n">delimitador</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span>
+        <span class="k">elif</span> <span class="n">puntoycoma</span> <span class="o">&gt;</span> <span class="n">tabs</span> <span class="ow">and</span> <span class="n">puntoycoma</span> <span class="o">&gt;</span> <span class="n">comas</span><span class="p">:</span>
+            <span class="n">delimitador</span> <span class="o">=</span> <span class="s1">&#39;;&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">delimitador</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span>
+
+    <span class="c1"># 2. Leer el archivo sin cabecera</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="n">delimitador</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">on_bad_lines</span><span class="o">=</span><span class="s1">&#39;skip&#39;</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># 3. Asignar nombres claros a las columnas principales (ajustar según tus datos)</span>
+    <span class="n">columnas</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">&#39;id_evento&#39;</span><span class="p">,</span> <span class="s1">&#39;fecha_evento&#39;</span><span class="p">,</span> <span class="s1">&#39;mes_evento&#39;</span><span class="p">,</span> <span class="s1">&#39;año_evento&#39;</span><span class="p">,</span> <span class="s1">&#39;año_decimal&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;codigo_region&#39;</span><span class="p">,</span> <span class="s1">&#39;region&#39;</span><span class="p">,</span> <span class="s1">&#39;subregion&#39;</span><span class="p">,</span> <span class="s1">&#39;col8&#39;</span><span class="p">,</span> <span class="s1">&#39;col9&#39;</span><span class="p">,</span> <span class="s1">&#39;col10&#39;</span><span class="p">,</span> <span class="s1">&#39;col11&#39;</span><span class="p">,</span> <span class="s1">&#39;col12&#39;</span><span class="p">,</span> <span class="s1">&#39;col13&#39;</span><span class="p">,</span> <span class="s1">&#39;col14&#39;</span><span class="p">,</span> <span class="s1">&#39;col15&#39;</span><span class="p">,</span> <span class="s1">&#39;col16&#39;</span><span class="p">,</span> <span class="s1">&#39;col17&#39;</span><span class="p">,</span> <span class="s1">&#39;col18&#39;</span><span class="p">,</span> <span class="s1">&#39;col19&#39;</span><span class="p">,</span> <span class="s1">&#39;col20&#39;</span><span class="p">,</span> <span class="s1">&#39;col21&#39;</span><span class="p">,</span> <span class="s1">&#39;col22&#39;</span><span class="p">,</span> <span class="s1">&#39;col23&#39;</span><span class="p">,</span> <span class="s1">&#39;col24&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;valor1&#39;</span><span class="p">,</span> <span class="s1">&#39;valor2&#39;</span><span class="p">,</span> <span class="s1">&#39;valor3&#39;</span><span class="p">,</span> <span class="s1">&#39;valor4&#39;</span><span class="p">,</span> <span class="s1">&#39;valor5&#39;</span><span class="p">,</span> <span class="s1">&#39;valor6&#39;</span><span class="p">,</span> <span class="s1">&#39;valor7&#39;</span><span class="p">,</span> <span class="s1">&#39;valor8&#39;</span><span class="p">,</span> <span class="s1">&#39;valor9&#39;</span><span class="p">,</span> <span class="s1">&#39;latitud&#39;</span><span class="p">,</span> <span class="s1">&#39;longitud&#39;</span><span class="p">,</span> <span class="s1">&#39;ubicacion&#39;</span><span class="p">,</span> <span class="s1">&#39;pais_codigo&#39;</span><span class="p">,</span> <span class="s1">&#39;region_codigo&#39;</span><span class="p">,</span> <span class="s1">&#39;lat&#39;</span><span class="p">,</span> <span class="s1">&#39;lon&#39;</span><span class="p">,</span> <span class="s1">&#39;col40&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;col41&#39;</span><span class="p">,</span> <span class="s1">&#39;col42&#39;</span><span class="p">,</span> <span class="s1">&#39;col43&#39;</span><span class="p">,</span> <span class="s1">&#39;col44&#39;</span><span class="p">,</span> <span class="s1">&#39;col45&#39;</span><span class="p">,</span> <span class="s1">&#39;col46&#39;</span><span class="p">,</span> <span class="s1">&#39;col47&#39;</span><span class="p">,</span> <span class="s1">&#39;col48&#39;</span><span class="p">,</span> <span class="s1">&#39;ubicacion2&#39;</span><span class="p">,</span> <span class="s1">&#39;pais_codigo2&#39;</span><span class="p">,</span> <span class="s1">&#39;region_codigo2&#39;</span><span class="p">,</span> <span class="s1">&#39;lat2&#39;</span><span class="p">,</span> <span class="s1">&#39;lon2&#39;</span><span class="p">,</span> <span class="s1">&#39;col54&#39;</span><span class="p">,</span> <span class="s1">&#39;fecha_evento2&#39;</span><span class="p">,</span> <span class="s1">&#39;fuente_url&#39;</span>
+    <span class="p">]</span>
+    <span class="c1"># Ajustar el número de columnas si es necesario</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">columnas</span><span class="p">):</span>
+        <span class="n">columnas</span> <span class="o">+=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;col_extra_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">columnas</span><span class="p">))]</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">columnas</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)]</span>
+
+    <span class="c1"># 4. Eliminar columnas innecesarias o automáticas</span>
+    <span class="n">columnas_utiles</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">&#39;id_evento&#39;</span><span class="p">,</span> <span class="s1">&#39;fecha_evento&#39;</span><span class="p">,</span> <span class="s1">&#39;año_evento&#39;</span><span class="p">,</span> <span class="s1">&#39;region&#39;</span><span class="p">,</span> <span class="s1">&#39;subregion&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;latitud&#39;</span><span class="p">,</span> <span class="s1">&#39;longitud&#39;</span><span class="p">,</span> <span class="s1">&#39;ubicacion&#39;</span><span class="p">,</span> <span class="s1">&#39;pais_codigo&#39;</span><span class="p">,</span> <span class="s1">&#39;region_codigo&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;lat&#39;</span><span class="p">,</span> <span class="s1">&#39;lon&#39;</span><span class="p">,</span> <span class="s1">&#39;ubicacion2&#39;</span><span class="p">,</span> <span class="s1">&#39;pais_codigo2&#39;</span><span class="p">,</span> <span class="s1">&#39;region_codigo2&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;fecha_evento2&#39;</span><span class="p">,</span> <span class="s1">&#39;fuente_url&#39;</span>
+    <span class="p">]</span>
+    <span class="n">columnas_utiles</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">columnas_utiles</span> <span class="k">if</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">columnas_utiles</span><span class="p">]</span>
+
+    <span class="c1"># 5. Eliminar filas con datos clave nulos o &#39;Desconocido&#39;</span>
+    <span class="n">claves</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;fecha_evento&#39;</span><span class="p">,</span> <span class="s1">&#39;region&#39;</span><span class="p">,</span> <span class="s1">&#39;latitud&#39;</span><span class="p">,</span> <span class="s1">&#39;longitud&#39;</span><span class="p">,</span> <span class="s1">&#39;ubicacion&#39;</span><span class="p">,</span> <span class="s1">&#39;pais_codigo&#39;</span><span class="p">,</span> <span class="s1">&#39;fuente_url&#39;</span><span class="p">]</span>
+    <span class="n">claves</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">claves</span> <span class="k">if</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">claves</span><span class="p">:</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">notnull</span><span class="p">()</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">!=</span> <span class="s1">&#39;desconocido&#39;</span><span class="p">)]</span>
+
+    <span class="c1"># 6. Convertir tipos de datos</span>
+    <span class="k">if</span> <span class="s1">&#39;fecha_evento&#39;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;fecha_evento&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;fecha_evento&#39;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%Y%m</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;latitud&#39;</span><span class="p">,</span> <span class="s1">&#39;longitud&#39;</span><span class="p">,</span> <span class="s1">&#39;lat&#39;</span><span class="p">,</span> <span class="s1">&#39;lon&#39;</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
+
+    <span class="c1"># 7. Eliminar filas con coordenadas nulas</span>
+    <span class="k">if</span> <span class="s1">&#39;latitud&#39;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="ow">and</span> <span class="s1">&#39;longitud&#39;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;latitud&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">notnull</span><span class="p">()</span> <span class="o">&amp;</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;longitud&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">notnull</span><span class="p">()]</span>
+
+    <span class="c1"># 8. Guardar datos limpios</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">output_path</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Datos limpios y organizados guardados en: </span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Filas: </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">, Columnas: </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Columnas finales: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;=== LIMPIEZA Y ANÁLISIS DE DATOS CSV (COHERENTE) ===</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">limpiar_analizar_csv</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">df</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== El DataFrame está listo para análisis y visualización coherente ===&quot;</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, UN PASO AL EXITO.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

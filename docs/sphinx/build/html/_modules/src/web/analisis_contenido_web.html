@@ -1,0 +1,891 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>src.web.analisis_contenido_web &mdash; documentación de Analisis de Datos y Visualizacion - 1.0</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=4936afed"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/translations.js?v=f85f4cfb"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Analisis de Datos y Visualizacion
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guías de Usuario:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/instalacion.html">Guía de Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/casos_uso.html">Casos de Uso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/preguntas_frecuentes.html">Preguntas Frecuentes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Módulos Principales:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/analysis.html">Módulo de Análisis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/geospatial.html">Módulo Geoespacial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/web.html">Módulo Web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/dashboard.html">Módulo de Dashboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/visualization.html">Módulo de Visualización</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/utils.html">Módulo de Utilidades</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentación Técnica:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/guia_analisis_avanzado.html">Guía de Análisis Avanzado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/optimizacion_rendimiento.html">Optimización de Rendimiento</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/seguridad_datos.html">Seguridad de Datos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/referencia_tecnica_detallada.html">Referencia Técnica Detallada</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/integracion_herramientas.html">Integración de Herramientas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/modules.html">src</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Analisis de Datos y Visualizacion</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Código de módulo</a></li>
+      <li class="breadcrumb-item active">src.web.analisis_contenido_web</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Código fuente para src.web.analisis_contenido_web</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Módulo de análisis de contenido web.</span>
+
+<span class="sd">Este script permite analizar columnas de URLs, extraer dominios, limpiar y visualizar información relevante de contenido web en un DataFrame.</span>
+
+<span class="sd">Autor: Anderson Zapata</span>
+<span class="sd">Fecha: 2025</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">urllib.parse</span><span class="w"> </span><span class="kn">import</span> <span class="n">urlparse</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">wordcloud</span><span class="w"> </span><span class="kn">import</span> <span class="n">WordCloud</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.feature_extraction.text</span><span class="w"> </span><span class="kn">import</span> <span class="n">CountVectorizer</span><span class="p">,</span> <span class="n">TfidfVectorizer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">LatentDirichletAllocation</span><span class="p">,</span> <span class="n">NMF</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">nltk</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">nltk.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">stopwords</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">nltk.tokenize</span><span class="w"> </span><span class="kn">import</span> <span class="n">word_tokenize</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">nltk.stem</span><span class="w"> </span><span class="kn">import</span> <span class="n">WordNetLemmatizer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+
+<span class="c1"># Añadir el directorio raíz del proyecto al path para poder importar módulos</span>
+<span class="n">proyecto_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s1">&#39;../..&#39;</span><span class="p">))</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">proyecto_dir</span><span class="p">)</span>
+
+<span class="c1"># Suprimir advertencias</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+
+<span class="c1"># Configuración de visualización</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn-v0_8-whitegrid&#39;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_palette</span><span class="p">(</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+
+<span class="c1"># Crear directorio para resultados si no existe</span>
+<span class="n">results_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)),</span> <span class="s1">&#39;analisis_web&#39;</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">results_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Descargar recursos de NLTK si no están disponibles</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">nltk</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;tokenizers/punkt&#39;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">LookupError</span><span class="p">:</span>
+    <span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;punkt&#39;</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">nltk</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;corpora/stopwords&#39;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">LookupError</span><span class="p">:</span>
+    <span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;stopwords&#39;</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">nltk</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;corpora/wordnet&#39;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">LookupError</span><span class="p">:</span>
+    <span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;wordnet&#39;</span><span class="p">)</span>
+
+<span class="c1"># Función para detectar el delimitador</span>
+<div class="viewcode-block" id="detect_delimiter">
+<a class="viewcode-back" href="../../../modules/web.html#src.web.analisis_contenido_web.detect_delimiter">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">detect_delimiter</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">num_lines</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Detecta automáticamente el delimitador utilizado en un archivo CSV.</span>
+<span class="sd">    </span>
+<span class="sd">    Esta función analiza las primeras líneas de un archivo para determinar</span>
+<span class="sd">    qué delimitador se utiliza con mayor frecuencia entre tabulaciones, comas,</span>
+<span class="sd">    puntos y comas, y barras verticales.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        file_path (str): Ruta al archivo CSV a analizar.</span>
+<span class="sd">        num_lines (int, optional): Número de líneas a analizar. Por defecto es 5.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        str: El delimitador detectado (tab, coma, punto y coma o pipe).</span>
+<span class="sd">    </span>
+<span class="sd">    Nota:</span>
+<span class="sd">        La función maneja errores de codificación utilizando &#39;ignore&#39; para evitar</span>
+<span class="sd">        problemas con caracteres especiales.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">sample</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">file</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_lines</span><span class="p">)])</span>
+    
+    <span class="n">delimiters</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;,&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;;&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;|&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+    <span class="k">for</span> <span class="n">delimiter</span> <span class="ow">in</span> <span class="n">delimiters</span><span class="p">:</span>
+        <span class="n">delimiters</span><span class="p">[</span><span class="n">delimiter</span><span class="p">]</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">delimiter</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">delimiters</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">delimiters</span><span class="o">.</span><span class="n">get</span><span class="p">)</span></div>
+
+
+<span class="c1"># Cargar datos</span>
+<div class="viewcode-block" id="load_data">
+<a class="viewcode-back" href="../../../modules/web.html#src.web.analisis_contenido_web.load_data">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">load_data</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Carga datos desde un archivo CSV para análisis de contenido web.</span>
+<span class="sd">    </span>
+<span class="sd">    Esta función detecta automáticamente el delimitador del archivo, intenta cargarlo</span>
+<span class="sd">    con diferentes codificaciones (utf-8 y latin1) y realiza una limpieza básica de los</span>
+<span class="sd">    nombres de columnas.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        file_path (str): Ruta al archivo CSV con los datos.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        pandas.DataFrame: DataFrame con los datos cargados y nombres de columnas normalizados.</span>
+<span class="sd">                         Retorna None si no se puede cargar el archivo.</span>
+<span class="sd">    </span>
+<span class="sd">    Nota:</span>
+<span class="sd">        Los nombres de columnas se convierten a minúsculas y los espacios se reemplazan por guiones bajos.</span>
+<span class="sd">        La función intenta diferentes codificaciones para manejar archivos con caracteres especiales.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cargando datos desde: </span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Detectar delimitador</span>
+    <span class="n">delimiter</span> <span class="o">=</span> <span class="n">detect_delimiter</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Delimitador detectado: &#39;</span><span class="si">{</span><span class="n">delimiter</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Cargar datos</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="n">delimiter</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error con encoding utf-8: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="n">delimiter</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin1&#39;</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error con encoding latin1: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Datos cargados. Dimensiones: </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Limpiar nombres de columnas</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+    
+    <span class="k">return</span> <span class="n">df</span></div>
+
+
+<span class="c1"># Extraer y analizar URLs</span>
+<div class="viewcode-block" id="analyze_urls">
+<a class="viewcode-back" href="../../../modules/web.html#src.web.analisis_contenido_web.analyze_urls">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">analyze_urls</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Identifica y analiza URLs presentes en un DataFrame.</span>
+<span class="sd">    </span>
+<span class="sd">    Esta función examina todas las columnas de texto en el DataFrame para detectar aquellas</span>
+<span class="sd">    que contienen URLs. Para cada columna identificada, extrae y analiza información como:</span>
+<span class="sd">    dominios, extensiones de archivo y parámetros de consulta.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        df (pandas.DataFrame): DataFrame que contiene los datos a analizar.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple: Una tupla con dos elementos:</span>
+<span class="sd">            - list: Lista de nombres de columnas que contienen URLs.</span>
+<span class="sd">            - dict: Diccionario con los datos extraídos de las URLs, organizado por columna.</span>
+<span class="sd">                    Incluye URLs válidas, dominios, extensiones y parámetros de consulta.</span>
+<span class="sd">                    Retorna (None, None) si no se encuentran columnas con URLs.</span>
+<span class="sd">    </span>
+<span class="sd">    Nota:</span>
+<span class="sd">        La función considera que una columna contiene URLs si al menos el 10% de las muestras</span>
+<span class="sd">        analizadas contienen patrones de URL válidos. Se analizan hasta 100 muestras por columna.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Analizando URLs en el dataset...&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Identificar columnas que podrían contener URLs</span>
+    <span class="n">text_cols</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;object&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span>
+    <span class="n">url_cols</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">text_cols</span><span class="p">:</span>
+        <span class="c1"># Verificar si la columna contiene URLs</span>
+        <span class="n">serie</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+        <span class="n">sample</span> <span class="o">=</span> <span class="n">serie</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">serie</span><span class="p">)),</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        <span class="n">url_pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;https?://\S+|www\.\S+&#39;</span><span class="p">)</span>
+        
+        <span class="n">url_count</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sample</span> <span class="k">if</span> <span class="n">url_pattern</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">url_count</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.1</span><span class="p">:</span>  <span class="c1"># Si más del 10% de las muestras contienen URLs</span>
+            <span class="n">url_cols</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">col</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Columna con URLs detectada: </span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">url_cols</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  No se detectaron columnas con URLs.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+    
+    <span class="c1"># Extraer información de las URLs</span>
+    <span class="n">url_data</span> <span class="o">=</span> <span class="p">{}</span>
+    
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">url_cols</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Analizando URLs en columna: </span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        
+        <span class="c1"># Extraer URLs válidas</span>
+        <span class="n">urls</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        <span class="n">url_pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;https?://\S+|www\.\S+&#39;</span><span class="p">)</span>
+        <span class="n">valid_urls</span> <span class="o">=</span> <span class="p">[</span><span class="n">url_pattern</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">urls</span> <span class="k">if</span> <span class="n">url_pattern</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">url</span><span class="p">)]</span>
+        
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">valid_urls</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  No se encontraron URLs válidas en la columna </span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">continue</span>
+        
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  URLs válidas encontradas: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">valid_urls</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        
+        <span class="c1"># Extraer dominios</span>
+        <span class="n">domains</span> <span class="o">=</span> <span class="p">[</span><span class="n">urlparse</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">netloc</span> <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">valid_urls</span><span class="p">]</span>
+        <span class="n">domain_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">domains</span><span class="p">)</span>
+        <span class="n">top_domains</span> <span class="o">=</span> <span class="n">domain_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+        
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  Top 10 dominios:&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">domain</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">top_domains</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    </span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        
+        <span class="c1"># Extraer extensiones de archivo</span>
+        <span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">urlparse</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">path</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">valid_urls</span><span class="p">]</span>
+        <span class="n">extension_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">([</span><span class="n">ext</span> <span class="k">for</span> <span class="n">ext</span> <span class="ow">in</span> <span class="n">extensions</span> <span class="k">if</span> <span class="n">ext</span><span class="p">])</span>
+        <span class="n">top_extensions</span> <span class="o">=</span> <span class="n">extension_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">top_extensions</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  Top 5 extensiones de archivo:&quot;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">ext</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">top_extensions</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    </span><span class="si">{</span><span class="n">ext</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        
+        <span class="c1"># Extraer parámetros de consulta</span>
+        <span class="n">query_params</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">valid_urls</span><span class="p">:</span>
+            <span class="n">parsed_url</span> <span class="o">=</span> <span class="n">urlparse</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">parsed_url</span><span class="o">.</span><span class="n">query</span><span class="p">:</span>
+                <span class="n">params</span> <span class="o">=</span> <span class="n">parsed_url</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;&amp;&#39;</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="s1">&#39;=&#39;</span> <span class="ow">in</span> <span class="n">param</span><span class="p">:</span>
+                        <span class="n">key</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+                        <span class="n">query_params</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+        
+        <span class="n">param_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">query_params</span><span class="p">)</span>
+        <span class="n">top_params</span> <span class="o">=</span> <span class="n">param_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">top_params</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  Top 5 parámetros de consulta:&quot;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">param</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">top_params</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        
+        <span class="c1"># Guardar datos para visualización</span>
+        <span class="n">url_data</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;valid_urls&#39;</span><span class="p">:</span> <span class="n">valid_urls</span><span class="p">,</span>
+            <span class="s1">&#39;domains&#39;</span><span class="p">:</span> <span class="n">domains</span><span class="p">,</span>
+            <span class="s1">&#39;domain_counts&#39;</span><span class="p">:</span> <span class="nb">dict</span><span class="p">(</span><span class="n">domain_counts</span><span class="p">),</span>
+            <span class="s1">&#39;extensions&#39;</span><span class="p">:</span> <span class="n">extensions</span><span class="p">,</span>
+            <span class="s1">&#39;extension_counts&#39;</span><span class="p">:</span> <span class="nb">dict</span><span class="p">(</span><span class="n">extension_counts</span><span class="p">),</span>
+            <span class="s1">&#39;query_params&#39;</span><span class="p">:</span> <span class="n">query_params</span><span class="p">,</span>
+            <span class="s1">&#39;param_counts&#39;</span><span class="p">:</span> <span class="nb">dict</span><span class="p">(</span><span class="n">param_counts</span><span class="p">)</span>
+        <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="n">url_cols</span><span class="p">,</span> <span class="n">url_data</span></div>
+
+
+<span class="c1"># Extraer y analizar texto de URLs (simulado)</span>
+<div class="viewcode-block" id="analyze_url_content">
+<a class="viewcode-back" href="../../../modules/web.html#src.web.analisis_contenido_web.analyze_url_content">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">analyze_url_content</span><span class="p">(</span><span class="n">url_data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Simula la extracción y análisis de contenido textual de URLs.</span>
+<span class="sd">    </span>
+<span class="sd">    Esta función crea un corpus de texto simulado basado en los dominios de las URLs</span>
+<span class="sd">    identificadas previamente. En un entorno real, esta función realizaría web scraping</span>
+<span class="sd">    para extraer el contenido real de las páginas web.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        url_data (dict): Diccionario con datos de URLs organizados por columna,</span>
+<span class="sd">                         generado por la función analyze_urls.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        dict: Diccionario con el corpus simulado para cada columna que contiene URLs.</span>
+<span class="sd">              Cada entrada contiene:</span>
+<span class="sd">              - &#39;corpus&#39;: Lista de textos simulados.</span>
+<span class="sd">              - &#39;domains&#39;: Lista de dominios correspondientes a cada texto.</span>
+<span class="sd">    </span>
+<span class="sd">    Nota:</span>
+<span class="sd">        Esta es una función de simulación. En un entorno de producción, se reemplazaría</span>
+<span class="sd">        con código real de web scraping utilizando bibliotecas como requests y BeautifulSoup.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Analizando contenido de URLs (simulado)...&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nota: En un entorno real, este proceso implicaría scraping web para extraer el contenido real de las URLs.&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Simular extracción de texto de URLs</span>
+    <span class="c1"># En un entorno real, aquí se utilizaría requests, BeautifulSoup, etc. para extraer contenido</span>
+    
+    <span class="c1"># Crear datos simulados basados en los dominios</span>
+    <span class="n">content_data</span> <span class="o">=</span> <span class="p">{}</span>
+    
+    <span class="k">for</span> <span class="n">col</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">url_data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Analizando contenido para URLs en columna: </span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        
+        <span class="c1"># Crear un corpus simulado basado en los dominios</span>
+        <span class="n">corpus</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">domain</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;domains&#39;</span><span class="p">]:</span>
+            <span class="c1"># Generar texto simulado basado en el dominio</span>
+            <span class="n">domain_parts</span> <span class="o">=</span> <span class="n">domain</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+            <span class="n">base_domain</span> <span class="o">=</span> <span class="n">domain_parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">domain_parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;www&#39;</span> <span class="k">else</span> <span class="n">domain_parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            
+            <span class="c1"># Simular texto relacionado con el dominio</span>
+            <span class="n">simulated_text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Este es un contenido simulado para </span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2">. &quot;</span>
+            <span class="n">simulated_text</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;El sitio </span><span class="si">{</span><span class="n">base_domain</span><span class="si">}</span><span class="s2"> contiene información relevante sobre tecnología, &quot;</span>
+            <span class="n">simulated_text</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;noticias, datos, análisis y contenido web. &quot;</span>
+            <span class="n">simulated_text</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;Los usuarios de </span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2"> pueden encontrar recursos útiles y actualizaciones.&quot;</span>
+            
+            <span class="n">corpus</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">simulated_text</span><span class="p">)</span>
+        
+        <span class="c1"># Guardar corpus simulado</span>
+        <span class="n">content_data</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;corpus&#39;</span><span class="p">:</span> <span class="n">corpus</span><span class="p">,</span>
+            <span class="s1">&#39;domains&#39;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;domains&#39;</span><span class="p">]</span>
+        <span class="p">}</span>
+        
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Corpus simulado creado con </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">corpus</span><span class="p">)</span><span class="si">}</span><span class="s2"> documentos&quot;</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">content_data</span></div>
+
+
+<span class="c1"># Preprocesar texto para análisis</span>
+<div class="viewcode-block" id="preprocess_text">
+<a class="viewcode-back" href="../../../modules/web.html#src.web.analisis_contenido_web.preprocess_text">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">preprocess_text</span><span class="p">(</span><span class="n">corpus</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Preprocesa un corpus de textos para análisis de lenguaje natural.</span>
+<span class="sd">    </span>
+<span class="sd">    Esta función realiza varias operaciones de limpieza y normalización en cada documento:</span>
+<span class="sd">    - Conversión a minúsculas</span>
+<span class="sd">    - Eliminación de caracteres especiales y números</span>
+<span class="sd">    - Tokenización</span>
+<span class="sd">    - Eliminación de stopwords (en inglés y español)</span>
+<span class="sd">    - Lematización</span>
+<span class="sd">    - Filtrado de tokens cortos (menos de 3 caracteres)</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        corpus (list): Lista de documentos de texto a preprocesar.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        list: Lista de documentos preprocesados, donde cada documento es una cadena</span>
+<span class="sd">              de tokens lematizados separados por espacios.</span>
+<span class="sd">    </span>
+<span class="sd">    Nota:</span>
+<span class="sd">        Esta función utiliza NLTK para la tokenización, eliminación de stopwords y lematización.</span>
+<span class="sd">        Requiere que los recursos de NLTK &#39;punkt&#39;, &#39;stopwords&#39; y &#39;wordnet&#39; estén descargados.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Inicializar lematizador y lista de stopwords</span>
+    <span class="n">lemmatizer</span> <span class="o">=</span> <span class="n">WordNetLemmatizer</span><span class="p">()</span>
+    <span class="n">stop_words</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;spanish&#39;</span><span class="p">))</span>
+    
+    <span class="n">processed_corpus</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">corpus</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;Preprocesando textos&quot;</span><span class="p">):</span>
+        <span class="c1"># Convertir a minúsculas</span>
+        <span class="n">doc</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        
+        <span class="c1"># Eliminar caracteres especiales y números</span>
+        <span class="n">doc</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[^\w\s]&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">doc</span><span class="p">)</span>
+        <span class="n">doc</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">doc</span><span class="p">)</span>
+        
+        <span class="c1"># Tokenizar</span>
+        <span class="n">tokens</span> <span class="o">=</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+        
+        <span class="c1"># Eliminar stopwords y lematizar</span>
+        <span class="n">filtered_tokens</span> <span class="o">=</span> <span class="p">[</span><span class="n">lemmatizer</span><span class="o">.</span><span class="n">lemmatize</span><span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">tokens</span> <span class="k">if</span> <span class="n">token</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stop_words</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">]</span>
+        
+        <span class="c1"># Unir tokens nuevamente</span>
+        <span class="n">processed_doc</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">filtered_tokens</span><span class="p">)</span>
+        <span class="n">processed_corpus</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">processed_doc</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">processed_corpus</span></div>
+
+
+<span class="c1"># Realizar análisis de temas con LDA</span>
+<div class="viewcode-block" id="topic_modeling">
+<a class="viewcode-back" href="../../../modules/web.html#src.web.analisis_contenido_web.topic_modeling">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">topic_modeling</span><span class="p">(</span><span class="n">corpus</span><span class="p">,</span> <span class="n">n_topics</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Realiza modelado de temas en un corpus de texto utilizando Latent Dirichlet Allocation (LDA).</span>
+<span class="sd">    </span>
+<span class="sd">    Esta función vectoriza el corpus utilizando CountVectorizer y luego aplica</span>
+<span class="sd">    el algoritmo LDA para identificar temas latentes en los documentos. Para cada tema,</span>
+<span class="sd">    extrae las 10 palabras más representativas junto con sus pesos.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        corpus (list): Lista de documentos de texto preprocesados.</span>
+<span class="sd">        n_topics (int, optional): Número de temas a identificar. Por defecto es 5.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple: Una tupla con tres elementos:</span>
+<span class="sd">            - list: Lista de diccionarios, cada uno representando un tema con sus palabras</span>
+<span class="sd">                   y pesos asociados.</span>
+<span class="sd">            - LatentDirichletAllocation: El modelo LDA entrenado.</span>
+<span class="sd">            - CountVectorizer: El vectorizador utilizado para transformar el corpus.</span>
+<span class="sd">    </span>
+<span class="sd">    Nota:</span>
+<span class="sd">        La función utiliza parámetros predeterminados para el vectorizador:</span>
+<span class="sd">        - max_df=0.95: Ignora términos que aparecen en más del 95% de los documentos</span>
+<span class="sd">        - min_df=2: Ignora términos que aparecen en menos de 2 documentos</span>
+<span class="sd">        - max_features=1000: Limita el vocabulario a 1000 términos</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Vectorizar el corpus</span>
+    <span class="n">vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">max_df</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">min_df</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">corpus</span><span class="p">)</span>
+    <span class="n">feature_names</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
+    
+    <span class="c1"># Aplicar LDA</span>
+    <span class="n">lda</span> <span class="o">=</span> <span class="n">LatentDirichletAllocation</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">n_topics</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+    <span class="n">lda</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    
+    <span class="c1"># Extraer temas</span>
+    <span class="n">topics</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">topic_idx</span><span class="p">,</span> <span class="n">topic</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lda</span><span class="o">.</span><span class="n">components_</span><span class="p">):</span>
+        <span class="n">top_words_idx</span> <span class="o">=</span> <span class="n">topic</span><span class="o">.</span><span class="n">argsort</span><span class="p">()[:</span><span class="o">-</span><span class="mi">11</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># Top 10 palabras</span>
+        <span class="n">top_words</span> <span class="o">=</span> <span class="p">[</span><span class="n">feature_names</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">top_words_idx</span><span class="p">]</span>
+        <span class="n">topics</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+            <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="n">topic_idx</span><span class="p">,</span>
+            <span class="s1">&#39;words&#39;</span><span class="p">:</span> <span class="n">top_words</span><span class="p">,</span>
+            <span class="s1">&#39;weights&#39;</span><span class="p">:</span> <span class="n">topic</span><span class="p">[</span><span class="n">top_words_idx</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        <span class="p">})</span>
+    
+    <span class="k">return</span> <span class="n">topics</span><span class="p">,</span> <span class="n">lda</span><span class="p">,</span> <span class="n">vectorizer</span></div>
+
+
+<span class="c1"># Función para sanear nombres de archivo</span>
+<div class="viewcode-block" id="sanitize_filename">
+<a class="viewcode-back" href="../../../modules/web.html#src.web.analisis_contenido_web.sanitize_filename">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">sanitize_filename</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Sanea un nombre de archivo eliminando caracteres no permitidos.</span>
+
+<span class="sd">    Esta función reemplaza cualquier carácter que no sea alfanumérico, guión bajo o guión</span>
+<span class="sd">    con un guión bajo, generando un nombre de archivo seguro para usar en cualquier sistema</span>
+<span class="sd">    de archivos.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    name : str</span>
+<span class="sd">        El nombre de archivo a sanear.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    str</span>
+<span class="sd">        El nombre de archivo saneado, conteniendo solo caracteres alfanuméricos,</span>
+<span class="sd">        guiones bajos y guiones.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; sanitize_filename(&quot;my file (1).txt&quot;)</span>
+<span class="sd">    &#39;my_file__1_.txt&#39;</span>
+<span class="sd">    &gt;&gt;&gt; sanitize_filename(&quot;data$analysis#2023&quot;)</span>
+<span class="sd">    &#39;data_analysis_2023&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[^a-zA-Z0-9_\-]&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span></div>
+
+
+<span class="c1"># Visualizar resultados del análisis de URLs</span>
+<div class="viewcode-block" id="visualize_url_analysis">
+<a class="viewcode-back" href="../../../modules/web.html#src.web.analisis_contenido_web.visualize_url_analysis">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">visualize_url_analysis</span><span class="p">(</span><span class="n">url_cols</span><span class="p">,</span> <span class="n">url_data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Genera y guarda visualizaciones para el análisis de URLs.</span>
+<span class="sd">    </span>
+<span class="sd">    Esta función crea diferentes tipos de visualizaciones para cada columna que contiene URLs:</span>
+<span class="sd">    - Gráfico de barras de los 15 dominios más comunes</span>
+<span class="sd">    - Nube de palabras de dominios</span>
+<span class="sd">    - Gráfico de barras de las extensiones de archivo más comunes (si hay suficientes)</span>
+<span class="sd">    - Gráfico de barras de los parámetros de consulta más comunes (si hay suficientes)</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        url_cols (list): Lista de nombres de columnas que contienen URLs.</span>
+<span class="sd">        url_data (dict): Diccionario con datos de URLs organizados por columna,</span>
+<span class="sd">                         generado por la función analyze_urls.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        None: Las visualizaciones se guardan como archivos PNG en el directorio de resultados.</span>
+<span class="sd">    </span>
+<span class="sd">    Nota:</span>
+<span class="sd">        Las visualizaciones se guardan en el directorio especificado por la variable global</span>
+<span class="sd">        &#39;results_dir&#39;. Los nombres de archivo incluyen el nombre de la columna con espacios</span>
+<span class="sd">        reemplazados por guiones bajos.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Generando visualizaciones del análisis de URLs...&quot;</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">url_cols</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">url_data</span><span class="p">[</span><span class="n">col</span><span class="p">]</span>
+        <span class="n">safe_col</span> <span class="o">=</span> <span class="n">sanitize_filename</span><span class="p">(</span><span class="n">col</span><span class="p">)</span>
+        
+        <span class="c1"># Visualizar dominios más comunes</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+        <span class="n">domain_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;domain_counts&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">()),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Domain&#39;</span><span class="p">,</span> <span class="s1">&#39;Count&#39;</span><span class="p">])</span>
+        <span class="n">domain_df</span> <span class="o">=</span> <span class="n">domain_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+        
+        <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Count&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Domain&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">domain_df</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Top 15 Dominios en </span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">results_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;top_domains_</span><span class="si">{</span><span class="n">safe_col</span><span class="si">}</span><span class="s1">.png&#39;</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Gráfico guardado: </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">results_dir</span><span class="p">,</span><span class="w"> </span><span class="sa">f</span><span class="s1">&#39;top_domains_</span><span class="si">{</span><span class="n">safe_col</span><span class="si">}</span><span class="s1">.png&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        
+        <span class="c1"># Crear nube de palabras de dominios</span>
+        <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;domain_counts&#39;</span><span class="p">]:</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+            <span class="n">wordcloud</span> <span class="o">=</span> <span class="n">WordCloud</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">background_color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> 
+                                 <span class="n">colormap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">max_words</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">generate_from_frequencies</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;domain_counts&#39;</span><span class="p">])</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">wordcloud</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;bilinear&#39;</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Nube de Dominios en </span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">results_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;domain_wordcloud_</span><span class="si">{</span><span class="n">safe_col</span><span class="si">}</span><span class="s1">.png&#39;</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Gráfico guardado: </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">results_dir</span><span class="p">,</span><span class="w"> </span><span class="sa">f</span><span class="s1">&#39;domain_wordcloud_</span><span class="si">{</span><span class="n">safe_col</span><span class="si">}</span><span class="s1">.png&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        
+        <span class="c1"># Visualizar extensiones de archivo si hay suficientes</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;extension_counts&#39;</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+            <span class="n">ext_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;extension_counts&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">()),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Extension&#39;</span><span class="p">,</span> <span class="s1">&#39;Count&#39;</span><span class="p">])</span>
+            <span class="n">ext_df</span> <span class="o">=</span> <span class="n">ext_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+            
+            <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Count&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Extension&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">ext_df</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Extensiones de Archivo más Comunes en </span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">results_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;file_extensions_</span><span class="si">{</span><span class="n">safe_col</span><span class="si">}</span><span class="s1">.png&#39;</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Gráfico guardado: </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">results_dir</span><span class="p">,</span><span class="w"> </span><span class="sa">f</span><span class="s1">&#39;file_extensions_</span><span class="si">{</span><span class="n">safe_col</span><span class="si">}</span><span class="s1">.png&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        
+        <span class="c1"># Visualizar parámetros de consulta si hay suficientes</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;param_counts&#39;</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+            <span class="n">param_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;param_counts&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">()),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Parameter&#39;</span><span class="p">,</span> <span class="s1">&#39;Count&#39;</span><span class="p">])</span>
+            <span class="n">param_df</span> <span class="o">=</span> <span class="n">param_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+            
+            <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Count&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Parameter&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">param_df</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Parámetros de Consulta más Comunes en </span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">results_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;query_params_</span><span class="si">{</span><span class="n">safe_col</span><span class="si">}</span><span class="s1">.png&#39;</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Gráfico guardado: </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">results_dir</span><span class="p">,</span><span class="w"> </span><span class="sa">f</span><span class="s1">&#39;query_params_</span><span class="si">{</span><span class="n">safe_col</span><span class="si">}</span><span class="s1">.png&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<span class="c1"># Visualizar resultados del análisis de contenido</span>
+<div class="viewcode-block" id="visualize_content_analysis">
+<a class="viewcode-back" href="../../../modules/web.html#src.web.analisis_contenido_web.visualize_content_analysis">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">visualize_content_analysis</span><span class="p">(</span><span class="n">content_data</span><span class="p">,</span> <span class="n">topics_data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Genera y guarda visualizaciones para el análisis de contenido de URLs.</span>
+<span class="sd">    </span>
+<span class="sd">    Esta función crea visualizaciones para representar los temas identificados</span>
+<span class="sd">    en el contenido de las URLs mediante modelado de temas. Para cada columna,</span>
+<span class="sd">    genera un gráfico de barras horizontales que muestra las palabras más relevantes</span>
+<span class="sd">    para cada tema y sus pesos asociados.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        content_data (dict): Diccionario con el corpus simulado para cada columna,</span>
+<span class="sd">                            generado por la función analyze_url_content.</span>
+<span class="sd">        topics_data (dict): Diccionario con los temas identificados para cada columna,</span>
+<span class="sd">                           generado por la función topic_modeling.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        None: Las visualizaciones se guardan como archivos PNG en el directorio de resultados.</span>
+<span class="sd">    </span>
+<span class="sd">    Nota:</span>
+<span class="sd">        La función está configurada para mostrar hasta 5 temas por columna en un único gráfico.</span>
+<span class="sd">        Las visualizaciones se guardan en el directorio especificado por la variable global</span>
+<span class="sd">        &#39;results_dir&#39;.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Generando visualizaciones del análisis de contenido...&quot;</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">col</span><span class="p">,</span> <span class="n">topics</span> <span class="ow">in</span> <span class="n">topics_data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">safe_col</span> <span class="o">=</span> <span class="n">sanitize_filename</span><span class="p">(</span><span class="n">col</span><span class="p">)</span>
+        <span class="c1"># Visualizar temas</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">topic</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">topics</span><span class="p">):</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span> <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span> <span class="k">else</span> <span class="mi">5</span><span class="p">)</span>
+            <span class="n">y_pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">topic</span><span class="p">[</span><span class="s1">&#39;words&#39;</span><span class="p">]))</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">y_pos</span><span class="p">,</span> <span class="n">topic</span><span class="p">[</span><span class="s1">&#39;weights&#39;</span><span class="p">],</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">y_pos</span><span class="p">,</span> <span class="n">topic</span><span class="p">[</span><span class="s1">&#39;words&#39;</span><span class="p">])</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Tema </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Temas Identificados en </span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">top</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">results_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;topics_</span><span class="si">{</span><span class="n">safe_col</span><span class="si">}</span><span class="s1">.png&#39;</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Gráfico guardado: </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">results_dir</span><span class="p">,</span><span class="w"> </span><span class="sa">f</span><span class="s1">&#39;topics_</span><span class="si">{</span><span class="n">safe_col</span><span class="si">}</span><span class="s1">.png&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<span class="c1"># Generar informe de análisis</span>
+<div class="viewcode-block" id="generate_report">
+<a class="viewcode-back" href="../../../modules/web.html#src.web.analisis_contenido_web.generate_report">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">generate_report</span><span class="p">(</span><span class="n">url_cols</span><span class="p">,</span> <span class="n">url_data</span><span class="p">,</span> <span class="n">topics_data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Genera un informe detallado del análisis de contenido web en formatos JSON y Markdown.</span>
+<span class="sd">    </span>
+<span class="sd">    Esta función recopila los resultados del análisis de URLs y del modelado de temas</span>
+<span class="sd">    para crear informes estructurados. El informe incluye estadísticas sobre dominios,</span>
+<span class="sd">    extensiones de archivo, parámetros de consulta y temas identificados en el contenido.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        url_cols (list): Lista de nombres de columnas que contienen URLs.</span>
+<span class="sd">        url_data (dict): Diccionario con datos de URLs organizados por columna,</span>
+<span class="sd">                         generado por la función analyze_urls.</span>
+<span class="sd">        topics_data (dict): Diccionario con los temas identificados para cada columna,</span>
+<span class="sd">                           generado por la función topic_modeling.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple: Una tupla con dos elementos:</span>
+<span class="sd">            - str: Ruta al archivo JSON del informe.</span>
+<span class="sd">            - str: Ruta al archivo Markdown del informe.</span>
+<span class="sd">    </span>
+<span class="sd">    Nota:</span>
+<span class="sd">        El informe en formato Markdown incluye secciones de resumen, análisis de contenido,</span>
+<span class="sd">        conclusiones y recomendaciones. Ambos informes se guardan en el directorio especificado</span>
+<span class="sd">        por la variable global &#39;results_dir&#39;.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Generando informe de análisis de contenido web...&quot;</span><span class="p">)</span>
+    
+    <span class="n">report</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;analysis_date&#39;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M:%S&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;url_columns&#39;</span><span class="p">:</span> <span class="n">url_cols</span><span class="p">,</span>
+        <span class="s1">&#39;url_analysis&#39;</span><span class="p">:</span> <span class="p">{},</span>
+        <span class="s1">&#39;content_analysis&#39;</span><span class="p">:</span> <span class="p">{}</span>
+    <span class="p">}</span>
+    
+    <span class="c1"># Añadir resultados del análisis de URLs</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">url_cols</span><span class="p">:</span>
+        <span class="n">report</span><span class="p">[</span><span class="s1">&#39;url_analysis&#39;</span><span class="p">][</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;total_urls&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">url_data</span><span class="p">[</span><span class="n">col</span><span class="p">][</span><span class="s1">&#39;valid_urls&#39;</span><span class="p">]),</span>
+            <span class="s1">&#39;unique_domains&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">url_data</span><span class="p">[</span><span class="n">col</span><span class="p">][</span><span class="s1">&#39;domains&#39;</span><span class="p">])),</span>
+            <span class="s1">&#39;top_domains&#39;</span><span class="p">:</span> <span class="nb">dict</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">url_data</span><span class="p">[</span><span class="n">col</span><span class="p">][</span><span class="s1">&#39;domains&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">10</span><span class="p">)),</span>
+            <span class="s1">&#39;file_extensions&#39;</span><span class="p">:</span> <span class="nb">dict</span><span class="p">(</span><span class="n">Counter</span><span class="p">([</span><span class="n">ext</span> <span class="k">for</span> <span class="n">ext</span> <span class="ow">in</span> <span class="n">url_data</span><span class="p">[</span><span class="n">col</span><span class="p">][</span><span class="s1">&#39;extensions&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="n">ext</span><span class="p">])</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">5</span><span class="p">)),</span>
+            <span class="s1">&#39;query_parameters&#39;</span><span class="p">:</span> <span class="nb">dict</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">url_data</span><span class="p">[</span><span class="n">col</span><span class="p">][</span><span class="s1">&#39;query_params&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+        <span class="p">}</span>
+    
+    <span class="c1"># Añadir resultados del análisis de contenido</span>
+    <span class="k">for</span> <span class="n">col</span><span class="p">,</span> <span class="n">topics</span> <span class="ow">in</span> <span class="n">topics_data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">report</span><span class="p">[</span><span class="s1">&#39;content_analysis&#39;</span><span class="p">][</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;num_topics&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">topics</span><span class="p">),</span>
+            <span class="s1">&#39;topics&#39;</span><span class="p">:</span> <span class="n">topics</span>
+        <span class="p">}</span>
+    
+    <span class="c1"># Guardar informe como JSON</span>
+    <span class="n">report_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">results_dir</span><span class="p">,</span> <span class="s1">&#39;informe_analisis_web.json&#39;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">report_path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">report</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Informe guardado en: </span><span class="si">{</span><span class="n">report_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Generar informe en formato Markdown</span>
+    <span class="n">md_report</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;# Informe de Análisis de Contenido Web</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+    <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;**Fecha de análisis:** </span><span class="si">{</span><span class="n">report</span><span class="p">[</span><span class="s1">&#39;analysis_date&#39;</span><span class="p">]</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+    
+    <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;## 1. Resumen del Análisis</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+    <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;Se analizaron URLs en </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">url_cols</span><span class="p">)</span><span class="si">}</span><span class="s2"> columnas del dataset.</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+    
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">url_cols</span><span class="p">:</span>
+        <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;### 1.1 Columna: </span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+        <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;- Total de URLs analizadas: </span><span class="si">{</span><span class="n">report</span><span class="p">[</span><span class="s1">&#39;url_analysis&#39;</span><span class="p">][</span><span class="n">col</span><span class="p">][</span><span class="s1">&#39;total_urls&#39;</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;- Dominios únicos: </span><span class="si">{</span><span class="n">report</span><span class="p">[</span><span class="s1">&#39;url_analysis&#39;</span><span class="p">][</span><span class="n">col</span><span class="p">][</span><span class="s1">&#39;unique_domains&#39;</span><span class="p">]</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+        
+        <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;#### Top 10 Dominios:</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+        <span class="k">for</span> <span class="n">domain</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">report</span><span class="p">[</span><span class="s1">&#39;url_analysis&#39;</span><span class="p">][</span><span class="n">col</span><span class="p">][</span><span class="s1">&#39;top_domains&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;- </span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+        
+        <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">#### Extensiones de Archivo más Comunes:</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+        <span class="k">for</span> <span class="n">ext</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">report</span><span class="p">[</span><span class="s1">&#39;url_analysis&#39;</span><span class="p">][</span><span class="n">col</span><span class="p">][</span><span class="s1">&#39;file_extensions&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;- </span><span class="si">{</span><span class="n">ext</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+        
+        <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">#### Parámetros de Consulta más Comunes:</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+        <span class="k">for</span> <span class="n">param</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">report</span><span class="p">[</span><span class="s1">&#39;url_analysis&#39;</span><span class="p">][</span><span class="n">col</span><span class="p">][</span><span class="s1">&#39;query_parameters&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;- </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+    
+    <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">## 2. Análisis de Contenido</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+    <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;Se realizó un análisis de temas (topic modeling) sobre el contenido simulado de las URLs.</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+    
+    <span class="k">for</span> <span class="n">col</span><span class="p">,</span> <span class="n">content</span> <span class="ow">in</span> <span class="n">report</span><span class="p">[</span><span class="s1">&#39;content_analysis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;### 2.1 Temas en </span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+        
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">topic</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">content</span><span class="p">[</span><span class="s1">&#39;topics&#39;</span><span class="p">]):</span>
+            <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;#### Tema </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">:</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+            <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;Palabras clave: </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">topic</span><span class="p">[</span><span class="s1">&#39;words&#39;</span><span class="p">][:</span><span class="mi">10</span><span class="p">])</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+    
+    <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">## 3. Conclusiones y Recomendaciones</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+    <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;### Conclusiones:</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+    <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;- El análisis de URLs revela una diversidad de dominios, lo que sugiere que los datos provienen de múltiples fuentes.</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;- Los patrones en los parámetros de consulta indican posibles sistemas de seguimiento o categorización en las URLs.</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;- El análisis de temas muestra clusters de contenido relacionado que podrían indicar categorías temáticas en los datos.</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+    
+    <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;### Recomendaciones:</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+    <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;- Implementar un sistema de scraping web para extraer el contenido real de las URLs y realizar un análisis más preciso.</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;- Utilizar técnicas de procesamiento de lenguaje natural más avanzadas para clasificar automáticamente el contenido.</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;- Desarrollar un sistema de monitoreo para detectar cambios en el contenido de las URLs a lo largo del tiempo.</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;- Integrar el análisis de contenido web con el análisis geoespacial para identificar patrones regionales en los temas.</span><span class="se">\n</span><span class="s2">&quot;</span>
+    
+    <span class="c1"># Guardar informe en formato Markdown</span>
+    <span class="n">md_report_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">results_dir</span><span class="p">,</span> <span class="s1">&#39;informe_analisis_web.md&#39;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">md_report_path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">md_report</span><span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Informe en formato Markdown guardado en: </span><span class="si">{</span><span class="n">md_report_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">report_path</span><span class="p">,</span> <span class="n">md_report_path</span></div>
+
+
+<span class="c1"># Función principal</span>
+<div class="viewcode-block" id="main">
+<a class="viewcode-back" href="../../../modules/web.html#src.web.analisis_contenido_web.main">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Función principal que coordina el flujo de trabajo completo del análisis de contenido web.</span>
+<span class="sd">    </span>
+<span class="sd">    Esta función ejecuta secuencialmente todas las etapas del análisis:</span>
+<span class="sd">    1. Carga de datos desde el archivo CSV</span>
+<span class="sd">    2. Análisis de URLs en el DataFrame</span>
+<span class="sd">    3. Visualización de los resultados del análisis de URLs</span>
+<span class="sd">    4. Análisis simulado del contenido de las URLs</span>
+<span class="sd">    5. Preprocesamiento de texto y modelado de temas</span>
+<span class="sd">    6. Visualización de los resultados del análisis de contenido</span>
+<span class="sd">    7. Generación de informes en formatos JSON y Markdown</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        None: Los resultados se guardan como archivos en el directorio especificado</span>
+<span class="sd">              por la variable global &#39;results_dir&#39;.</span>
+<span class="sd">    </span>
+<span class="sd">    Nota:</span>
+<span class="sd">        Esta función imprime mensajes de estado durante la ejecución para informar</span>
+<span class="sd">        sobre el progreso del análisis y la ubicación de los archivos generados.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== Análisis de Contenido Web ===</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Cargar datos</span>
+    <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">proyecto_dir</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;20250525.export.CSV&#39;</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">df</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No se pudieron cargar los datos. Finalizando análisis.&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+    
+    <span class="c1"># Analizar URLs</span>
+    <span class="n">url_cols</span><span class="p">,</span> <span class="n">url_data</span> <span class="o">=</span> <span class="n">analyze_urls</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">url_cols</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">url_data</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No se encontraron URLs para analizar. Finalizando análisis.&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+    
+    <span class="c1"># Visualizar resultados del análisis de URLs</span>
+    <span class="n">visualize_url_analysis</span><span class="p">(</span><span class="n">url_cols</span><span class="p">,</span> <span class="n">url_data</span><span class="p">)</span>
+    
+    <span class="c1"># Analizar contenido de URLs (simulado)</span>
+    <span class="n">content_data</span> <span class="o">=</span> <span class="n">analyze_url_content</span><span class="p">(</span><span class="n">url_data</span><span class="p">)</span>
+    
+    <span class="c1"># Realizar análisis de temas</span>
+    <span class="n">topics_data</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">col</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">content_data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Realizando análisis de temas para URLs en columna: </span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        
+        <span class="c1"># Preprocesar corpus</span>
+        <span class="n">processed_corpus</span> <span class="o">=</span> <span class="n">preprocess_text</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;corpus&#39;</span><span class="p">])</span>
+        
+        <span class="c1"># Modelado de temas</span>
+        <span class="n">topics</span><span class="p">,</span> <span class="n">lda_model</span><span class="p">,</span> <span class="n">vectorizer</span> <span class="o">=</span> <span class="n">topic_modeling</span><span class="p">(</span><span class="n">processed_corpus</span><span class="p">)</span>
+        <span class="n">topics_data</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">topics</span>
+        
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Se identificaron </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">topics</span><span class="p">)</span><span class="si">}</span><span class="s2"> temas principales&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">topic</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">topics</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    Tema </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">topic</span><span class="p">[</span><span class="s1">&#39;words&#39;</span><span class="p">][:</span><span class="mi">5</span><span class="p">])</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Visualizar resultados del análisis de contenido</span>
+    <span class="n">visualize_content_analysis</span><span class="p">(</span><span class="n">content_data</span><span class="p">,</span> <span class="n">topics_data</span><span class="p">)</span>
+    
+    <span class="c1"># Generar informe</span>
+    <span class="n">report_path</span><span class="p">,</span> <span class="n">md_report_path</span> <span class="o">=</span> <span class="n">generate_report</span><span class="p">(</span><span class="n">url_cols</span><span class="p">,</span> <span class="n">url_data</span><span class="p">,</span> <span class="n">topics_data</span><span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Análisis de Contenido Web Completado ===&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Todos los resultados guardados en: </span><span class="si">{</span><span class="n">results_dir</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, UN PASO AL EXITO.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,180 @@
+{
+    "analysis_date": "2025-05-28 19:09:05",
+    "url_columns": [
+        "http://europe.chinadaily.com.cn/a/202505/25/ws6832536aa310a04af22c1597.html"
+    ],
+    "url_analysis": {
+        "http://europe.chinadaily.com.cn/a/202505/25/ws6832536aa310a04af22c1597.html": {
+            "total_urls": 72244,
+            "unique_domains": 2727,
+            "top_domains": {
+                "www.yahoo.com": 3417,
+                "www.dailymail.co.uk": 909,
+                "www.hindustantimes.com": 799,
+                "timesofindia.indiatimes.com": 718,
+                "indianexpress.com": 557,
+                "economictimes.indiatimes.com": 526,
+                "aninews.in": 496,
+                "www.livemint.com": 492,
+                "tribune.com.pk": 486,
+                "www.thehindu.com": 462
+            },
+            "file_extensions": {
+                ".html": 14750,
+                ".cms": 1237,
+                ".ece": 505,
+                ".htm": 387,
+                ".vnp": 374
+            },
+            "query_parameters": {
+                "id": 352,
+                "Language": 110,
+                "os": 94,
+                "nk": 64,
+                "language": 61
+            }
+        }
+    },
+    "content_analysis": {
+        "http://europe.chinadaily.com.cn/a/202505/25/ws6832536aa310a04af22c1597.html": {
+            "num_topics": 5,
+            "topics": [
+                {
+                    "id": 0,
+                    "words": [
+                        "economictimesindiatimescom",
+                        "wwwcalcuttanewsnet",
+                        "wwwdawncom",
+                        "envietnamplusvn",
+                        "wwwthestarcommy",
+                        "dailypostng",
+                        "wwwfirstpostcom",
+                        "wwwisraelnationalnewscom",
+                        "economictimes",
+                        "thestar"
+                    ],
+                    "weights": [
+                        1052.1999657857682,
+                        912.1999657842659,
+                        896.1999657840627,
+                        748.1999460836794,
+                        672.19996578023,
+                        614.1999657787808,
+                        564.1999657772919,
+                        536.1999657763373,
+                        526.1999657760039,
+                        520.1999657757598
+                    ]
+                },
+                {
+                    "id": 1,
+                    "words": [
+                        "timesofindiaindiatimescom",
+                        "wwwlivemintcom",
+                        "nypostcom",
+                        "timesofindia",
+                        "wwwaolcouk",
+                        "dailystarcomlb",
+                        "tribuneonlinengcom",
+                        "wwwtheweekin",
+                        "wwwaacomtr",
+                        "wwwpresstvir"
+                    ],
+                    "weights": [
+                        1436.1999652685288,
+                        984.1999652651614,
+                        852.1999652635277,
+                        718.1999652612535,
+                        602.1999651111579,
+                        544.1999652565758,
+                        526.1999652559165,
+                        514.199965255451,
+                        510.19994525399414,
+                        498.1999652547967
+                    ]
+                },
+                {
+                    "id": 2,
+                    "words": [
+                        "wwwyahoocom",
+                        "yahoo",
+                        "indianexpresscom",
+                        "wwwprokeralacom",
+                        "wwwarabnewscom",
+                        "wwwjpostcom",
+                        "wwwmirrorcouk",
+                        "indianexpress",
+                        "wwwdailyexcelsiorcom",
+                        "wwwwonkettecom"
+                    ],
+                    "weights": [
+                        6834.199956184456,
+                        3417.1999561828384,
+                        1114.199956175024,
+                        870.1999561717031,
+                        830.1999561709728,
+                        686.1999561676292,
+                        682.199956167516,
+                        557.1999561632188,
+                        468.1999561586621,
+                        466.1999561585396
+                    ]
+                },
+                {
+                    "id": 3,
+                    "words": [
+                        "aninewsin",
+                        "wwwthehinducom",
+                        "wwwnewscom",
+                        "wwwtheguardiancom",
+                        "wwwexpresscouk",
+                        "wwwmoneycontrolcom",
+                        "wwwthenewscompk",
+                        "wwwtribuneindiacom",
+                        "wwwbangkokpostcom",
+                        "wwwfoxnewscom"
+                    ],
+                    "weights": [
+                        992.1999610123918,
+                        924.199961011521,
+                        900.1999606068306,
+                        868.1999610107123,
+                        864.1999610106374,
+                        652.1999610062215,
+                        640.1999610058878,
+                        626.1999610054725,
+                        602.1999610047279,
+                        602.1999610047278
+                    ]
+                },
+                {
+                    "id": 4,
+                    "words": [
+                        "wwwdailymailcouk",
+                        "wwwhindustantimescom",
+                        "tribunecompk",
+                        "dailymail",
+                        "wwwthetimescom",
+                        "wwwbignewsnetworkcom",
+                        "hindustantimes",
+                        "tribune",
+                        "wwwctgtribunecom",
+                        "punchngcom"
+                    ],
+                    "weights": [
+                        1818.1999628419574,
+                        1598.1999628410495,
+                        972.1999628365706,
+                        909.1999628357897,
+                        860.1999628350609,
+                        854.1999628349698,
+                        799.1999628340972,
+                        651.1999598324849,
+                        634.1999628304204,
+                        592.1999628291636
+                    ]
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,711 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Optimización de Rendimiento &mdash; documentación de Analisis de Datos y Visualizacion - 1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=4936afed"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=f85f4cfb"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="Seguridad de Datos" href="seguridad_datos.html" />
+    <link rel="prev" title="Guía de Análisis Avanzado" href="guia_analisis_avanzado.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Analisis de Datos y Visualizacion
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guías de Usuario:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="instalacion.html">Guía de Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="casos_uso.html">Casos de Uso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preguntas_frecuentes.html">Preguntas Frecuentes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Módulos Principales:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="analysis.html">Módulo de Análisis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geospatial.html">Módulo Geoespacial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="web.html">Módulo Web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dashboard.html">Módulo de Dashboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization.html">Módulo de Visualización</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">Módulo de Utilidades</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentación Técnica:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="guia_analisis_avanzado.html">Guía de Análisis Avanzado</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Optimización de Rendimiento</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#estrategias-de-optimizacion-de-rendimiento">Estrategias de Optimización de Rendimiento</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#indice">Índice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#optimizacion-de-carga-de-datos">Optimización de Carga de Datos</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#carga-selectiva-de-columnas">Carga Selectiva de Columnas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#carga-incremental">Carga Incremental</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#compresion-de-datos">Compresión de Datos</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#procesamiento-eficiente-de-memoria">Procesamiento Eficiente de Memoria</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#procesamiento-por-lotes-chunking">Procesamiento por Lotes (Chunking)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#optimizacion-de-tipos-de-datos">Optimización de Tipos de Datos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#liberacion-proactiva-de-memoria">Liberación Proactiva de Memoria</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#paralelizacion-y-computacion-distribuida">Paralelización y Computación Distribuida</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#procesamiento-paralelo">Procesamiento Paralelo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#computacion-distribuida-con-dask">Computación Distribuida con Dask</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#procesamiento-gpu">Procesamiento GPU</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#optimizacion-de-consultas-y-filtrado">Optimización de Consultas y Filtrado</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#indexacion">Indexación</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#filtrado-temprano">Filtrado Temprano</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#consultas-optimizadas-a-bases-de-datos">Consultas Optimizadas a Bases de Datos</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#almacenamiento-en-cache">Almacenamiento en Caché</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cache-de-resultados">Caché de Resultados</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cache-persistente">Caché Persistente</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#invalidacion-inteligente-de-cache">Invalidación Inteligente de Caché</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#optimizacion-de-visualizaciones">Optimización de Visualizaciones</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#muestreo-para-visualizaciones">Muestreo para Visualizaciones</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#renderizado-progresivo">Renderizado Progresivo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#agregacion-previa">Agregación Previa</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#perfilado-y-benchmarking">Perfilado y Benchmarking</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#perfilado-de-codigo">Perfilado de Código</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#benchmarking-de-algoritmos">Benchmarking de Algoritmos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#monitoreo-de-rendimiento">Monitoreo de Rendimiento</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#configuracion-del-sistema">Configuración del Sistema</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ajuste-de-parametros">Ajuste de Parámetros</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gestion-de-recursos">Gestión de Recursos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#almacenamiento-optimizado">Almacenamiento Optimizado</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#conclusion">Conclusión</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="seguridad_datos.html">Seguridad de Datos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="referencia_tecnica_detallada.html">Referencia Técnica Detallada</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integracion_herramientas.html">Integración de Herramientas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/modules.html">src</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Analisis de Datos y Visualizacion</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Optimización de Rendimiento</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/optimizacion_rendimiento.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="optimizacion-de-rendimiento">
+<h1>Optimización de Rendimiento<a class="headerlink" href="#optimizacion-de-rendimiento" title="Link to this heading"></a></h1>
+<section id="estrategias-de-optimizacion-de-rendimiento">
+<h2>Estrategias de Optimización de Rendimiento<a class="headerlink" href="#estrategias-de-optimizacion-de-rendimiento" title="Link to this heading"></a></h2>
+<p>Este documento proporciona estrategias y técnicas para optimizar el rendimiento del sistema «UN PASO AL EXITO» cuando se trabaja con grandes volúmenes de datos o se requiere un procesamiento eficiente. Estas optimizaciones son especialmente importantes para análisis complejos, conjuntos de datos masivos o entornos con recursos limitados.</p>
+<section id="indice">
+<h3>Índice<a class="headerlink" href="#indice" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#optimizaci%C3%B3n-de-carga-de-datos"><span class="xref myst">Optimización de Carga de Datos</span></a></p></li>
+<li><p><a class="reference internal" href="#procesamiento-eficiente-de-memoria"><span class="xref myst">Procesamiento Eficiente de Memoria</span></a></p></li>
+<li><p><a class="reference internal" href="#paralelizaci%C3%B3n-y-computaci%C3%B3n-distribuida"><span class="xref myst">Paralelización y Computación Distribuida</span></a></p></li>
+<li><p><a class="reference internal" href="#optimizaci%C3%B3n-de-consultas-y-filtrado"><span class="xref myst">Optimización de Consultas y Filtrado</span></a></p></li>
+<li><p><a class="reference internal" href="#almacenamiento-en-cach%C3%A9"><span class="xref myst">Almacenamiento en Caché</span></a></p></li>
+<li><p><a class="reference internal" href="#optimizaci%C3%B3n-de-visualizaciones"><span class="xref myst">Optimización de Visualizaciones</span></a></p></li>
+<li><p><a class="reference internal" href="#perfilado-y-benchmarking"><span class="xref myst">Perfilado y Benchmarking</span></a></p></li>
+<li><p><a class="reference internal" href="#configuraci%C3%B3n-del-sistema"><span class="xref myst">Configuración del Sistema</span></a></p></li>
+</ol>
+</section>
+<section id="optimizacion-de-carga-de-datos">
+<h3>Optimización de Carga de Datos<a class="headerlink" href="#optimizacion-de-carga-de-datos" title="Link to this heading"></a></h3>
+<section id="carga-selectiva-de-columnas">
+<h4>Carga Selectiva de Columnas<a class="headerlink" href="#carga-selectiva-de-columnas" title="Link to this heading"></a></h4>
+<p>Cargue solo las columnas que necesita para su análisis:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.data_loading</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_data_selective</span>
+
+<span class="c1"># Cargar solo las columnas necesarias</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">load_data_selective</span><span class="p">(</span>
+    <span class="n">file_path</span><span class="o">=</span><span class="s2">&quot;datos_grandes.csv&quot;</span><span class="p">,</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;fecha&quot;</span><span class="p">,</span> <span class="s2">&quot;valor&quot;</span><span class="p">,</span> <span class="s2">&quot;categoria&quot;</span><span class="p">],</span>  <span class="c1"># Solo estas columnas</span>
+    <span class="n">dtype</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;valor&quot;</span><span class="p">:</span> <span class="s2">&quot;float32&quot;</span><span class="p">}</span>  <span class="c1"># Optimizar tipos de datos</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="carga-incremental">
+<h4>Carga Incremental<a class="headerlink" href="#carga-incremental" title="Link to this heading"></a></h4>
+<p>Implemente carga incremental para procesar solo los datos nuevos o modificados:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.data_loading</span><span class="w"> </span><span class="kn">import</span> <span class="n">incremental_load</span>
+
+<span class="c1"># Cargar solo datos nuevos basados en una columna de fecha</span>
+<span class="n">new_data</span> <span class="o">=</span> <span class="n">incremental_load</span><span class="p">(</span>
+    <span class="n">source</span><span class="o">=</span><span class="s2">&quot;datos_actualizados.csv&quot;</span><span class="p">,</span>
+    <span class="n">target_table</span><span class="o">=</span><span class="s2">&quot;tabla_datos&quot;</span><span class="p">,</span>
+    <span class="n">date_column</span><span class="o">=</span><span class="s2">&quot;fecha_actualizacion&quot;</span><span class="p">,</span>
+    <span class="n">last_processed_date</span><span class="o">=</span><span class="s2">&quot;2023-01-15&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Procesar solo los nuevos datos</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">new_data</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+    <span class="n">process_data</span><span class="p">(</span><span class="n">new_data</span><span class="p">)</span>
+    <span class="n">update_last_processed_date</span><span class="p">(</span><span class="n">new_data</span><span class="p">[</span><span class="s2">&quot;fecha_actualizacion&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+</pre></div>
+</div>
+</section>
+<section id="compresion-de-datos">
+<h4>Compresión de Datos<a class="headerlink" href="#compresion-de-datos" title="Link to this heading"></a></h4>
+<p>Utilice formatos de archivo comprimidos para reducir el tiempo de I/O:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.data_loading</span><span class="w"> </span><span class="kn">import</span> <span class="n">save_compressed_data</span>
+
+<span class="c1"># Guardar datos en formato comprimido</span>
+<span class="n">save_compressed_data</span><span class="p">(</span>
+    <span class="n">df</span><span class="o">=</span><span class="n">processed_data</span><span class="p">,</span>
+    <span class="n">file_path</span><span class="o">=</span><span class="s2">&quot;resultados.parquet&quot;</span><span class="p">,</span>
+    <span class="n">compression</span><span class="o">=</span><span class="s2">&quot;snappy&quot;</span>  <span class="c1"># Alternativas: &quot;gzip&quot;, &quot;brotli&quot;, &quot;zstd&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Cargar datos comprimidos</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.data_loading</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_compressed_data</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">load_compressed_data</span><span class="p">(</span>
+    <span class="n">file_path</span><span class="o">=</span><span class="s2">&quot;resultados.parquet&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="procesamiento-eficiente-de-memoria">
+<h3>Procesamiento Eficiente de Memoria<a class="headerlink" href="#procesamiento-eficiente-de-memoria" title="Link to this heading"></a></h3>
+<section id="procesamiento-por-lotes-chunking">
+<h4>Procesamiento por Lotes (Chunking)<a class="headerlink" href="#procesamiento-por-lotes-chunking" title="Link to this heading"></a></h4>
+<p>Procese grandes conjuntos de datos en lotes más pequeños:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.memory_optimization</span><span class="w"> </span><span class="kn">import</span> <span class="n">process_in_chunks</span>
+
+<span class="c1"># Procesar archivo grande en chunks</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">process_in_chunks</span><span class="p">(</span>
+    <span class="n">file_path</span><span class="o">=</span><span class="s2">&quot;datos_masivos.csv&quot;</span><span class="p">,</span>
+    <span class="n">chunk_size</span><span class="o">=</span><span class="mi">100000</span><span class="p">,</span>  <span class="c1"># Número de filas por chunk</span>
+    <span class="n">processing_function</span><span class="o">=</span><span class="n">analyze_data</span><span class="p">,</span>  <span class="c1"># Función a aplicar a cada chunk</span>
+    <span class="n">aggregation_function</span><span class="o">=</span><span class="n">combine_results</span>  <span class="c1"># Función para combinar resultados</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="optimizacion-de-tipos-de-datos">
+<h4>Optimización de Tipos de Datos<a class="headerlink" href="#optimizacion-de-tipos-de-datos" title="Link to this heading"></a></h4>
+<p>Utilice los tipos de datos más eficientes para reducir el uso de memoria:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.memory_optimization</span><span class="w"> </span><span class="kn">import</span> <span class="n">optimize_dtypes</span>
+
+<span class="c1"># Optimizar tipos de datos en un DataFrame</span>
+<span class="n">df_optimized</span> <span class="o">=</span> <span class="n">optimize_dtypes</span><span class="p">(</span>
+    <span class="n">df</span><span class="o">=</span><span class="n">large_dataframe</span><span class="p">,</span>
+    <span class="n">downcast_integers</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># Convertir a tipos enteros más pequeños cuando sea posible</span>
+    <span class="n">downcast_floats</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>    <span class="c1"># Convertir a tipos float más pequeños cuando sea posible</span>
+    <span class="n">category_threshold</span><span class="o">=</span><span class="mi">50</span>    <span class="c1"># Convertir columnas con menos de 50 valores únicos a tipo category</span>
+<span class="p">)</span>
+
+<span class="c1"># Mostrar reducción de memoria</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Uso de memoria original: </span><span class="si">{</span><span class="n">large_dataframe</span><span class="o">.</span><span class="n">memory_usage</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1e6</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> MB&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Uso de memoria optimizado: </span><span class="si">{</span><span class="n">df_optimized</span><span class="o">.</span><span class="n">memory_usage</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1e6</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> MB&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="liberacion-proactiva-de-memoria">
+<h4>Liberación Proactiva de Memoria<a class="headerlink" href="#liberacion-proactiva-de-memoria" title="Link to this heading"></a></h4>
+<p>Libere memoria explícitamente cuando ya no necesite objetos grandes:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.memory_optimization</span><span class="w"> </span><span class="kn">import</span> <span class="n">clear_memory</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">gc</span>
+
+<span class="c1"># Después de terminar con un DataFrame grande</span>
+<span class="k">del</span> <span class="n">large_dataframe</span>
+
+<span class="c1"># Forzar recolección de basura</span>
+<span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+
+<span class="c1"># Función auxiliar para limpiar memoria y mostrar uso</span>
+<span class="n">memory_usage</span> <span class="o">=</span> <span class="n">clear_memory</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Memoria disponible después de limpieza: </span><span class="si">{</span><span class="n">memory_usage</span><span class="p">[</span><span class="s1">&#39;available_memory_mb&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> MB&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="paralelizacion-y-computacion-distribuida">
+<h3>Paralelización y Computación Distribuida<a class="headerlink" href="#paralelizacion-y-computacion-distribuida" title="Link to this heading"></a></h3>
+<section id="procesamiento-paralelo">
+<h4>Procesamiento Paralelo<a class="headerlink" href="#procesamiento-paralelo" title="Link to this heading"></a></h4>
+<p>Utilice múltiples núcleos para acelerar el procesamiento:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.parallel</span><span class="w"> </span><span class="kn">import</span> <span class="n">parallel_apply</span>
+
+<span class="c1"># Aplicar función en paralelo a cada grupo</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">parallel_apply</span><span class="p">(</span>
+    <span class="n">df</span><span class="o">=</span><span class="n">large_dataframe</span><span class="p">,</span>
+    <span class="n">groupby_column</span><span class="o">=</span><span class="s2">&quot;categoria&quot;</span><span class="p">,</span>
+    <span class="n">apply_function</span><span class="o">=</span><span class="n">complex_analysis</span><span class="p">,</span>
+    <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>  <span class="c1"># Usar todos los núcleos disponibles</span>
+    <span class="n">prefer</span><span class="o">=</span><span class="s2">&quot;processes&quot;</span>  <span class="c1"># Alternativa: &quot;threads&quot; para operaciones limitadas por I/O</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="computacion-distribuida-con-dask">
+<h4>Computación Distribuida con Dask<a class="headerlink" href="#computacion-distribuida-con-dask" title="Link to this heading"></a></h4>
+<p>Utilice Dask para procesamiento distribuido de datos más grandes que la memoria:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.distributed</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_dask_dataframe</span>
+
+<span class="c1"># Crear DataFrame de Dask para procesamiento distribuido</span>
+<span class="n">dask_df</span> <span class="o">=</span> <span class="n">create_dask_dataframe</span><span class="p">(</span>
+    <span class="n">file_pattern</span><span class="o">=</span><span class="s2">&quot;datos_*.csv&quot;</span><span class="p">,</span>
+    <span class="n">blocksize</span><span class="o">=</span><span class="s2">&quot;64MB&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Realizar operaciones que se ejecutarán de forma distribuida</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">dask_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;categoria&#39;</span><span class="p">)[</span><span class="s1">&#39;valor&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="procesamiento-gpu">
+<h4>Procesamiento GPU<a class="headerlink" href="#procesamiento-gpu" title="Link to this heading"></a></h4>
+<p>Acelere operaciones numéricas intensivas utilizando GPU:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.gpu</span><span class="w"> </span><span class="kn">import</span> <span class="n">use_gpu_acceleration</span>
+
+<span class="c1"># Verificar disponibilidad de GPU</span>
+<span class="n">gpu_available</span> <span class="o">=</span> <span class="n">use_gpu_acceleration</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">gpu_available</span><span class="p">:</span>
+    <span class="c1"># Importar versiones GPU de algoritmos</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">src.analysis.gpu_accelerated</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_model_gpu</span>
+
+    <span class="c1"># Entrenar modelo con aceleración GPU</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">train_model_gpu</span><span class="p">(</span>
+        <span class="n">X</span><span class="o">=</span><span class="n">features</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
+        <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;xgboost&quot;</span><span class="p">,</span>
+        <span class="n">gpu_id</span><span class="o">=</span><span class="mi">0</span>  <span class="c1"># ID de la GPU a utilizar</span>
+    <span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># Fallback a versión CPU</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">src.analysis.analisis_predictivo</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_model</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">train_model</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">features</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">target</span><span class="p">,</span> <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;xgboost&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="optimizacion-de-consultas-y-filtrado">
+<h3>Optimización de Consultas y Filtrado<a class="headerlink" href="#optimizacion-de-consultas-y-filtrado" title="Link to this heading"></a></h3>
+<section id="indexacion">
+<h4>Indexación<a class="headerlink" href="#indexacion" title="Link to this heading"></a></h4>
+<p>Utilice índices para acelerar búsquedas y filtrados:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.query_optimization</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_dataframe_index</span>
+
+<span class="c1"># Crear índice en DataFrame para búsquedas rápidas</span>
+<span class="n">indexed_df</span> <span class="o">=</span> <span class="n">create_dataframe_index</span><span class="p">(</span>
+    <span class="n">df</span><span class="o">=</span><span class="n">large_dataframe</span><span class="p">,</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;fecha&quot;</span><span class="p">,</span> <span class="s2">&quot;categoria&quot;</span><span class="p">],</span>
+    <span class="n">index_type</span><span class="o">=</span><span class="s2">&quot;sorted&quot;</span>  <span class="c1"># Alternativas: &quot;hash&quot;, &quot;multi&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Búsqueda rápida usando índice</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">indexed_df</span><span class="o">.</span><span class="n">query_index</span><span class="p">(</span>
+    <span class="n">conditions</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;fecha&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;2023-01-01&quot;</span><span class="p">,</span> <span class="s2">&quot;2023-01-31&quot;</span><span class="p">),</span> <span class="s2">&quot;categoria&quot;</span><span class="p">:</span> <span class="s2">&quot;A&quot;</span><span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="filtrado-temprano">
+<h4>Filtrado Temprano<a class="headerlink" href="#filtrado-temprano" title="Link to this heading"></a></h4>
+<p>Aplique filtros lo antes posible en el pipeline de procesamiento:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.query_optimization</span><span class="w"> </span><span class="kn">import</span> <span class="n">early_filtering</span>
+
+<span class="c1"># Aplicar filtrado temprano durante la carga</span>
+<span class="n">filtered_df</span> <span class="o">=</span> <span class="n">early_filtering</span><span class="p">(</span>
+    <span class="n">file_path</span><span class="o">=</span><span class="s2">&quot;datos_grandes.csv&quot;</span><span class="p">,</span>
+    <span class="n">filters</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">(</span><span class="s2">&quot;fecha&quot;</span><span class="p">,</span> <span class="s2">&quot;&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;2023-01-01&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;categoria&quot;</span><span class="p">,</span> <span class="s2">&quot;in&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">]),</span>
+        <span class="p">(</span><span class="s2">&quot;valor&quot;</span><span class="p">,</span> <span class="s2">&quot;&gt;&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">],</span>
+    <span class="n">use_pushdown</span><span class="o">=</span><span class="kc">True</span>  <span class="c1"># Intentar empujar filtros al origen de datos</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="consultas-optimizadas-a-bases-de-datos">
+<h4>Consultas Optimizadas a Bases de Datos<a class="headerlink" href="#consultas-optimizadas-a-bases-de-datos" title="Link to this heading"></a></h4>
+<p>Optimice consultas SQL para bases de datos:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.database</span><span class="w"> </span><span class="kn">import</span> <span class="n">optimized_query</span>
+
+<span class="c1"># Ejecutar consulta optimizada</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">optimized_query</span><span class="p">(</span>
+    <span class="n">connection</span><span class="o">=</span><span class="n">db_connection</span><span class="p">,</span>
+    <span class="n">query</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;SELECT categoria, AVG(valor) as promedio</span>
+<span class="s2">             FROM tabla_datos</span>
+<span class="s2">             WHERE fecha BETWEEN ? AND ?</span>
+<span class="s2">             GROUP BY categoria&quot;&quot;&quot;</span><span class="p">,</span>
+    <span class="n">params</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;2023-01-01&quot;</span><span class="p">,</span> <span class="s2">&quot;2023-01-31&quot;</span><span class="p">),</span>
+    <span class="n">optimize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># Analizar y optimizar la consulta</span>
+    <span class="n">explain</span><span class="o">=</span><span class="kc">True</span>    <span class="c1"># Mostrar plan de ejecución</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="almacenamiento-en-cache">
+<h3>Almacenamiento en Caché<a class="headerlink" href="#almacenamiento-en-cache" title="Link to this heading"></a></h3>
+<section id="cache-de-resultados">
+<h4>Caché de Resultados<a class="headerlink" href="#cache-de-resultados" title="Link to this heading"></a></h4>
+<p>Almacene en caché resultados de operaciones costosas:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.caching</span><span class="w"> </span><span class="kn">import</span> <span class="n">cached_operation</span>
+
+<span class="c1"># Definir función con caché</span>
+<span class="nd">@cached_operation</span><span class="p">(</span><span class="n">cache_dir</span><span class="o">=</span><span class="s2">&quot;.cache&quot;</span><span class="p">,</span> <span class="n">expire_after</span><span class="o">=</span><span class="s2">&quot;1d&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">expensive_analysis</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">param1</span><span class="p">,</span> <span class="n">param2</span><span class="p">):</span>
+    <span class="c1"># Análisis costoso</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="c1"># La primera llamada ejecuta y almacena en caché</span>
+<span class="n">result1</span> <span class="o">=</span> <span class="n">expensive_analysis</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">)</span>
+
+<span class="c1"># La segunda llamada con los mismos parámetros recupera de caché</span>
+<span class="n">result2</span> <span class="o">=</span> <span class="n">expensive_analysis</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="cache-persistente">
+<h4>Caché Persistente<a class="headerlink" href="#cache-persistente" title="Link to this heading"></a></h4>
+<p>Implemente caché persistente para resultados entre sesiones:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.caching</span><span class="w"> </span><span class="kn">import</span> <span class="n">PersistentCache</span>
+
+<span class="c1"># Inicializar caché persistente</span>
+<span class="n">cache</span> <span class="o">=</span> <span class="n">PersistentCache</span><span class="p">(</span>
+    <span class="n">cache_name</span><span class="o">=</span><span class="s2">&quot;analysis_results&quot;</span><span class="p">,</span>
+    <span class="n">storage_type</span><span class="o">=</span><span class="s2">&quot;disk&quot;</span><span class="p">,</span>  <span class="c1"># Alternativas: &quot;memory&quot;, &quot;redis&quot;</span>
+    <span class="n">max_size</span><span class="o">=</span><span class="s2">&quot;1GB&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Verificar si resultado está en caché</span>
+<span class="n">cache_key</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;analysis_</span><span class="si">{</span><span class="n">dataset_id</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">parameters_hash</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="k">if</span> <span class="n">cache</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">cache_key</span><span class="p">):</span>
+    <span class="c1"># Recuperar de caché</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">cache</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cache_key</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># Calcular y almacenar en caché</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">perform_analysis</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">parameters</span><span class="p">)</span>
+    <span class="n">cache</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">cache_key</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="invalidacion-inteligente-de-cache">
+<h4>Invalidación Inteligente de Caché<a class="headerlink" href="#invalidacion-inteligente-de-cache" title="Link to this heading"></a></h4>
+<p>Implemente estrategias para invalidar caché cuando los datos cambien:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.caching</span><span class="w"> </span><span class="kn">import</span> <span class="n">SmartCache</span>
+
+<span class="c1"># Inicializar caché con invalidación inteligente</span>
+<span class="n">smart_cache</span> <span class="o">=</span> <span class="n">SmartCache</span><span class="p">(</span>
+    <span class="n">dependencies</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;data_source&quot;</span><span class="p">:</span> <span class="s2">&quot;datos.csv&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;code_files&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;analysis_module.py&quot;</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="n">invalidation_strategy</span><span class="o">=</span><span class="s2">&quot;mtime&quot;</span>  <span class="c1"># Invalidar basado en tiempo de modificación</span>
+<span class="p">)</span>
+
+<span class="c1"># Usar caché con invalidación automática</span>
+<span class="k">with</span> <span class="n">smart_cache</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s2">&quot;analysis_results&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">cache</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">cache</span><span class="o">.</span><span class="n">valid</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">cache</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">perform_analysis</span><span class="p">()</span>
+        <span class="n">cache</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="optimizacion-de-visualizaciones">
+<h3>Optimización de Visualizaciones<a class="headerlink" href="#optimizacion-de-visualizaciones" title="Link to this heading"></a></h3>
+<section id="muestreo-para-visualizaciones">
+<h4>Muestreo para Visualizaciones<a class="headerlink" href="#muestreo-para-visualizaciones" title="Link to this heading"></a></h4>
+<p>Utilice muestreo para visualizar grandes conjuntos de datos:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.visualization.optimization</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_sampled_visualization</span>
+
+<span class="c1"># Crear visualización con muestreo inteligente</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">create_sampled_visualization</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">large_dataframe</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;variable_x&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;variable_y&quot;</span><span class="p">,</span>
+    <span class="n">plot_type</span><span class="o">=</span><span class="s2">&quot;scatter&quot;</span><span class="p">,</span>
+    <span class="n">sampling_method</span><span class="o">=</span><span class="s2">&quot;stratified&quot;</span><span class="p">,</span>  <span class="c1"># Alternativas: &quot;random&quot;, &quot;systematic&quot;, &quot;density&quot;</span>
+    <span class="n">sample_size</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span>  <span class="c1"># Número máximo de puntos a mostrar</span>
+    <span class="n">preserve_outliers</span><span class="o">=</span><span class="kc">True</span>  <span class="c1"># Mantener valores atípicos en la muestra</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="renderizado-progresivo">
+<h4>Renderizado Progresivo<a class="headerlink" href="#renderizado-progresivo" title="Link to this heading"></a></h4>
+<p>Implemente renderizado progresivo para visualizaciones interactivas:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.dashboard.optimization</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_progressive_visualization</span>
+
+<span class="c1"># Crear visualización con renderizado progresivo</span>
+<span class="n">dashboard</span> <span class="o">=</span> <span class="n">create_progressive_visualization</span><span class="p">(</span>
+    <span class="n">data_source</span><span class="o">=</span><span class="n">large_dataframe</span><span class="p">,</span>
+    <span class="n">visualization_type</span><span class="o">=</span><span class="s2">&quot;heatmap&quot;</span><span class="p">,</span>
+    <span class="n">initial_resolution</span><span class="o">=</span><span class="s2">&quot;low&quot;</span><span class="p">,</span>  <span class="c1"># Comenzar con baja resolución</span>
+    <span class="n">progressive_levels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;low&quot;</span><span class="p">,</span> <span class="s2">&quot;medium&quot;</span><span class="p">,</span> <span class="s2">&quot;high&quot;</span><span class="p">],</span>
+    <span class="n">auto_upgrade</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># Mejorar resolución automáticamente cuando sea posible</span>
+    <span class="n">downgrade_on_interaction</span><span class="o">=</span><span class="kc">True</span>  <span class="c1"># Reducir resolución durante interacciones</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="agregacion-previa">
+<h4>Agregación Previa<a class="headerlink" href="#agregacion-previa" title="Link to this heading"></a></h4>
+<p>Agregue datos antes de visualizarlos:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.visualization.optimization</span><span class="w"> </span><span class="kn">import</span> <span class="n">visualize_aggregated_data</span>
+
+<span class="c1"># Visualizar datos pre-agregados</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">visualize_aggregated_data</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">large_dataframe</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;fecha&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;valor&quot;</span><span class="p">,</span>
+    <span class="n">aggregation</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span>  <span class="c1"># Alternativas: &quot;sum&quot;, &quot;count&quot;, &quot;min&quot;, &quot;max&quot;</span>
+    <span class="n">groupby_freq</span><span class="o">=</span><span class="s2">&quot;1D&quot;</span><span class="p">,</span>   <span class="c1"># Agrupar por día</span>
+    <span class="n">plot_type</span><span class="o">=</span><span class="s2">&quot;line&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="perfilado-y-benchmarking">
+<h3>Perfilado y Benchmarking<a class="headerlink" href="#perfilado-y-benchmarking" title="Link to this heading"></a></h3>
+<section id="perfilado-de-codigo">
+<h4>Perfilado de Código<a class="headerlink" href="#perfilado-de-codigo" title="Link to this heading"></a></h4>
+<p>Identifique cuellos de botella en su código:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.profiling</span><span class="w"> </span><span class="kn">import</span> <span class="n">profile_code</span>
+
+<span class="c1"># Perfilar función o bloque de código</span>
+<span class="n">profile_results</span> <span class="o">=</span> <span class="n">profile_code</span><span class="p">(</span>
+    <span class="n">function</span><span class="o">=</span><span class="n">complex_analysis</span><span class="p">,</span>
+    <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">parameters</span><span class="p">),</span>
+    <span class="n">profile_type</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span>  <span class="c1"># Alternativas: &quot;memory&quot;, &quot;cpu&quot;, &quot;line&quot;</span>
+    <span class="n">n_runs</span><span class="o">=</span><span class="mi">5</span>  <span class="c1"># Número de ejecuciones para promediar</span>
+<span class="p">)</span>
+
+<span class="c1"># Mostrar resultados</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">profile_results</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+
+<span class="c1"># Visualizar resultados</span>
+<span class="n">profile_results</span><span class="o">.</span><span class="n">visualize</span><span class="p">(</span><span class="n">output_file</span><span class="o">=</span><span class="s2">&quot;profile_results.html&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="benchmarking-de-algoritmos">
+<h4>Benchmarking de Algoritmos<a class="headerlink" href="#benchmarking-de-algoritmos" title="Link to this heading"></a></h4>
+<p>Compare el rendimiento de diferentes algoritmos o implementaciones:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.benchmarking</span><span class="w"> </span><span class="kn">import</span> <span class="n">benchmark_algorithms</span>
+
+<span class="c1"># Definir algoritmos a comparar</span>
+<span class="n">algorithms</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;algoritmo_1&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">data</span><span class="p">:</span> <span class="n">method_1</span><span class="p">(</span><span class="n">data</span><span class="p">),</span>
+    <span class="s2">&quot;algoritmo_2&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">data</span><span class="p">:</span> <span class="n">method_2</span><span class="p">(</span><span class="n">data</span><span class="p">),</span>
+    <span class="s2">&quot;algoritmo_3&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">data</span><span class="p">:</span> <span class="n">method_3</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1"># Ejecutar benchmark</span>
+<span class="n">benchmark_results</span> <span class="o">=</span> <span class="n">benchmark_algorithms</span><span class="p">(</span>
+    <span class="n">algorithms</span><span class="o">=</span><span class="n">algorithms</span><span class="p">,</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">test_data</span><span class="p">,</span>
+    <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;execution_time&quot;</span><span class="p">,</span> <span class="s2">&quot;memory_usage&quot;</span><span class="p">,</span> <span class="s2">&quot;accuracy&quot;</span><span class="p">],</span>
+    <span class="n">n_runs</span><span class="o">=</span><span class="mi">10</span>
+<span class="p">)</span>
+
+<span class="c1"># Visualizar comparación</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">src.visualization.benchmarking</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_benchmark_results</span>
+<span class="n">plot_benchmark_results</span><span class="p">(</span><span class="n">benchmark_results</span><span class="p">,</span> <span class="n">save_path</span><span class="o">=</span><span class="s2">&quot;benchmark_comparison.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="monitoreo-de-rendimiento">
+<h4>Monitoreo de Rendimiento<a class="headerlink" href="#monitoreo-de-rendimiento" title="Link to this heading"></a></h4>
+<p>Monitoree el rendimiento durante la ejecución:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.monitoring</span><span class="w"> </span><span class="kn">import</span> <span class="n">performance_monitor</span>
+
+<span class="c1"># Iniciar monitoreo de rendimiento</span>
+<span class="k">with</span> <span class="n">performance_monitor</span><span class="p">(</span><span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;cpu&quot;</span><span class="p">,</span> <span class="s2">&quot;memory&quot;</span><span class="p">,</span> <span class="s2">&quot;disk_io&quot;</span><span class="p">],</span> <span class="n">interval</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span> <span class="k">as</span> <span class="n">monitor</span><span class="p">:</span>
+    <span class="c1"># Ejecutar código a monitorear</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">process_large_dataset</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="c1"># Verificar uso de recursos durante la ejecución</span>
+    <span class="n">current_usage</span> <span class="o">=</span> <span class="n">monitor</span><span class="o">.</span><span class="n">current_usage</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">current_usage</span><span class="p">[</span><span class="s2">&quot;memory_percent&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">80</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Advertencia: Alto uso de memoria&quot;</span><span class="p">)</span>
+
+<span class="c1"># Obtener estadísticas completas después de la ejecución</span>
+<span class="n">performance_stats</span> <span class="o">=</span> <span class="n">monitor</span><span class="o">.</span><span class="n">get_statistics</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Uso máximo de memoria: </span><span class="si">{</span><span class="n">performance_stats</span><span class="p">[</span><span class="s1">&#39;memory_max_mb&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> MB&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Uso promedio de CPU: </span><span class="si">{</span><span class="n">performance_stats</span><span class="p">[</span><span class="s1">&#39;cpu_mean_percent&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="configuracion-del-sistema">
+<h3>Configuración del Sistema<a class="headerlink" href="#configuracion-del-sistema" title="Link to this heading"></a></h3>
+<section id="ajuste-de-parametros">
+<h4>Ajuste de Parámetros<a class="headerlink" href="#ajuste-de-parametros" title="Link to this heading"></a></h4>
+<p>Optimice parámetros del sistema para mejorar el rendimiento:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.system_config</span><span class="w"> </span><span class="kn">import</span> <span class="n">optimize_system_settings</span>
+
+<span class="c1"># Optimizar configuración del sistema para análisis de datos</span>
+<span class="n">optimized_settings</span> <span class="o">=</span> <span class="n">optimize_system_settings</span><span class="p">(</span>
+    <span class="n">optimization_target</span><span class="o">=</span><span class="s2">&quot;data_processing&quot;</span><span class="p">,</span>  <span class="c1"># Alternativas: &quot;ml_training&quot;, &quot;visualization&quot;</span>
+    <span class="n">available_memory</span><span class="o">=</span><span class="s2">&quot;8GB&quot;</span><span class="p">,</span>
+    <span class="n">available_cores</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+    <span class="n">storage_type</span><span class="o">=</span><span class="s2">&quot;ssd&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Aplicar configuración optimizada</span>
+<span class="n">apply_settings</span><span class="p">(</span><span class="n">optimized_settings</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="gestion-de-recursos">
+<h4>Gestión de Recursos<a class="headerlink" href="#gestion-de-recursos" title="Link to this heading"></a></h4>
+<p>Implemente gestión dinámica de recursos:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.resource_management</span><span class="w"> </span><span class="kn">import</span> <span class="n">ResourceManager</span>
+
+<span class="c1"># Inicializar gestor de recursos</span>
+<span class="n">resource_manager</span> <span class="o">=</span> <span class="n">ResourceManager</span><span class="p">(</span>
+    <span class="n">max_memory</span><span class="o">=</span><span class="s2">&quot;80%&quot;</span><span class="p">,</span>  <span class="c1"># Uso máximo de memoria</span>
+    <span class="n">max_cpu</span><span class="o">=</span><span class="s2">&quot;90%&quot;</span><span class="p">,</span>     <span class="c1"># Uso máximo de CPU</span>
+    <span class="n">priority</span><span class="o">=</span><span class="s2">&quot;balanced&quot;</span>  <span class="c1"># Alternativas: &quot;speed&quot;, &quot;memory_efficient&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Ejecutar tarea con gestión de recursos</span>
+<span class="k">with</span> <span class="n">resource_manager</span><span class="o">.</span><span class="n">managed_execution</span><span class="p">()</span> <span class="k">as</span> <span class="n">ctx</span><span class="p">:</span>
+    <span class="c1"># El gestor ajustará dinámicamente parámetros como tamaño de chunk</span>
+    <span class="c1"># basado en los recursos disponibles</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">process_large_dataset</span><span class="p">(</span>
+        <span class="n">data</span><span class="p">,</span>
+        <span class="n">chunk_size</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">recommended_chunk_size</span><span class="p">,</span>
+        <span class="n">n_jobs</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">recommended_workers</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="almacenamiento-optimizado">
+<h4>Almacenamiento Optimizado<a class="headerlink" href="#almacenamiento-optimizado" title="Link to this heading"></a></h4>
+<p>Utilice formatos de almacenamiento optimizados:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.storage_optimization</span><span class="w"> </span><span class="kn">import</span> <span class="n">convert_to_optimized_format</span>
+
+<span class="c1"># Convertir datos a formato optimizado</span>
+<span class="n">optimized_file</span> <span class="o">=</span> <span class="n">convert_to_optimized_format</span><span class="p">(</span>
+    <span class="n">input_file</span><span class="o">=</span><span class="s2">&quot;datos.csv&quot;</span><span class="p">,</span>
+    <span class="n">output_format</span><span class="o">=</span><span class="s2">&quot;parquet&quot;</span><span class="p">,</span>  <span class="c1"># Alternativas: &quot;feather&quot;, &quot;hdf5&quot;, &quot;pickle&quot;</span>
+    <span class="n">optimization_level</span><span class="o">=</span><span class="s2">&quot;balanced&quot;</span><span class="p">,</span>  <span class="c1"># Alternativas: &quot;size&quot;, &quot;speed&quot;</span>
+    <span class="n">partitioning_columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;año&quot;</span><span class="p">,</span> <span class="s2">&quot;mes&quot;</span><span class="p">],</span>  <span class="c1"># Particionar por estas columnas</span>
+    <span class="n">compression</span><span class="o">=</span><span class="s2">&quot;snappy&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Cargar datos optimizados</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.data_loading</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_optimized_data</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">load_optimized_data</span><span class="p">(</span><span class="n">optimized_file</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="conclusion">
+<h3>Conclusión<a class="headerlink" href="#conclusion" title="Link to this heading"></a></h3>
+<p>La optimización del rendimiento es un aspecto crítico cuando se trabaja con grandes volúmenes de datos o se requiere un procesamiento eficiente. Las estrategias presentadas en este documento le permitirán mejorar significativamente el rendimiento del sistema «UN PASO AL EXITO» en diversos escenarios.</p>
+<p>Recuerde que la optimización debe ser un proceso iterativo:</p>
+<ol class="arabic simple">
+<li><p>Mida el rendimiento actual (establezca una línea base)</p></li>
+<li><p>Identifique cuellos de botella</p></li>
+<li><p>Aplique optimizaciones específicas</p></li>
+<li><p>Mida nuevamente para verificar mejoras</p></li>
+<li><p>Repita según sea necesario</p></li>
+</ol>
+<p>No todas las optimizaciones son necesarias en todos los casos. Enfóquese primero en las áreas que proporcionarán las mayores ganancias de rendimiento para su caso de uso específico.</p>
+<hr class="docutils" />
+<p><strong>Nota</strong>: Los ejemplos de código en esta guía asumen que las funciones mencionadas están implementadas en el sistema. Si alguna funcionalidad específica no está disponible, consulte la sección de extensibilidad en la documentación para implementar sus propias soluciones de optimización personalizadas.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="guia_analisis_avanzado.html" class="btn btn-neutral float-left" title="Guía de Análisis Avanzado" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="seguridad_datos.html" class="btn btn-neutral float-right" title="Seguridad de Datos" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, UN PASO AL EXITO.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

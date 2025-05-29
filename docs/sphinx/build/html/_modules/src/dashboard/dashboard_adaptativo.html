@@ -1,0 +1,724 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>src.dashboard.dashboard_adaptativo &mdash; documentación de Analisis de Datos y Visualizacion - 1.0</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=4936afed"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/translations.js?v=f85f4cfb"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Analisis de Datos y Visualizacion
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guías de Usuario:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/instalacion.html">Guía de Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/casos_uso.html">Casos de Uso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/preguntas_frecuentes.html">Preguntas Frecuentes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Módulos Principales:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/analysis.html">Módulo de Análisis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/geospatial.html">Módulo Geoespacial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/web.html">Módulo Web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/dashboard.html">Módulo de Dashboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/visualization.html">Módulo de Visualización</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/utils.html">Módulo de Utilidades</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentación Técnica:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/guia_analisis_avanzado.html">Guía de Análisis Avanzado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/optimizacion_rendimiento.html">Optimización de Rendimiento</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/seguridad_datos.html">Seguridad de Datos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/referencia_tecnica_detallada.html">Referencia Técnica Detallada</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/integracion_herramientas.html">Integración de Herramientas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/modules.html">src</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Analisis de Datos y Visualizacion</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Código de módulo</a></li>
+      <li class="breadcrumb-item active">src.dashboard.dashboard_adaptativo</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Código fuente para src.dashboard.dashboard_adaptativo</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Módulo de dashboard adaptativo para análisis de datos.</span>
+
+<span class="sd">Este script permite generar visualizaciones estáticas, informes HTML y recomendaciones a partir de datos limpios, facilitando el análisis exploratorio y descriptivo de grandes volúmenes de información.</span>
+
+<span class="sd">Flujo principal:</span>
+<span class="sd">- Carga y limpieza de datos desde un archivo CSV.</span>
+<span class="sd">- Generación de visualizaciones estáticas (histogramas, correlaciones, mapas, barras, etc.).</span>
+<span class="sd">- Creación de un informe HTML con tablas, gráficos y recomendaciones automáticas.</span>
+<span class="sd">- Opcionalmente, puede integrarse con dashboards interactivos.</span>
+
+<span class="sd">Dependencias principales: pandas, numpy, matplotlib, seaborn, os, sys, urllib.parse, re.</span>
+
+<span class="sd">Estructura del archivo:</span>
+<span class="sd">- Funciones utilitarias para carga, limpieza y visualización.</span>
+<span class="sd">- Función principal (main) que orquesta todo el proceso.</span>
+
+<span class="sd">Autor: Anderson Zapata</span>
+<span class="sd">Fecha: 2025</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">urllib.parse</span><span class="w"> </span><span class="kn">import</span> <span class="n">urlparse</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+
+<span class="c1"># Añadir el directorio raíz del proyecto al path para poder importar módulos</span>
+<span class="n">proyecto_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s1">&#39;../..&#39;</span><span class="p">))</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">proyecto_dir</span><span class="p">)</span>
+
+<span class="c1"># Crear directorios para visualizaciones</span>
+<span class="n">dashboard_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)),</span> <span class="s1">&#39;dashboard_estatico&#39;</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">dashboard_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<div class="viewcode-block" id="detect_delimiter">
+<a class="viewcode-back" href="../../../modules/dashboard.html#src.dashboard.dashboard_adaptativo.detect_delimiter">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">detect_delimiter</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">num_lines</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Detecta automáticamente el delimitador utilizado en un archivo CSV.</span>
+
+<span class="sd">    Parámetros</span>
+<span class="sd">    ----------</span>
+<span class="sd">    file_path : str</span>
+<span class="sd">        Ruta al archivo CSV que se desea analizar.</span>
+<span class="sd">    num_lines : int, opcional</span>
+<span class="sd">        Número de líneas a analizar para detectar el delimitador (por defecto 5).</span>
+
+<span class="sd">    Retorna</span>
+<span class="sd">    -------</span>
+<span class="sd">    str</span>
+<span class="sd">        El delimitador detectado (puede ser &#39;,&#39;, &#39;;&#39;, &#39;\t&#39; o &#39;|&#39;).</span>
+
+<span class="sd">    Advertencias</span>
+<span class="sd">    ------------</span>
+<span class="sd">    - Si el archivo tiene pocos datos o un formato inusual, la detección puede fallar.</span>
+<span class="sd">    - Solo analiza las primeras líneas, por lo que si el delimitador cambia en el archivo, puede no detectarse correctamente.</span>
+
+<span class="sd">    Ejemplo</span>
+<span class="sd">    -------</span>
+<span class="sd">    &gt;&gt;&gt; detect_delimiter(&#39;datos.csv&#39;)</span>
+<span class="sd">    &#39;,&#39;</span>
+
+<span class="sd">    Lógica Interna</span>
+<span class="sd">    --------------</span>
+<span class="sd">    1. Lee las primeras líneas del archivo.</span>
+<span class="sd">    2. Cuenta cuántas veces aparece cada delimitador común.</span>
+<span class="sd">    3. Retorna el que más aparece.</span>
+
+<span class="sd">    Autor: Anderson Zapata</span>
+<span class="sd">    Fecha: 2025</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">sample</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">file</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_lines</span><span class="p">)])</span>
+    
+    <span class="n">delimiters</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;,&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;;&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;|&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+    <span class="k">for</span> <span class="n">delimiter</span> <span class="ow">in</span> <span class="n">delimiters</span><span class="p">:</span>
+        <span class="n">delimiters</span><span class="p">[</span><span class="n">delimiter</span><span class="p">]</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">delimiter</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">delimiters</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">delimiters</span><span class="o">.</span><span class="n">get</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="load_and_clean_data">
+<a class="viewcode-back" href="../../../modules/dashboard.html#src.dashboard.dashboard_adaptativo.load_and_clean_data">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">load_and_clean_data</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Carga y limpia un archivo CSV, dejando los datos listos para análisis y visualización.</span>
+
+<span class="sd">    Parámetros</span>
+<span class="sd">    ----------</span>
+<span class="sd">    file_path : str</span>
+<span class="sd">        Ruta al archivo CSV.</span>
+
+<span class="sd">    Retorna</span>
+<span class="sd">    -------</span>
+<span class="sd">    df_cleaned : pandas.DataFrame</span>
+<span class="sd">        DataFrame limpio y listo para análisis.</span>
+<span class="sd">    geo_cols : dict</span>
+<span class="sd">        Diccionario con listas de nombres de columnas geográficas detectadas (&#39;lat&#39;, &#39;lon&#39;).</span>
+
+<span class="sd">    Advertencias</span>
+<span class="sd">    ------------</span>
+<span class="sd">    - Si el archivo tiene problemas de codificación, intenta con &#39;utf-8&#39; y luego con &#39;latin1&#39;.</span>
+<span class="sd">    - Si no se puede cargar, retorna (None, None).</span>
+<span class="sd">    - Si hay columnas con nombres poco claros, pueden no ser detectadas como geográficas.</span>
+
+<span class="sd">    Ejemplo</span>
+<span class="sd">    -------</span>
+<span class="sd">    &gt;&gt;&gt; df, geo_cols = load_and_clean_data(&#39;datos.csv&#39;)</span>
+
+<span class="sd">    Lógica Interna</span>
+<span class="sd">    --------------</span>
+<span class="sd">    1. Detecta el delimitador.</span>
+<span class="sd">    2. Intenta cargar el archivo con diferentes codificaciones.</span>
+<span class="sd">    3. Limpia nombres de columnas y elimina duplicados.</span>
+<span class="sd">    4. Rellena valores nulos en columnas numéricas y de texto.</span>
+<span class="sd">    5. Extrae dominios de URLs si existen.</span>
+<span class="sd">    6. Detecta columnas de latitud y longitud.</span>
+
+<span class="sd">    Autor: Anderson Zapata</span>
+<span class="sd">    Fecha: 2025</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cargando datos desde: </span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Detectar delimitador</span>
+    <span class="n">delimiter</span> <span class="o">=</span> <span class="n">detect_delimiter</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Delimitador detectado: &#39;</span><span class="si">{</span><span class="n">delimiter</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Cargar datos</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="n">delimiter</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error con encoding utf-8: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="n">delimiter</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin1&#39;</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error con encoding latin1: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Datos cargados. Dimensiones: </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Nombres de columnas detectadas: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Limpiar nombres de columnas</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+    
+    <span class="c1"># Eliminar duplicados</span>
+    <span class="n">df_cleaned</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Duplicados eliminados: </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">df_cleaned</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Identificar columnas numéricas y rellenar valores nulos</span>
+    <span class="n">numeric_cols</span> <span class="o">=</span> <span class="n">df_cleaned</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">numeric_cols</span><span class="p">:</span>
+        <span class="n">df_cleaned</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df_cleaned</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
+        <span class="n">df_cleaned</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">df_cleaned</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="c1"># Identificar columnas de texto y rellenar valores nulos</span>
+    <span class="n">text_cols</span> <span class="o">=</span> <span class="n">df_cleaned</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;object&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">text_cols</span><span class="p">:</span>
+        <span class="n">df_cleaned</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s2">&quot;Desconocido&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="c1"># Extraer dominios de URLs</span>
+    <span class="n">url_cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">text_cols</span> <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">url_term</span> <span class="ow">in</span> <span class="n">col</span> <span class="k">for</span> <span class="n">url_term</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">,</span> <span class="s1">&#39;link&#39;</span><span class="p">,</span> <span class="s1">&#39;web&#39;</span><span class="p">])]</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">url_cols</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">df_cleaned</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s1">_domain&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_cleaned</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+                <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">urlparse</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">netloc</span> <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">notna</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="n">x</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;No se pudo extraer dominio de la columna </span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Identificar columnas geográficas</span>
+    <span class="n">geo_cols</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;lat&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df_cleaned</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">term</span> <span class="ow">in</span> <span class="n">col</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">,</span> <span class="s1">&#39;latitude&#39;</span><span class="p">])],</span>
+        <span class="s1">&#39;lon&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df_cleaned</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">term</span> <span class="ow">in</span> <span class="n">col</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">,</span> <span class="s1">&#39;lng&#39;</span><span class="p">,</span> <span class="s1">&#39;longitude&#39;</span><span class="p">])]</span>
+    <span class="p">}</span>
+    
+    <span class="k">if</span> <span class="n">geo_cols</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="n">geo_cols</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Columnas geográficas detectadas: </span><span class="si">{</span><span class="n">geo_cols</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">df_cleaned</span><span class="p">,</span> <span class="n">geo_cols</span></div>
+
+
+<div class="viewcode-block" id="generate_static_visualizations">
+<a class="viewcode-back" href="../../../modules/dashboard.html#src.dashboard.dashboard_adaptativo.generate_static_visualizations">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">generate_static_visualizations</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">geo_cols</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Genera visualizaciones estáticas y estadísticas descriptivas a partir de un DataFrame limpio.</span>
+
+<span class="sd">    Parámetros</span>
+<span class="sd">    ----------</span>
+<span class="sd">    df : pandas.DataFrame</span>
+<span class="sd">        DataFrame limpio.</span>
+<span class="sd">    geo_cols : dict</span>
+<span class="sd">        Diccionario con listas de columnas geográficas (&#39;lat&#39;, &#39;lon&#39;).</span>
+<span class="sd">    output_dir : str</span>
+<span class="sd">        Directorio donde se guardarán las imágenes y archivos generados.</span>
+
+<span class="sd">    Retorna</span>
+<span class="sd">    -------</span>
+<span class="sd">    bool</span>
+<span class="sd">        True si se generaron correctamente las visualizaciones.</span>
+
+<span class="sd">    Advertencias</span>
+<span class="sd">    ------------</span>
+<span class="sd">    - Si no hay columnas numéricas o geográficas, se omiten ciertos gráficos.</span>
+<span class="sd">    - El directorio de salida debe existir y ser escribible.</span>
+<span class="sd">    - Si hay muchas columnas, solo se grafican las más relevantes para evitar sobrecarga visual.</span>
+
+<span class="sd">    Ejemplo</span>
+<span class="sd">    -------</span>
+<span class="sd">    &gt;&gt;&gt; generate_static_visualizations(df, geo_cols, &#39;output/&#39;)</span>
+
+<span class="sd">    Lógica Interna</span>
+<span class="sd">    --------------</span>
+<span class="sd">    1. Genera histogramas de variables numéricas.</span>
+<span class="sd">    2. Genera matriz de correlación.</span>
+<span class="sd">    3. Genera gráficos de dispersión.</span>
+<span class="sd">    4. Genera gráficos de barras para variables categóricas o dominios.</span>
+<span class="sd">    5. Si hay coordenadas, genera un mapa de dispersión.</span>
+<span class="sd">    6. Guarda estadísticas descriptivas en CSV.</span>
+<span class="sd">    7. Llama a la función para generar el informe HTML.</span>
+
+<span class="sd">    Autor: Anderson Zapata</span>
+<span class="sd">    Fecha: 2025</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Generando visualizaciones estáticas...&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Configurar estilo de las visualizaciones</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn-v0_8-whitegrid&#39;</span><span class="p">)</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">set_palette</span><span class="p">(</span><span class="s2">&quot;viridis&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Filtrar columnas relevantes</span>
+    <span class="n">irrelevantes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;fecha&#39;</span><span class="p">,</span> <span class="s1">&#39;unknown&#39;</span><span class="p">,</span> <span class="s1">&#39;desconocido&#39;</span><span class="p">]</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">es_relevante</span><span class="p">(</span><span class="n">col</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">term</span> <span class="ow">in</span> <span class="n">col</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="n">irrelevantes</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="n">numeric_cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">es_relevante</span><span class="p">(</span><span class="n">col</span><span class="p">)]</span>
+    <span class="n">text_cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;object&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">es_relevante</span><span class="p">(</span><span class="n">col</span><span class="p">)]</span>
+    
+    <span class="c1"># Usar columnas explícitas según datos_limpios.csv</span>
+    <span class="n">year_col</span> <span class="o">=</span> <span class="s1">&#39;año_evento&#39;</span>
+    <span class="n">country_col</span> <span class="o">=</span> <span class="s1">&#39;pais_codigo&#39;</span>
+    <span class="n">region_col</span> <span class="o">=</span> <span class="s1">&#39;region&#39;</span>
+    <span class="c1"># 1. Gráfica de barras: sucesos por año</span>
+    <span class="k">if</span> <span class="n">year_col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Generando gráfica de sucesos por año...&#39;</span><span class="p">)</span>
+        <span class="n">years</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">year_col</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+        <span class="n">year_counts</span> <span class="o">=</span> <span class="n">years</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+        <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">year_counts</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">year_counts</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;crest&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Cantidad de sucesos políticos por año&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Año&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Cantidad de sucesos&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+        <span class="n">path_ano</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dashboard_dir</span><span class="p">,</span> <span class="s1">&#39;sucesos_por_ano.png&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">path_ano</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gráfico de sucesos por año guardado en: </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">path_ano</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># 3. Tasa de crecimiento anual (%)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Generando gráfica de tasa de crecimiento anual...&#39;</span><span class="p">)</span>
+        <span class="n">tasa</span> <span class="o">=</span> <span class="n">year_counts</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+        <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">year_counts</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">tasa</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;flare&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Tasa de crecimiento anual de sucesos políticos (%)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Año&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Tasa de crecimiento (%)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+        <span class="n">path_tasa</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dashboard_dir</span><span class="p">,</span> <span class="s1">&#39;tasa_crecimiento_anual.png&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">path_tasa</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gráfico de tasa de crecimiento anual guardado en: </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">path_tasa</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># 2. Gráfica de torta: proporción por país</span>
+    <span class="k">if</span> <span class="n">country_col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Generando gráfica de torta de proporción por país...&#39;</span><span class="p">)</span>
+        <span class="n">pie_data</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">country_col</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+        <span class="n">pie_data</span> <span class="o">=</span> <span class="n">pie_data</span><span class="p">[</span><span class="n">pie_data</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">!=</span> <span class="s1">&#39;desconocido&#39;</span><span class="p">]</span>
+        <span class="n">pie_counts</span> <span class="o">=</span> <span class="n">pie_data</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">pie_counts</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">pie_counts</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.1f%%</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">startangle</span><span class="o">=</span><span class="mi">140</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s1">&#39;pastel&#39;</span><span class="p">))</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribución porcentual de sucesos políticos por país&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+        <span class="n">path_pie</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dashboard_dir</span><span class="p">,</span> <span class="s1">&#39;proporcion_sucesos_pais.png&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">path_pie</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gráfico de torta guardado en: </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">path_pie</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># 7. Generar estadísticas descriptivas</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Generando estadísticas descriptivas...&quot;</span><span class="p">)</span>
+    <span class="n">stats</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+    <span class="n">stats_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="s1">&#39;estadisticas_descriptivas.csv&#39;</span><span class="p">)</span>
+    <span class="n">stats</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">stats_path</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Estadísticas descriptivas guardadas en: </span><span class="si">{</span><span class="n">stats_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># 8. Generar informe HTML</span>
+    <span class="n">generate_html_report</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span> <span class="n">geo_cols</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="kc">True</span></div>
+
+
+<div class="viewcode-block" id="generate_html_report">
+<a class="viewcode-back" href="../../../modules/dashboard.html#src.dashboard.dashboard_adaptativo.generate_html_report">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">generate_html_report</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span> <span class="n">geo_cols</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Genera un informe HTML con visualizaciones, estadísticas y recomendaciones automáticas.</span>
+
+<span class="sd">    Parámetros</span>
+<span class="sd">    ----------</span>
+<span class="sd">    df : pandas.DataFrame</span>
+<span class="sd">        DataFrame limpio y analizado.</span>
+<span class="sd">    output_dir : str</span>
+<span class="sd">        Directorio donde se guardarán las imágenes y el informe HTML.</span>
+<span class="sd">    geo_cols : dict</span>
+<span class="sd">        Diccionario con listas de columnas geográficas (&#39;lat&#39;, &#39;lon&#39;).</span>
+
+<span class="sd">    Retorna</span>
+<span class="sd">    -------</span>
+<span class="sd">    str</span>
+<span class="sd">        Ruta al archivo HTML generado.</span>
+
+<span class="sd">    Advertencias</span>
+<span class="sd">    ------------</span>
+<span class="sd">    - El informe solo enlaza imágenes PNG generadas previamente en el directorio de salida.</span>
+<span class="sd">    - Si no existen imágenes, la sección de visualizaciones puede quedar vacía.</span>
+
+<span class="sd">    Ejemplo</span>
+<span class="sd">    -------</span>
+<span class="sd">    &gt;&gt;&gt; generate_html_report(df, &#39;output/&#39;, geo_cols)</span>
+
+<span class="sd">    Lógica Interna</span>
+<span class="sd">    --------------</span>
+<span class="sd">    1. Busca imágenes PNG en el directorio de salida.</span>
+<span class="sd">    2. Construye el HTML con resumen, visualizaciones, estadísticas y recomendaciones.</span>
+<span class="sd">    3. Escribe el HTML en disco y retorna la ruta.</span>
+
+<span class="sd">    Autor: Anderson Zapata</span>
+<span class="sd">    Fecha: 2025</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Generando informe HTML...&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Obtener listas de imágenes generadas</span>
+    <span class="n">image_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">output_dir</span><span class="p">)</span> <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.png&#39;</span><span class="p">)]</span>
+    
+    <span class="c1"># Crear contenido HTML</span>
+    <span class="n">html_content</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    &lt;!DOCTYPE html&gt;</span>
+<span class="s2">    &lt;html lang=&quot;es&quot;&gt;</span>
+<span class="s2">    &lt;head&gt;</span>
+<span class="s2">        &lt;meta charset=&quot;UTF-8&quot;&gt;</span>
+<span class="s2">        &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span>
+<span class="s2">        &lt;title&gt;Informe de Análisis de Datos&lt;/title&gt;</span>
+<span class="s2">        &lt;style&gt;</span>
+<span class="s2">            body </span><span class="se">{{</span><span class="s2"> font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 20px; color: #333; </span><span class="se">}}</span>
+<span class="s2">            h1, h2, h3 </span><span class="se">{{</span><span class="s2"> color: #2c3e50; </span><span class="se">}}</span>
+<span class="s2">            .container </span><span class="se">{{</span><span class="s2"> max-width: 1200px; margin: 0 auto; </span><span class="se">}}</span>
+<span class="s2">            .header </span><span class="se">{{</span><span class="s2"> background-color: #ecf0f1; padding: 20px; border-radius: 5px; margin-bottom: 20px; </span><span class="se">}}</span>
+<span class="s2">            .section </span><span class="se">{{</span><span class="s2"> margin-bottom: 30px; background-color: white; padding: 20px; border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.1); </span><span class="se">}}</span>
+<span class="s2">            .image-container </span><span class="se">{{</span><span class="s2"> margin: 20px 0; text-align: center; </span><span class="se">}}</span>
+<span class="s2">            img </span><span class="se">{{</span><span class="s2"> max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 5px; </span><span class="se">}}</span>
+<span class="s2">            table </span><span class="se">{{</span><span class="s2"> width: 100%; border-collapse: collapse; margin: 20px 0; </span><span class="se">}}</span>
+<span class="s2">            th, td </span><span class="se">{{</span><span class="s2"> padding: 12px 15px; border-bottom: 1px solid #ddd; text-align: left; </span><span class="se">}}</span>
+<span class="s2">            th </span><span class="se">{{</span><span class="s2"> background-color: #f8f9fa; </span><span class="se">}}</span>
+<span class="s2">            tr:hover </span><span class="se">{{</span><span class="s2"> background-color: #f1f1f1; </span><span class="se">}}</span>
+<span class="s2">            .footer </span><span class="se">{{</span><span class="s2"> text-align: center; margin-top: 30px; color: #7f8c8d; </span><span class="se">}}</span>
+<span class="s2">        &lt;/style&gt;</span>
+<span class="s2">    &lt;/head&gt;</span>
+<span class="s2">    &lt;body&gt;</span>
+<span class="s2">        &lt;div class=&quot;container&quot;&gt;</span>
+<span class="s2">            &lt;div class=&quot;header&quot;&gt;</span>
+<span class="s2">                &lt;h1&gt;Informe de Análisis de Datos&lt;/h1&gt;</span>
+<span class="s2">                &lt;p&gt;Generado automáticamente a partir del archivo CSV&lt;/p&gt;</span>
+<span class="s2">            &lt;/div&gt;</span>
+<span class="s2">            </span>
+<span class="s2">            &lt;div class=&quot;section&quot;&gt;</span>
+<span class="s2">                &lt;h2&gt;Resumen del Conjunto de Datos&lt;/h2&gt;</span>
+<span class="s2">                &lt;p&gt;Dimensiones: </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> filas x </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> columnas&lt;/p&gt;</span>
+<span class="s2">                &lt;p&gt;Columnas numéricas: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="si">}</span><span class="s2">&lt;/p&gt;</span>
+<span class="s2">                &lt;p&gt;Columnas categóricas: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;object&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="si">}</span><span class="s2">&lt;/p&gt;</span>
+<span class="s2">                &lt;p&gt;Valores nulos totales: </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2">&lt;/p&gt;</span>
+<span class="s2">                </span>
+<span class="s2">                &lt;h3&gt;Primeras filas del conjunto de datos:&lt;/h3&gt;</span>
+<span class="s2">                &lt;div style=&quot;overflow-x: auto;&quot;&gt;</span>
+<span class="s2">                    </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">to_html</span><span class="p">()</span><span class="si">}</span>
+<span class="s2">                &lt;/div&gt;</span>
+<span class="s2">            &lt;/div&gt;</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+    
+    <span class="c1"># Sección de visualizaciones</span>
+    <span class="n">html_content</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            &lt;div class=&quot;section&quot;&gt;</span>
+<span class="s2">                &lt;h2&gt;Visualizaciones&lt;/h2&gt;</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+    
+    <span class="c1"># Agregar imágenes al informe</span>
+    <span class="k">for</span> <span class="n">img_file</span> <span class="ow">in</span> <span class="n">image_files</span><span class="p">:</span>
+        <span class="n">img_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;dashboard_estatico&#39;</span><span class="p">,</span> <span class="n">img_file</span><span class="p">)</span>
+        <span class="n">img_title</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">img_file</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.png&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
+        <span class="n">html_content</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">                &lt;div class=&quot;image-container&quot;&gt;</span>
+<span class="s2">                    &lt;h3&gt;</span><span class="si">{</span><span class="n">img_title</span><span class="si">}</span><span class="s2">&lt;/h3&gt;</span>
+<span class="s2">                    &lt;img src=&quot;</span><span class="si">{</span><span class="n">img_path</span><span class="si">}</span><span class="s2">&quot; alt=&quot;</span><span class="si">{</span><span class="n">img_title</span><span class="si">}</span><span class="s2">&quot;&gt;</span>
+<span class="s2">                &lt;/div&gt;</span>
+<span class="s2">        &quot;&quot;&quot;</span>
+    
+    <span class="n">html_content</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            &lt;/div&gt;</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+    
+    <span class="c1"># Sección de estadísticas</span>
+    <span class="n">html_content</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            &lt;div class=&quot;section&quot;&gt;</span>
+<span class="s2">                &lt;h2&gt;Estadísticas Descriptivas&lt;/h2&gt;</span>
+<span class="s2">                &lt;div style=&quot;overflow-x: auto;&quot;&gt;</span>
+<span class="s2">                    </span><span class="si">{}</span>
+<span class="s2">                &lt;/div&gt;</span>
+<span class="s2">            &lt;/div&gt;</span>
+<span class="s2">    &quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">to_html</span><span class="p">())</span>
+    
+    <span class="c1"># Sección de recomendaciones</span>
+    <span class="n">html_content</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            &lt;div class=&quot;section&quot;&gt;</span>
+<span class="s2">                &lt;h2&gt;Recomendaciones&lt;/h2&gt;</span>
+<span class="s2">                &lt;ul&gt;</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+    
+    <span class="c1"># Generar recomendaciones basadas en el análisis</span>
+    <span class="n">recommendations</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="c1"># Recomendación sobre valores nulos</span>
+    <span class="n">null_cols</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">()]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">null_cols</span><span class="p">:</span>
+        <span class="n">recommendations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&lt;li&gt;Se detectaron valores nulos en </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">null_cols</span><span class="p">)</span><span class="si">}</span><span class="s2"> columnas. Considere técnicas de imputación más avanzadas para mejorar la calidad de los datos.&lt;/li&gt;&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Recomendación sobre correlaciones</span>
+    <span class="n">numeric_cols</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">numeric_cols</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">corr_matrix</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">numeric_cols</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+        <span class="n">high_corr</span> <span class="o">=</span> <span class="p">[(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">corr_matrix</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">])</span> 
+                    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">corr_matrix</span><span class="o">.</span><span class="n">columns</span> 
+                    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">corr_matrix</span><span class="o">.</span><span class="n">columns</span> 
+                    <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">j</span> <span class="ow">and</span> <span class="nb">abs</span><span class="p">(</span><span class="n">corr_matrix</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mf">0.7</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">high_corr</span><span class="p">:</span>
+            <span class="n">recommendations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&lt;li&gt;Se detectaron </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">high_corr</span><span class="p">)</span><span class="si">}</span><span class="s2"> pares de variables con alta correlación (&gt;0.7). Considere técnicas de reducción de dimensionalidad como PCA.&lt;/li&gt;&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Recomendación sobre datos geográficos</span>
+    <span class="k">if</span> <span class="n">geo_cols</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="n">geo_cols</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">]:</span>
+        <span class="n">recommendations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&lt;li&gt;Los datos contienen información geográfica. Considere realizar análisis de clustering espacial o visualizaciones en mapas interactivos.&lt;/li&gt;&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Recomendación sobre dominios de URL</span>
+    <span class="n">domain_cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="s1">&#39;domain&#39;</span> <span class="ow">in</span> <span class="n">col</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">domain_cols</span><span class="p">:</span>
+        <span class="n">recommendations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&lt;li&gt;Se han extraído dominios de URLs. Considere un análisis más profundo del contenido web relacionado con estos dominios.&lt;/li&gt;&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Recomendación sobre dashboard interactivo</span>
+    <span class="n">recommendations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&lt;li&gt;Para un análisis más interactivo, instale las dependencias necesarias ejecutando: &lt;code&gt;pip install -r requirements_dashboard.txt&lt;/code&gt; y luego ejecute el dashboard interactivo.&lt;/li&gt;&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Agregar recomendaciones al HTML</span>
+    <span class="k">for</span> <span class="n">rec</span> <span class="ow">in</span> <span class="n">recommendations</span><span class="p">:</span>
+        <span class="n">html_content</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;                </span><span class="si">{</span><span class="n">rec</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+    
+    <span class="c1"># Cerrar la lista de recomendaciones y finalizar el HTML</span>
+    <span class="n">html_content</span> <span class="o">+=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">                &lt;/ul&gt;</span>
+<span class="s2">            &lt;/div&gt;</span>
+<span class="s2">            </span>
+<span class="s2">            &lt;div class=&quot;footer&quot;&gt;</span>
+<span class="s2">                &lt;p&gt;Informe generado automáticamente - © 2025 Análisis de Datos Avanzado&lt;/p&gt;</span>
+<span class="s2">            &lt;/div&gt;</span>
+<span class="s2">        &lt;/div&gt;</span>
+<span class="s2">    &lt;/body&gt;</span>
+<span class="s2">    &lt;/html&gt;</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+    
+    <span class="c1"># Guardar el informe HTML</span>
+    <span class="n">html_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="s1">&#39;informe_analisis.html&#39;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">html_path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">html_content</span><span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Informe HTML guardado en: </span><span class="si">{</span><span class="n">html_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">html_path</span></div>
+
+
+<div class="viewcode-block" id="plot_barras_coherentes">
+<a class="viewcode-back" href="../../../modules/dashboard.html#src.dashboard.dashboard_adaptativo.plot_barras_coherentes">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_barras_coherentes</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Genera y guarda un gráfico de barras para una columna categórica, omitiendo valores nulos o desconocidos.</span>
+
+<span class="sd">    Parámetros</span>
+<span class="sd">    ----------</span>
+<span class="sd">    df : pandas.DataFrame</span>
+<span class="sd">        DataFrame limpio.</span>
+<span class="sd">    col : str</span>
+<span class="sd">        Nombre de la columna categórica a graficar.</span>
+<span class="sd">    path : str</span>
+<span class="sd">        Ruta donde se guardará la imagen PNG generada.</span>
+
+<span class="sd">    Advertencias</span>
+<span class="sd">    ------------</span>
+<span class="sd">    - Solo se grafican los 15 valores más frecuentes.</span>
+<span class="sd">    - Si la columna tiene pocos valores únicos, el gráfico puede ser poco informativo.</span>
+
+<span class="sd">    Ejemplo</span>
+<span class="sd">    -------</span>
+<span class="sd">    &gt;&gt;&gt; plot_barras_coherentes(df, &#39;ciudad&#39;, &#39;output/ciudad.png&#39;)</span>
+
+<span class="sd">    Lógica Interna</span>
+<span class="sd">    --------------</span>
+<span class="sd">    1. Filtra valores nulos o &#39;desconocido&#39;.</span>
+<span class="sd">    2. Cuenta los valores más frecuentes.</span>
+<span class="sd">    3. Genera y guarda el gráfico de barras.</span>
+
+<span class="sd">    Autor: Anderson Zapata</span>
+<span class="sd">    Fecha: 2025</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">notnull</span><span class="p">()</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">!=</span> <span class="s1">&#39;desconocido&#39;</span><span class="p">)]</span>
+    <span class="n">conteo</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">conteo</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;skyblue&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Eventos por </span><span class="si">{</span><span class="n">col</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">col</span><span class="o">.</span><span class="n">capitalize</span><span class="p">())</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Cantidad de eventos&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gráfico de barras por </span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s2"> guardado: </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="main">
+<a class="viewcode-back" href="../../../modules/dashboard.html#src.dashboard.dashboard_adaptativo.main">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Función principal que orquesta la generación del dashboard adaptativo.</span>
+
+<span class="sd">    Este método ejecuta el flujo completo: carga y limpieza de datos, generación de visualizaciones y creación del informe HTML.</span>
+
+<span class="sd">    Retorna</span>
+<span class="sd">    -------</span>
+<span class="sd">    bool</span>
+<span class="sd">        True si el proceso se completó correctamente, False si hubo errores.</span>
+
+<span class="sd">    Advertencias</span>
+<span class="sd">    ------------</span>
+<span class="sd">    - El archivo de datos debe existir y estar en la ruta esperada.</span>
+<span class="sd">    - Si la carga de datos falla, el proceso se detiene.</span>
+<span class="sd">    - El directorio de salida debe tener permisos de escritura.</span>
+
+<span class="sd">    Ejemplo</span>
+<span class="sd">    -------</span>
+<span class="sd">    &gt;&gt;&gt; main()</span>
+
+<span class="sd">    Lógica Interna</span>
+<span class="sd">    --------------</span>
+<span class="sd">    1. Carga y limpia los datos desde un archivo CSV.</span>
+<span class="sd">    2. Genera visualizaciones estáticas y estadísticas.</span>
+<span class="sd">    3. Crea un informe HTML con los resultados.</span>
+<span class="sd">    4. Informa al usuario sobre la ubicación de los archivos generados.</span>
+
+<span class="sd">    Autor: Anderson Zapata</span>
+<span class="sd">    Fecha: 2025</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== Dashboard Adaptativo de Análisis de Datos ===&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Este script generará visualizaciones estáticas y un informe HTML.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Para un dashboard interactivo, instale las dependencias con: pip install -r requirements_dashboard.txt&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Iniciando análisis...&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Cargar datos</span>
+    <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">proyecto_dir</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;datos_limpios.csv&#39;</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">,</span> <span class="n">geo_cols</span> <span class="o">=</span> <span class="n">load_and_clean_data</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">df</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error: No se pudieron cargar los datos. Verifique el formato y la ruta del archivo.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    
+    <span class="c1"># Generar visualizaciones estáticas</span>
+    <span class="n">success</span> <span class="o">=</span> <span class="n">generate_static_visualizations</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">geo_cols</span><span class="p">,</span> <span class="n">dashboard_dir</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">success</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Proceso completado con éxito ===&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Se han generado visualizaciones estáticas en: </span><span class="si">{</span><span class="n">dashboard_dir</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Abra el informe HTML para ver los resultados: </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dashboard_dir</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;informe_analisis.html&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Para un dashboard interactivo, instale las dependencias con: pip install -r requirements_dashboard.txt&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;y luego ejecute: python dashboard_interactivo.py&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Error: No se pudieron generar todas las visualizaciones.&quot;</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">success</span></div>
+
+
+<span class="c1"># Ejecutar el script</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, UN PASO AL EXITO.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

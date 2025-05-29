@@ -1,0 +1,538 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Integración de Herramientas &mdash; documentación de Analisis de Datos y Visualizacion - 1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=4936afed"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=f85f4cfb"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="src" href="../api/modules.html" />
+    <link rel="prev" title="Referencia Técnica Detallada" href="referencia_tecnica_detallada.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Analisis de Datos y Visualizacion
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guías de Usuario:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="instalacion.html">Guía de Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="casos_uso.html">Casos de Uso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preguntas_frecuentes.html">Preguntas Frecuentes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Módulos Principales:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="analysis.html">Módulo de Análisis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geospatial.html">Módulo Geoespacial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="web.html">Módulo Web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dashboard.html">Módulo de Dashboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization.html">Módulo de Visualización</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">Módulo de Utilidades</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentación Técnica:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="guia_analisis_avanzado.html">Guía de Análisis Avanzado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optimizacion_rendimiento.html">Optimización de Rendimiento</a></li>
+<li class="toctree-l1"><a class="reference internal" href="seguridad_datos.html">Seguridad de Datos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="referencia_tecnica_detallada.html">Referencia Técnica Detallada</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Integración de Herramientas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#guia-de-integracion-de-herramientas">Guía de Integración de Herramientas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#integracion-con-herramientas-de-analisis">Integración con Herramientas de Análisis</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#exportacion-a-jupyter-notebook">Exportación a Jupyter Notebook</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#integracion-con-power-bi">Integración con Power BI</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#integracion-con-sistemas-de-bases-de-datos">Integración con Sistemas de Bases de Datos</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#exportacion-a-sql">Exportación a SQL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#importacion-desde-sql">Importación desde SQL</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#integracion-con-apis-web">Integración con APIs Web</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#consumo-de-apis-externas">Consumo de APIs Externas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#exposicion-de-resultados-como-api">Exposición de Resultados como API</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#integracion-con-herramientas-de-visualizacion">Integración con Herramientas de Visualización</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#exportacion-a-tableau">Exportación a Tableau</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#integracion-con-grafana">Integración con Grafana</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#automatizacion-e-integracion-continua">Automatización e Integración Continua</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#programacion-de-tareas-con-airflow">Programación de Tareas con Airflow</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#integracion-con-sistemas-de-notificacion">Integración con Sistemas de Notificación</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#envio-de-alertas-por-email">Envío de Alertas por Email</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#consideraciones-de-seguridad">Consideraciones de Seguridad</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#resolucion-de-problemas-comunes">Resolución de Problemas Comunes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#problemas-de-conexion-a-bases-de-datos">Problemas de Conexión a Bases de Datos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#errores-en-llamadas-a-apis">Errores en Llamadas a APIs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#problemas-de-formato-de-datos">Problemas de Formato de Datos</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api/modules.html">src</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Analisis de Datos y Visualizacion</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Integración de Herramientas</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/integracion_herramientas.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="integracion-de-herramientas">
+<h1>Integración de Herramientas<a class="headerlink" href="#integracion-de-herramientas" title="Link to this heading"></a></h1>
+<section id="guia-de-integracion-de-herramientas">
+<h2>Guía de Integración de Herramientas<a class="headerlink" href="#guia-de-integracion-de-herramientas" title="Link to this heading"></a></h2>
+<p>Este documento describe cómo integrar el sistema de análisis de datos con herramientas externas y otros sistemas.</p>
+<section id="integracion-con-herramientas-de-analisis">
+<h3>Integración con Herramientas de Análisis<a class="headerlink" href="#integracion-con-herramientas-de-analisis" title="Link to this heading"></a></h3>
+<section id="exportacion-a-jupyter-notebook">
+<h4>Exportación a Jupyter Notebook<a class="headerlink" href="#exportacion-a-jupyter-notebook" title="Link to this heading"></a></h4>
+<p>Los datos procesados y los resultados de análisis pueden ser fácilmente exportados para su uso en Jupyter Notebooks:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># En un Jupyter Notebook</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="c1"># Añadir la ruta del proyecto al path</span>
+<span class="n">proyecto_dir</span> <span class="o">=</span> <span class="s2">&quot;ruta/a/UN PASO AL EXITO&quot;</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">proyecto_dir</span><span class="p">)</span>
+
+<span class="c1"># Importar módulos del proyecto</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">src.analysis.analisis_predictivo</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_and_prepare_data</span><span class="p">,</span> <span class="n">train_models</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">src.visualization.visualizar_datos</span><span class="w"> </span><span class="kn">import</span> <span class="n">generar_visualizaciones</span>
+
+<span class="c1"># Cargar datos</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">load_and_prepare_data</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">proyecto_dir</span><span class="p">,</span> <span class="s1">&#39;src/data/20250525.export.CSV&#39;</span><span class="p">))</span>
+
+<span class="c1"># Realizar análisis adicionales</span>
+<span class="c1"># ...</span>
+</pre></div>
+</div>
+</section>
+<section id="integracion-con-power-bi">
+<h4>Integración con Power BI<a class="headerlink" href="#integracion-con-power-bi" title="Link to this heading"></a></h4>
+<p>Para visualizar los resultados en Power BI:</p>
+<ol class="arabic">
+<li><p>Exportar los datos procesados a CSV:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># En cualquier script del proyecto</span>
+<span class="n">df_resultados</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;resultados_para_powerbi.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>En Power BI:</p>
+<ul class="simple">
+<li><p>Usar «Obtener datos» &gt; «Texto/CSV»</p></li>
+<li><p>Seleccionar el archivo CSV exportado</p></li>
+<li><p>Configurar los tipos de datos según sea necesario</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+<section id="integracion-con-sistemas-de-bases-de-datos">
+<h3>Integración con Sistemas de Bases de Datos<a class="headerlink" href="#integracion-con-sistemas-de-bases-de-datos" title="Link to this heading"></a></h3>
+<section id="exportacion-a-sql">
+<h4>Exportación a SQL<a class="headerlink" href="#exportacion-a-sql" title="Link to this heading"></a></h4>
+<p>Para almacenar los resultados en una base de datos SQL:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sqlalchemy</span>
+
+<span class="c1"># Crear conexión a la base de datos</span>
+<span class="n">engine</span> <span class="o">=</span> <span class="n">sqlalchemy</span><span class="o">.</span><span class="n">create_engine</span><span class="p">(</span><span class="s1">&#39;sqlite:///mi_base_datos.db&#39;</span><span class="p">)</span>
+<span class="c1"># Para MySQL: &#39;mysql+pymysql://usuario:contraseña@localhost/nombre_db&#39;</span>
+<span class="c1"># Para PostgreSQL: &#39;postgresql://usuario:contraseña@localhost/nombre_db&#39;</span>
+
+<span class="c1"># Exportar DataFrame a tabla SQL</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">exportar_a_sql</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">nombre_tabla</span><span class="p">):</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="n">nombre_tabla</span><span class="p">,</span> <span class="n">engine</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Datos exportados a tabla &#39;</span><span class="si">{</span><span class="n">nombre_tabla</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+
+<span class="c1"># Ejemplo de uso</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">src.analysis.analisis_predictivo</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_and_prepare_data</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">load_and_prepare_data</span><span class="p">(</span><span class="s1">&#39;ruta/al/archivo.csv&#39;</span><span class="p">)</span>
+<span class="n">exportar_a_sql</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;datos_procesados&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="importacion-desde-sql">
+<h4>Importación desde SQL<a class="headerlink" href="#importacion-desde-sql" title="Link to this heading"></a></h4>
+<p>Para utilizar datos desde una base de datos SQL:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sqlalchemy</span>
+
+<span class="c1"># Crear conexión a la base de datos</span>
+<span class="n">engine</span> <span class="o">=</span> <span class="n">sqlalchemy</span><span class="o">.</span><span class="n">create_engine</span><span class="p">(</span><span class="s1">&#39;sqlite:///mi_base_datos.db&#39;</span><span class="p">)</span>
+
+<span class="c1"># Importar datos desde SQL</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">importar_desde_sql</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">conexion</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">conexion</span><span class="p">)</span>
+
+<span class="c1"># Ejemplo de uso</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">importar_desde_sql</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM datos_procesados&quot;</span><span class="p">,</span> <span class="n">engine</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Datos importados: </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> filas x </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> columnas&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="integracion-con-apis-web">
+<h3>Integración con APIs Web<a class="headerlink" href="#integracion-con-apis-web" title="Link to this heading"></a></h3>
+<section id="consumo-de-apis-externas">
+<h4>Consumo de APIs Externas<a class="headerlink" href="#consumo-de-apis-externas" title="Link to this heading"></a></h4>
+<p>Para enriquecer los datos con información de APIs externas:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">obtener_datos_api</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error al obtener datos: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+<span class="c1"># Ejemplo: Enriquecer datos con información geográfica</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">enriquecer_con_datos_geograficos</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">columna_ciudad</span><span class="p">):</span>
+    <span class="n">df_resultado</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">df_resultado</span><span class="p">[</span><span class="s1">&#39;info_geografica&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">ciudad</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">columna_ciudad</span><span class="p">]):</span>
+        <span class="c1"># Llamada a API de ejemplo (OpenStreetMap Nominatim)</span>
+        <span class="n">datos</span> <span class="o">=</span> <span class="n">obtener_datos_api</span><span class="p">(</span>
+            <span class="s2">&quot;https://nominatim.openstreetmap.org/search&quot;</span><span class="p">,</span>
+            <span class="p">{</span><span class="s2">&quot;q&quot;</span><span class="p">:</span> <span class="n">ciudad</span><span class="p">,</span> <span class="s2">&quot;format&quot;</span><span class="p">:</span> <span class="s2">&quot;json&quot;</span><span class="p">}</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">datos</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">datos</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">df_resultado</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="s1">&#39;latitud&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">datos</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;lat&#39;</span><span class="p">]</span>
+            <span class="n">df_resultado</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="s1">&#39;longitud&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">datos</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;lon&#39;</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">df_resultado</span>
+</pre></div>
+</div>
+</section>
+<section id="exposicion-de-resultados-como-api">
+<h4>Exposición de Resultados como API<a class="headerlink" href="#exposicion-de-resultados-como-api" title="Link to this heading"></a></h4>
+<p>Para exponer los resultados del análisis como una API REST:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">flask</span><span class="w"> </span><span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">jsonify</span><span class="p">,</span> <span class="n">request</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="c1"># Cargar datos (en una aplicación real, esto podría estar en una base de datos)</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">before_first_request</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">cargar_datos</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">df</span>
+    <span class="n">proyecto_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s1">&#39;..&#39;</span><span class="p">))</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">proyecto_dir</span><span class="p">,</span> <span class="s1">&#39;src/data/datos_limpios.csv&#39;</span><span class="p">))</span>
+
+<span class="c1"># Endpoint para obtener estadísticas descriptivas</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/api/estadisticas&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">obtener_estadisticas</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span>
+        <span class="s1">&#39;descripcion&#39;</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(),</span>
+        <span class="s1">&#39;columnas&#39;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">),</span>
+        <span class="s1">&#39;filas&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    <span class="p">})</span>
+
+<span class="c1"># Endpoint para filtrar datos</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/api/datos&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">obtener_datos</span><span class="p">():</span>
+    <span class="c1"># Obtener parámetros de consulta</span>
+    <span class="n">filtros</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+
+    <span class="c1"># Aplicar filtros si existen</span>
+    <span class="n">datos_filtrados</span> <span class="o">=</span> <span class="n">df</span>
+    <span class="k">for</span> <span class="n">columna</span><span class="p">,</span> <span class="n">valor</span> <span class="ow">in</span> <span class="n">filtros</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">columna</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="n">datos_filtrados</span> <span class="o">=</span> <span class="n">datos_filtrados</span><span class="p">[</span><span class="n">datos_filtrados</span><span class="p">[</span><span class="n">columna</span><span class="p">]</span> <span class="o">==</span> <span class="n">valor</span><span class="p">]</span>
+
+    <span class="c1"># Convertir a lista de diccionarios para JSON</span>
+    <span class="k">return</span> <span class="n">jsonify</span><span class="p">(</span><span class="n">datos_filtrados</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s1">&#39;records&#39;</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="integracion-con-herramientas-de-visualizacion">
+<h3>Integración con Herramientas de Visualización<a class="headerlink" href="#integracion-con-herramientas-de-visualizacion" title="Link to this heading"></a></h3>
+<section id="exportacion-a-tableau">
+<h4>Exportación a Tableau<a class="headerlink" href="#exportacion-a-tableau" title="Link to this heading"></a></h4>
+<p>Para visualizar los datos en Tableau:</p>
+<ol class="arabic">
+<li><p>Exportar los datos a CSV:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_resultados</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;datos_para_tableau.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>En Tableau:</p>
+<ul class="simple">
+<li><p>Conectar a un archivo de texto</p></li>
+<li><p>Seleccionar el archivo CSV exportado</p></li>
+<li><p>Configurar los tipos de datos según sea necesario</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="integracion-con-grafana">
+<h4>Integración con Grafana<a class="headerlink" href="#integracion-con-grafana" title="Link to this heading"></a></h4>
+<p>Para monitorizar los resultados en tiempo real con Grafana:</p>
+<ol class="arabic simple">
+<li><p>Configurar una base de datos compatible (como InfluxDB o PostgreSQL)</p></li>
+<li><p>Exportar periódicamente los resultados a la base de datos</p></li>
+<li><p>Configurar Grafana para conectarse a la base de datos</p></li>
+<li><p>Crear dashboards en Grafana para visualizar los datos</p></li>
+</ol>
+</section>
+</section>
+<section id="automatizacion-e-integracion-continua">
+<h3>Automatización e Integración Continua<a class="headerlink" href="#automatizacion-e-integracion-continua" title="Link to this heading"></a></h3>
+<section id="programacion-de-tareas-con-airflow">
+<h4>Programación de Tareas con Airflow<a class="headerlink" href="#programacion-de-tareas-con-airflow" title="Link to this heading"></a></h4>
+<p>Para automatizar la ejecución de análisis con Apache Airflow:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">airflow</span><span class="w"> </span><span class="kn">import</span> <span class="n">DAG</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">airflow.operators.python_operator</span><span class="w"> </span><span class="kn">import</span> <span class="n">PythonOperator</span>
+
+<span class="c1"># Definir argumentos por defecto</span>
+<span class="n">default_args</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;owner&#39;</span><span class="p">:</span> <span class="s1">&#39;un_paso_al_exito&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;depends_on_past&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s1">&#39;start_date&#39;</span><span class="p">:</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2025</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span>
+    <span class="s1">&#39;email_on_failure&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s1">&#39;email_on_retry&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s1">&#39;retries&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s1">&#39;retry_delay&#39;</span><span class="p">:</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span>
+<span class="p">}</span>
+
+<span class="c1"># Crear DAG</span>
+<span class="n">dag</span> <span class="o">=</span> <span class="n">DAG</span><span class="p">(</span>
+    <span class="s1">&#39;analisis_datos_diario&#39;</span><span class="p">,</span>
+    <span class="n">default_args</span><span class="o">=</span><span class="n">default_args</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Ejecuta análisis de datos diariamente&#39;</span><span class="p">,</span>
+    <span class="n">schedule_interval</span><span class="o">=</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+<span class="p">)</span>
+
+<span class="c1"># Definir funciones para las tareas</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">ejecutar_limpieza</span><span class="p">():</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;/ruta/a/UN PASO AL EXITO&#39;</span><span class="p">)</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">src.analysis.limpiar_analizar_csv</span><span class="w"> </span><span class="kn">import</span> <span class="n">limpiar_datos</span>
+    <span class="n">limpiar_datos</span><span class="p">(</span><span class="s1">&#39;/ruta/a/datos/20250525.export.CSV&#39;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">ejecutar_analisis_predictivo</span><span class="p">():</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;/ruta/a/UN PASO AL EXITO&#39;</span><span class="p">)</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">src.analysis.analisis_predictivo</span><span class="w"> </span><span class="kn">import</span> <span class="n">ejecutar_analisis</span>
+    <span class="n">ejecutar_analisis</span><span class="p">()</span>
+
+<span class="c1"># Crear tareas</span>
+<span class="n">tarea_limpieza</span> <span class="o">=</span> <span class="n">PythonOperator</span><span class="p">(</span>
+    <span class="n">task_id</span><span class="o">=</span><span class="s1">&#39;limpiar_datos&#39;</span><span class="p">,</span>
+    <span class="n">python_callable</span><span class="o">=</span><span class="n">ejecutar_limpieza</span><span class="p">,</span>
+    <span class="n">dag</span><span class="o">=</span><span class="n">dag</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">tarea_analisis</span> <span class="o">=</span> <span class="n">PythonOperator</span><span class="p">(</span>
+    <span class="n">task_id</span><span class="o">=</span><span class="s1">&#39;analisis_predictivo&#39;</span><span class="p">,</span>
+    <span class="n">python_callable</span><span class="o">=</span><span class="n">ejecutar_analisis_predictivo</span><span class="p">,</span>
+    <span class="n">dag</span><span class="o">=</span><span class="n">dag</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Definir dependencias</span>
+<span class="n">tarea_limpieza</span> <span class="o">&gt;&gt;</span> <span class="n">tarea_analisis</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="integracion-con-sistemas-de-notificacion">
+<h3>Integración con Sistemas de Notificación<a class="headerlink" href="#integracion-con-sistemas-de-notificacion" title="Link to this heading"></a></h3>
+<section id="envio-de-alertas-por-email">
+<h4>Envío de Alertas por Email<a class="headerlink" href="#envio-de-alertas-por-email" title="Link to this heading"></a></h4>
+<p>Para enviar notificaciones por email cuando se completen los análisis:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">smtplib</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">email.mime.text</span><span class="w"> </span><span class="kn">import</span> <span class="n">MIMEText</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">email.mime.multipart</span><span class="w"> </span><span class="kn">import</span> <span class="n">MIMEMultipart</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">enviar_email</span><span class="p">(</span><span class="n">destinatario</span><span class="p">,</span> <span class="n">asunto</span><span class="p">,</span> <span class="n">cuerpo</span><span class="p">,</span> <span class="n">remitente</span><span class="o">=</span><span class="s1">&#39;analisis@unpaso.com&#39;</span><span class="p">,</span> <span class="n">servidor</span><span class="o">=</span><span class="s1">&#39;smtp.servidor.com&#39;</span><span class="p">):</span>
+    <span class="c1"># Crear mensaje</span>
+    <span class="n">mensaje</span> <span class="o">=</span> <span class="n">MIMEMultipart</span><span class="p">()</span>
+    <span class="n">mensaje</span><span class="p">[</span><span class="s1">&#39;From&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">remitente</span>
+    <span class="n">mensaje</span><span class="p">[</span><span class="s1">&#39;To&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">destinatario</span>
+    <span class="n">mensaje</span><span class="p">[</span><span class="s1">&#39;Subject&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">asunto</span>
+
+    <span class="c1"># Añadir cuerpo del mensaje</span>
+    <span class="n">mensaje</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="n">MIMEText</span><span class="p">(</span><span class="n">cuerpo</span><span class="p">,</span> <span class="s1">&#39;html&#39;</span><span class="p">))</span>
+
+    <span class="c1"># Conectar al servidor SMTP y enviar</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">servidor_smtp</span> <span class="o">=</span> <span class="n">smtplib</span><span class="o">.</span><span class="n">SMTP</span><span class="p">(</span><span class="n">servidor</span><span class="p">,</span> <span class="mi">587</span><span class="p">)</span>
+        <span class="n">servidor_smtp</span><span class="o">.</span><span class="n">starttls</span><span class="p">()</span>
+        <span class="n">servidor_smtp</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">remitente</span><span class="p">,</span> <span class="s1">&#39;contraseña&#39;</span><span class="p">)</span>
+        <span class="n">texto</span> <span class="o">=</span> <span class="n">mensaje</span><span class="o">.</span><span class="n">as_string</span><span class="p">()</span>
+        <span class="n">servidor_smtp</span><span class="o">.</span><span class="n">sendmail</span><span class="p">(</span><span class="n">remitente</span><span class="p">,</span> <span class="n">destinatario</span><span class="p">,</span> <span class="n">texto</span><span class="p">)</span>
+        <span class="n">servidor_smtp</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Email enviado a </span><span class="si">{</span><span class="n">destinatario</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error al enviar email: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+<span class="c1"># Ejemplo de uso</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">notificar_analisis_completado</span><span class="p">(</span><span class="n">resultados</span><span class="p">):</span>
+    <span class="n">cuerpo_html</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    &lt;html&gt;</span>
+<span class="s2">    &lt;body&gt;</span>
+<span class="s2">        &lt;h2&gt;Análisis Completado&lt;/h2&gt;</span>
+<span class="s2">        &lt;p&gt;El análisis se ha completado con éxito.&lt;/p&gt;</span>
+<span class="s2">        &lt;h3&gt;Resultados:&lt;/h3&gt;</span>
+<span class="s2">        &lt;ul&gt;</span>
+<span class="s2">            &lt;li&gt;Precisión del modelo: </span><span class="si">{</span><span class="n">resultados</span><span class="p">[</span><span class="s1">&#39;precision&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&lt;/li&gt;</span>
+<span class="s2">            &lt;li&gt;Tiempo de ejecución: </span><span class="si">{</span><span class="n">resultados</span><span class="p">[</span><span class="s1">&#39;tiempo&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> segundos&lt;/li&gt;</span>
+<span class="s2">        &lt;/ul&gt;</span>
+<span class="s2">        &lt;p&gt;Puede ver el informe completo &lt;a href=&quot;http://servidor/informe.html&quot;&gt;aquí&lt;/a&gt;.&lt;/p&gt;</span>
+<span class="s2">    &lt;/body&gt;</span>
+<span class="s2">    &lt;/html&gt;</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+
+    <span class="n">enviar_email</span><span class="p">(</span>
+        <span class="s1">&#39;analista@empresa.com&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Análisis de Datos Completado&#39;</span><span class="p">,</span>
+        <span class="n">cuerpo_html</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="consideraciones-de-seguridad">
+<h3>Consideraciones de Seguridad<a class="headerlink" href="#consideraciones-de-seguridad" title="Link to this heading"></a></h3>
+<p>Al integrar el sistema con herramientas externas, tenga en cuenta las siguientes consideraciones de seguridad:</p>
+<ol class="arabic simple">
+<li><p><strong>Credenciales</strong>: Nunca incluya credenciales directamente en el código. Utilice variables de entorno o sistemas de gestión de secretos.</p></li>
+<li><p><strong>Validación de Datos</strong>: Valide siempre los datos recibidos de fuentes externas antes de procesarlos.</p></li>
+<li><p><strong>Control de Acceso</strong>: Implemente autenticación y autorización adecuadas para las APIs expuestas.</p></li>
+<li><p><strong>Cifrado</strong>: Utilice HTTPS/TLS para todas las comunicaciones en red.</p></li>
+<li><p><strong>Auditoría</strong>: Mantenga registros de todas las integraciones y accesos para fines de auditoría.</p></li>
+</ol>
+</section>
+<section id="resolucion-de-problemas-comunes">
+<h3>Resolución de Problemas Comunes<a class="headerlink" href="#resolucion-de-problemas-comunes" title="Link to this heading"></a></h3>
+<section id="problemas-de-conexion-a-bases-de-datos">
+<h4>Problemas de Conexión a Bases de Datos<a class="headerlink" href="#problemas-de-conexion-a-bases-de-datos" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Verifique que la base de datos esté en ejecución y sea accesible desde la máquina donde se ejecuta el script.</p></li>
+<li><p>Compruebe que las credenciales sean correctas.</p></li>
+<li><p>Asegúrese de que el usuario tenga los permisos necesarios.</p></li>
+</ul>
+</section>
+<section id="errores-en-llamadas-a-apis">
+<h4>Errores en Llamadas a APIs<a class="headerlink" href="#errores-en-llamadas-a-apis" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Verifique la URL y los parámetros de la solicitud.</p></li>
+<li><p>Compruebe si la API requiere autenticación.</p></li>
+<li><p>Verifique los límites de tasa de la API.</p></li>
+<li><p>Implemente reintentos con retroceso exponencial para manejar fallos temporales.</p></li>
+</ul>
+</section>
+<section id="problemas-de-formato-de-datos">
+<h4>Problemas de Formato de Datos<a class="headerlink" href="#problemas-de-formato-de-datos" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Asegúrese de que los datos exportados tengan el formato esperado por la herramienta de destino.</p></li>
+<li><p>Verifique la codificación de caracteres (UTF-8 es generalmente la mejor opción).</p></li>
+<li><p>Para archivos CSV, preste atención a los delimitadores y caracteres de escape.</p></li>
+</ul>
+<hr class="docutils" />
+<p>Esta guía proporciona una base para integrar el sistema de análisis de datos con diversas herramientas y sistemas externos. Adapte las soluciones según sus necesidades específicas y las herramientas particulares que utilice en su entorno.</p>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="referencia_tecnica_detallada.html" class="btn btn-neutral float-left" title="Referencia Técnica Detallada" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="../api/modules.html" class="btn btn-neutral float-right" title="src" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, UN PASO AL EXITO.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

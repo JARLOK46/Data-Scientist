@@ -1,0 +1,548 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guía de Análisis Avanzado &mdash; documentación de Analisis de Datos y Visualizacion - 1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=4936afed"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=f85f4cfb"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="Optimización de Rendimiento" href="optimizacion_rendimiento.html" />
+    <link rel="prev" title="Módulo de Utilidades" href="utils.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Analisis de Datos y Visualizacion
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guías de Usuario:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="instalacion.html">Guía de Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="casos_uso.html">Casos de Uso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preguntas_frecuentes.html">Preguntas Frecuentes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Módulos Principales:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="analysis.html">Módulo de Análisis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geospatial.html">Módulo Geoespacial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="web.html">Módulo Web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dashboard.html">Módulo de Dashboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization.html">Módulo de Visualización</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">Módulo de Utilidades</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentación Técnica:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Guía de Análisis Avanzado</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#guia-de-analisis-avanzado">Guía de Análisis Avanzado</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#indice">Índice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#preparacion-de-datos-avanzada">Preparación de Datos Avanzada</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#estrategias-para-datos-desbalanceados">Estrategias para Datos Desbalanceados</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#deteccion-y-tratamiento-de-valores-atipicos">Detección y Tratamiento de Valores Atípicos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ingenieria-de-caracteristicas-avanzada">Ingeniería de Características Avanzada</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#tecnicas-de-visualizacion-avanzada">Técnicas de Visualización Avanzada</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#visualizaciones-multidimensionales">Visualizaciones Multidimensionales</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#visualizaciones-interactivas-personalizadas">Visualizaciones Interactivas Personalizadas</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#analisis-predictivo-optimizado">Análisis Predictivo Optimizado</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#seleccion-automatica-de-modelos">Selección Automática de Modelos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#interpretabilidad-de-modelos">Interpretabilidad de Modelos</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#analisis-geoespacial-avanzado">Análisis Geoespacial Avanzado</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#analisis-de-patrones-espaciales">Análisis de Patrones Espaciales</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#integracion-con-datos-externos-geoespaciales">Integración con Datos Externos Geoespaciales</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#analisis-de-texto-y-web-profundo">Análisis de Texto y Web Profundo</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#analisis-de-sentimiento-avanzado">Análisis de Sentimiento Avanzado</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#extraccion-y-analisis-de-entidades">Extracción y Análisis de Entidades</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#automatizacion-de-analisis">Automatización de Análisis</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creacion-de-flujos-de-trabajo-personalizados">Creación de Flujos de Trabajo Personalizados</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#monitoreo-de-modelos-en-produccion">Monitoreo de Modelos en Producción</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#integracion-con-otras-herramientas">Integración con Otras Herramientas</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#exportacion-avanzada-a-herramientas-de-bi">Exportación Avanzada a Herramientas de BI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#integracion-con-sistemas-de-bases-de-datos">Integración con Sistemas de Bases de Datos</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#conclusion">Conclusión</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="optimizacion_rendimiento.html">Optimización de Rendimiento</a></li>
+<li class="toctree-l1"><a class="reference internal" href="seguridad_datos.html">Seguridad de Datos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="referencia_tecnica_detallada.html">Referencia Técnica Detallada</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integracion_herramientas.html">Integración de Herramientas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/modules.html">src</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Analisis de Datos y Visualizacion</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Guía de Análisis Avanzado</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/guia_analisis_avanzado.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="guia-de-analisis-avanzado">
+<h1>Guía de Análisis Avanzado<a class="headerlink" href="#guia-de-analisis-avanzado" title="Link to this heading"></a></h1>
+<section id="guia-de-analisis-avanzado">
+<h2>Guía de Análisis Avanzado<a class="headerlink" href="#guia-de-analisis-avanzado" title="Link to this heading"></a></h2>
+<p>Este documento proporciona técnicas y metodologías avanzadas para maximizar el valor de los análisis realizados con el sistema «UN PASO AL EXITO». Está dirigido a usuarios que ya están familiarizados con las funcionalidades básicas del sistema.</p>
+<section id="indice">
+<h3>Índice<a class="headerlink" href="#indice" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#preparaci%C3%B3n-de-datos-avanzada"><span class="xref myst">Preparación de Datos Avanzada</span></a></p></li>
+<li><p><a class="reference internal" href="#t%C3%A9cnicas-de-visualizaci%C3%B3n-avanzada"><span class="xref myst">Técnicas de Visualización Avanzada</span></a></p></li>
+<li><p><a class="reference internal" href="#an%C3%A1lisis-predictivo-optimizado"><span class="xref myst">Análisis Predictivo Optimizado</span></a></p></li>
+<li><p><a class="reference internal" href="#an%C3%A1lisis-geoespacial-avanzado"><span class="xref myst">Análisis Geoespacial Avanzado</span></a></p></li>
+<li><p><a class="reference internal" href="#an%C3%A1lisis-de-texto-y-web-profundo"><span class="xref myst">Análisis de Texto y Web Profundo</span></a></p></li>
+<li><p><a class="reference internal" href="#automatizaci%C3%B3n-de-an%C3%A1lisis"><span class="xref myst">Automatización de Análisis</span></a></p></li>
+<li><p><a class="reference internal" href="#integraci%C3%B3n-con-otras-herramientas"><span class="xref myst">Integración con Otras Herramientas</span></a></p></li>
+</ol>
+</section>
+<section id="preparacion-de-datos-avanzada">
+<h3>Preparación de Datos Avanzada<a class="headerlink" href="#preparacion-de-datos-avanzada" title="Link to this heading"></a></h3>
+<section id="estrategias-para-datos-desbalanceados">
+<h4>Estrategias para Datos Desbalanceados<a class="headerlink" href="#estrategias-para-datos-desbalanceados" title="Link to this heading"></a></h4>
+<p>Cuando trabajas con datos desbalanceados (por ejemplo, en clasificación donde una clase es mucho más frecuente que otras):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importar módulos necesarios</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">src.analysis.analisis_predictivo</span><span class="w"> </span><span class="kn">import</span> <span class="n">balance_dataset</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.helpers</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="c1"># Cargar datos</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s1">&#39;datos_desbalanceados.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># Aplicar técnicas de balanceo</span>
+<span class="n">df_balanced</span> <span class="o">=</span> <span class="n">balance_dataset</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">target_column</span><span class="o">=</span><span class="s1">&#39;clase&#39;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;smote&#39;</span><span class="p">)</span>
+<span class="c1"># Alternativas: &#39;undersample&#39;, &#39;oversample&#39;, &#39;smote&#39;, &#39;adasyn&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="deteccion-y-tratamiento-de-valores-atipicos">
+<h4>Detección y Tratamiento de Valores Atípicos<a class="headerlink" href="#deteccion-y-tratamiento-de-valores-atipicos" title="Link to this heading"></a></h4>
+<p>Los valores atípicos pueden distorsionar significativamente los análisis:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.analysis.limpiar_analizar_csv</span><span class="w"> </span><span class="kn">import</span> <span class="n">detect_outliers</span><span class="p">,</span> <span class="n">handle_outliers</span>
+
+<span class="c1"># Detectar valores atípicos usando múltiples métodos</span>
+<span class="n">outliers_info</span> <span class="o">=</span> <span class="n">detect_outliers</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;columna_numerica&#39;</span><span class="p">],</span>
+                               <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;zscore&#39;</span><span class="p">,</span> <span class="s1">&#39;iqr&#39;</span><span class="p">,</span> <span class="s1">&#39;isolation_forest&#39;</span><span class="p">])</span>
+
+<span class="c1"># Visualizar valores atípicos</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">src.visualization.visualizar_datos</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_outliers</span>
+<span class="n">plot_outliers</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">outliers_info</span><span class="p">,</span> <span class="n">save_path</span><span class="o">=</span><span class="s1">&#39;outliers_analysis.png&#39;</span><span class="p">)</span>
+
+<span class="c1"># Tratar valores atípicos</span>
+<span class="n">df_cleaned</span> <span class="o">=</span> <span class="n">handle_outliers</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">outliers_info</span><span class="p">,</span>
+                           <span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;winsorize&#39;</span><span class="p">,</span> <span class="c1"># Alternativas: &#39;remove&#39;, &#39;cap&#39;, &#39;transform&#39;</span>
+                           <span class="n">percentile</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="ingenieria-de-caracteristicas-avanzada">
+<h4>Ingeniería de Características Avanzada<a class="headerlink" href="#ingenieria-de-caracteristicas-avanzada" title="Link to this heading"></a></h4>
+<p>La creación de características relevantes puede mejorar significativamente el rendimiento de los modelos:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.analysis.analisis_predictivo</span><span class="w"> </span><span class="kn">import</span> <span class="n">feature_engineering</span>
+
+<span class="c1"># Aplicar transformaciones automáticas basadas en el tipo de datos</span>
+<span class="n">df_engineered</span> <span class="o">=</span> <span class="n">feature_engineering</span><span class="p">(</span><span class="n">df</span><span class="p">,</span>
+                                   <span class="n">date_columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;fecha&#39;</span><span class="p">],</span>
+                                   <span class="n">categorical_columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;categoria&#39;</span><span class="p">],</span>
+                                   <span class="n">text_columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;descripcion&#39;</span><span class="p">],</span>
+                                   <span class="n">numeric_columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;valor&#39;</span><span class="p">],</span>
+                                   <span class="n">interactions</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="c1"># Crear interacciones entre variables</span>
+                                   <span class="n">polynomial</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>     <span class="c1"># Características polinómicas</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="tecnicas-de-visualizacion-avanzada">
+<h3>Técnicas de Visualización Avanzada<a class="headerlink" href="#tecnicas-de-visualizacion-avanzada" title="Link to this heading"></a></h3>
+<section id="visualizaciones-multidimensionales">
+<h4>Visualizaciones Multidimensionales<a class="headerlink" href="#visualizaciones-multidimensionales" title="Link to this heading"></a></h4>
+<p>Para explorar relaciones complejas entre múltiples variables:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.visualization.visualizar_datos</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_advanced_visualization</span>
+
+<span class="c1"># Crear matriz de dispersión con múltiples variables</span>
+<span class="n">create_advanced_visualization</span><span class="p">(</span><span class="n">df</span><span class="p">,</span>
+                             <span class="n">plot_type</span><span class="o">=</span><span class="s1">&#39;pairplot&#39;</span><span class="p">,</span>
+                             <span class="nb">vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;var1&#39;</span><span class="p">,</span> <span class="s1">&#39;var2&#39;</span><span class="p">,</span> <span class="s1">&#39;var3&#39;</span><span class="p">,</span> <span class="s1">&#39;var4&#39;</span><span class="p">],</span>
+                             <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;categoria&#39;</span><span class="p">,</span>
+                             <span class="n">save_path</span><span class="o">=</span><span class="s1">&#39;analisis_multivariable.png&#39;</span><span class="p">)</span>
+
+<span class="c1"># Crear visualización de coordenadas paralelas</span>
+<span class="n">create_advanced_visualization</span><span class="p">(</span><span class="n">df</span><span class="p">,</span>
+                             <span class="n">plot_type</span><span class="o">=</span><span class="s1">&#39;parallel_coordinates&#39;</span><span class="p">,</span>
+                             <span class="nb">vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;var1&#39;</span><span class="p">,</span> <span class="s1">&#39;var2&#39;</span><span class="p">,</span> <span class="s1">&#39;var3&#39;</span><span class="p">,</span> <span class="s1">&#39;var4&#39;</span><span class="p">],</span>
+                             <span class="n">class_column</span><span class="o">=</span><span class="s1">&#39;categoria&#39;</span><span class="p">,</span>
+                             <span class="n">save_path</span><span class="o">=</span><span class="s1">&#39;coordenadas_paralelas.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="visualizaciones-interactivas-personalizadas">
+<h4>Visualizaciones Interactivas Personalizadas<a class="headerlink" href="#visualizaciones-interactivas-personalizadas" title="Link to this heading"></a></h4>
+<p>Para crear visualizaciones interactivas más allá del dashboard estándar:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.dashboard.dashboard_components</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_custom_visualization</span>
+
+<span class="c1"># Crear visualización interactiva personalizada</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">create_custom_visualization</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;variable_x&#39;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;variable_y&#39;</span><span class="p">,</span>
+    <span class="n">size</span><span class="o">=</span><span class="s1">&#39;variable_tamaño&#39;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s1">&#39;variable_color&#39;</span><span class="p">,</span>
+    <span class="n">hover_data</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;info1&#39;</span><span class="p">,</span> <span class="s1">&#39;info2&#39;</span><span class="p">],</span>
+    <span class="n">animation_frame</span><span class="o">=</span><span class="s1">&#39;fecha&#39;</span><span class="p">,</span>  <span class="c1"># Para gráficos animados</span>
+    <span class="n">visualization_type</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span>  <span class="c1"># Alternativas: &#39;bar&#39;, &#39;line&#39;, &#39;heatmap&#39;, etc.</span>
+<span class="p">)</span>
+
+<span class="c1"># Guardar como HTML interactivo</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.export</span><span class="w"> </span><span class="kn">import</span> <span class="n">save_interactive_plot</span>
+<span class="n">save_interactive_plot</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="s1">&#39;visualizacion_personalizada.html&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="analisis-predictivo-optimizado">
+<h3>Análisis Predictivo Optimizado<a class="headerlink" href="#analisis-predictivo-optimizado" title="Link to this heading"></a></h3>
+<section id="seleccion-automatica-de-modelos">
+<h4>Selección Automática de Modelos<a class="headerlink" href="#seleccion-automatica-de-modelos" title="Link to this heading"></a></h4>
+<p>Para encontrar el mejor modelo para tus datos:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.analysis.analisis_predictivo</span><span class="w"> </span><span class="kn">import</span> <span class="n">auto_model_selection</span>
+
+<span class="c1"># Configurar y ejecutar selección automática de modelos</span>
+<span class="n">best_model</span><span class="p">,</span> <span class="n">performance_report</span> <span class="o">=</span> <span class="n">auto_model_selection</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">,</span>
+    <span class="n">target_column</span><span class="o">=</span><span class="s1">&#39;objetivo&#39;</span><span class="p">,</span>
+    <span class="n">feature_columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;var1&#39;</span><span class="p">,</span> <span class="s1">&#39;var2&#39;</span><span class="p">,</span> <span class="s1">&#39;var3&#39;</span><span class="p">],</span>
+    <span class="n">problem_type</span><span class="o">=</span><span class="s1">&#39;classification&#39;</span><span class="p">,</span>  <span class="c1"># Alternativas: &#39;regression&#39;, &#39;clustering&#39;</span>
+    <span class="n">evaluation_metric</span><span class="o">=</span><span class="s1">&#39;f1&#39;</span><span class="p">,</span>         <span class="c1"># Métrica para optimizar</span>
+    <span class="n">cv_folds</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>                     <span class="c1"># Validación cruzada</span>
+    <span class="n">search_iterations</span><span class="o">=</span><span class="mi">50</span>            <span class="c1"># Iteraciones para búsqueda de hiperparámetros</span>
+<span class="p">)</span>
+
+<span class="c1"># Guardar reporte de rendimiento</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.export</span><span class="w"> </span><span class="kn">import</span> <span class="n">save_model_report</span>
+<span class="n">save_model_report</span><span class="p">(</span><span class="n">performance_report</span><span class="p">,</span> <span class="s1">&#39;seleccion_modelo.html&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="interpretabilidad-de-modelos">
+<h4>Interpretabilidad de Modelos<a class="headerlink" href="#interpretabilidad-de-modelos" title="Link to this heading"></a></h4>
+<p>Para entender y explicar las predicciones de tus modelos:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.analysis.model_interpretation</span><span class="w"> </span><span class="kn">import</span> <span class="n">explain_model</span>
+
+<span class="c1"># Generar explicaciones para el modelo</span>
+<span class="n">explanations</span> <span class="o">=</span> <span class="n">explain_model</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">best_model</span><span class="p">,</span>
+    <span class="n">X</span><span class="o">=</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;var1&#39;</span><span class="p">,</span> <span class="s1">&#39;var2&#39;</span><span class="p">,</span> <span class="s1">&#39;var3&#39;</span><span class="p">]],</span>
+    <span class="n">method</span><span class="o">=</span><span class="s1">&#39;shap&#39;</span><span class="p">,</span>  <span class="c1"># Alternativas: &#39;lime&#39;, &#39;eli5&#39;, &#39;partial_dependence&#39;</span>
+    <span class="n">n_samples</span><span class="o">=</span><span class="mi">100</span>   <span class="c1"># Número de muestras para explicaciones</span>
+<span class="p">)</span>
+
+<span class="c1"># Visualizar explicaciones</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">src.visualization.model_viz</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_feature_importance</span><span class="p">,</span> <span class="n">plot_explanations</span>
+<span class="n">plot_feature_importance</span><span class="p">(</span><span class="n">explanations</span><span class="p">,</span> <span class="n">save_path</span><span class="o">=</span><span class="s1">&#39;importancia_caracteristicas.png&#39;</span><span class="p">)</span>
+<span class="n">plot_explanations</span><span class="p">(</span><span class="n">explanations</span><span class="p">,</span> <span class="n">sample_idx</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">save_path</span><span class="o">=</span><span class="s1">&#39;explicacion_prediccion.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="analisis-geoespacial-avanzado">
+<h3>Análisis Geoespacial Avanzado<a class="headerlink" href="#analisis-geoespacial-avanzado" title="Link to this heading"></a></h3>
+<section id="analisis-de-patrones-espaciales">
+<h4>Análisis de Patrones Espaciales<a class="headerlink" href="#analisis-de-patrones-espaciales" title="Link to this heading"></a></h4>
+<p>Para identificar patrones y relaciones espaciales en tus datos:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.geospatial.analisis_geoespacial</span><span class="w"> </span><span class="kn">import</span> <span class="n">spatial_pattern_analysis</span>
+
+<span class="c1"># Realizar análisis de patrones espaciales</span>
+<span class="n">pattern_results</span> <span class="o">=</span> <span class="n">spatial_pattern_analysis</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">,</span>
+    <span class="n">lat_column</span><span class="o">=</span><span class="s1">&#39;latitud&#39;</span><span class="p">,</span>
+    <span class="n">lon_column</span><span class="o">=</span><span class="s1">&#39;longitud&#39;</span><span class="p">,</span>
+    <span class="n">value_column</span><span class="o">=</span><span class="s1">&#39;variable_interes&#39;</span><span class="p">,</span>
+    <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;hotspot&#39;</span><span class="p">,</span> <span class="s1">&#39;autocorrelation&#39;</span><span class="p">,</span> <span class="s1">&#39;density&#39;</span><span class="p">],</span>
+    <span class="n">significance_level</span><span class="o">=</span><span class="mf">0.05</span>
+<span class="p">)</span>
+
+<span class="c1"># Visualizar resultados</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">src.geospatial.geo_visualization</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_spatial_analysis</span>
+<span class="n">plot_spatial_analysis</span><span class="p">(</span><span class="n">pattern_results</span><span class="p">,</span> <span class="n">analysis_type</span><span class="o">=</span><span class="s1">&#39;hotspot&#39;</span><span class="p">,</span>
+                     <span class="n">save_path</span><span class="o">=</span><span class="s1">&#39;analisis_hotspot.html&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="integracion-con-datos-externos-geoespaciales">
+<h4>Integración con Datos Externos Geoespaciales<a class="headerlink" href="#integracion-con-datos-externos-geoespaciales" title="Link to this heading"></a></h4>
+<p>Para enriquecer tu análisis con datos geoespaciales externos:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.geospatial.geo_enrichment</span><span class="w"> </span><span class="kn">import</span> <span class="n">enrich_with_external_data</span>
+
+<span class="c1"># Enriquecer datos con información externa</span>
+<span class="n">df_enriched</span> <span class="o">=</span> <span class="n">enrich_with_external_data</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">,</span>
+    <span class="n">lat_column</span><span class="o">=</span><span class="s1">&#39;latitud&#39;</span><span class="p">,</span>
+    <span class="n">lon_column</span><span class="o">=</span><span class="s1">&#39;longitud&#39;</span><span class="p">,</span>
+    <span class="n">data_sources</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;osm&#39;</span><span class="p">,</span> <span class="s1">&#39;census&#39;</span><span class="p">,</span> <span class="s1">&#39;elevation&#39;</span><span class="p">],</span>  <span class="c1"># Fuentes de datos</span>
+    <span class="n">buffer_distance</span><span class="o">=</span><span class="mi">1000</span>  <span class="c1"># Distancia en metros para búsqueda</span>
+<span class="p">)</span>
+
+<span class="c1"># Analizar correlaciones con nuevas variables</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">src.analysis.limpiar_analizar_csv</span><span class="w"> </span><span class="kn">import</span> <span class="n">correlation_analysis</span>
+<span class="n">correlation_analysis</span><span class="p">(</span><span class="n">df_enriched</span><span class="p">,</span>
+                    <span class="n">target</span><span class="o">=</span><span class="s1">&#39;variable_objetivo&#39;</span><span class="p">,</span>
+                    <span class="n">save_path</span><span class="o">=</span><span class="s1">&#39;correlaciones_variables_geograficas.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="analisis-de-texto-y-web-profundo">
+<h3>Análisis de Texto y Web Profundo<a class="headerlink" href="#analisis-de-texto-y-web-profundo" title="Link to this heading"></a></h3>
+<section id="analisis-de-sentimiento-avanzado">
+<h4>Análisis de Sentimiento Avanzado<a class="headerlink" href="#analisis-de-sentimiento-avanzado" title="Link to this heading"></a></h4>
+<p>Para un análisis más profundo del sentimiento en textos:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.web.text_analysis</span><span class="w"> </span><span class="kn">import</span> <span class="n">advanced_sentiment_analysis</span>
+
+<span class="c1"># Realizar análisis de sentimiento avanzado</span>
+<span class="n">sentiment_results</span> <span class="o">=</span> <span class="n">advanced_sentiment_analysis</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">,</span>
+    <span class="n">text_column</span><span class="o">=</span><span class="s1">&#39;texto&#39;</span><span class="p">,</span>
+    <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;vader&#39;</span><span class="p">,</span> <span class="s1">&#39;textblob&#39;</span><span class="p">,</span> <span class="s1">&#39;transformers&#39;</span><span class="p">],</span>
+    <span class="n">aspects</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># Análisis de sentimiento basado en aspectos</span>
+    <span class="n">emotions</span><span class="o">=</span><span class="kc">True</span>  <span class="c1"># Detección de emociones específicas</span>
+<span class="p">)</span>
+
+<span class="c1"># Visualizar distribución de sentimientos</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">src.visualization.text_viz</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_sentiment_distribution</span>
+<span class="n">plot_sentiment_distribution</span><span class="p">(</span><span class="n">sentiment_results</span><span class="p">,</span> <span class="n">save_path</span><span class="o">=</span><span class="s1">&#39;distribucion_sentimientos.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="extraccion-y-analisis-de-entidades">
+<h4>Extracción y Análisis de Entidades<a class="headerlink" href="#extraccion-y-analisis-de-entidades" title="Link to this heading"></a></h4>
+<p>Para identificar y analizar entidades mencionadas en textos:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.web.entity_analysis</span><span class="w"> </span><span class="kn">import</span> <span class="n">extract_and_analyze_entities</span>
+
+<span class="c1"># Extraer y analizar entidades</span>
+<span class="n">entity_analysis</span> <span class="o">=</span> <span class="n">extract_and_analyze_entities</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">,</span>
+    <span class="n">text_column</span><span class="o">=</span><span class="s1">&#39;texto&#39;</span><span class="p">,</span>
+    <span class="n">entity_types</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;PERSON&#39;</span><span class="p">,</span> <span class="s1">&#39;ORG&#39;</span><span class="p">,</span> <span class="s1">&#39;LOC&#39;</span><span class="p">,</span> <span class="s1">&#39;DATE&#39;</span><span class="p">],</span>
+    <span class="n">link_entities</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># Vincular entidades con bases de conocimiento</span>
+    <span class="n">co_occurrence</span><span class="o">=</span><span class="kc">True</span>   <span class="c1"># Analizar co-ocurrencias</span>
+<span class="p">)</span>
+
+<span class="c1"># Visualizar red de entidades</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">src.visualization.network_viz</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_entity_network</span>
+<span class="n">plot_entity_network</span><span class="p">(</span><span class="n">entity_analysis</span><span class="p">,</span>
+                   <span class="n">min_weight</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>  <span class="c1"># Filtrar conexiones débiles</span>
+                   <span class="n">save_path</span><span class="o">=</span><span class="s1">&#39;red_entidades.html&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="automatizacion-de-analisis">
+<h3>Automatización de Análisis<a class="headerlink" href="#automatizacion-de-analisis" title="Link to this heading"></a></h3>
+<section id="creacion-de-flujos-de-trabajo-personalizados">
+<h4>Creación de Flujos de Trabajo Personalizados<a class="headerlink" href="#creacion-de-flujos-de-trabajo-personalizados" title="Link to this heading"></a></h4>
+<p>Para automatizar secuencias completas de análisis:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.workflow</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_analysis_workflow</span>
+
+<span class="c1"># Definir y ejecutar flujo de trabajo personalizado</span>
+<span class="n">workflow</span> <span class="o">=</span> <span class="n">create_analysis_workflow</span><span class="p">([</span>
+    <span class="p">{</span><span class="s1">&#39;step&#39;</span><span class="p">:</span> <span class="s1">&#39;load_data&#39;</span><span class="p">,</span> <span class="s1">&#39;params&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;file_path&#39;</span><span class="p">:</span> <span class="s1">&#39;datos.csv&#39;</span><span class="p">}},</span>
+    <span class="p">{</span><span class="s1">&#39;step&#39;</span><span class="p">:</span> <span class="s1">&#39;clean_data&#39;</span><span class="p">,</span> <span class="s1">&#39;params&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;handle_missing&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;handle_outliers&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}},</span>
+    <span class="p">{</span><span class="s1">&#39;step&#39;</span><span class="p">:</span> <span class="s1">&#39;feature_engineering&#39;</span><span class="p">,</span> <span class="s1">&#39;params&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;date_columns&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;fecha&#39;</span><span class="p">]}},</span>
+    <span class="p">{</span><span class="s1">&#39;step&#39;</span><span class="p">:</span> <span class="s1">&#39;train_model&#39;</span><span class="p">,</span> <span class="s1">&#39;params&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;target&#39;</span><span class="p">:</span> <span class="s1">&#39;objetivo&#39;</span><span class="p">,</span> <span class="s1">&#39;model_type&#39;</span><span class="p">:</span> <span class="s1">&#39;random_forest&#39;</span><span class="p">}},</span>
+    <span class="p">{</span><span class="s1">&#39;step&#39;</span><span class="p">:</span> <span class="s1">&#39;evaluate_model&#39;</span><span class="p">,</span> <span class="s1">&#39;params&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;cv_folds&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}},</span>
+    <span class="p">{</span><span class="s1">&#39;step&#39;</span><span class="p">:</span> <span class="s1">&#39;generate_report&#39;</span><span class="p">,</span> <span class="s1">&#39;params&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;output_path&#39;</span><span class="p">:</span> <span class="s1">&#39;reporte_analisis.html&#39;</span><span class="p">}}</span>
+<span class="p">])</span>
+
+<span class="c1"># Ejecutar el flujo de trabajo</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+<span class="c1"># Programar ejecución periódica</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.scheduler</span><span class="w"> </span><span class="kn">import</span> <span class="n">schedule_workflow</span>
+<span class="n">schedule_workflow</span><span class="p">(</span><span class="n">workflow</span><span class="p">,</span>
+                 <span class="n">schedule_type</span><span class="o">=</span><span class="s1">&#39;daily&#39;</span><span class="p">,</span>  <span class="c1"># Alternativas: &#39;weekly&#39;, &#39;monthly&#39;, &#39;custom&#39;</span>
+                 <span class="n">time</span><span class="o">=</span><span class="s1">&#39;02:00&#39;</span><span class="p">,</span>          <span class="c1"># Hora de ejecución</span>
+                 <span class="n">output_dir</span><span class="o">=</span><span class="s1">&#39;reportes_automaticos/&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="monitoreo-de-modelos-en-produccion">
+<h4>Monitoreo de Modelos en Producción<a class="headerlink" href="#monitoreo-de-modelos-en-produccion" title="Link to this heading"></a></h4>
+<p>Para supervisar el rendimiento de modelos desplegados:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.monitoring</span><span class="w"> </span><span class="kn">import</span> <span class="n">setup_model_monitoring</span>
+
+<span class="c1"># Configurar monitoreo de modelo</span>
+<span class="n">monitoring</span> <span class="o">=</span> <span class="n">setup_model_monitoring</span><span class="p">(</span>
+    <span class="n">model_path</span><span class="o">=</span><span class="s1">&#39;modelos/modelo_produccion.pkl&#39;</span><span class="p">,</span>
+    <span class="n">reference_data</span><span class="o">=</span><span class="s1">&#39;datos_referencia.csv&#39;</span><span class="p">,</span>
+    <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;drift&#39;</span><span class="p">,</span> <span class="s1">&#39;performance&#39;</span><span class="p">,</span> <span class="s1">&#39;predictions&#39;</span><span class="p">],</span>
+    <span class="n">alert_thresholds</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;drift&#39;</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">,</span> <span class="s1">&#39;performance_drop&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">},</span>
+    <span class="n">notification_channels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="s1">&#39;log&#39;</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># Ejecutar verificación manual</span>
+<span class="n">monitoring_report</span> <span class="o">=</span> <span class="n">monitoring</span><span class="o">.</span><span class="n">check_model</span><span class="p">(</span><span class="s1">&#39;nuevos_datos.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># Visualizar resultados del monitoreo</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">src.visualization.monitoring_viz</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_monitoring_results</span>
+<span class="n">plot_monitoring_results</span><span class="p">(</span><span class="n">monitoring_report</span><span class="p">,</span> <span class="n">save_path</span><span class="o">=</span><span class="s1">&#39;monitoreo_modelo.html&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="integracion-con-otras-herramientas">
+<h3>Integración con Otras Herramientas<a class="headerlink" href="#integracion-con-otras-herramientas" title="Link to this heading"></a></h3>
+<section id="exportacion-avanzada-a-herramientas-de-bi">
+<h4>Exportación Avanzada a Herramientas de BI<a class="headerlink" href="#exportacion-avanzada-a-herramientas-de-bi" title="Link to this heading"></a></h4>
+<p>Para integrar tus análisis con plataformas de Business Intelligence:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.export</span><span class="w"> </span><span class="kn">import</span> <span class="n">export_to_bi_tool</span>
+
+<span class="c1"># Exportar resultados a herramienta de BI</span>
+<span class="n">export_to_bi_tool</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">results_df</span><span class="p">,</span>
+    <span class="n">visualizations</span><span class="o">=</span><span class="n">generated_visualizations</span><span class="p">,</span>
+    <span class="n">tool</span><span class="o">=</span><span class="s1">&#39;power_bi&#39;</span><span class="p">,</span>  <span class="c1"># Alternativas: &#39;tableau&#39;, &#39;looker&#39;, &#39;qlik&#39;</span>
+    <span class="n">connection_params</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;workspace_id&#39;</span><span class="p">:</span> <span class="s1">&#39;tu_workspace&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;dataset_name&#39;</span><span class="p">:</span> <span class="s1">&#39;Análisis Avanzado&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;refresh_schedule&#39;</span><span class="p">:</span> <span class="s1">&#39;daily&#39;</span>
+    <span class="p">},</span>
+    <span class="n">create_dashboard</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">dashboard_template</span><span class="o">=</span><span class="s1">&#39;template_ejecutivo.json&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="integracion-con-sistemas-de-bases-de-datos">
+<h4>Integración con Sistemas de Bases de Datos<a class="headerlink" href="#integracion-con-sistemas-de-bases-de-datos" title="Link to this heading"></a></h4>
+<p>Para trabajar directamente con bases de datos en lugar de archivos CSV:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.database</span><span class="w"> </span><span class="kn">import</span> <span class="n">setup_database_connection</span><span class="p">,</span> <span class="n">query_to_dataframe</span>
+
+<span class="c1"># Configurar conexión a base de datos</span>
+<span class="n">connection</span> <span class="o">=</span> <span class="n">setup_database_connection</span><span class="p">(</span>
+    <span class="n">db_type</span><span class="o">=</span><span class="s1">&#39;postgresql&#39;</span><span class="p">,</span>  <span class="c1"># Alternativas: &#39;mysql&#39;, &#39;sqlserver&#39;, &#39;oracle&#39;, &#39;sqlite&#39;</span>
+    <span class="n">connection_params</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;host&#39;</span><span class="p">:</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;database&#39;</span><span class="p">:</span> <span class="s1">&#39;nombre_bd&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;user&#39;</span><span class="p">:</span> <span class="s1">&#39;usuario&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;password&#39;</span><span class="p">:</span> <span class="s1">&#39;contraseña&#39;</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="c1"># Ejecutar consulta y obtener DataFrame</span>
+<span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    SELECT columna1, columna2, fecha, valor</span>
+<span class="s2">    FROM tabla</span>
+<span class="s2">    WHERE fecha &gt; &#39;2023-01-01&#39;</span>
+<span class="s2">    ORDER BY fecha</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">query_to_dataframe</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span>
+
+<span class="c1"># Guardar resultados en la base de datos</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">src.utils.database</span><span class="w"> </span><span class="kn">import</span> <span class="n">save_results_to_database</span>
+<span class="n">save_results_to_database</span><span class="p">(</span>
+    <span class="n">connection</span><span class="p">,</span>
+    <span class="n">df_results</span><span class="p">,</span>
+    <span class="n">table_name</span><span class="o">=</span><span class="s1">&#39;resultados_analisis&#39;</span><span class="p">,</span>
+    <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span>  <span class="c1"># Alternativas: &#39;append&#39;, &#39;fail&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="conclusion">
+<h3>Conclusión<a class="headerlink" href="#conclusion" title="Link to this heading"></a></h3>
+<p>Las técnicas avanzadas presentadas en esta guía te permitirán aprovechar al máximo las capacidades del sistema «UN PASO AL EXITO». Recuerda que el análisis efectivo combina el conocimiento del dominio, la selección adecuada de técnicas y la interpretación cuidadosa de los resultados.</p>
+<p>Para obtener más información sobre implementaciones específicas, consulta los ejemplos en el directorio <code class="docutils literal notranslate"><span class="pre">examples/advanced/</span></code> y la documentación de API completa generada con Sphinx.</p>
+<hr class="docutils" />
+<p><strong>Nota</strong>: Los ejemplos de código en esta guía asumen que las funciones mencionadas están implementadas en el sistema. Si alguna funcionalidad específica no está disponible, consulta la sección de extensibilidad en la documentación para implementar tus propias soluciones personalizadas.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="utils.html" class="btn btn-neutral float-left" title="Módulo de Utilidades" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="optimizacion_rendimiento.html" class="btn btn-neutral float-right" title="Optimización de Rendimiento" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, UN PASO AL EXITO.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

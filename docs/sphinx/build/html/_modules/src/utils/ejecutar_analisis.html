@@ -1,0 +1,570 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>src.utils.ejecutar_analisis &mdash; documentación de Analisis de Datos y Visualizacion - 1.0</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=4936afed"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/translations.js?v=f85f4cfb"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Analisis de Datos y Visualizacion
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guías de Usuario:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/instalacion.html">Guía de Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/casos_uso.html">Casos de Uso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/preguntas_frecuentes.html">Preguntas Frecuentes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Módulos Principales:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/analysis.html">Módulo de Análisis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/geospatial.html">Módulo Geoespacial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/web.html">Módulo Web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/dashboard.html">Módulo de Dashboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/visualization.html">Módulo de Visualización</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/utils.html">Módulo de Utilidades</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentación Técnica:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/guia_analisis_avanzado.html">Guía de Análisis Avanzado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/optimizacion_rendimiento.html">Optimización de Rendimiento</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/seguridad_datos.html">Seguridad de Datos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/referencia_tecnica_detallada.html">Referencia Técnica Detallada</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/integracion_herramientas.html">Integración de Herramientas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/modules.html">src</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Analisis de Datos y Visualizacion</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Código de módulo</a></li>
+      <li class="breadcrumb-item active">src.utils.ejecutar_analisis</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Código fuente para src.utils.ejecutar_analisis</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Módulo de utilidades y menú interactivo para análisis de datos.</span>
+
+<span class="sd">Este script permite ejecutar, desde un menú interactivo en consola, los distintos análisis, visualizaciones y dashboards del proyecto. Facilita la navegación y ejecución de scripts de análisis, limpieza, visualización, dashboards y generación de informes.</span>
+
+<span class="sd">Flujo principal:</span>
+<span class="sd">- Menú principal con opciones para cada tipo de análisis.</span>
+<span class="sd">- Submenús para análisis exploratorio, dashboards, análisis geoespacial, predictivo y de contenido web.</span>
+<span class="sd">- Ejecución de scripts externos y apertura de archivos de resultados.</span>
+
+<span class="sd">Dependencias principales: os, sys, subprocess, platform, matplotlib.</span>
+
+<span class="sd">Estructura del archivo:</span>
+<span class="sd">- Funciones utilitarias para ejecución de scripts y apertura de archivos.</span>
+<span class="sd">- Funciones de menú para cada tipo de análisis.</span>
+<span class="sd">- Función principal (main) que orquesta la interacción con el usuario.</span>
+
+<span class="sd">Autor: Anderson Zapata</span>
+<span class="sd">Fecha: 2025</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">platform</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Añadir el directorio raíz del proyecto al path para poder importar módulos</span>
+<span class="n">proyecto_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s1">&#39;../..&#39;</span><span class="p">))</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">proyecto_dir</span><span class="p">)</span>
+
+<div class="viewcode-block" id="clear_screen">
+<a class="viewcode-back" href="../../../modules/utils.html#src.utils.ejecutar_analisis.clear_screen">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">clear_screen</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Limpia la pantalla de la consola según el sistema operativo.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;Windows&quot;</span><span class="p">:</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">&#39;cls&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">&#39;clear&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="print_header">
+<a class="viewcode-back" href="../../../modules/utils.html#src.utils.ejecutar_analisis.print_header">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">print_header</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Imprime el encabezado del programa.&quot;&quot;&quot;</span>
+    <span class="n">clear_screen</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">80</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;                     SISTEMA DE ANÁLISIS DE DATOS&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;                        UN PASO AL ÉXITO&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">80</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="print_menu">
+<a class="viewcode-back" href="../../../modules/utils.html#src.utils.ejecutar_analisis.print_menu">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">print_menu</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Imprime el menú principal.&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MENÚ PRINCIPAL:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1. Análisis Exploratorio y Visualizaciones&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2. Dashboard Interactivo&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;3. Análisis Geoespacial&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;4. Análisis Predictivo&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;5. Análisis de Contenido Web&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;6. Configurar Entorno&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;7. Ver Informes Generados&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;8. Salir&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="run_script">
+<a class="viewcode-back" href="../../../modules/utils.html#src.utils.ejecutar_analisis.run_script">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">run_script</span><span class="p">(</span><span class="n">script_path</span><span class="p">,</span> <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Ejecuta un script de Python.&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">wait</span><span class="p">:</span>
+            <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">,</span> <span class="n">script_path</span><span class="p">],</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Para scripts que inician servidores, ejecutar sin esperar</span>
+            <span class="k">if</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;Windows&quot;</span><span class="p">:</span>
+                <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">([</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">,</span> <span class="n">script_path</span><span class="p">],</span> 
+                                <span class="n">creationflags</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">CREATE_NEW_CONSOLE</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">([</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">,</span> <span class="n">script_path</span><span class="p">])</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">except</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">CalledProcessError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error al ejecutar el script: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error: No se encontró el archivo </span><span class="si">{</span><span class="n">script_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="open_file">
+<a class="viewcode-back" href="../../../modules/utils.html#src.utils.ejecutar_analisis.open_file">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">open_file</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Abre un archivo con la aplicación predeterminada.&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;Windows&quot;</span><span class="p">:</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">startfile</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;Darwin&quot;</span><span class="p">:</span>  <span class="c1"># macOS</span>
+            <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s2">&quot;open&quot;</span><span class="p">,</span> <span class="n">file_path</span><span class="p">],</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># Linux</span>
+            <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s2">&quot;xdg-open&quot;</span><span class="p">,</span> <span class="n">file_path</span><span class="p">],</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error al abrir el archivo: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="exploratory_analysis_menu">
+<a class="viewcode-back" href="../../../modules/utils.html#src.utils.ejecutar_analisis.exploratory_analysis_menu">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">exploratory_analysis_menu</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Menú para análisis exploratorio y visualizaciones.&quot;&quot;&quot;</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">print_header</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ANÁLISIS EXPLORATORIO Y VISUALIZACIONES:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1. Ejecutar limpieza y análisis básico&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2. Generar visualizaciones estáticas&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;3. Generar dashboard estático con informe HTML&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;4. Volver al menú principal&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">()</span>
+        
+        <span class="n">choice</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Seleccione una opción (1-4): &quot;</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Ejecutando limpieza y análisis básico...&quot;</span><span class="p">)</span>
+            <span class="n">run_script</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">proyecto_dir</span><span class="p">,</span> <span class="s2">&quot;src&quot;</span><span class="p">,</span> <span class="s2">&quot;analysis&quot;</span><span class="p">,</span> <span class="s2">&quot;limpiar_analizar_csv.py&quot;</span><span class="p">))</span>
+            <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Presione Enter para continuar...&quot;</span><span class="p">)</span>
+        
+        <span class="k">elif</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">&quot;2&quot;</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Generando visualizaciones estáticas...&quot;</span><span class="p">)</span>
+            <span class="n">run_script</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">proyecto_dir</span><span class="p">,</span> <span class="s2">&quot;src&quot;</span><span class="p">,</span> <span class="s2">&quot;visualization&quot;</span><span class="p">,</span> <span class="s2">&quot;visualizar_datos.py&quot;</span><span class="p">))</span>
+            <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Presione Enter para continuar...&quot;</span><span class="p">)</span>
+        
+        <span class="k">elif</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">&quot;3&quot;</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Generando dashboard estático con informe HTML...&quot;</span><span class="p">)</span>
+            <span class="n">run_script</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">proyecto_dir</span><span class="p">,</span> <span class="s2">&quot;src&quot;</span><span class="p">,</span> <span class="s2">&quot;dashboard&quot;</span><span class="p">,</span> <span class="s2">&quot;dashboard_adaptativo.py&quot;</span><span class="p">))</span>
+            
+            <span class="c1"># Preguntar si desea abrir el informe HTML</span>
+            <span class="n">html_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">proyecto_dir</span><span class="p">,</span> <span class="s2">&quot;src&quot;</span><span class="p">,</span> <span class="s2">&quot;dashboard&quot;</span><span class="p">,</span> <span class="s2">&quot;static&quot;</span><span class="p">,</span> <span class="s2">&quot;informe_analisis.html&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">html_path</span><span class="p">):</span>
+                <span class="n">open_html</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">¿Desea abrir el informe HTML generado? (s/n): &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">open_html</span> <span class="o">==</span> <span class="s2">&quot;s&quot;</span><span class="p">:</span>
+                    <span class="n">open_file</span><span class="p">(</span><span class="n">html_path</span><span class="p">)</span>
+            
+            <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Presione Enter para continuar...&quot;</span><span class="p">)</span>
+        
+        <span class="k">elif</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">&quot;4&quot;</span><span class="p">:</span>
+            <span class="k">break</span>
+        
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Opción no válida. Intente de nuevo.&quot;</span><span class="p">)</span>
+            <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Presione Enter para continuar...&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="dashboard_menu">
+<a class="viewcode-back" href="../../../modules/utils.html#src.utils.ejecutar_analisis.dashboard_menu">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">dashboard_menu</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Menú para el dashboard interactivo.&quot;&quot;&quot;</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">print_header</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;DASHBOARD INTERACTIVO:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1. Verificar e instalar dependencias&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2. Ejecutar dashboard interactivo&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;3. Volver al menú principal&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">()</span>
+        
+        <span class="n">choice</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Seleccione una opción (1-3): &quot;</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Verificando e instalando dependencias...&quot;</span><span class="p">)</span>
+            <span class="n">run_script</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">proyecto_dir</span><span class="p">,</span> <span class="s2">&quot;src&quot;</span><span class="p">,</span> <span class="s2">&quot;dashboard&quot;</span><span class="p">,</span> <span class="s2">&quot;setup_dashboard.py&quot;</span><span class="p">))</span>
+            <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Presione Enter para continuar...&quot;</span><span class="p">)</span>
+        
+        <span class="k">elif</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">&quot;2&quot;</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Ejecutando dashboard interactivo...&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Acceda a http://127.0.0.1:8050/ en su navegador para ver el dashboard.&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;El dashboard se ejecutará en una nueva ventana. Cierre esa ventana para detenerlo.&quot;</span><span class="p">)</span>
+            <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Presione Enter para iniciar el dashboard...&quot;</span><span class="p">)</span>
+            
+            <span class="c1"># Ejecutar sin esperar para que no bloquee este script</span>
+            <span class="n">run_script</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">proyecto_dir</span><span class="p">,</span> <span class="s2">&quot;src&quot;</span><span class="p">,</span> <span class="s2">&quot;dashboard&quot;</span><span class="p">,</span> <span class="s2">&quot;dashboard_interactivo.py&quot;</span><span class="p">),</span> <span class="n">wait</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Presione Enter para volver al menú...&quot;</span><span class="p">)</span>
+        
+        <span class="k">elif</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">&quot;3&quot;</span><span class="p">:</span>
+            <span class="k">break</span>
+        
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Opción no válida. Intente de nuevo.&quot;</span><span class="p">)</span>
+            <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Presione Enter para continuar...&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="geospatial_analysis_menu">
+<a class="viewcode-back" href="../../../modules/utils.html#src.utils.ejecutar_analisis.geospatial_analysis_menu">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">geospatial_analysis_menu</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Menú para análisis geoespacial.&quot;&quot;&quot;</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">print_header</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ANÁLISIS GEOESPACIAL:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1. Ejecutar análisis geoespacial adaptativo (dependencias mínimas)&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2. Instalar dependencias para análisis geoespacial completo&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;3. Ejecutar análisis geoespacial completo&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;4. Ver informe de análisis geoespacial&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;5. Volver al menú principal&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">()</span>
+        
+        <span class="n">choice</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Seleccione una opción (1-5): &quot;</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Ejecutando análisis geoespacial adaptativo...&quot;</span><span class="p">)</span>
+            <span class="n">run_script</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">proyecto_dir</span><span class="p">,</span> <span class="s2">&quot;src&quot;</span><span class="p">,</span> <span class="s2">&quot;geospatial&quot;</span><span class="p">,</span> <span class="s2">&quot;analisis_geoespacial_adaptativo.py&quot;</span><span class="p">))</span>
+            <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Presione Enter para continuar...&quot;</span><span class="p">)</span>
+        
+        <span class="k">elif</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">&quot;2&quot;</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Instalando dependencias para análisis geoespacial...&quot;</span><span class="p">)</span>
+            <span class="n">req_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">proyecto_dir</span><span class="p">,</span> <span class="s2">&quot;config&quot;</span><span class="p">,</span> <span class="s2">&quot;requirements_geoespacial.txt&quot;</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">,</span> <span class="s2">&quot;-m&quot;</span><span class="p">,</span> <span class="s2">&quot;pip&quot;</span><span class="p">,</span> <span class="s2">&quot;install&quot;</span><span class="p">,</span> <span class="s2">&quot;-r&quot;</span><span class="p">,</span> <span class="n">req_path</span><span class="p">],</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Dependencias instaladas correctamente.&quot;</span><span class="p">)</span>
+            <span class="k">except</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">CalledProcessError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Error al instalar dependencias: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            
+            <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Presione Enter para continuar...&quot;</span><span class="p">)</span>
+        
+        <span class="k">elif</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">&quot;3&quot;</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Ejecutando análisis geoespacial completo...&quot;</span><span class="p">)</span>
+            <span class="n">run_script</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">proyecto_dir</span><span class="p">,</span> <span class="s2">&quot;src&quot;</span><span class="p">,</span> <span class="s2">&quot;geospatial&quot;</span><span class="p">,</span> <span class="s2">&quot;analisis_geoespacial.py&quot;</span><span class="p">))</span>
+            <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Presione Enter para continuar...&quot;</span><span class="p">)</span>
+        
+        <span class="k">elif</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">&quot;4&quot;</span><span class="p">:</span>
+            <span class="n">report_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">proyecto_dir</span><span class="p">,</span> <span class="s2">&quot;src&quot;</span><span class="p">,</span> <span class="s2">&quot;geospatial&quot;</span><span class="p">,</span> <span class="s2">&quot;output&quot;</span><span class="p">,</span> <span class="s2">&quot;informe_analisis_geoespacial.md&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">report_path</span><span class="p">):</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Abriendo informe de análisis geoespacial...&quot;</span><span class="p">)</span>
+                <span class="n">open_file</span><span class="p">(</span><span class="n">report_path</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">El informe no existe. Ejecute primero el análisis geoespacial.&quot;</span><span class="p">)</span>
+            
+            <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Presione Enter para continuar...&quot;</span><span class="p">)</span>
+        
+        <span class="k">elif</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">&quot;5&quot;</span><span class="p">:</span>
+            <span class="k">break</span>
+        
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Opción no válida. Intente de nuevo.&quot;</span><span class="p">)</span>
+            <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Presione Enter para continuar...&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="view_reports_menu">
+<a class="viewcode-back" href="../../../modules/utils.html#src.utils.ejecutar_analisis.view_reports_menu">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">view_reports_menu</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Menú para ver informes generados.&quot;&quot;&quot;</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">print_header</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;INFORMES GENERADOS:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1. Informe general de análisis de datos&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2. Informe de análisis geoespacial&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;3. Dashboard estático (HTML)&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;4. Visualizaciones generadas&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;5. Volver al menú principal&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">()</span>
+        
+        <span class="n">choice</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Seleccione una opción (1-5): &quot;</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span><span class="p">:</span>
+            <span class="n">report_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">proyecto_dir</span><span class="p">,</span> <span class="s2">&quot;docs&quot;</span><span class="p">,</span> <span class="s2">&quot;informe_analisis_datos.md&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">report_path</span><span class="p">):</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Abriendo informe general de análisis de datos...&quot;</span><span class="p">)</span>
+                <span class="n">open_file</span><span class="p">(</span><span class="n">report_path</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">El informe no existe.&quot;</span><span class="p">)</span>
+            
+            <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Presione Enter para continuar...&quot;</span><span class="p">)</span>
+        
+        <span class="k">elif</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">&quot;2&quot;</span><span class="p">:</span>
+            <span class="n">report_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">proyecto_dir</span><span class="p">,</span> <span class="s2">&quot;src&quot;</span><span class="p">,</span> <span class="s2">&quot;geospatial&quot;</span><span class="p">,</span> <span class="s2">&quot;output&quot;</span><span class="p">,</span> <span class="s2">&quot;informe_analisis_geoespacial.md&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">report_path</span><span class="p">):</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Abriendo informe de análisis geoespacial...&quot;</span><span class="p">)</span>
+                <span class="n">open_file</span><span class="p">(</span><span class="n">report_path</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">El informe no existe. Ejecute primero el análisis geoespacial.&quot;</span><span class="p">)</span>
+            
+            <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Presione Enter para continuar...&quot;</span><span class="p">)</span>
+        
+        <span class="k">elif</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">&quot;3&quot;</span><span class="p">:</span>
+            <span class="n">html_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">proyecto_dir</span><span class="p">,</span> <span class="s2">&quot;src&quot;</span><span class="p">,</span> <span class="s2">&quot;dashboard&quot;</span><span class="p">,</span> <span class="s2">&quot;static&quot;</span><span class="p">,</span> <span class="s2">&quot;informe_analisis.html&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">html_path</span><span class="p">):</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Abriendo dashboard estático (HTML)...&quot;</span><span class="p">)</span>
+                <span class="n">open_file</span><span class="p">(</span><span class="n">html_path</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">El dashboard estático no existe. Ejecute primero el dashboard adaptativo.&quot;</span><span class="p">)</span>
+            
+            <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Presione Enter para continuar...&quot;</span><span class="p">)</span>
+        
+        <span class="k">elif</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">&quot;4&quot;</span><span class="p">:</span>
+            <span class="c1"># Mostrar submenú de visualizaciones</span>
+            <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="n">print_header</span><span class="p">()</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;VISUALIZACIONES GENERADAS:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1. Visualizaciones básicas&quot;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2. Visualizaciones del dashboard estático&quot;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;3. Visualizaciones geoespaciales&quot;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;4. Volver al menú de informes&quot;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">()</span>
+                
+                <span class="n">viz_choice</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Seleccione una opción (1-4): &quot;</span><span class="p">)</span>
+                
+                <span class="k">if</span> <span class="n">viz_choice</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span><span class="p">:</span>
+                    <span class="n">viz_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">proyecto_dir</span><span class="p">,</span> <span class="s2">&quot;src&quot;</span><span class="p">,</span> <span class="s2">&quot;visualization&quot;</span><span class="p">,</span> <span class="s2">&quot;output&quot;</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">viz_dir</span><span class="p">)</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">viz_dir</span><span class="p">):</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Visualizaciones disponibles:&quot;</span><span class="p">)</span>
+                        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">file</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">viz_dir</span><span class="p">),</span> <span class="mi">1</span><span class="p">):</span>
+                            <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.png&quot;</span><span class="p">):</span>
+                                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">. </span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                        
+                        <span class="n">file_num</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Ingrese el número de la visualización que desea ver (0 para volver): &quot;</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">file_num</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()</span> <span class="ow">and</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="nb">int</span><span class="p">(</span><span class="n">file_num</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">viz_dir</span><span class="p">)):</span>
+                            <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">viz_dir</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">viz_dir</span><span class="p">)[</span><span class="nb">int</span><span class="p">(</span><span class="n">file_num</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+                            <span class="n">open_file</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">No hay visualizaciones básicas disponibles.&quot;</span><span class="p">)</span>
+                    
+                    <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Presione Enter para continuar...&quot;</span><span class="p">)</span>
+                
+                <span class="k">elif</span> <span class="n">viz_choice</span> <span class="o">==</span> <span class="s2">&quot;2&quot;</span><span class="p">:</span>
+                    <span class="n">viz_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">proyecto_dir</span><span class="p">,</span> <span class="s2">&quot;src&quot;</span><span class="p">,</span> <span class="s2">&quot;dashboard&quot;</span><span class="p">,</span> <span class="s2">&quot;static&quot;</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">viz_dir</span><span class="p">)</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">viz_dir</span><span class="p">):</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Visualizaciones disponibles:&quot;</span><span class="p">)</span>
+                        <span class="n">png_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">viz_dir</span><span class="p">)</span> <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.png&quot;</span><span class="p">)]</span>
+                        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">file</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">png_files</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+                            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">. </span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                        
+                        <span class="k">if</span> <span class="n">png_files</span><span class="p">:</span>
+                            <span class="n">file_num</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Ingrese el número de la visualización que desea ver (0 para volver): &quot;</span><span class="p">)</span>
+                            <span class="k">if</span> <span class="n">file_num</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()</span> <span class="ow">and</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="nb">int</span><span class="p">(</span><span class="n">file_num</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">png_files</span><span class="p">):</span>
+                                <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">viz_dir</span><span class="p">,</span> <span class="n">png_files</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">file_num</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+                                <span class="n">open_file</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No hay archivos PNG en el directorio.&quot;</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">No hay visualizaciones del dashboard estático disponibles.&quot;</span><span class="p">)</span>
+                    
+                    <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Presione Enter para continuar...&quot;</span><span class="p">)</span>
+                
+                <span class="k">elif</span> <span class="n">viz_choice</span> <span class="o">==</span> <span class="s2">&quot;3&quot;</span><span class="p">:</span>
+                    <span class="n">viz_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">proyecto_dir</span><span class="p">,</span> <span class="s2">&quot;src&quot;</span><span class="p">,</span> <span class="s2">&quot;geospatial&quot;</span><span class="p">,</span> <span class="s2">&quot;output&quot;</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">viz_dir</span><span class="p">)</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">viz_dir</span><span class="p">):</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Visualizaciones disponibles:&quot;</span><span class="p">)</span>
+                        <span class="n">png_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">viz_dir</span><span class="p">)</span> <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.png&quot;</span><span class="p">)]</span>
+                        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">file</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">png_files</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+                            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">. </span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                        
+                        <span class="k">if</span> <span class="n">png_files</span><span class="p">:</span>
+                            <span class="n">file_num</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Ingrese el número de la visualización que desea ver (0 para volver): &quot;</span><span class="p">)</span>
+                            <span class="k">if</span> <span class="n">file_num</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()</span> <span class="ow">and</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="nb">int</span><span class="p">(</span><span class="n">file_num</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">png_files</span><span class="p">):</span>
+                                <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">viz_dir</span><span class="p">,</span> <span class="n">png_files</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">file_num</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+                                <span class="n">open_file</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No hay archivos PNG en el directorio.&quot;</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">No hay visualizaciones geoespaciales disponibles.&quot;</span><span class="p">)</span>
+                    
+                    <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Presione Enter para continuar...&quot;</span><span class="p">)</span>
+                
+                <span class="k">elif</span> <span class="n">viz_choice</span> <span class="o">==</span> <span class="s2">&quot;4&quot;</span><span class="p">:</span>
+                    <span class="k">break</span>
+                
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Opción no válida. Intente de nuevo.&quot;</span><span class="p">)</span>
+                    <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Presione Enter para continuar...&quot;</span><span class="p">)</span>
+        
+        <span class="k">elif</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">&quot;5&quot;</span><span class="p">:</span>
+            <span class="k">break</span>
+        
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Opción no válida. Intente de nuevo.&quot;</span><span class="p">)</span>
+            <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Presione Enter para continuar...&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="plot_histograma_coherente">
+<a class="viewcode-back" href="../../../modules/utils.html#src.utils.ejecutar_analisis.plot_histograma_coherente">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_histograma_coherente</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">notnull</span><span class="p">()</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">!=</span> <span class="s1">&#39;desconocido&#39;</span><span class="p">)]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Histograma de </span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">col</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frecuencia&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Histograma guardado: </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="main">
+<a class="viewcode-back" href="../../../modules/utils.html#src.utils.ejecutar_analisis.main">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Función principal que muestra el menú y maneja las opciones.&quot;&quot;&quot;</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">print_header</span><span class="p">()</span>
+        <span class="n">print_menu</span><span class="p">()</span>
+        
+        <span class="n">choice</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Seleccione una opción (1-8): &quot;</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span><span class="p">:</span>
+            <span class="n">exploratory_analysis_menu</span><span class="p">()</span>
+        
+        <span class="k">elif</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">&quot;2&quot;</span><span class="p">:</span>
+            <span class="n">dashboard_menu</span><span class="p">()</span>
+        
+        <span class="k">elif</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">&quot;3&quot;</span><span class="p">:</span>
+            <span class="n">geospatial_analysis_menu</span><span class="p">()</span>
+        
+        <span class="k">elif</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">&quot;4&quot;</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Ejecutando análisis predictivo...&quot;</span><span class="p">)</span>
+            <span class="n">run_script</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">proyecto_dir</span><span class="p">,</span> <span class="s2">&quot;src&quot;</span><span class="p">,</span> <span class="s2">&quot;analysis&quot;</span><span class="p">,</span> <span class="s2">&quot;analisis_predictivo.py&quot;</span><span class="p">))</span>
+            <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Presione Enter para continuar...&quot;</span><span class="p">)</span>
+        
+        <span class="k">elif</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">&quot;5&quot;</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Ejecutando análisis de contenido web...&quot;</span><span class="p">)</span>
+            <span class="n">run_script</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">proyecto_dir</span><span class="p">,</span> <span class="s2">&quot;src&quot;</span><span class="p">,</span> <span class="s2">&quot;web&quot;</span><span class="p">,</span> <span class="s2">&quot;analisis_contenido_web.py&quot;</span><span class="p">))</span>
+            <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Presione Enter para continuar...&quot;</span><span class="p">)</span>
+        
+        <span class="k">elif</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">&quot;6&quot;</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Configurando entorno...&quot;</span><span class="p">)</span>
+            <span class="n">run_script</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">proyecto_dir</span><span class="p">,</span> <span class="s2">&quot;src&quot;</span><span class="p">,</span> <span class="s2">&quot;dashboard&quot;</span><span class="p">,</span> <span class="s2">&quot;setup_dashboard.py&quot;</span><span class="p">))</span>
+            <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Presione Enter para continuar...&quot;</span><span class="p">)</span>
+        
+        <span class="k">elif</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">&quot;7&quot;</span><span class="p">:</span>
+            <span class="n">view_reports_menu</span><span class="p">()</span>
+        
+        <span class="k">elif</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">&quot;8&quot;</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Saliendo del programa...&quot;</span><span class="p">)</span>
+            <span class="k">break</span>
+        
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Opción no válida. Intente de nuevo.&quot;</span><span class="p">)</span>
+            <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Presione Enter para continuar...&quot;</span><span class="p">)</span></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">main</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">Programa interrumpido por el usuario.&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">Error inesperado: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># En Windows, mantener la ventana abierta</span>
+    <span class="k">if</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;Windows&quot;</span><span class="p">:</span>
+        <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Presione Enter para salir...&quot;</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, UN PASO AL EXITO.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

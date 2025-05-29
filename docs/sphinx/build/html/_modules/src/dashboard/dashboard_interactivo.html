@@ -1,0 +1,691 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>src.dashboard.dashboard_interactivo &mdash; documentación de Analisis de Datos y Visualizacion - 1.0</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=4936afed"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/translations.js?v=f85f4cfb"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Analisis de Datos y Visualizacion
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guías de Usuario:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/instalacion.html">Guía de Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/casos_uso.html">Casos de Uso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/preguntas_frecuentes.html">Preguntas Frecuentes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Módulos Principales:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/analysis.html">Módulo de Análisis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/geospatial.html">Módulo Geoespacial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/web.html">Módulo Web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/dashboard.html">Módulo de Dashboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/visualization.html">Módulo de Visualización</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/utils.html">Módulo de Utilidades</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentación Técnica:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/guia_analisis_avanzado.html">Guía de Análisis Avanzado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/optimizacion_rendimiento.html">Optimización de Rendimiento</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/seguridad_datos.html">Seguridad de Datos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/referencia_tecnica_detallada.html">Referencia Técnica Detallada</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/integracion_herramientas.html">Integración de Herramientas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/modules.html">src</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Analisis de Datos y Visualizacion</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Código de módulo</a></li>
+      <li class="breadcrumb-item active">src.dashboard.dashboard_interactivo</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Código fuente para src.dashboard.dashboard_interactivo</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Módulo de dashboard interactivo para análisis de datos.</span>
+
+<span class="sd">Este script permite visualizar y explorar datos de manera interactiva usando Dash y Plotly. Ofrece filtros, gráficos dinámicos, mapas y tablas estadísticas para análisis exploratorio avanzado.</span>
+
+<span class="sd">Flujo principal:</span>
+<span class="sd">- Carga y limpieza de datos desde un archivo CSV.</span>
+<span class="sd">- Inicialización de la aplicación Dash.</span>
+<span class="sd">- Definición de callbacks para actualizar gráficos en tiempo real según los filtros del usuario.</span>
+<span class="sd">- Visualización de histogramas, dispersión, barras, mapas y estadísticas descriptivas.</span>
+
+<span class="sd">Dependencias principales: dash, plotly, pandas, numpy, os, sys, urllib.parse, re.</span>
+
+<span class="sd">Estructura del archivo:</span>
+<span class="sd">- Funciones utilitarias para carga y limpieza de datos.</span>
+<span class="sd">- Definición de la interfaz y callbacks de Dash.</span>
+<span class="sd">- Ejecución del servidor web local.</span>
+
+<span class="sd">Autor: Anderson Zapata</span>
+<span class="sd">Fecha: 2025</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">dash</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dash</span><span class="w"> </span><span class="kn">import</span> <span class="n">dcc</span><span class="p">,</span> <span class="n">html</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dash.dependencies</span><span class="w"> </span><span class="kn">import</span> <span class="n">Input</span><span class="p">,</span> <span class="n">Output</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">plotly.express</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">px</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">plotly.graph_objects</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">go</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">urllib.parse</span><span class="w"> </span><span class="kn">import</span> <span class="n">urlparse</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="c1"># Añadir el directorio raíz del proyecto al path para poder importar módulos</span>
+<span class="n">proyecto_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s1">&#39;../..&#39;</span><span class="p">))</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">proyecto_dir</span><span class="p">)</span>
+
+<span class="c1"># Crear directorio para el dashboard si no existe</span>
+<span class="n">dashboard_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)),</span> <span class="s1">&#39;dashboard&#39;</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">dashboard_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Función para detectar el delimitador</span>
+<div class="viewcode-block" id="detect_delimiter">
+<a class="viewcode-back" href="../../../modules/dashboard.html#src.dashboard.dashboard_interactivo.detect_delimiter">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">detect_delimiter</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">num_lines</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Detecta automáticamente el delimitador utilizado en un archivo CSV.</span>
+
+<span class="sd">    :param str file_path: Ruta completa al archivo CSV a analizar.</span>
+<span class="sd">    :param int num_lines: Número de líneas a analizar para la detección. Por defecto es 5.</span>
+<span class="sd">    :return: El delimitador detectado (&#39;\t&#39;, &#39;,&#39;, &#39;;&#39;, &#39;|&#39;) que aparece con mayor frecuencia.</span>
+<span class="sd">    :rtype: str</span>
+
+<span class="sd">    .. warning::</span>
+<span class="sd">        Si el archivo tiene pocos datos o un formato inusual, la detección puede fallar.</span>
+<span class="sd">        Solo analiza las primeras líneas, por lo que si el delimitador cambia en el archivo, puede no detectarse correctamente.</span>
+
+<span class="sd">    :Example:</span>
+<span class="sd">        &gt;&gt;&gt; delimitador = detect_delimiter(&#39;datos.csv&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; print(f&quot;El delimitador detectado es: {delimitador}&quot;)</span>
+
+<span class="sd">    :author: Anderson Zapata</span>
+<span class="sd">    :date: 2025</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">sample</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">file</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_lines</span><span class="p">)])</span>
+    <span class="n">delimiters</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;,&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;;&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;|&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+    <span class="k">for</span> <span class="n">delimiter</span> <span class="ow">in</span> <span class="n">delimiters</span><span class="p">:</span>
+        <span class="n">delimiters</span><span class="p">[</span><span class="n">delimiter</span><span class="p">]</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">delimiter</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">delimiters</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">delimiters</span><span class="o">.</span><span class="n">get</span><span class="p">)</span></div>
+
+
+<span class="c1"># Cargar y limpiar datos</span>
+<div class="viewcode-block" id="load_and_clean_data">
+<a class="viewcode-back" href="../../../modules/dashboard.html#src.dashboard.dashboard_interactivo.load_and_clean_data">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">load_and_clean_data</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Carga un archivo CSV y realiza un proceso de limpieza básica de los datos.</span>
+
+<span class="sd">    :param str file_path: Ruta completa al archivo CSV a cargar y limpiar.</span>
+<span class="sd">    :return: Una tupla con el DataFrame limpio y un diccionario con listas de columnas geográficas (&#39;lat&#39;, &#39;lon&#39;).</span>
+<span class="sd">    :rtype: tuple[pandas.DataFrame, dict]</span>
+
+<span class="sd">    .. warning::</span>
+<span class="sd">        Si el archivo tiene problemas de codificación, intenta con &#39;utf-8&#39; y luego con &#39;latin1&#39;.</span>
+<span class="sd">        Si no se puede cargar, retorna None.</span>
+<span class="sd">        Si hay columnas con nombres poco claros, pueden no ser detectadas como geográficas.</span>
+
+<span class="sd">    :Example:</span>
+<span class="sd">        &gt;&gt;&gt; df, geo_cols = load_and_clean_data(&#39;datos.csv&#39;)</span>
+
+<span class="sd">    :author: Anderson Zapata</span>
+<span class="sd">    :date: 2025</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cargando datos desde: </span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Detectar delimitador</span>
+    <span class="n">delimiter</span> <span class="o">=</span> <span class="n">detect_delimiter</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Delimitador detectado: &#39;</span><span class="si">{</span><span class="n">delimiter</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Cargar datos</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="n">delimiter</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error con encoding utf-8: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="n">delimiter</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin1&#39;</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error con encoding latin1: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Datos cargados. Dimensiones: </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Limpiar nombres de columnas</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+    
+    <span class="c1"># Eliminar duplicados</span>
+    <span class="n">df_cleaned</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Duplicados eliminados: </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">df_cleaned</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Identificar columnas numéricas y rellenar valores nulos</span>
+    <span class="n">numeric_cols</span> <span class="o">=</span> <span class="n">df_cleaned</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">numeric_cols</span><span class="p">:</span>
+        <span class="n">df_cleaned</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df_cleaned</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
+        <span class="n">df_cleaned</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">df_cleaned</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="c1"># Identificar columnas de texto y rellenar valores nulos</span>
+    <span class="n">text_cols</span> <span class="o">=</span> <span class="n">df_cleaned</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;object&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">text_cols</span><span class="p">:</span>
+        <span class="n">df_cleaned</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s2">&quot;Desconocido&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="c1"># Extraer dominios de URLs</span>
+    <span class="n">url_cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">text_cols</span> <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">url_term</span> <span class="ow">in</span> <span class="n">col</span> <span class="k">for</span> <span class="n">url_term</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">,</span> <span class="s1">&#39;link&#39;</span><span class="p">,</span> <span class="s1">&#39;web&#39;</span><span class="p">])]</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">url_cols</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">df_cleaned</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s1">_domain&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_cleaned</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+                <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">urlparse</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">netloc</span> <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">notna</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="n">x</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;No se pudo extraer dominio de la columna </span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Identificar columnas geográficas</span>
+    <span class="n">geo_cols</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;lat&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df_cleaned</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">term</span> <span class="ow">in</span> <span class="n">col</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">,</span> <span class="s1">&#39;latitude&#39;</span><span class="p">])],</span>
+        <span class="s1">&#39;lon&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df_cleaned</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">term</span> <span class="ow">in</span> <span class="n">col</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">,</span> <span class="s1">&#39;lng&#39;</span><span class="p">,</span> <span class="s1">&#39;longitude&#39;</span><span class="p">])]</span>
+    <span class="p">}</span>
+    
+    <span class="k">if</span> <span class="n">geo_cols</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="n">geo_cols</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Columnas geográficas detectadas: </span><span class="si">{</span><span class="n">geo_cols</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">df_cleaned</span><span class="p">,</span> <span class="n">geo_cols</span></div>
+
+
+<span class="c1"># Inicializar la aplicación Dash</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">dash</span><span class="o">.</span><span class="n">Dash</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Dashboard Interactivo de Análisis de Datos&quot;</span><span class="p">)</span>
+<span class="n">server</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">server</span>
+
+<span class="c1"># Cargar datos</span>
+<span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))),</span> <span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;datos_limpios.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">,</span> <span class="n">geo_cols</span> <span class="o">=</span> <span class="n">load_and_clean_data</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+
+<span class="c1"># Filtrar columnas relevantes</span>
+<span class="n">irrelevantes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;fecha&#39;</span><span class="p">,</span> <span class="s1">&#39;unknown&#39;</span><span class="p">,</span> <span class="s1">&#39;desconocido&#39;</span><span class="p">]</span>
+<div class="viewcode-block" id="es_relevante">
+<a class="viewcode-back" href="../../../modules/dashboard.html#src.dashboard.dashboard_interactivo.es_relevante">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">es_relevante</span><span class="p">(</span><span class="n">col</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Determina si una columna es relevante para el análisis.</span>
+
+<span class="sd">    Esta función evalúa si una columna debe ser incluida en el análisis basándose en dos criterios:</span>
+<span class="sd">    1. Si el nombre de la columna contiene términos irrelevantes predefinidos</span>
+<span class="sd">    2. Si la columna tiene más del 50% de valores nulos</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        col (str): Nombre de la columna a evaluar</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: True si la columna es relevante, False en caso contrario</span>
+
+<span class="sd">    Nota:</span>
+<span class="sd">        Utiliza la variable global &#39;irrelevantes&#39; que contiene términos a excluir</span>
+<span class="sd">        y la variable global &#39;df&#39; que es el DataFrame con los datos</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">term</span> <span class="ow">in</span> <span class="n">col</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="n">irrelevantes</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span></div>
+
+
+<span class="n">numeric_columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">es_relevante</span><span class="p">(</span><span class="n">col</span><span class="p">)]</span>
+<span class="n">text_columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;object&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">es_relevante</span><span class="p">(</span><span class="n">col</span><span class="p">)]</span>
+<span class="n">all_columns</span> <span class="o">=</span> <span class="n">numeric_columns</span> <span class="o">+</span> <span class="n">text_columns</span>
+
+<span class="c1"># Filtros únicos</span>
+<span class="n">region_options</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;region&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span> <span class="k">if</span> <span class="s1">&#39;region&#39;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="k">else</span> <span class="p">[]</span>
+<span class="n">subregion_options</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;subregion&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span> <span class="k">if</span> <span class="s1">&#39;subregion&#39;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="k">else</span> <span class="p">[]</span>
+<span class="n">ubicacion_options</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;ubicacion&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span> <span class="k">if</span> <span class="s1">&#39;ubicacion&#39;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="k">else</span> <span class="p">[]</span>
+
+<span class="c1"># Verificar si se cargaron los datos correctamente</span>
+<span class="k">if</span> <span class="n">df</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">layout</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">([</span>
+        <span class="n">html</span><span class="o">.</span><span class="n">H1</span><span class="p">(</span><span class="s2">&quot;Error al cargar los datos&quot;</span><span class="p">),</span>
+        <span class="n">html</span><span class="o">.</span><span class="n">P</span><span class="p">(</span><span class="s2">&quot;No se pudieron cargar los datos del archivo CSV. Verifique el formato y la ruta del archivo.&quot;</span><span class="p">)</span>
+    <span class="p">])</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># Diseño del dashboard</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">layout</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">([</span>
+        <span class="n">html</span><span class="o">.</span><span class="n">H1</span><span class="p">(</span><span class="s2">&quot;Dashboard Interactivo de Análisis de Datos&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;textAlign&#39;</span><span class="p">:</span> <span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;#2c3e50&#39;</span><span class="p">,</span> <span class="s1">&#39;marginBottom&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">}),</span>
+        <span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">([</span>
+            <span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">([</span>
+                <span class="n">html</span><span class="o">.</span><span class="n">H3</span><span class="p">(</span><span class="s2">&quot;Filtros y Controles&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;#2c3e50&#39;</span><span class="p">}),</span>
+                <span class="n">html</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="s2">&quot;Filtrar por Región:&quot;</span><span class="p">),</span>
+                <span class="n">dcc</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;region-filter&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">[{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="n">r</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="n">r</span><span class="p">}</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">region_options</span><span class="p">],</span> <span class="n">value</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">placeholder</span><span class="o">=</span><span class="s2">&quot;Todas&quot;</span><span class="p">),</span>
+                <span class="n">html</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="s2">&quot;Filtrar por Subregión:&quot;</span><span class="p">),</span>
+                <span class="n">dcc</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;subregion-filter&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">[{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="n">s</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="n">s</span><span class="p">}</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">subregion_options</span><span class="p">],</span> <span class="n">value</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">placeholder</span><span class="o">=</span><span class="s2">&quot;Todas&quot;</span><span class="p">),</span>
+                <span class="n">html</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="s2">&quot;Filtrar por Ubicación:&quot;</span><span class="p">),</span>
+                <span class="n">dcc</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;ubicacion-filter&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">[{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="n">u</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="n">u</span><span class="p">}</span> <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">ubicacion_options</span><span class="p">],</span> <span class="n">value</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">placeholder</span><span class="o">=</span><span class="s2">&quot;Todas&quot;</span><span class="p">),</span>
+                <span class="n">html</span><span class="o">.</span><span class="n">Br</span><span class="p">(),</span>
+                <span class="n">html</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="s2">&quot;Seleccione columna para histograma:&quot;</span><span class="p">),</span>
+                <span class="n">dcc</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;histogram-column&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">[{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="n">col</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="n">col</span><span class="p">}</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">numeric_columns</span><span class="p">],</span> <span class="n">value</span><span class="o">=</span><span class="n">numeric_columns</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">numeric_columns</span> <span class="k">else</span> <span class="kc">None</span><span class="p">),</span>
+                <span class="n">html</span><span class="o">.</span><span class="n">Br</span><span class="p">(),</span>
+                <span class="n">html</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="s2">&quot;Seleccione columnas para gráfico de dispersión:&quot;</span><span class="p">),</span>
+                <span class="n">html</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="s2">&quot;Eje X:&quot;</span><span class="p">),</span>
+                <span class="n">dcc</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;scatter-x-column&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">[{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="n">col</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="n">col</span><span class="p">}</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">numeric_columns</span><span class="p">],</span> <span class="n">value</span><span class="o">=</span><span class="n">numeric_columns</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">numeric_columns</span> <span class="k">else</span> <span class="kc">None</span><span class="p">),</span>
+                <span class="n">html</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="s2">&quot;Eje Y:&quot;</span><span class="p">),</span>
+                <span class="n">dcc</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;scatter-y-column&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">[{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="n">col</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="n">col</span><span class="p">}</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">numeric_columns</span><span class="p">],</span> <span class="n">value</span><span class="o">=</span><span class="n">numeric_columns</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">numeric_columns</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">numeric_columns</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">numeric_columns</span> <span class="k">else</span> <span class="kc">None</span><span class="p">),</span>
+                <span class="n">html</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="s2">&quot;Color (opcional):&quot;</span><span class="p">),</span>
+                <span class="n">dcc</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;scatter-color-column&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">[{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="n">col</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="n">col</span><span class="p">}</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">all_columns</span><span class="p">],</span> <span class="n">value</span><span class="o">=</span><span class="kc">None</span><span class="p">),</span>
+                <span class="n">html</span><span class="o">.</span><span class="n">Br</span><span class="p">(),</span>
+                <span class="n">html</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="s2">&quot;Seleccione columna para gráfico de barras:&quot;</span><span class="p">),</span>
+                <span class="n">dcc</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;bar-column&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">[{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="n">col</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="n">col</span><span class="p">}</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">text_columns</span><span class="p">],</span> <span class="n">value</span><span class="o">=</span><span class="n">text_columns</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">text_columns</span> <span class="k">else</span> <span class="kc">None</span><span class="p">),</span>
+                <span class="n">html</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="s2">&quot;Número de categorías a mostrar:&quot;</span><span class="p">),</span>
+                <span class="n">dcc</span><span class="o">.</span><span class="n">Slider</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;bar-top-n&#39;</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">marks</span><span class="o">=</span><span class="p">{</span><span class="n">i</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">5</span><span class="p">)})</span>
+            <span class="p">],</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;width&#39;</span><span class="p">:</span> <span class="s1">&#39;25%&#39;</span><span class="p">,</span> <span class="s1">&#39;display&#39;</span><span class="p">:</span> <span class="s1">&#39;inline-block&#39;</span><span class="p">,</span> <span class="s1">&#39;verticalAlign&#39;</span><span class="p">:</span> <span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="s1">&#39;padding&#39;</span><span class="p">:</span> <span class="s1">&#39;20px&#39;</span><span class="p">,</span> <span class="s1">&#39;backgroundColor&#39;</span><span class="p">:</span> <span class="s1">&#39;#f8f9fa&#39;</span><span class="p">,</span> <span class="s1">&#39;borderRadius&#39;</span><span class="p">:</span> <span class="s1">&#39;10px&#39;</span><span class="p">}),</span>
+            <span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">([</span>
+                <span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">([</span>
+                    <span class="n">html</span><span class="o">.</span><span class="n">H3</span><span class="p">(</span><span class="s2">&quot;Distribución de Variables&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;#2c3e50&#39;</span><span class="p">,</span> <span class="s1">&#39;textAlign&#39;</span><span class="p">:</span> <span class="s1">&#39;center&#39;</span><span class="p">}),</span>
+                    <span class="n">dcc</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;histogram-plot&#39;</span><span class="p">)</span>
+                <span class="p">],</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;marginBottom&#39;</span><span class="p">:</span> <span class="s1">&#39;20px&#39;</span><span class="p">,</span> <span class="s1">&#39;backgroundColor&#39;</span><span class="p">:</span> <span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="s1">&#39;padding&#39;</span><span class="p">:</span> <span class="s1">&#39;15px&#39;</span><span class="p">,</span> <span class="s1">&#39;borderRadius&#39;</span><span class="p">:</span> <span class="s1">&#39;10px&#39;</span><span class="p">,</span> <span class="s1">&#39;boxShadow&#39;</span><span class="p">:</span> <span class="s1">&#39;0px 0px 10px rgba(0,0,0,0.08)&#39;</span><span class="p">}),</span>
+                <span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">([</span>
+                    <span class="n">html</span><span class="o">.</span><span class="n">H3</span><span class="p">(</span><span class="s2">&quot;Relación entre Variables&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;#2c3e50&#39;</span><span class="p">,</span> <span class="s1">&#39;textAlign&#39;</span><span class="p">:</span> <span class="s1">&#39;center&#39;</span><span class="p">}),</span>
+                    <span class="n">dcc</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;scatter-plot&#39;</span><span class="p">)</span>
+                <span class="p">],</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;backgroundColor&#39;</span><span class="p">:</span> <span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="s1">&#39;padding&#39;</span><span class="p">:</span> <span class="s1">&#39;15px&#39;</span><span class="p">,</span> <span class="s1">&#39;borderRadius&#39;</span><span class="p">:</span> <span class="s1">&#39;10px&#39;</span><span class="p">,</span> <span class="s1">&#39;boxShadow&#39;</span><span class="p">:</span> <span class="s1">&#39;0px 0px 10px rgba(0,0,0,0.08)&#39;</span><span class="p">})</span>
+            <span class="p">],</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;width&#39;</span><span class="p">:</span> <span class="s1">&#39;73%&#39;</span><span class="p">,</span> <span class="s1">&#39;display&#39;</span><span class="p">:</span> <span class="s1">&#39;inline-block&#39;</span><span class="p">,</span> <span class="s1">&#39;verticalAlign&#39;</span><span class="p">:</span> <span class="s1">&#39;top&#39;</span><span class="p">})</span>
+        <span class="p">],</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;width&#39;</span><span class="p">:</span> <span class="s1">&#39;100%&#39;</span><span class="p">,</span> <span class="s1">&#39;display&#39;</span><span class="p">:</span> <span class="s1">&#39;flex&#39;</span><span class="p">,</span> <span class="s1">&#39;flexDirection&#39;</span><span class="p">:</span> <span class="s1">&#39;row&#39;</span><span class="p">,</span> <span class="s1">&#39;gap&#39;</span><span class="p">:</span> <span class="s1">&#39;2%&#39;</span><span class="p">}),</span>
+        <span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">([</span>
+            <span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">([</span>
+                <span class="n">html</span><span class="o">.</span><span class="n">H3</span><span class="p">(</span><span class="s2">&quot;Frecuencia de Categorías&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;#2c3e50&#39;</span><span class="p">,</span> <span class="s1">&#39;textAlign&#39;</span><span class="p">:</span> <span class="s1">&#39;center&#39;</span><span class="p">}),</span>
+                <span class="n">dcc</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;bar-plot&#39;</span><span class="p">)</span>
+            <span class="p">],</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;width&#39;</span><span class="p">:</span> <span class="s1">&#39;48%&#39;</span><span class="p">,</span> <span class="s1">&#39;display&#39;</span><span class="p">:</span> <span class="s1">&#39;inline-block&#39;</span><span class="p">,</span> <span class="s1">&#39;verticalAlign&#39;</span><span class="p">:</span> <span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="s1">&#39;backgroundColor&#39;</span><span class="p">:</span> <span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="s1">&#39;padding&#39;</span><span class="p">:</span> <span class="s1">&#39;15px&#39;</span><span class="p">,</span> <span class="s1">&#39;borderRadius&#39;</span><span class="p">:</span> <span class="s1">&#39;10px&#39;</span><span class="p">,</span> <span class="s1">&#39;boxShadow&#39;</span><span class="p">:</span> <span class="s1">&#39;0px 0px 10px rgba(0,0,0,0.08)&#39;</span><span class="p">}),</span>
+            <span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">([</span>
+                <span class="n">html</span><span class="o">.</span><span class="n">H3</span><span class="p">(</span><span class="s2">&quot;Distribución Geográfica&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;#2c3e50&#39;</span><span class="p">,</span> <span class="s1">&#39;textAlign&#39;</span><span class="p">:</span> <span class="s1">&#39;center&#39;</span><span class="p">}),</span>
+                <span class="n">dcc</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;map-plot&#39;</span><span class="p">)</span>
+            <span class="p">],</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;width&#39;</span><span class="p">:</span> <span class="s1">&#39;48%&#39;</span><span class="p">,</span> <span class="s1">&#39;display&#39;</span><span class="p">:</span> <span class="s1">&#39;inline-block&#39;</span><span class="p">,</span> <span class="s1">&#39;verticalAlign&#39;</span><span class="p">:</span> <span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="s1">&#39;backgroundColor&#39;</span><span class="p">:</span> <span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="s1">&#39;padding&#39;</span><span class="p">:</span> <span class="s1">&#39;15px&#39;</span><span class="p">,</span> <span class="s1">&#39;borderRadius&#39;</span><span class="p">:</span> <span class="s1">&#39;10px&#39;</span><span class="p">,</span> <span class="s1">&#39;boxShadow&#39;</span><span class="p">:</span> <span class="s1">&#39;0px 0px 10px rgba(0,0,0,0.08)&#39;</span><span class="p">,</span> <span class="s1">&#39;marginLeft&#39;</span><span class="p">:</span> <span class="s1">&#39;4%&#39;</span><span class="p">})</span>
+        <span class="p">],</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;marginTop&#39;</span><span class="p">:</span> <span class="s1">&#39;30px&#39;</span><span class="p">}),</span>
+        <span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">([</span>
+            <span class="n">html</span><span class="o">.</span><span class="n">H3</span><span class="p">(</span><span class="s2">&quot;Estadísticas Descriptivas&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;#2c3e50&#39;</span><span class="p">,</span> <span class="s1">&#39;textAlign&#39;</span><span class="p">:</span> <span class="s1">&#39;center&#39;</span><span class="p">}),</span>
+            <span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;stats-table&#39;</span><span class="p">)</span>
+        <span class="p">],</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;marginTop&#39;</span><span class="p">:</span> <span class="s1">&#39;30px&#39;</span><span class="p">,</span> <span class="s1">&#39;backgroundColor&#39;</span><span class="p">:</span> <span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="s1">&#39;padding&#39;</span><span class="p">:</span> <span class="s1">&#39;15px&#39;</span><span class="p">,</span> <span class="s1">&#39;borderRadius&#39;</span><span class="p">:</span> <span class="s1">&#39;10px&#39;</span><span class="p">,</span> <span class="s1">&#39;boxShadow&#39;</span><span class="p">:</span> <span class="s1">&#39;0px 0px 10px rgba(0,0,0,0.08)&#39;</span><span class="p">})</span>
+    <span class="p">],</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;padding&#39;</span><span class="p">:</span> <span class="s1">&#39;20px&#39;</span><span class="p">,</span> <span class="s1">&#39;fontFamily&#39;</span><span class="p">:</span> <span class="s1">&#39;Arial, sans-serif&#39;</span><span class="p">,</span> <span class="s1">&#39;backgroundColor&#39;</span><span class="p">:</span> <span class="s1">&#39;#ecf0f1&#39;</span><span class="p">})</span>
+
+    <span class="c1"># Callbacks para filtrar el DataFrame según los filtros seleccionados</span>
+<div class="viewcode-block" id="filter_df">
+<a class="viewcode-back" href="../../../modules/dashboard.html#src.dashboard.dashboard_interactivo.filter_df">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">filter_df</span><span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="n">subregion</span><span class="p">,</span> <span class="n">ubicacion</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Filtra el DataFrame global según los valores seleccionados de región, subregión y ubicación.</span>
+
+<span class="sd">        :param region: Valor de la región seleccionada o None.</span>
+<span class="sd">        :type region: str or None</span>
+<span class="sd">        :param subregion: Valor de la subregión seleccionada o None.</span>
+<span class="sd">        :type subregion: str or None</span>
+<span class="sd">        :param ubicacion: Valor de la ubicación seleccionada o None.</span>
+<span class="sd">        :type ubicacion: str or None</span>
+<span class="sd">        :return: DataFrame filtrado según los parámetros.</span>
+<span class="sd">        :rtype: pandas.DataFrame</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">dff</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">region</span><span class="p">:</span>
+            <span class="n">dff</span> <span class="o">=</span> <span class="n">dff</span><span class="p">[</span><span class="n">dff</span><span class="p">[</span><span class="s1">&#39;region&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">region</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">subregion</span><span class="p">:</span>
+            <span class="n">dff</span> <span class="o">=</span> <span class="n">dff</span><span class="p">[</span><span class="n">dff</span><span class="p">[</span><span class="s1">&#39;subregion&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">subregion</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">ubicacion</span><span class="p">:</span>
+            <span class="n">dff</span> <span class="o">=</span> <span class="n">dff</span><span class="p">[</span><span class="n">dff</span><span class="p">[</span><span class="s1">&#39;ubicacion&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">ubicacion</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">dff</span></div>
+
+
+    <span class="c1"># Modificar todos los callbacks para usar el DataFrame filtrado</span>
+<div class="viewcode-block" id="update_histogram">
+<a class="viewcode-back" href="../../../modules/dashboard.html#src.dashboard.dashboard_interactivo.update_histogram">[documentos]</a>
+    <span class="nd">@app</span><span class="o">.</span><span class="n">callback</span><span class="p">(</span>
+        <span class="n">Output</span><span class="p">(</span><span class="s1">&#39;histogram-plot&#39;</span><span class="p">,</span> <span class="s1">&#39;figure&#39;</span><span class="p">),</span>
+        <span class="p">[</span><span class="n">Input</span><span class="p">(</span><span class="s1">&#39;histogram-column&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">),</span>
+         <span class="n">Input</span><span class="p">(</span><span class="s1">&#39;region-filter&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">),</span>
+         <span class="n">Input</span><span class="p">(</span><span class="s1">&#39;subregion-filter&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">),</span>
+         <span class="n">Input</span><span class="p">(</span><span class="s1">&#39;ubicacion-filter&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">)]</span>
+    <span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">update_histogram</span><span class="p">(</span><span class="n">column</span><span class="p">,</span> <span class="n">region</span><span class="p">,</span> <span class="n">subregion</span><span class="p">,</span> <span class="n">ubicacion</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Actualiza el histograma según la columna y los filtros seleccionados.</span>
+
+<span class="sd">        :param column: Nombre de la columna numérica a graficar.</span>
+<span class="sd">        :type column: str</span>
+<span class="sd">        :param region: Región seleccionada o None.</span>
+<span class="sd">        :type region: str or None</span>
+<span class="sd">        :param subregion: Subregión seleccionada o None.</span>
+<span class="sd">        :type subregion: str or None</span>
+<span class="sd">        :param ubicacion: Ubicación seleccionada o None.</span>
+<span class="sd">        :type ubicacion: str or None</span>
+<span class="sd">        :return: Figura de Plotly con el histograma.</span>
+<span class="sd">        :rtype: plotly.graph_objs._figure.Figure</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">dff</span> <span class="o">=</span> <span class="n">filter_df</span><span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="n">subregion</span><span class="p">,</span> <span class="n">ubicacion</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">column</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">column</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dff</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
+        <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span>
+            <span class="n">dff</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">column</span><span class="p">,</span>
+            <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Distribución de </span><span class="si">{</span><span class="n">column</span><span class="si">}</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39; en </span><span class="si">{</span><span class="n">region</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">if</span> <span class="n">region</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
+            <span class="n">color_discrete_sequence</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;#3498db&#39;</span><span class="p">],</span>
+            <span class="n">opacity</span><span class="o">=</span><span class="mf">0.8</span>
+        <span class="p">)</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+            <span class="n">xaxis_title</span><span class="o">=</span><span class="n">column</span><span class="p">,</span>
+            <span class="n">yaxis_title</span><span class="o">=</span><span class="s2">&quot;Frecuencia&quot;</span><span class="p">,</span>
+            <span class="n">plot_bgcolor</span><span class="o">=</span><span class="s1">&#39;rgba(0,0,0,0)&#39;</span><span class="p">,</span>
+            <span class="n">paper_bgcolor</span><span class="o">=</span><span class="s1">&#39;rgba(0,0,0,0)&#39;</span><span class="p">,</span>
+            <span class="n">font</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;#2c3e50&#39;</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">fig</span></div>
+
+
+<div class="viewcode-block" id="update_scatter">
+<a class="viewcode-back" href="../../../modules/dashboard.html#src.dashboard.dashboard_interactivo.update_scatter">[documentos]</a>
+    <span class="nd">@app</span><span class="o">.</span><span class="n">callback</span><span class="p">(</span>
+        <span class="n">Output</span><span class="p">(</span><span class="s1">&#39;scatter-plot&#39;</span><span class="p">,</span> <span class="s1">&#39;figure&#39;</span><span class="p">),</span>
+        <span class="p">[</span><span class="n">Input</span><span class="p">(</span><span class="s1">&#39;scatter-x-column&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">),</span>
+         <span class="n">Input</span><span class="p">(</span><span class="s1">&#39;scatter-y-column&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">),</span>
+         <span class="n">Input</span><span class="p">(</span><span class="s1">&#39;scatter-color-column&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">),</span>
+         <span class="n">Input</span><span class="p">(</span><span class="s1">&#39;region-filter&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">),</span>
+         <span class="n">Input</span><span class="p">(</span><span class="s1">&#39;subregion-filter&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">),</span>
+         <span class="n">Input</span><span class="p">(</span><span class="s1">&#39;ubicacion-filter&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">)]</span>
+    <span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">update_scatter</span><span class="p">(</span><span class="n">x_column</span><span class="p">,</span> <span class="n">y_column</span><span class="p">,</span> <span class="n">color_column</span><span class="p">,</span> <span class="n">region</span><span class="p">,</span> <span class="n">subregion</span><span class="p">,</span> <span class="n">ubicacion</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Actualiza el gráfico de dispersión según las columnas y filtros seleccionados.</span>
+
+<span class="sd">        :param x_column: Columna para el eje X.</span>
+<span class="sd">        :type x_column: str</span>
+<span class="sd">        :param y_column: Columna para el eje Y.</span>
+<span class="sd">        :type y_column: str</span>
+<span class="sd">        :param color_column: Columna para el color (opcional).</span>
+<span class="sd">        :type color_column: str or None</span>
+<span class="sd">        :param region: Región seleccionada o None.</span>
+<span class="sd">        :type region: str or None</span>
+<span class="sd">        :param subregion: Subregión seleccionada o None.</span>
+<span class="sd">        :type subregion: str or None</span>
+<span class="sd">        :param ubicacion: Ubicación seleccionada o None.</span>
+<span class="sd">        :type ubicacion: str or None</span>
+<span class="sd">        :return: Figura de Plotly con el gráfico de dispersión.</span>
+<span class="sd">        :rtype: plotly.graph_objs._figure.Figure</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">dff</span> <span class="o">=</span> <span class="n">filter_df</span><span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="n">subregion</span><span class="p">,</span> <span class="n">ubicacion</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">x_column</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">y_column</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">x_column</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dff</span><span class="o">.</span><span class="n">columns</span> <span class="ow">or</span> <span class="n">y_column</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dff</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">color_column</span> <span class="ow">and</span> <span class="n">color_column</span> <span class="ow">in</span> <span class="n">dff</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+                <span class="n">dff</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x_column</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_column</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color_column</span><span class="p">,</span>
+                <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Relación entre </span><span class="si">{</span><span class="n">x_column</span><span class="si">}</span><span class="s1"> y </span><span class="si">{</span><span class="n">y_column</span><span class="si">}</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39; en </span><span class="si">{</span><span class="n">region</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">if</span> <span class="n">region</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
+                <span class="n">opacity</span><span class="o">=</span><span class="mf">0.7</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+                <span class="n">dff</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x_column</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_column</span><span class="p">,</span>
+                <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Relación entre </span><span class="si">{</span><span class="n">x_column</span><span class="si">}</span><span class="s1"> y </span><span class="si">{</span><span class="n">y_column</span><span class="si">}</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39; en </span><span class="si">{</span><span class="n">region</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">if</span> <span class="n">region</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
+                <span class="n">color_discrete_sequence</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;#3498db&#39;</span><span class="p">],</span>
+                <span class="n">opacity</span><span class="o">=</span><span class="mf">0.7</span>
+            <span class="p">)</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+            <span class="n">xaxis_title</span><span class="o">=</span><span class="n">x_column</span><span class="p">,</span>
+            <span class="n">yaxis_title</span><span class="o">=</span><span class="n">y_column</span><span class="p">,</span>
+            <span class="n">plot_bgcolor</span><span class="o">=</span><span class="s1">&#39;rgba(0,0,0,0)&#39;</span><span class="p">,</span>
+            <span class="n">paper_bgcolor</span><span class="o">=</span><span class="s1">&#39;rgba(0,0,0,0)&#39;</span><span class="p">,</span>
+            <span class="n">font</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;#2c3e50&#39;</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">fig</span></div>
+
+
+<div class="viewcode-block" id="update_bar">
+<a class="viewcode-back" href="../../../modules/dashboard.html#src.dashboard.dashboard_interactivo.update_bar">[documentos]</a>
+    <span class="nd">@app</span><span class="o">.</span><span class="n">callback</span><span class="p">(</span>
+        <span class="n">Output</span><span class="p">(</span><span class="s1">&#39;bar-plot&#39;</span><span class="p">,</span> <span class="s1">&#39;figure&#39;</span><span class="p">),</span>
+        <span class="p">[</span><span class="n">Input</span><span class="p">(</span><span class="s1">&#39;bar-column&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">),</span>
+         <span class="n">Input</span><span class="p">(</span><span class="s1">&#39;bar-top-n&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">),</span>
+         <span class="n">Input</span><span class="p">(</span><span class="s1">&#39;region-filter&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">),</span>
+         <span class="n">Input</span><span class="p">(</span><span class="s1">&#39;subregion-filter&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">),</span>
+         <span class="n">Input</span><span class="p">(</span><span class="s1">&#39;ubicacion-filter&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">)]</span>
+    <span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">update_bar</span><span class="p">(</span><span class="n">column</span><span class="p">,</span> <span class="n">top_n</span><span class="p">,</span> <span class="n">region</span><span class="p">,</span> <span class="n">subregion</span><span class="p">,</span> <span class="n">ubicacion</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Actualiza el gráfico de barras según la columna categórica y los filtros seleccionados.</span>
+
+<span class="sd">        :param column: Columna categórica a graficar.</span>
+<span class="sd">        :type column: str</span>
+<span class="sd">        :param top_n: Número de categorías a mostrar.</span>
+<span class="sd">        :type top_n: int</span>
+<span class="sd">        :param region: Región seleccionada o None.</span>
+<span class="sd">        :type region: str or None</span>
+<span class="sd">        :param subregion: Subregión seleccionada o None.</span>
+<span class="sd">        :type subregion: str or None</span>
+<span class="sd">        :param ubicacion: Ubicación seleccionada o None.</span>
+<span class="sd">        :type ubicacion: str or None</span>
+<span class="sd">        :return: Figura de Plotly con el gráfico de barras.</span>
+<span class="sd">        :rtype: plotly.graph_objs._figure.Figure</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">dff</span> <span class="o">=</span> <span class="n">filter_df</span><span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="n">subregion</span><span class="p">,</span> <span class="n">ubicacion</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">column</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">column</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dff</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
+        <span class="n">value_counts</span> <span class="o">=</span> <span class="n">dff</span><span class="p">[</span><span class="n">dff</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">notnull</span><span class="p">()</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">dff</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">!=</span> <span class="s1">&#39;desconocido&#39;</span><span class="p">)][</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+        <span class="n">value_counts</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">]</span>
+        <span class="n">top_values</span> <span class="o">=</span> <span class="n">value_counts</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">top_n</span><span class="p">)</span>
+        <span class="n">filtro</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="k">if</span> <span class="n">region</span><span class="p">:</span>
+            <span class="n">filtro</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39; en </span><span class="si">{</span><span class="n">region</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="k">if</span> <span class="n">subregion</span><span class="p">:</span>
+            <span class="n">filtro</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;, subregión </span><span class="si">{</span><span class="n">subregion</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="k">if</span> <span class="n">ubicacion</span><span class="p">:</span>
+            <span class="n">filtro</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;, ubicación </span><span class="si">{</span><span class="n">ubicacion</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span>
+            <span class="n">top_values</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;count&#39;</span><span class="p">,</span>
+            <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Top </span><span class="si">{</span><span class="n">top_n</span><span class="si">}</span><span class="s1"> valores más frecuentes de </span><span class="si">{</span><span class="n">column</span><span class="si">}{</span><span class="n">filtro</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+            <span class="n">color</span><span class="o">=</span><span class="s1">&#39;count&#39;</span><span class="p">,</span>
+            <span class="n">color_continuous_scale</span><span class="o">=</span><span class="s1">&#39;Viridis&#39;</span>
+        <span class="p">)</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+            <span class="n">xaxis_title</span><span class="o">=</span><span class="n">column</span><span class="o">.</span><span class="n">capitalize</span><span class="p">(),</span>
+            <span class="n">yaxis_title</span><span class="o">=</span><span class="s2">&quot;Frecuencia&quot;</span><span class="p">,</span>
+            <span class="n">xaxis_tickangle</span><span class="o">=-</span><span class="mi">45</span><span class="p">,</span>
+            <span class="n">plot_bgcolor</span><span class="o">=</span><span class="s1">&#39;rgba(0,0,0,0)&#39;</span><span class="p">,</span>
+            <span class="n">paper_bgcolor</span><span class="o">=</span><span class="s1">&#39;rgba(0,0,0,0)&#39;</span><span class="p">,</span>
+            <span class="n">font</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;#2c3e50&#39;</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">fig</span></div>
+
+
+<div class="viewcode-block" id="update_map">
+<a class="viewcode-back" href="../../../modules/dashboard.html#src.dashboard.dashboard_interactivo.update_map">[documentos]</a>
+    <span class="nd">@app</span><span class="o">.</span><span class="n">callback</span><span class="p">(</span>
+        <span class="n">Output</span><span class="p">(</span><span class="s1">&#39;map-plot&#39;</span><span class="p">,</span> <span class="s1">&#39;figure&#39;</span><span class="p">),</span>
+        <span class="p">[</span><span class="n">Input</span><span class="p">(</span><span class="s1">&#39;region-filter&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">),</span>
+         <span class="n">Input</span><span class="p">(</span><span class="s1">&#39;subregion-filter&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">),</span>
+         <span class="n">Input</span><span class="p">(</span><span class="s1">&#39;ubicacion-filter&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">)]</span>
+    <span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">update_map</span><span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="n">subregion</span><span class="p">,</span> <span class="n">ubicacion</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Actualiza el mapa de distribución geográfica según los filtros seleccionados.</span>
+
+<span class="sd">        :param region: Región seleccionada o None.</span>
+<span class="sd">        :type region: str or None</span>
+<span class="sd">        :param subregion: Subregión seleccionada o None.</span>
+<span class="sd">        :type subregion: str or None</span>
+<span class="sd">        :param ubicacion: Ubicación seleccionada o None.</span>
+<span class="sd">        :type ubicacion: str or None</span>
+<span class="sd">        :return: Figura de Plotly con el mapa.</span>
+<span class="sd">        :rtype: plotly.graph_objs._figure.Figure</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">dff</span> <span class="o">=</span> <span class="n">filter_df</span><span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="n">subregion</span><span class="p">,</span> <span class="n">ubicacion</span><span class="p">)</span>
+        <span class="n">lat_col</span> <span class="o">=</span> <span class="s1">&#39;lat&#39;</span>
+        <span class="n">lon_col</span> <span class="o">=</span> <span class="s1">&#39;lon&#39;</span>
+        <span class="k">if</span> <span class="n">lat_col</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dff</span><span class="o">.</span><span class="n">columns</span> <span class="ow">or</span> <span class="n">lon_col</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dff</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
+            <span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+                <span class="n">title</span><span class="o">=</span><span class="s2">&quot;No se detectaron columnas geográficas&quot;</span><span class="p">,</span>
+                <span class="n">annotations</span><span class="o">=</span><span class="p">[</span>
+                    <span class="nb">dict</span><span class="p">(</span>
+                        <span class="n">text</span><span class="o">=</span><span class="s2">&quot;No se encontraron columnas &#39;lat&#39; y &#39;lon&#39; en los datos&quot;</span><span class="p">,</span>
+                        <span class="n">showarrow</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">xref</span><span class="o">=</span><span class="s2">&quot;paper&quot;</span><span class="p">,</span> <span class="n">yref</span><span class="o">=</span><span class="s2">&quot;paper&quot;</span><span class="p">,</span>
+                        <span class="n">x</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.5</span>
+                    <span class="p">)</span>
+                <span class="p">]</span>
+            <span class="p">)</span>
+            <span class="k">return</span> <span class="n">fig</span>
+        <span class="c1"># Conversión explícita a numérico</span>
+        <span class="n">dff</span><span class="p">[</span><span class="n">lat_col</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">dff</span><span class="p">[</span><span class="n">lat_col</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
+        <span class="n">dff</span><span class="p">[</span><span class="n">lon_col</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">dff</span><span class="p">[</span><span class="n">lon_col</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
+        <span class="c1"># Filtrar datos válidos</span>
+        <span class="n">map_data</span> <span class="o">=</span> <span class="n">dff</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="n">lat_col</span><span class="p">,</span> <span class="n">lon_col</span><span class="p">])</span>
+        <span class="n">map_data</span> <span class="o">=</span> <span class="n">map_data</span><span class="p">[(</span><span class="n">map_data</span><span class="p">[</span><span class="n">lat_col</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">!=</span> <span class="s1">&#39;desconocido&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">map_data</span><span class="p">[</span><span class="n">lon_col</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">!=</span> <span class="s1">&#39;desconocido&#39;</span><span class="p">)]</span>
+        <span class="n">map_data</span> <span class="o">=</span> <span class="n">map_data</span><span class="p">[(</span><span class="n">map_data</span><span class="p">[</span><span class="n">lat_col</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="o">-</span><span class="mi">90</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">map_data</span><span class="p">[</span><span class="n">lat_col</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">90</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">map_data</span><span class="p">[</span><span class="n">lon_col</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="o">-</span><span class="mi">180</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">map_data</span><span class="p">[</span><span class="n">lon_col</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">180</span><span class="p">)]</span>
+        <span class="k">if</span> <span class="n">map_data</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+            <span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
+            <span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+                <span class="n">title</span><span class="o">=</span><span class="s2">&quot;No hay datos geográficos válidos para el filtro seleccionado&quot;</span><span class="p">,</span>
+                <span class="n">annotations</span><span class="o">=</span><span class="p">[</span>
+                    <span class="nb">dict</span><span class="p">(</span>
+                        <span class="n">text</span><span class="o">=</span><span class="s2">&quot;No hay datos válidos de latitud y longitud&quot;</span><span class="p">,</span>
+                        <span class="n">showarrow</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">xref</span><span class="o">=</span><span class="s2">&quot;paper&quot;</span><span class="p">,</span> <span class="n">yref</span><span class="o">=</span><span class="s2">&quot;paper&quot;</span><span class="p">,</span>
+                        <span class="n">x</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.5</span>
+                    <span class="p">)</span>
+                <span class="p">]</span>
+            <span class="p">)</span>
+            <span class="k">return</span> <span class="n">fig</span>
+        <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter_mapbox</span><span class="p">(</span>
+            <span class="n">map_data</span><span class="p">,</span> <span class="n">lat</span><span class="o">=</span><span class="n">lat_col</span><span class="p">,</span> <span class="n">lon</span><span class="o">=</span><span class="n">lon_col</span><span class="p">,</span>
+            <span class="n">zoom</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
+            <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribución Geográfica de los Datos&quot;</span><span class="p">,</span>
+            <span class="n">color_discrete_sequence</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;#3498db&#39;</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+            <span class="n">mapbox_style</span><span class="o">=</span><span class="s2">&quot;open-street-map&quot;</span><span class="p">,</span>
+            <span class="n">margin</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;r&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;t&quot;</span><span class="p">:</span><span class="mi">50</span><span class="p">,</span><span class="s2">&quot;l&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">},</span>
+            <span class="n">plot_bgcolor</span><span class="o">=</span><span class="s1">&#39;rgba(0,0,0,0)&#39;</span><span class="p">,</span>
+            <span class="n">paper_bgcolor</span><span class="o">=</span><span class="s1">&#39;rgba(0,0,0,0)&#39;</span><span class="p">,</span>
+            <span class="n">font</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;#2c3e50&#39;</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">fig</span></div>
+
+
+<div class="viewcode-block" id="update_stats">
+<a class="viewcode-back" href="../../../modules/dashboard.html#src.dashboard.dashboard_interactivo.update_stats">[documentos]</a>
+    <span class="nd">@app</span><span class="o">.</span><span class="n">callback</span><span class="p">(</span>
+        <span class="n">Output</span><span class="p">(</span><span class="s1">&#39;stats-table&#39;</span><span class="p">,</span> <span class="s1">&#39;children&#39;</span><span class="p">),</span>
+        <span class="p">[</span><span class="n">Input</span><span class="p">(</span><span class="s1">&#39;histogram-column&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">)]</span>
+    <span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">update_stats</span><span class="p">(</span><span class="n">column</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Genera la tabla de estadísticas descriptivas para las columnas numéricas del DataFrame.</span>
+
+<span class="sd">        :param column: Columna seleccionada para el histograma (no afecta la tabla, es solo para trigger del callback).</span>
+<span class="sd">        :type column: str</span>
+<span class="sd">        :return: Tabla HTML con las estadísticas descriptivas.</span>
+<span class="sd">        :rtype: dash.html.Table</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Mostrar estadísticas para todas las columnas numéricas</span>
+        <span class="n">numeric_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">])</span>
+        <span class="n">stats</span> <span class="o">=</span> <span class="n">numeric_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+        <span class="n">stats</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Variable&#39;</span><span class="p">,</span> <span class="s1">&#39;Conteo&#39;</span><span class="p">,</span> <span class="s1">&#39;Media&#39;</span><span class="p">,</span> <span class="s1">&#39;Desv. Estándar&#39;</span><span class="p">,</span> <span class="s1">&#39;Mínimo&#39;</span><span class="p">,</span> <span class="s1">&#39;25%&#39;</span><span class="p">,</span> <span class="s1">&#39;50%&#39;</span><span class="p">,</span> <span class="s1">&#39;75%&#39;</span><span class="p">,</span> <span class="s1">&#39;Máximo&#39;</span><span class="p">]</span>
+        
+        <span class="c1"># Formatear las estadísticas para mostrarlas en una tabla HTML</span>
+        <span class="n">table_header</span> <span class="o">=</span> <span class="p">[</span><span class="n">html</span><span class="o">.</span><span class="n">Tr</span><span class="p">([</span><span class="n">html</span><span class="o">.</span><span class="n">Th</span><span class="p">(</span><span class="n">col</span><span class="p">)</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">stats</span><span class="o">.</span><span class="n">columns</span><span class="p">])]</span>
+        <span class="n">table_rows</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">stats</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+            <span class="n">formatted_row</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">j</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># Nombre de la variable</span>
+                    <span class="n">formatted_row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">html</span><span class="o">.</span><span class="n">Td</span><span class="p">(</span><span class="n">val</span><span class="p">))</span>
+                <span class="k">else</span><span class="p">:</span>  <span class="c1"># Valores numéricos</span>
+                    <span class="n">formatted_val</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">val</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">))</span> <span class="k">else</span> <span class="n">val</span>
+                    <span class="n">formatted_row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">html</span><span class="o">.</span><span class="n">Td</span><span class="p">(</span><span class="n">formatted_val</span><span class="p">))</span>
+            <span class="n">table_rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">html</span><span class="o">.</span><span class="n">Tr</span><span class="p">(</span><span class="n">formatted_row</span><span class="p">))</span>
+        
+        <span class="k">return</span> <span class="n">html</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span>
+            <span class="n">table_header</span> <span class="o">+</span> <span class="n">table_rows</span><span class="p">,</span>
+            <span class="n">style</span><span class="o">=</span><span class="p">{</span>
+                <span class="s1">&#39;width&#39;</span><span class="p">:</span> <span class="s1">&#39;100%&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;border&#39;</span><span class="p">:</span> <span class="s1">&#39;1px solid #ddd&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;borderCollapse&#39;</span><span class="p">:</span> <span class="s1">&#39;collapse&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;textAlign&#39;</span><span class="p">:</span> <span class="s1">&#39;center&#39;</span>
+            <span class="p">}</span>
+        <span class="p">)</span></div>
+
+
+<span class="c1"># Ejecutar la aplicación</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Iniciando el dashboard en http://127.0.0.1:8050/&quot;</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run_server</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">8050</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dashboard iniciado. Acceda a http://127.0.0.1:8050/ en su navegador.&quot;</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, UN PASO AL EXITO.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

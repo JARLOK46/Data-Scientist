@@ -1,0 +1,520 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>src.web package &mdash; documentación de Analisis de Datos y Visualizacion - 1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=4936afed"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=f85f4cfb"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="prev" title="src.visualization package" href="src.visualization.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Analisis de Datos y Visualizacion
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guías de Usuario:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules/instalacion.html">Guía de Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/casos_uso.html">Casos de Uso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/preguntas_frecuentes.html">Preguntas Frecuentes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Módulos Principales:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules/analysis.html">Módulo de Análisis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/geospatial.html">Módulo Geoespacial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/web.html">Módulo Web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/dashboard.html">Módulo de Dashboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/visualization.html">Módulo de Visualización</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/utils.html">Módulo de Utilidades</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentación Técnica:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../modules/guia_analisis_avanzado.html">Guía de Análisis Avanzado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/optimizacion_rendimiento.html">Optimización de Rendimiento</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/seguridad_datos.html">Seguridad de Datos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/referencia_tecnica_detallada.html">Referencia Técnica Detallada</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/integracion_herramientas.html">Integración de Herramientas</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">src</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="src.html">src package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="src.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="src.analysis.html">src.analysis package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.data.html">src.data package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.visualization.html">src.visualization package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">src.web package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.html#module-src">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Analisis de Datos y Visualizacion</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">src</a></li>
+          <li class="breadcrumb-item"><a href="src.html">src package</a></li>
+      <li class="breadcrumb-item active">src.web package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/src.web.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="src-web-package">
+<h1>src.web package<a class="headerlink" href="#src-web-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="src-web-analisis-contenido-web-module">
+<h2>src.web.analisis_contenido_web module<a class="headerlink" href="#src-web-analisis-contenido-web-module" title="Link to this heading"></a></h2>
+<p id="module-src.web.analisis_contenido_web">Módulo de análisis de contenido web.</p>
+<p>Este script permite analizar columnas de URLs, extraer dominios, limpiar y visualizar información relevante de contenido web en un DataFrame.</p>
+<p>Autor: Anderson Zapata
+Fecha: 2025</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="src.web.analisis_contenido_web.detect_delimiter">
+<span class="sig-prename descclassname"><span class="pre">src.web.analisis_contenido_web.</span></span><span class="sig-name descname"><span class="pre">detect_delimiter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_lines</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/web/analisis_contenido_web.html#detect_delimiter"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.web.analisis_contenido_web.detect_delimiter" title="Link to this definition"></a></dt>
+<dd><p>Detecta automáticamente el delimitador utilizado en un archivo CSV.</p>
+<p>Esta función analiza las primeras líneas de un archivo para determinar
+qué delimitador se utiliza con mayor frecuencia entre tabulaciones, comas,
+puntos y comas, y barras verticales.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_path</strong> (<em>str</em>) – Ruta al archivo CSV a analizar.</p></li>
+<li><p><strong>num_lines</strong> (<em>int</em><em>, </em><em>optional</em>) – Número de líneas a analizar. Por defecto es 5.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>El delimitador detectado (tab, coma, punto y coma o pipe).</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Nota:</dt><dd><p>La función maneja errores de codificación utilizando “ignore” para evitar
+problemas con caracteres especiales.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.web.analisis_contenido_web.load_data">
+<span class="sig-prename descclassname"><span class="pre">src.web.analisis_contenido_web.</span></span><span class="sig-name descname"><span class="pre">load_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/web/analisis_contenido_web.html#load_data"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.web.analisis_contenido_web.load_data" title="Link to this definition"></a></dt>
+<dd><p>Carga datos desde un archivo CSV para análisis de contenido web.</p>
+<p>Esta función detecta automáticamente el delimitador del archivo, intenta cargarlo
+con diferentes codificaciones (utf-8 y latin1) y realiza una limpieza básica de los
+nombres de columnas.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – Ruta al archivo CSV con los datos.</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>DataFrame con los datos cargados y nombres de columnas normalizados.</dt><dd><p>Retorna None si no se puede cargar el archivo.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Nota:</dt><dd><p>Los nombres de columnas se convierten a minúsculas y los espacios se reemplazan por guiones bajos.
+La función intenta diferentes codificaciones para manejar archivos con caracteres especiales.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.web.analisis_contenido_web.analyze_urls">
+<span class="sig-prename descclassname"><span class="pre">src.web.analisis_contenido_web.</span></span><span class="sig-name descname"><span class="pre">analyze_urls</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/web/analisis_contenido_web.html#analyze_urls"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.web.analisis_contenido_web.analyze_urls" title="Link to this definition"></a></dt>
+<dd><p>Identifica y analiza URLs presentes en un DataFrame.</p>
+<p>Esta función examina todas las columnas de texto en el DataFrame para detectar aquellas
+que contienen URLs. Para cada columna identificada, extrae y analiza información como:
+dominios, extensiones de archivo y parámetros de consulta.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>pandas.DataFrame</em>) – DataFrame que contiene los datos a analizar.</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Una tupla con dos elementos:</dt><dd><ul class="simple">
+<li><p>list: Lista de nombres de columnas que contienen URLs.</p></li>
+<li><dl class="simple">
+<dt>dict: Diccionario con los datos extraídos de las URLs, organizado por columna.</dt><dd><p>Incluye URLs válidas, dominios, extensiones y parámetros de consulta.
+Retorna (None, None) si no se encuentran columnas con URLs.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Nota:</dt><dd><p>La función considera que una columna contiene URLs si al menos el 10% de las muestras
+analizadas contienen patrones de URL válidos. Se analizan hasta 100 muestras por columna.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.web.analisis_contenido_web.analyze_url_content">
+<span class="sig-prename descclassname"><span class="pre">src.web.analisis_contenido_web.</span></span><span class="sig-name descname"><span class="pre">analyze_url_content</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/web/analisis_contenido_web.html#analyze_url_content"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.web.analisis_contenido_web.analyze_url_content" title="Link to this definition"></a></dt>
+<dd><p>Simula la extracción y análisis de contenido textual de URLs.</p>
+<p>Esta función crea un corpus de texto simulado basado en los dominios de las URLs
+identificadas previamente. En un entorno real, esta función realizaría web scraping
+para extraer el contenido real de las páginas web.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>url_data</strong> (<em>dict</em>) – Diccionario con datos de URLs organizados por columna,
+generado por la función analyze_urls.</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Diccionario con el corpus simulado para cada columna que contiene URLs.</dt><dd><p>Cada entrada contiene:
+- “corpus”: Lista de textos simulados.
+- “domains”: Lista de dominios correspondientes a cada texto.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Nota:</dt><dd><p>Esta es una función de simulación. En un entorno de producción, se reemplazaría
+con código real de web scraping utilizando bibliotecas como requests y BeautifulSoup.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.web.analisis_contenido_web.preprocess_text">
+<span class="sig-prename descclassname"><span class="pre">src.web.analisis_contenido_web.</span></span><span class="sig-name descname"><span class="pre">preprocess_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">corpus</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/web/analisis_contenido_web.html#preprocess_text"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.web.analisis_contenido_web.preprocess_text" title="Link to this definition"></a></dt>
+<dd><p>Preprocesa un corpus de textos para análisis de lenguaje natural.</p>
+<p>Esta función realiza varias operaciones de limpieza y normalización en cada documento:
+- Conversión a minúsculas
+- Eliminación de caracteres especiales y números
+- Tokenización
+- Eliminación de stopwords (en inglés y español)
+- Lematización
+- Filtrado de tokens cortos (menos de 3 caracteres)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>corpus</strong> (<em>list</em>) – Lista de documentos de texto a preprocesar.</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Lista de documentos preprocesados, donde cada documento es una cadena</dt><dd><p>de tokens lematizados separados por espacios.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Nota:</dt><dd><p>Esta función utiliza NLTK para la tokenización, eliminación de stopwords y lematización.
+Requiere que los recursos de NLTK “punkt”, “stopwords” y “wordnet” estén descargados.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.web.analisis_contenido_web.topic_modeling">
+<span class="sig-prename descclassname"><span class="pre">src.web.analisis_contenido_web.</span></span><span class="sig-name descname"><span class="pre">topic_modeling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">corpus</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_topics</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/web/analisis_contenido_web.html#topic_modeling"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.web.analisis_contenido_web.topic_modeling" title="Link to this definition"></a></dt>
+<dd><p>Realiza modelado de temas en un corpus de texto utilizando Latent Dirichlet Allocation (LDA).</p>
+<p>Esta función vectoriza el corpus utilizando CountVectorizer y luego aplica
+el algoritmo LDA para identificar temas latentes en los documentos. Para cada tema,
+extrae las 10 palabras más representativas junto con sus pesos.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>corpus</strong> (<em>list</em>) – Lista de documentos de texto preprocesados.</p></li>
+<li><p><strong>n_topics</strong> (<em>int</em><em>, </em><em>optional</em>) – Número de temas a identificar. Por defecto es 5.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Una tupla con tres elementos:</dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt>list: Lista de diccionarios, cada uno representando un tema con sus palabras</dt><dd><p>y pesos asociados.</p>
+</dd>
+</dl>
+</li>
+<li><p>LatentDirichletAllocation: El modelo LDA entrenado.</p></li>
+<li><p>CountVectorizer: El vectorizador utilizado para transformar el corpus.</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Nota:</dt><dd><p>La función utiliza parámetros predeterminados para el vectorizador:
+- max_df=0.95: Ignora términos que aparecen en más del 95% de los documentos
+- min_df=2: Ignora términos que aparecen en menos de 2 documentos
+- max_features=1000: Limita el vocabulario a 1000 términos</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.web.analisis_contenido_web.sanitize_filename">
+<span class="sig-prename descclassname"><span class="pre">src.web.analisis_contenido_web.</span></span><span class="sig-name descname"><span class="pre">sanitize_filename</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/web/analisis_contenido_web.html#sanitize_filename"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.web.analisis_contenido_web.sanitize_filename" title="Link to this definition"></a></dt>
+<dd><p>Sanea un nombre de archivo eliminando caracteres no permitidos.</p>
+<p>Esta función reemplaza cualquier carácter que no sea alfanumérico, guión bajo o guión
+con un guión bajo, generando un nombre de archivo seguro para usar en cualquier sistema
+de archivos.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – El nombre de archivo a sanear.</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>El nombre de archivo saneado, conteniendo solo caracteres alfanuméricos,
+guiones bajos y guiones.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sanitize_filename</span><span class="p">(</span><span class="s2">&quot;my file (1).txt&quot;</span><span class="p">)</span>
+<span class="go">&#39;my_file__1_.txt&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sanitize_filename</span><span class="p">(</span><span class="s2">&quot;data$analysis#2023&quot;</span><span class="p">)</span>
+<span class="go">&#39;data_analysis_2023&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.web.analisis_contenido_web.visualize_url_analysis">
+<span class="sig-prename descclassname"><span class="pre">src.web.analisis_contenido_web.</span></span><span class="sig-name descname"><span class="pre">visualize_url_analysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url_cols</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">url_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/web/analisis_contenido_web.html#visualize_url_analysis"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.web.analisis_contenido_web.visualize_url_analysis" title="Link to this definition"></a></dt>
+<dd><p>Genera y guarda visualizaciones para el análisis de URLs.</p>
+<p>Esta función crea diferentes tipos de visualizaciones para cada columna que contiene URLs:
+- Gráfico de barras de los 15 dominios más comunes
+- Nube de palabras de dominios
+- Gráfico de barras de las extensiones de archivo más comunes (si hay suficientes)
+- Gráfico de barras de los parámetros de consulta más comunes (si hay suficientes)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>url_cols</strong> (<em>list</em>) – Lista de nombres de columnas que contienen URLs.</p></li>
+<li><p><strong>url_data</strong> (<em>dict</em>) – Diccionario con datos de URLs organizados por columna,
+generado por la función analyze_urls.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>Las visualizaciones se guardan como archivos PNG en el directorio de resultados.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Nota:</dt><dd><p>Las visualizaciones se guardan en el directorio especificado por la variable global
+“results_dir”. Los nombres de archivo incluyen el nombre de la columna con espacios
+reemplazados por guiones bajos.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.web.analisis_contenido_web.visualize_content_analysis">
+<span class="sig-prename descclassname"><span class="pre">src.web.analisis_contenido_web.</span></span><span class="sig-name descname"><span class="pre">visualize_content_analysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">content_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">topics_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/web/analisis_contenido_web.html#visualize_content_analysis"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.web.analisis_contenido_web.visualize_content_analysis" title="Link to this definition"></a></dt>
+<dd><p>Genera y guarda visualizaciones para el análisis de contenido de URLs.</p>
+<p>Esta función crea visualizaciones para representar los temas identificados
+en el contenido de las URLs mediante modelado de temas. Para cada columna,
+genera un gráfico de barras horizontales que muestra las palabras más relevantes
+para cada tema y sus pesos asociados.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>content_data</strong> (<em>dict</em>) – Diccionario con el corpus simulado para cada columna,
+generado por la función analyze_url_content.</p></li>
+<li><p><strong>topics_data</strong> (<em>dict</em>) – Diccionario con los temas identificados para cada columna,
+generado por la función topic_modeling.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>Las visualizaciones se guardan como archivos PNG en el directorio de resultados.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Nota:</dt><dd><p>La función está configurada para mostrar hasta 5 temas por columna en un único gráfico.
+Las visualizaciones se guardan en el directorio especificado por la variable global
+“results_dir”.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.web.analisis_contenido_web.generate_report">
+<span class="sig-prename descclassname"><span class="pre">src.web.analisis_contenido_web.</span></span><span class="sig-name descname"><span class="pre">generate_report</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url_cols</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">url_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">topics_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/web/analisis_contenido_web.html#generate_report"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.web.analisis_contenido_web.generate_report" title="Link to this definition"></a></dt>
+<dd><p>Genera un informe detallado del análisis de contenido web en formatos JSON y Markdown.</p>
+<p>Esta función recopila los resultados del análisis de URLs y del modelado de temas
+para crear informes estructurados. El informe incluye estadísticas sobre dominios,
+extensiones de archivo, parámetros de consulta y temas identificados en el contenido.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>url_cols</strong> (<em>list</em>) – Lista de nombres de columnas que contienen URLs.</p></li>
+<li><p><strong>url_data</strong> (<em>dict</em>) – Diccionario con datos de URLs organizados por columna,
+generado por la función analyze_urls.</p></li>
+<li><p><strong>topics_data</strong> (<em>dict</em>) – Diccionario con los temas identificados para cada columna,
+generado por la función topic_modeling.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Una tupla con dos elementos:</dt><dd><ul class="simple">
+<li><p>str: Ruta al archivo JSON del informe.</p></li>
+<li><p>str: Ruta al archivo Markdown del informe.</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Nota:</dt><dd><p>El informe en formato Markdown incluye secciones de resumen, análisis de contenido,
+conclusiones y recomendaciones. Ambos informes se guardan en el directorio especificado
+por la variable global “results_dir”.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.web.analisis_contenido_web.main">
+<span class="sig-prename descclassname"><span class="pre">src.web.analisis_contenido_web.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/web/analisis_contenido_web.html#main"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.web.analisis_contenido_web.main" title="Link to this definition"></a></dt>
+<dd><p>Función principal que coordina el flujo de trabajo completo del análisis de contenido web.</p>
+<p>Esta función ejecuta secuencialmente todas las etapas del análisis:
+1. Carga de datos desde el archivo CSV
+2. Análisis de URLs en el DataFrame
+3. Visualización de los resultados del análisis de URLs
+4. Análisis simulado del contenido de las URLs
+5. Preprocesamiento de texto y modelado de temas
+6. Visualización de los resultados del análisis de contenido
+7. Generación de informes en formatos JSON y Markdown</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p><dl class="simple">
+<dt>Los resultados se guardan como archivos en el directorio especificado</dt><dd><p>por la variable global “results_dir”.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Nota:</dt><dd><p>Esta función imprime mensajes de estado durante la ejecución para informar
+sobre el progreso del análisis y la ubicación de los archivos generados.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-src.web">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-src.web" title="Link to this heading"></a></h2>
+<p>Este módulo contiene herramientas para el análisis de contenido web.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="src.visualization.html" class="btn btn-neutral float-left" title="src.visualization package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, UN PASO AL EXITO.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

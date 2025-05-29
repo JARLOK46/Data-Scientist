@@ -1,0 +1,208 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>src package &mdash; documentación de Analisis de Datos y Visualizacion - 1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=4936afed"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=f85f4cfb"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="src.analysis package" href="src.analysis.html" />
+    <link rel="prev" title="src" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Analisis de Datos y Visualizacion
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guías de Usuario:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules/instalacion.html">Guía de Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/casos_uso.html">Casos de Uso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/preguntas_frecuentes.html">Preguntas Frecuentes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Módulos Principales:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules/analysis.html">Módulo de Análisis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/geospatial.html">Módulo Geoespacial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/web.html">Módulo Web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/dashboard.html">Módulo de Dashboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/visualization.html">Módulo de Visualización</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/utils.html">Módulo de Utilidades</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentación Técnica:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../modules/guia_analisis_avanzado.html">Guía de Análisis Avanzado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/optimizacion_rendimiento.html">Optimización de Rendimiento</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/seguridad_datos.html">Seguridad de Datos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/referencia_tecnica_detallada.html">Referencia Técnica Detallada</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/integracion_herramientas.html">Integración de Herramientas</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">src</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">src package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.analysis.html">src.analysis package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.data.html">src.data package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.visualization.html">src.visualization package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.web.html">src.web package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-src">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Analisis de Datos y Visualizacion</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">src</a></li>
+      <li class="breadcrumb-item active">src package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/src.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="src-package">
+<h1>src package<a class="headerlink" href="#src-package" title="Link to this heading"></a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="src.analysis.html">src.analysis package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="src.analysis.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.analysis.html#module-src.analysis.analisis_predictivo">src.analysis.analisis_predictivo module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.analysis.html#src.analysis.analisis_predictivo.detect_delimiter"><code class="docutils literal notranslate"><span class="pre">detect_delimiter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.analysis.html#src.analysis.analisis_predictivo.load_and_prepare_data"><code class="docutils literal notranslate"><span class="pre">load_and_prepare_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.analysis.html#src.analysis.analisis_predictivo.select_features_target"><code class="docutils literal notranslate"><span class="pre">select_features_target()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.analysis.html#src.analysis.analisis_predictivo.create_preprocessing_pipeline"><code class="docutils literal notranslate"><span class="pre">create_preprocessing_pipeline()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.analysis.html#src.analysis.analisis_predictivo.train_evaluate_models"><code class="docutils literal notranslate"><span class="pre">train_evaluate_models()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.analysis.html#src.analysis.analisis_predictivo.optimize_best_model"><code class="docutils literal notranslate"><span class="pre">optimize_best_model()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.analysis.html#src.analysis.analisis_predictivo.visualize_results"><code class="docutils literal notranslate"><span class="pre">visualize_results()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.analysis.html#src.analysis.analisis_predictivo.save_model"><code class="docutils literal notranslate"><span class="pre">save_model()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.analysis.html#src.analysis.analisis_predictivo.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.analysis.html#src-analysis-analizar-csv-module">src.analysis.analizar_csv module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.analysis.html#module-src.analysis.limpiar_analizar_csv">src.analysis.limpiar_analizar_csv module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.analysis.html#src.analysis.limpiar_analizar_csv.limpiar_analizar_csv"><code class="docutils literal notranslate"><span class="pre">limpiar_analizar_csv()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.analysis.html#module-src.analysis">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="src.data.html">src.data package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="src.data.html#module-src.data">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="src.visualization.html">src.visualization package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="src.visualization.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.visualization.html#module-src.visualization.visualizar_datos">src.visualization.visualizar_datos module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.visualization.html#src.visualization.visualizar_datos.visualizar_datos"><code class="docutils literal notranslate"><span class="pre">visualizar_datos()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.visualization.html#module-src.visualization">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="src.web.html">src.web package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="src.web.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.web.html#src-web-analisis-contenido-web-module">src.web.analisis_contenido_web module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.web.html#src.web.analisis_contenido_web.detect_delimiter"><code class="docutils literal notranslate"><span class="pre">detect_delimiter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.web.html#src.web.analisis_contenido_web.load_data"><code class="docutils literal notranslate"><span class="pre">load_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.web.html#src.web.analisis_contenido_web.analyze_urls"><code class="docutils literal notranslate"><span class="pre">analyze_urls()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.web.html#src.web.analisis_contenido_web.analyze_url_content"><code class="docutils literal notranslate"><span class="pre">analyze_url_content()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.web.html#src.web.analisis_contenido_web.preprocess_text"><code class="docutils literal notranslate"><span class="pre">preprocess_text()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.web.html#src.web.analisis_contenido_web.topic_modeling"><code class="docutils literal notranslate"><span class="pre">topic_modeling()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.web.html#src.web.analisis_contenido_web.sanitize_filename"><code class="docutils literal notranslate"><span class="pre">sanitize_filename()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.web.html#src.web.analisis_contenido_web.visualize_url_analysis"><code class="docutils literal notranslate"><span class="pre">visualize_url_analysis()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.web.html#src.web.analisis_contenido_web.visualize_content_analysis"><code class="docutils literal notranslate"><span class="pre">visualize_content_analysis()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.web.html#src.web.analisis_contenido_web.generate_report"><code class="docutils literal notranslate"><span class="pre">generate_report()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.web.html#src.web.analisis_contenido_web.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.web.html#module-src.web">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="module-src">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-src" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="modules.html" class="btn btn-neutral float-left" title="src" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="src.analysis.html" class="btn btn-neutral float-right" title="src.analysis package" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, UN PASO AL EXITO.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

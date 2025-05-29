@@ -1,0 +1,751 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>src.analysis.analisis_predictivo &mdash; documentación de Analisis de Datos y Visualizacion - 1.0</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=4936afed"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/translations.js?v=f85f4cfb"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Analisis de Datos y Visualizacion
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guías de Usuario:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/instalacion.html">Guía de Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/casos_uso.html">Casos de Uso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/preguntas_frecuentes.html">Preguntas Frecuentes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Módulos Principales:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/analysis.html">Módulo de Análisis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/geospatial.html">Módulo Geoespacial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/web.html">Módulo Web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/dashboard.html">Módulo de Dashboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/visualization.html">Módulo de Visualización</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/utils.html">Módulo de Utilidades</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentación Técnica:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/guia_analisis_avanzado.html">Guía de Análisis Avanzado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/optimizacion_rendimiento.html">Optimización de Rendimiento</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/seguridad_datos.html">Seguridad de Datos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/referencia_tecnica_detallada.html">Referencia Técnica Detallada</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/integracion_herramientas.html">Integración de Herramientas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/modules.html">src</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Analisis de Datos y Visualizacion</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Código de módulo</a></li>
+      <li class="breadcrumb-item active">src.analysis.analisis_predictivo</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Código fuente para src.analysis.analisis_predictivo</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Módulo de análisis predictivo.</span>
+
+<span class="sd">Este script permite preparar datos, entrenar y evaluar modelos de regresión, y generar visualizaciones de resultados.</span>
+
+<span class="sd">Autor: Anderson Zapata</span>
+<span class="sd">Fecha: 2025</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span><span class="p">,</span> <span class="n">cross_val_score</span><span class="p">,</span> <span class="n">GridSearchCV</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span><span class="p">,</span> <span class="n">OneHotEncoder</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.compose</span><span class="w"> </span><span class="kn">import</span> <span class="n">ColumnTransformer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.impute</span><span class="w"> </span><span class="kn">import</span> <span class="n">SimpleImputer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestRegressor</span><span class="p">,</span> <span class="n">GradientBoostingRegressor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearRegression</span><span class="p">,</span> <span class="n">Ridge</span><span class="p">,</span> <span class="n">Lasso</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span><span class="p">,</span> <span class="n">mean_absolute_error</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.cluster</span><span class="w"> </span><span class="kn">import</span> <span class="n">KMeans</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">urllib.parse</span><span class="w"> </span><span class="kn">import</span> <span class="n">urlparse</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">joblib</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="c1"># Añadir el directorio raíz del proyecto al path para poder importar módulos</span>
+<span class="n">proyecto_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s1">&#39;../..&#39;</span><span class="p">))</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">proyecto_dir</span><span class="p">)</span>
+
+<span class="c1"># Configuración de visualización</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn-v0_8-whitegrid&#39;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_palette</span><span class="p">(</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+
+<span class="c1"># Crear directorio para modelos si no existe</span>
+<span class="n">models_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)),</span> <span class="s1">&#39;modelos&#39;</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">models_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Función para detectar el delimitador</span>
+<div class="viewcode-block" id="detect_delimiter">
+<a class="viewcode-back" href="../../../modules/analysis.html#src.analysis.analisis_predictivo.detect_delimiter">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">detect_delimiter</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">num_lines</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Detecta automáticamente el delimitador utilizado en un archivo CSV.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        file_path (str): Ruta al archivo CSV.</span>
+<span class="sd">        num_lines (int, optional): Número de líneas a analizar. Por defecto es 5.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        str: El delimitador detectado (tab, coma, punto y coma o pipe).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">sample</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">file</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_lines</span><span class="p">)])</span>
+    
+    <span class="n">delimiters</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;,&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;;&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;|&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+    <span class="k">for</span> <span class="n">delimiter</span> <span class="ow">in</span> <span class="n">delimiters</span><span class="p">:</span>
+        <span class="n">delimiters</span><span class="p">[</span><span class="n">delimiter</span><span class="p">]</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">delimiter</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">delimiters</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">delimiters</span><span class="o">.</span><span class="n">get</span><span class="p">)</span></div>
+
+
+<span class="c1"># Cargar y preparar datos</span>
+<div class="viewcode-block" id="load_and_prepare_data">
+<a class="viewcode-back" href="../../../modules/analysis.html#src.analysis.analisis_predictivo.load_and_prepare_data">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">load_and_prepare_data</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Carga y prepara los datos desde un archivo CSV para el análisis predictivo.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        file_path (str): Ruta al archivo CSV con los datos.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple: Contiene el DataFrame completo, las características numéricas y categóricas,</span>
+<span class="sd">               y la variable objetivo si se encuentra.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cargando datos desde: </span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Detectar delimitador</span>
+    <span class="n">delimiter</span> <span class="o">=</span> <span class="n">detect_delimiter</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Delimitador detectado: &#39;</span><span class="si">{</span><span class="n">delimiter</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Cargar datos</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="n">delimiter</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error con encoding utf-8: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="n">delimiter</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin1&#39;</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error con encoding latin1: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Datos cargados. Dimensiones: </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Limpiar nombres de columnas</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+    
+    <span class="c1"># Eliminar duplicados</span>
+    <span class="n">df_cleaned</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Duplicados eliminados: </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">df_cleaned</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Identificar columnas numéricas y rellenar valores nulos</span>
+    <span class="n">numeric_cols</span> <span class="o">=</span> <span class="n">df_cleaned</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">numeric_cols</span><span class="p">:</span>
+        <span class="n">df_cleaned</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df_cleaned</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Identificar columnas de texto</span>
+    <span class="n">text_cols</span> <span class="o">=</span> <span class="n">df_cleaned</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;object&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    
+    <span class="c1"># Extraer dominios de URLs</span>
+    <span class="n">url_cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">text_cols</span> <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">url_term</span> <span class="ow">in</span> <span class="n">col</span> <span class="k">for</span> <span class="n">url_term</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">,</span> <span class="s1">&#39;link&#39;</span><span class="p">,</span> <span class="s1">&#39;web&#39;</span><span class="p">])]</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">url_cols</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">df_cleaned</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s1">_domain&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_cleaned</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+                <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">urlparse</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">netloc</span> <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">notna</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="n">x</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;No se pudo extraer dominio de la columna </span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Identificar columnas geográficas</span>
+    <span class="n">geo_cols</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;lat&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df_cleaned</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">term</span> <span class="ow">in</span> <span class="n">col</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">,</span> <span class="s1">&#39;latitude&#39;</span><span class="p">])],</span>
+        <span class="s1">&#39;lon&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df_cleaned</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">term</span> <span class="ow">in</span> <span class="n">col</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">,</span> <span class="s1">&#39;lng&#39;</span><span class="p">,</span> <span class="s1">&#39;longitude&#39;</span><span class="p">])]</span>
+    <span class="p">}</span>
+    
+    <span class="k">if</span> <span class="n">geo_cols</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="n">geo_cols</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Columnas geográficas detectadas: </span><span class="si">{</span><span class="n">geo_cols</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="c1"># Crear una columna de región basada en coordenadas (clustering)</span>
+        <span class="n">geo_data</span> <span class="o">=</span> <span class="n">df_cleaned</span><span class="p">[[</span><span class="n">geo_cols</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">geo_cols</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">geo_data</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>  <span class="c1"># Asegurar que hay suficientes datos para clustering</span>
+            <span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="nb">min</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">geo_data</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span><span class="p">),</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+            <span class="n">df_cleaned</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">geo_data</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="s1">&#39;region_cluster&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span>
+                <span class="n">geo_data</span><span class="p">[[</span><span class="n">geo_cols</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">geo_cols</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]]])</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Clustering geográfico aplicado para crear regiones&quot;</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">df_cleaned</span><span class="p">,</span> <span class="n">numeric_cols</span><span class="p">,</span> <span class="n">text_cols</span></div>
+
+
+<span class="c1"># Seleccionar características y objetivo para el modelo</span>
+<div class="viewcode-block" id="select_features_target">
+<a class="viewcode-back" href="../../../modules/analysis.html#src.analysis.analisis_predictivo.select_features_target">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">select_features_target</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">numeric_cols</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Selecciona automáticamente las características y la variable objetivo para el modelo predictivo.</span>
+<span class="sd">    </span>
+<span class="sd">    Esta función analiza las correlaciones entre variables numéricas para identificar la variable</span>
+<span class="sd">    objetivo más adecuada (aquella con mayor correlación con otras variables) y selecciona las</span>
+<span class="sd">    características numéricas y categóricas relevantes para el modelo.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        df (pandas.DataFrame): DataFrame con los datos preparados.</span>
+<span class="sd">        numeric_cols (list): Lista de nombres de columnas numéricas en el DataFrame.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple: Contiene tres elementos:</span>
+<span class="sd">            - feature_cols (list): Lista de columnas numéricas seleccionadas como características.</span>
+<span class="sd">            - categorical_cols (list): Lista de columnas categóricas relevantes (con menos de 20 categorías).</span>
+<span class="sd">            - target_col (str): Nombre de la columna seleccionada como variable objetivo.</span>
+<span class="sd">    </span>
+<span class="sd">    Nota:</span>
+<span class="sd">        Si solo hay una variable numérica disponible, esta será seleccionada como objetivo.</span>
+<span class="sd">        Las columnas categóricas seleccionadas son aquellas con entre 2 y 19 categorías únicas.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Seleccionar la variable objetivo (la que tenga mayor correlación con otras variables)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">numeric_cols</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">corr_matrix</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">numeric_cols</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span>
+        <span class="c1"># Sumar las correlaciones para cada variable</span>
+        <span class="n">corr_sum</span> <span class="o">=</span> <span class="n">corr_matrix</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span>  <span class="c1"># Restar 1 para eliminar la correlación consigo misma</span>
+        <span class="c1"># Seleccionar la variable con mayor suma de correlaciones</span>
+        <span class="n">target_col</span> <span class="o">=</span> <span class="n">corr_sum</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Variable objetivo seleccionada automáticamente: </span><span class="si">{</span><span class="n">target_col</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">target_col</span> <span class="o">=</span> <span class="n">numeric_cols</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Solo hay una variable numérica, usando </span><span class="si">{</span><span class="n">target_col</span><span class="si">}</span><span class="s2"> como objetivo&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Seleccionar características (todas las demás columnas numéricas)</span>
+    <span class="n">feature_cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">numeric_cols</span> <span class="k">if</span> <span class="n">col</span> <span class="o">!=</span> <span class="n">target_col</span><span class="p">]</span>
+    
+    <span class="c1"># Añadir columnas categóricas relevantes</span>
+    <span class="n">categorical_cols</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">col</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">numeric_cols</span> <span class="ow">and</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">20</span> <span class="ow">and</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">categorical_cols</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">col</span><span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Características numéricas: </span><span class="si">{</span><span class="n">feature_cols</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Características categóricas: </span><span class="si">{</span><span class="n">categorical_cols</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">feature_cols</span><span class="p">,</span> <span class="n">categorical_cols</span><span class="p">,</span> <span class="n">target_col</span></div>
+
+
+<span class="c1"># Preparar pipeline de preprocesamiento</span>
+<div class="viewcode-block" id="create_preprocessing_pipeline">
+<a class="viewcode-back" href="../../../modules/analysis.html#src.analysis.analisis_predictivo.create_preprocessing_pipeline">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_preprocessing_pipeline</span><span class="p">(</span><span class="n">numeric_features</span><span class="p">,</span> <span class="n">categorical_features</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Crea un pipeline de preprocesamiento para características numéricas y categóricas.</span>
+<span class="sd">    </span>
+<span class="sd">    Esta función construye un pipeline de transformación de datos que incluye:</span>
+<span class="sd">    - Para variables numéricas: imputación de valores faltantes con la mediana y estandarización.</span>
+<span class="sd">    - Para variables categóricas: imputación de valores faltantes con &#39;missing&#39; y codificación one-hot.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        numeric_features (list): Lista de nombres de columnas numéricas.</span>
+<span class="sd">        categorical_features (list): Lista de nombres de columnas categóricas.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        ColumnTransformer: Un objeto ColumnTransformer configurado con los transformadores</span>
+<span class="sd">                          para características numéricas y categóricas.</span>
+<span class="sd">    </span>
+<span class="sd">    Nota:</span>
+<span class="sd">        El preprocesador resultante puede ser utilizado en un pipeline de scikit-learn</span>
+<span class="sd">        junto con un modelo de aprendizaje automático.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">numeric_transformer</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">steps</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">(</span><span class="s1">&#39;imputer&#39;</span><span class="p">,</span> <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;median&#39;</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s1">&#39;scaler&#39;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">())</span>
+    <span class="p">])</span>
+    
+    <span class="n">categorical_transformer</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">steps</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">(</span><span class="s1">&#39;imputer&#39;</span><span class="p">,</span> <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="s1">&#39;missing&#39;</span><span class="p">)),</span>
+        <span class="p">(</span><span class="s1">&#39;onehot&#39;</span><span class="p">,</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">handle_unknown</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">))</span>
+    <span class="p">])</span>
+    
+    <span class="n">preprocessor</span> <span class="o">=</span> <span class="n">ColumnTransformer</span><span class="p">(</span>
+        <span class="n">transformers</span><span class="o">=</span><span class="p">[</span>
+            <span class="p">(</span><span class="s1">&#39;num&#39;</span><span class="p">,</span> <span class="n">numeric_transformer</span><span class="p">,</span> <span class="n">numeric_features</span><span class="p">),</span>
+            <span class="p">(</span><span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="n">categorical_transformer</span><span class="p">,</span> <span class="n">categorical_features</span><span class="p">)</span>
+        <span class="p">])</span>
+    
+    <span class="k">return</span> <span class="n">preprocessor</span></div>
+
+
+<span class="c1"># Entrenar y evaluar modelos</span>
+<div class="viewcode-block" id="train_evaluate_models">
+<a class="viewcode-back" href="../../../modules/analysis.html#src.analysis.analisis_predictivo.train_evaluate_models">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">train_evaluate_models</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Entrena y evalúa múltiples modelos de regresión para seleccionar el mejor.</span>
+<span class="sd">    </span>
+<span class="sd">    Esta función entrena varios modelos de regresión (Lineal, Ridge, Lasso, Random Forest y Gradient Boosting)</span>
+<span class="sd">    sobre los datos proporcionados, evalúa su rendimiento utilizando métricas como RMSE, MAE y R², </span>
+<span class="sd">    y selecciona el modelo con mejor coeficiente de determinación (R²).</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        X (pandas.DataFrame): Características de entrada para el modelo.</span>
+<span class="sd">        y (pandas.Series): Variable objetivo a predecir.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple: Contiene dos elementos:</span>
+<span class="sd">            - results (dict): Diccionario con los resultados de cada modelo, incluyendo el modelo entrenado</span>
+<span class="sd">                             y sus métricas de rendimiento (RMSE, MAE, R²).</span>
+<span class="sd">            - best_model (str): Nombre del modelo con mejor rendimiento según R².</span>
+<span class="sd">    </span>
+<span class="sd">    Nota:</span>
+<span class="sd">        La función divide automáticamente los datos en conjuntos de entrenamiento (80%) y prueba (20%)</span>
+<span class="sd">        utilizando una semilla aleatoria fija para garantizar reproducibilidad.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Dividir datos en entrenamiento y prueba</span>
+    <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Datos de entrenamiento: </span><span class="si">{</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">, Datos de prueba: </span><span class="si">{</span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Definir modelos a probar</span>
+    <span class="n">models</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;Linear Regression&#39;</span><span class="p">:</span> <span class="n">LinearRegression</span><span class="p">(),</span>
+        <span class="s1">&#39;Ridge Regression&#39;</span><span class="p">:</span> <span class="n">Ridge</span><span class="p">(),</span>
+        <span class="s1">&#39;Lasso Regression&#39;</span><span class="p">:</span> <span class="n">Lasso</span><span class="p">(),</span>
+        <span class="s1">&#39;Random Forest&#39;</span><span class="p">:</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span>
+        <span class="s1">&#39;Gradient Boosting&#39;</span><span class="p">:</span> <span class="n">GradientBoostingRegressor</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="n">results</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">best_model</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">best_score</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+    
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Entrenando modelo: </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+        
+        <span class="c1"># Predicciones</span>
+        <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+        
+        <span class="c1"># Métricas</span>
+        <span class="n">mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+        <span class="n">rmse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mse</span><span class="p">)</span>
+        <span class="n">mae</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+        <span class="n">r2</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+        
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  RMSE: </span><span class="si">{</span><span class="n">rmse</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  MAE: </span><span class="si">{</span><span class="n">mae</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  R²: </span><span class="si">{</span><span class="n">r2</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        
+        <span class="n">results</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;model&#39;</span><span class="p">:</span> <span class="n">model</span><span class="p">,</span>
+            <span class="s1">&#39;rmse&#39;</span><span class="p">:</span> <span class="n">rmse</span><span class="p">,</span>
+            <span class="s1">&#39;mae&#39;</span><span class="p">:</span> <span class="n">mae</span><span class="p">,</span>
+            <span class="s1">&#39;r2&#39;</span><span class="p">:</span> <span class="n">r2</span>
+        <span class="p">}</span>
+        
+        <span class="c1"># Actualizar mejor modelo</span>
+        <span class="k">if</span> <span class="n">r2</span> <span class="o">&gt;</span> <span class="n">best_score</span><span class="p">:</span>
+            <span class="n">best_score</span> <span class="o">=</span> <span class="n">r2</span>
+            <span class="n">best_model</span> <span class="o">=</span> <span class="n">name</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Mejor modelo: </span><span class="si">{</span><span class="n">best_model</span><span class="si">}</span><span class="s2"> con R² = </span><span class="si">{</span><span class="n">results</span><span class="p">[</span><span class="n">best_model</span><span class="p">][</span><span class="s1">&#39;r2&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">results</span><span class="p">,</span> <span class="n">best_model</span></div>
+
+
+<span class="c1"># Optimizar hiperparámetros del mejor modelo</span>
+<div class="viewcode-block" id="optimize_best_model">
+<a class="viewcode-back" href="../../../modules/analysis.html#src.analysis.analisis_predictivo.optimize_best_model">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">optimize_best_model</span><span class="p">(</span><span class="n">best_model_name</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">preprocessor</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Optimiza los hiperparámetros del mejor modelo seleccionado mediante validación cruzada.</span>
+<span class="sd">    </span>
+<span class="sd">    Esta función toma el nombre del mejor modelo identificado previamente y realiza una búsqueda</span>
+<span class="sd">    de hiperparámetros utilizando GridSearchCV para encontrar la configuración óptima. Cada tipo</span>
+<span class="sd">    de modelo tiene su propio conjunto de hiperparámetros a optimizar.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        best_model_name (str): Nombre del mejor modelo seleccionado (&#39;Linear Regression&#39;, </span>
+<span class="sd">                              &#39;Ridge Regression&#39;, &#39;Lasso Regression&#39;, &#39;Random Forest&#39; o</span>
+<span class="sd">                              &#39;Gradient Boosting&#39;).</span>
+<span class="sd">        X (pandas.DataFrame): Características de entrada para el modelo.</span>
+<span class="sd">        y (pandas.Series): Variable objetivo a predecir.</span>
+<span class="sd">        preprocessor (ColumnTransformer): Preprocesador para transformar las características.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        Pipeline o GridSearchCV: Si hay hiperparámetros para optimizar, devuelve un objeto GridSearchCV</span>
+<span class="sd">                               con el mejor modelo encontrado. Si no hay hiperparámetros para ajustar</span>
+<span class="sd">                               (como en Regresión Lineal), devuelve un Pipeline entrenado.</span>
+<span class="sd">    </span>
+<span class="sd">    Nota:</span>
+<span class="sd">        La función utiliza validación cruzada con 5 pliegues y optimiza según la métrica R².</span>
+<span class="sd">        Para modelos sin hiperparámetros ajustables (como Regresión Lineal), simplemente entrena</span>
+<span class="sd">        el modelo con el preprocesador.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Definir parámetros a optimizar según el modelo</span>
+    <span class="k">if</span> <span class="n">best_model_name</span> <span class="o">==</span> <span class="s1">&#39;Linear Regression&#39;</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+        <span class="n">param_grid</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">elif</span> <span class="n">best_model_name</span> <span class="o">==</span> <span class="s1">&#39;Ridge Regression&#39;</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">()</span>
+        <span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">]</span>
+        <span class="p">}</span>
+    <span class="k">elif</span> <span class="n">best_model_name</span> <span class="o">==</span> <span class="s1">&#39;Lasso Regression&#39;</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Lasso</span><span class="p">()</span>
+        <span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">]</span>
+        <span class="p">}</span>
+    <span class="k">elif</span> <span class="n">best_model_name</span> <span class="o">==</span> <span class="s1">&#39;Random Forest&#39;</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+        <span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span>
+            <span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span>
+            <span class="s1">&#39;min_samples_split&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+        <span class="p">}</span>
+    <span class="k">elif</span> <span class="n">best_model_name</span> <span class="o">==</span> <span class="s1">&#39;Gradient Boosting&#39;</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">GradientBoostingRegressor</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+        <span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span>
+            <span class="s1">&#39;learning_rate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">],</span>
+            <span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+        <span class="p">}</span>
+    
+    <span class="c1"># Crear pipeline completo</span>
+    <span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">steps</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">(</span><span class="s1">&#39;preprocessor&#39;</span><span class="p">,</span> <span class="n">preprocessor</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;model&#39;</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+    <span class="p">])</span>
+    
+    <span class="c1"># Optimizar hiperparámetros si hay parámetros para ajustar</span>
+    <span class="k">if</span> <span class="n">param_grid</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Optimizando hiperparámetros para </span><span class="si">{</span><span class="n">best_model_name</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
+        <span class="c1"># Ajustar prefijos a los parámetros</span>
+        <span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span><span class="sa">f</span><span class="s1">&#39;model__</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">:</span> <span class="n">val</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">param_grid</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+        
+        <span class="c1"># Usar validación cruzada para encontrar los mejores hiperparámetros</span>
+        <span class="n">grid_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipeline</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;r2&#39;</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mejores parámetros: </span><span class="si">{</span><span class="n">grid_search</span><span class="o">.</span><span class="n">best_params_</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mejor puntuación R²: </span><span class="si">{</span><span class="n">grid_search</span><span class="o">.</span><span class="n">best_score_</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">grid_search</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Si no hay parámetros para ajustar, simplemente entrenar el pipeline</span>
+        <span class="n">pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">pipeline</span></div>
+
+
+<span class="c1"># Visualizar resultados</span>
+<div class="viewcode-block" id="visualize_results">
+<a class="viewcode-back" href="../../../modules/analysis.html#src.analysis.analisis_predictivo.visualize_results">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">visualize_results</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">target_col</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Genera y guarda visualizaciones de los resultados del modelo predictivo.</span>
+<span class="sd">    </span>
+<span class="sd">    Esta función crea tres tipos de visualizaciones para evaluar el rendimiento del modelo:</span>
+<span class="sd">    1. Gráfico de comparación de modelos: muestra R² y RMSE para cada modelo evaluado.</span>
+<span class="sd">    2. Gráfico de predicciones vs valores reales: compara los valores predichos con los reales.</span>
+<span class="sd">    3. Histograma de errores: muestra la distribución de los errores de predicción.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        results (dict): Diccionario con los resultados de cada modelo, incluyendo métricas de rendimiento.</span>
+<span class="sd">        y_test (pandas.Series): Valores reales de la variable objetivo en el conjunto de prueba.</span>
+<span class="sd">        y_pred (numpy.ndarray): Predicciones del modelo para el conjunto de prueba.</span>
+<span class="sd">        target_col (str): Nombre de la columna objetivo que se está prediciendo.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        None: La función guarda las visualizaciones en el directorio &#39;visualizaciones_predictivas&#39;</span>
+<span class="sd">              y muestra mensajes de confirmación.</span>
+<span class="sd">    </span>
+<span class="sd">    Nota:</span>
+<span class="sd">        Las visualizaciones se guardan en formato PNG en un subdirectorio &#39;visualizaciones_predictivas&#39;</span>
+<span class="sd">        dentro del directorio del script.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Crear directorio para visualizaciones si no existe</span>
+    <span class="n">vis_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)),</span> <span class="s1">&#39;visualizaciones_predictivas&#39;</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">vis_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="c1"># Comparar modelos</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">models</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+    <span class="n">r2_scores</span> <span class="o">=</span> <span class="p">[</span><span class="n">results</span><span class="p">[</span><span class="n">model</span><span class="p">][</span><span class="s1">&#39;r2&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">]</span>
+    <span class="n">rmse_scores</span> <span class="o">=</span> <span class="p">[</span><span class="n">results</span><span class="p">[</span><span class="n">model</span><span class="p">][</span><span class="s1">&#39;rmse&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">]</span>
+    
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">models</span><span class="p">))</span>
+    <span class="n">width</span> <span class="o">=</span> <span class="mf">0.35</span>
+    
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">ax2</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+    
+    <span class="n">bars1</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">width</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">r2_scores</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;R²&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#3498db&#39;</span><span class="p">)</span>
+    <span class="n">bars2</span> <span class="o">=</span> <span class="n">ax2</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">width</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">rmse_scores</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;RMSE&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#e74c3c&#39;</span><span class="p">)</span>
+    
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Modelos&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;R² (mayor es mejor)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#3498db&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;RMSE (menor es mejor)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#e74c3c&#39;</span><span class="p">)</span>
+    
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">models</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
+    
+    <span class="n">ax1</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;#3498db&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;#e74c3c&#39;</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Comparación de Modelos: R² vs RMSE&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    
+    <span class="c1"># Añadir leyenda combinada</span>
+    <span class="n">lines1</span><span class="p">,</span> <span class="n">labels1</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
+    <span class="n">lines2</span><span class="p">,</span> <span class="n">labels2</span> <span class="o">=</span> <span class="n">ax2</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">lines1</span> <span class="o">+</span> <span class="n">lines2</span><span class="p">,</span> <span class="n">labels1</span> <span class="o">+</span> <span class="n">labels2</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper center&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.15</span><span class="p">),</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">vis_dir</span><span class="p">,</span> <span class="s1">&#39;comparacion_modelos.png&#39;</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gráfico guardado: </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">vis_dir</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;comparacion_modelos.png&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Gráfico de predicciones vs valores reales</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">y_test</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">y_test</span><span class="o">.</span><span class="n">max</span><span class="p">()],</span> <span class="p">[</span><span class="n">y_test</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">y_test</span><span class="o">.</span><span class="n">max</span><span class="p">()],</span> <span class="s1">&#39;r--&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Valores Reales de </span><span class="si">{</span><span class="n">target_col</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Predicciones de </span><span class="si">{</span><span class="n">target_col</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Predicciones vs Valores Reales&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">vis_dir</span><span class="p">,</span> <span class="s1">&#39;predicciones_vs_reales.png&#39;</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gráfico guardado: </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">vis_dir</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;predicciones_vs_reales.png&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Histograma de errores</span>
+    <span class="n">errors</span> <span class="o">=</span> <span class="n">y_test</span> <span class="o">-</span> <span class="n">y_pred</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">errors</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#2ecc71&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Error de Predicción&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frecuencia&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribución de Errores de Predicción&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">vis_dir</span><span class="p">,</span> <span class="s1">&#39;distribucion_errores.png&#39;</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gráfico guardado: </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">vis_dir</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;distribucion_errores.png&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<span class="c1"># Guardar modelo</span>
+<div class="viewcode-block" id="save_model">
+<a class="viewcode-back" href="../../../modules/analysis.html#src.analysis.analisis_predictivo.save_model">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">save_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">feature_cols</span><span class="p">,</span> <span class="n">categorical_cols</span><span class="p">,</span> <span class="n">target_col</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Guarda el modelo entrenado y sus metadatos asociados.</span>
+<span class="sd">    </span>
+<span class="sd">    Esta función serializa el modelo utilizando joblib y guarda información relevante</span>
+<span class="sd">    sobre las características, columnas categóricas y variable objetivo en un archivo JSON</span>
+<span class="sd">    de metadatos. Ambos archivos se guardan con una marca de tiempo para facilitar su</span>
+<span class="sd">    identificación y seguimiento.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        model: Modelo entrenado (puede ser un Pipeline, GridSearchCV u otro objeto de scikit-learn).</span>
+<span class="sd">        feature_cols (list): Lista de nombres de columnas numéricas utilizadas como características.</span>
+<span class="sd">        categorical_cols (list): Lista de nombres de columnas categóricas utilizadas.</span>
+<span class="sd">        target_col (str): Nombre de la columna objetivo que se predice.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple: Contiene dos elementos:</span>
+<span class="sd">            - model_filename (str): Ruta al archivo donde se guardó el modelo serializado.</span>
+<span class="sd">            - metadata_filename (str): Ruta al archivo donde se guardaron los metadatos.</span>
+<span class="sd">    </span>
+<span class="sd">    Nota:</span>
+<span class="sd">        Los archivos se guardan en el directorio &#39;modelos&#39; dentro del directorio del script,</span>
+<span class="sd">        con nombres que incluyen una marca de tiempo para evitar sobrescrituras.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">timestamp</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y%m</span><span class="si">%d</span><span class="s2">_%H%M%S&quot;</span><span class="p">)</span>
+    <span class="n">model_filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">models_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;modelo_predictivo_</span><span class="si">{</span><span class="n">timestamp</span><span class="si">}</span><span class="s1">.pkl&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Guardar el modelo</span>
+    <span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">model_filename</span><span class="p">)</span>
+    
+    <span class="c1"># Guardar metadatos del modelo</span>
+    <span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;feature_columns&#39;</span><span class="p">:</span> <span class="n">feature_cols</span><span class="p">,</span>
+        <span class="s1">&#39;categorical_columns&#39;</span><span class="p">:</span> <span class="n">categorical_cols</span><span class="p">,</span>
+        <span class="s1">&#39;target_column&#39;</span><span class="p">:</span> <span class="n">target_col</span><span class="p">,</span>
+        <span class="s1">&#39;timestamp&#39;</span><span class="p">:</span> <span class="n">timestamp</span><span class="p">,</span>
+        <span class="s1">&#39;model_type&#39;</span><span class="p">:</span> <span class="nb">type</span><span class="p">(</span><span class="n">model</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span>
+    <span class="p">}</span>
+    
+    <span class="n">metadata_filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">models_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;metadata_modelo_</span><span class="si">{</span><span class="n">timestamp</span><span class="si">}</span><span class="s1">.json&#39;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">metadata_filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+        <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">metadata</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Modelo guardado en: </span><span class="si">{</span><span class="n">model_filename</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Metadatos guardados en: </span><span class="si">{</span><span class="n">metadata_filename</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">model_filename</span><span class="p">,</span> <span class="n">metadata_filename</span></div>
+
+
+<span class="c1"># Función principal</span>
+<div class="viewcode-block" id="main">
+<a class="viewcode-back" href="../../../modules/analysis.html#src.analysis.analisis_predictivo.main">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Función principal que ejecuta el flujo completo de análisis predictivo.</span>
+<span class="sd">    </span>
+<span class="sd">    Esta función coordina todo el proceso de análisis predictivo, incluyendo:</span>
+<span class="sd">    1. Carga y preparación de datos desde un archivo CSV.</span>
+<span class="sd">    2. Selección automática de características y variable objetivo.</span>
+<span class="sd">    3. Entrenamiento y evaluación de múltiples modelos de regresión.</span>
+<span class="sd">    4. Optimización de hiperparámetros del mejor modelo.</span>
+<span class="sd">    5. Visualización de resultados mediante gráficos comparativos.</span>
+<span class="sd">    6. Almacenamiento del modelo optimizado y sus metadatos.</span>
+<span class="sd">    </span>
+<span class="sd">    La función utiliza un archivo CSV predefinido ubicado en el directorio de datos del proyecto</span>
+<span class="sd">    y ejecuta todas las etapas del análisis de forma secuencial, mostrando información relevante</span>
+<span class="sd">    en cada paso del proceso.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        None: La función no devuelve ningún valor, pero genera archivos de modelo, metadatos</span>
+<span class="sd">              y visualizaciones en los directorios correspondientes.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== ANÁLISIS PREDICTIVO ===</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Cargar y preparar datos</span>
+    <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">proyecto_dir</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;20250525.export.CSV&#39;</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">,</span> <span class="n">numeric_cols</span><span class="p">,</span> <span class="n">text_cols</span> <span class="o">=</span> <span class="n">load_and_prepare_data</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">df</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">numeric_cols</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No hay suficientes datos numéricos para realizar análisis predictivo.&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+    
+    <span class="c1"># Seleccionar características y objetivo</span>
+    <span class="n">feature_cols</span><span class="p">,</span> <span class="n">categorical_cols</span><span class="p">,</span> <span class="n">target_col</span> <span class="o">=</span> <span class="n">select_features_target</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">numeric_cols</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">feature_cols</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No hay suficientes características para entrenar un modelo.&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+    
+    <span class="c1"># Preparar datos para el modelo</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">feature_cols</span> <span class="o">+</span> <span class="n">categorical_cols</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">target_col</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    
+    <span class="c1"># Eliminar filas con valores nulos en la variable objetivo</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="o">~</span><span class="n">y</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+    
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No hay suficientes datos para entrenar un modelo después de eliminar valores nulos.&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Entrenando modelos para predecir: </span><span class="si">{</span><span class="n">target_col</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Número de muestras: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Crear pipeline de preprocesamiento</span>
+    <span class="n">preprocessor</span> <span class="o">=</span> <span class="n">create_preprocessing_pipeline</span><span class="p">(</span><span class="n">feature_cols</span><span class="p">,</span> <span class="n">categorical_cols</span><span class="p">)</span>
+    
+    <span class="c1"># Preprocesar datos</span>
+    <span class="n">X_processed</span> <span class="o">=</span> <span class="n">preprocessor</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    
+    <span class="c1"># Entrenar y evaluar modelos</span>
+    <span class="n">results</span><span class="p">,</span> <span class="n">best_model_name</span> <span class="o">=</span> <span class="n">train_evaluate_models</span><span class="p">(</span><span class="n">X_processed</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    
+    <span class="c1"># Optimizar el mejor modelo</span>
+    <span class="n">optimized_model</span> <span class="o">=</span> <span class="n">optimize_best_model</span><span class="p">(</span><span class="n">best_model_name</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">preprocessor</span><span class="p">)</span>
+    
+    <span class="c1"># Evaluar modelo optimizado</span>
+    <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">optimized_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+    
+    <span class="c1"># Calcular métricas finales</span>
+    <span class="n">final_mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    <span class="n">final_rmse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">final_mse</span><span class="p">)</span>
+    <span class="n">final_mae</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    <span class="n">final_r2</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Resultados del Modelo Optimizado ===&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RMSE: </span><span class="si">{</span><span class="n">final_rmse</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MAE: </span><span class="si">{</span><span class="n">final_mae</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;R²: </span><span class="si">{</span><span class="n">final_r2</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Visualizar resultados</span>
+    <span class="n">visualize_results</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">target_col</span><span class="p">)</span>
+    
+    <span class="c1"># Guardar modelo</span>
+    <span class="n">save_model</span><span class="p">(</span><span class="n">optimized_model</span><span class="p">,</span> <span class="n">feature_cols</span><span class="p">,</span> <span class="n">categorical_cols</span><span class="p">,</span> <span class="n">target_col</span><span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Análisis Predictivo Completado ===&quot;</span><span class="p">)</span></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, UN PASO AL EXITO.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

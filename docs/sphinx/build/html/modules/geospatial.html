@@ -1,0 +1,916 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Módulo Geoespacial &mdash; documentación de Analisis de Datos y Visualizacion - 1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=4936afed"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=f85f4cfb"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="Módulo Web" href="web.html" />
+    <link rel="prev" title="Módulo de Análisis" href="analysis.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Analisis de Datos y Visualizacion
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guías de Usuario:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="instalacion.html">Guía de Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="casos_uso.html">Casos de Uso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preguntas_frecuentes.html">Preguntas Frecuentes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Módulos Principales:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="analysis.html">Módulo de Análisis</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Módulo Geoespacial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#analisis-geoespacial-py">analisis_geoespacial.py</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#src.geospatial.analisis_geoespacial.detect_delimiter"><code class="docutils literal notranslate"><span class="pre">detect_delimiter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.geospatial.analisis_geoespacial.load_and_clean_data"><code class="docutils literal notranslate"><span class="pre">load_and_clean_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.geospatial.analisis_geoespacial.identify_geo_columns"><code class="docutils literal notranslate"><span class="pre">identify_geo_columns()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.geospatial.analisis_geoespacial.clean_geo_data"><code class="docutils literal notranslate"><span class="pre">clean_geo_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.geospatial.analisis_geoespacial.plot_geo_scatter"><code class="docutils literal notranslate"><span class="pre">plot_geo_scatter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.geospatial.analisis_geoespacial.plot_histograms"><code class="docutils literal notranslate"><span class="pre">plot_histograms()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.geospatial.analisis_geoespacial.plot_kmeans_clusters"><code class="docutils literal notranslate"><span class="pre">plot_kmeans_clusters()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.geospatial.analisis_geoespacial.plot_bar_by_cluster"><code class="docutils literal notranslate"><span class="pre">plot_bar_by_cluster()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.geospatial.analisis_geoespacial.create_interactive_map"><code class="docutils literal notranslate"><span class="pre">create_interactive_map()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.geospatial.analisis_geoespacial.generate_report"><code class="docutils literal notranslate"><span class="pre">generate_report()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.geospatial.analisis_geoespacial.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#analisis-geoespacial-adaptativo-py">analisis_geoespacial_adaptativo.py</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#src.geospatial.analisis_geoespacial_adaptativo.check_optional_imports"><code class="docutils literal notranslate"><span class="pre">check_optional_imports()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.geospatial.analisis_geoespacial_adaptativo.create_results_dir"><code class="docutils literal notranslate"><span class="pre">create_results_dir()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.geospatial.analisis_geoespacial_adaptativo.detect_delimiter"><code class="docutils literal notranslate"><span class="pre">detect_delimiter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.geospatial.analisis_geoespacial_adaptativo.load_and_clean_data"><code class="docutils literal notranslate"><span class="pre">load_and_clean_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.geospatial.analisis_geoespacial_adaptativo.identify_geo_columns"><code class="docutils literal notranslate"><span class="pre">identify_geo_columns()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.geospatial.analisis_geoespacial_adaptativo.clean_geo_data"><code class="docutils literal notranslate"><span class="pre">clean_geo_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.geospatial.analisis_geoespacial_adaptativo.plot_geo_scatter"><code class="docutils literal notranslate"><span class="pre">plot_geo_scatter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.geospatial.analisis_geoespacial_adaptativo.plot_histograms"><code class="docutils literal notranslate"><span class="pre">plot_histograms()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.geospatial.analisis_geoespacial_adaptativo.plot_kmeans_clusters"><code class="docutils literal notranslate"><span class="pre">plot_kmeans_clusters()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.geospatial.analisis_geoespacial_adaptativo.plot_bar_by_cluster"><code class="docutils literal notranslate"><span class="pre">plot_bar_by_cluster()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.geospatial.analisis_geoespacial_adaptativo.create_interactive_map"><code class="docutils literal notranslate"><span class="pre">create_interactive_map()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.geospatial.analisis_geoespacial_adaptativo.generate_report"><code class="docutils literal notranslate"><span class="pre">generate_report()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.geospatial.analisis_geoespacial_adaptativo.detect_country_column"><code class="docutils literal notranslate"><span class="pre">detect_country_column()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.geospatial.analisis_geoespacial_adaptativo.detect_year_column"><code class="docutils literal notranslate"><span class="pre">detect_year_column()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.geospatial.analisis_geoespacial_adaptativo.detect_type_column"><code class="docutils literal notranslate"><span class="pre">detect_type_column()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.geospatial.analisis_geoespacial_adaptativo.plot_top_countries"><code class="docutils literal notranslate"><span class="pre">plot_top_countries()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.geospatial.analisis_geoespacial_adaptativo.plot_world_scatter"><code class="docutils literal notranslate"><span class="pre">plot_world_scatter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.geospatial.analisis_geoespacial_adaptativo.plot_world_heatmap"><code class="docutils literal notranslate"><span class="pre">plot_world_heatmap()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.geospatial.analisis_geoespacial_adaptativo.plot_by_year"><code class="docutils literal notranslate"><span class="pre">plot_by_year()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.geospatial.analisis_geoespacial_adaptativo.plot_by_type"><code class="docutils literal notranslate"><span class="pre">plot_by_type()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.geospatial.analisis_geoespacial_adaptativo.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="web.html">Módulo Web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dashboard.html">Módulo de Dashboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization.html">Módulo de Visualización</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">Módulo de Utilidades</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentación Técnica:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="guia_analisis_avanzado.html">Guía de Análisis Avanzado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optimizacion_rendimiento.html">Optimización de Rendimiento</a></li>
+<li class="toctree-l1"><a class="reference internal" href="seguridad_datos.html">Seguridad de Datos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="referencia_tecnica_detallada.html">Referencia Técnica Detallada</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integracion_herramientas.html">Integración de Herramientas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/modules.html">src</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Analisis de Datos y Visualizacion</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Módulo Geoespacial</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/geospatial.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="modulo-geoespacial">
+<h1>Módulo Geoespacial<a class="headerlink" href="#modulo-geoespacial" title="Link to this heading"></a></h1>
+<p>Este módulo contiene herramientas para el análisis geoespacial de datos.</p>
+<section id="analisis-geoespacial-py">
+<h2>analisis_geoespacial.py<a class="headerlink" href="#analisis-geoespacial-py" title="Link to this heading"></a></h2>
+<p id="module-src.geospatial.analisis_geoespacial">Módulo de análisis geoespacial avanzado.</p>
+<p>Este script permite cargar, limpiar y analizar datos geoespaciales, generando visualizaciones coherentes y un informe en Markdown. Incluye clustering espacial, mapas de dispersión, histogramas y mapas interactivos.</p>
+<p>Autor: Anderson Zapata
+Fecha: 2025</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="src.geospatial.analisis_geoespacial.detect_delimiter">
+<span class="sig-prename descclassname"><span class="pre">src.geospatial.analisis_geoespacial.</span></span><span class="sig-name descname"><span class="pre">detect_delimiter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_lines</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/geospatial/analisis_geoespacial.html#detect_delimiter"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.geospatial.analisis_geoespacial.detect_delimiter" title="Link to this definition"></a></dt>
+<dd><p>Detecta automáticamente el delimitador utilizado en un archivo CSV.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_path</strong> (<em>str</em>) – Ruta al archivo CSV.</p></li>
+<li><p><strong>num_lines</strong> (<em>int</em>) – Número de líneas a analizar para la detección.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>El delimitador detectado (”        “, “,”, “;”, “|”).</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.geospatial.analisis_geoespacial.load_and_clean_data">
+<span class="sig-prename descclassname"><span class="pre">src.geospatial.analisis_geoespacial.</span></span><span class="sig-name descname"><span class="pre">load_and_clean_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/geospatial/analisis_geoespacial.html#load_and_clean_data"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.geospatial.analisis_geoespacial.load_and_clean_data" title="Link to this definition"></a></dt>
+<dd><p>Carga y limpia un archivo CSV para análisis geoespacial.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – Ruta al archivo CSV.</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>DataFrame limpio y sin duplicados.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.geospatial.analisis_geoespacial.identify_geo_columns">
+<span class="sig-prename descclassname"><span class="pre">src.geospatial.analisis_geoespacial.</span></span><span class="sig-name descname"><span class="pre">identify_geo_columns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/geospatial/analisis_geoespacial.html#identify_geo_columns"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.geospatial.analisis_geoespacial.identify_geo_columns" title="Link to this definition"></a></dt>
+<dd><p>Identifica las columnas de latitud y longitud en un DataFrame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>pandas.DataFrame</em>) – DataFrame de entrada.</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>Nombres de las columnas de latitud y longitud.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple(str, str) o (None, None)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.geospatial.analisis_geoespacial.clean_geo_data">
+<span class="sig-prename descclassname"><span class="pre">src.geospatial.analisis_geoespacial.</span></span><span class="sig-name descname"><span class="pre">clean_geo_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon_col</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/geospatial/analisis_geoespacial.html#clean_geo_data"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.geospatial.analisis_geoespacial.clean_geo_data" title="Link to this definition"></a></dt>
+<dd><p>Limpia el DataFrame para conservar solo filas con coordenadas válidas.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – DataFrame de entrada.</p></li>
+<li><p><strong>lat_col</strong> (<em>str</em>) – Nombre de la columna de latitud.</p></li>
+<li><p><strong>lon_col</strong> (<em>str</em>) – Nombre de la columna de longitud.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>DataFrame filtrado con coordenadas válidas.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.geospatial.analisis_geoespacial.plot_geo_scatter">
+<span class="sig-prename descclassname"><span class="pre">src.geospatial.analisis_geoespacial.</span></span><span class="sig-name descname"><span class="pre">plot_geo_scatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geo_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon_col</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/geospatial/analisis_geoespacial.html#plot_geo_scatter"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.geospatial.analisis_geoespacial.plot_geo_scatter" title="Link to this definition"></a></dt>
+<dd><p>Genera un mapa de dispersión de los puntos geográficos.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>geo_df</strong> (<em>pandas.DataFrame</em>) – DataFrame con datos geoespaciales válidos.</p></li>
+<li><p><strong>lat_col</strong> (<em>str</em>) – Nombre de la columna de latitud.</p></li>
+<li><p><strong>lon_col</strong> (<em>str</em>) – Nombre de la columna de longitud.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.geospatial.analisis_geoespacial.plot_histograms">
+<span class="sig-prename descclassname"><span class="pre">src.geospatial.analisis_geoespacial.</span></span><span class="sig-name descname"><span class="pre">plot_histograms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geo_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon_col</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/geospatial/analisis_geoespacial.html#plot_histograms"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.geospatial.analisis_geoespacial.plot_histograms" title="Link to this definition"></a></dt>
+<dd><p>Genera histogramas de latitud y longitud.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>geo_df</strong> (<em>pandas.DataFrame</em>) – DataFrame con datos geoespaciales válidos.</p></li>
+<li><p><strong>lat_col</strong> (<em>str</em>) – Nombre de la columna de latitud.</p></li>
+<li><p><strong>lon_col</strong> (<em>str</em>) – Nombre de la columna de longitud.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.geospatial.analisis_geoespacial.plot_kmeans_clusters">
+<span class="sig-prename descclassname"><span class="pre">src.geospatial.analisis_geoespacial.</span></span><span class="sig-name descname"><span class="pre">plot_kmeans_clusters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geo_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon_col</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/geospatial/analisis_geoespacial.html#plot_kmeans_clusters"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.geospatial.analisis_geoespacial.plot_kmeans_clusters" title="Link to this definition"></a></dt>
+<dd><p>Realiza clustering espacial con K-Means y genera el gráfico correspondiente.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>geo_df</strong> (<em>pandas.DataFrame</em>) – DataFrame con datos geoespaciales válidos.</p></li>
+<li><p><strong>lat_col</strong> (<em>str</em>) – Nombre de la columna de latitud.</p></li>
+<li><p><strong>lon_col</strong> (<em>str</em>) – Nombre de la columna de longitud.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>DataFrame con columna “kmeans_cluster”.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.geospatial.analisis_geoespacial.plot_bar_by_cluster">
+<span class="sig-prename descclassname"><span class="pre">src.geospatial.analisis_geoespacial.</span></span><span class="sig-name descname"><span class="pre">plot_bar_by_cluster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geo_df</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/geospatial/analisis_geoespacial.html#plot_bar_by_cluster"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.geospatial.analisis_geoespacial.plot_bar_by_cluster" title="Link to this definition"></a></dt>
+<dd><p>Genera un gráfico de barras con la cantidad de puntos por cluster K-Means.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>geo_df</strong> (<em>pandas.DataFrame</em>) – DataFrame con columna “kmeans_cluster”.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.geospatial.analisis_geoespacial.create_interactive_map">
+<span class="sig-prename descclassname"><span class="pre">src.geospatial.analisis_geoespacial.</span></span><span class="sig-name descname"><span class="pre">create_interactive_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geo_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon_col</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/geospatial/analisis_geoespacial.html#create_interactive_map"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.geospatial.analisis_geoespacial.create_interactive_map" title="Link to this definition"></a></dt>
+<dd><p>Genera un mapa interactivo con Folium y clusters de puntos.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>geo_df</strong> (<em>pandas.DataFrame</em>) – DataFrame con datos geoespaciales válidos.</p></li>
+<li><p><strong>lat_col</strong> (<em>str</em>) – Nombre de la columna de latitud.</p></li>
+<li><p><strong>lon_col</strong> (<em>str</em>) – Nombre de la columna de longitud.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.geospatial.analisis_geoespacial.generate_report">
+<span class="sig-prename descclassname"><span class="pre">src.geospatial.analisis_geoespacial.</span></span><span class="sig-name descname"><span class="pre">generate_report</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geo_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon_col</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/geospatial/analisis_geoespacial.html#generate_report"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.geospatial.analisis_geoespacial.generate_report" title="Link to this definition"></a></dt>
+<dd><p>Genera un informe en formato Markdown con el resumen del análisis geoespacial.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>geo_df</strong> (<em>pandas.DataFrame</em>) – DataFrame con datos geoespaciales válidos.</p></li>
+<li><p><strong>lat_col</strong> (<em>str</em>) – Nombre de la columna de latitud.</p></li>
+<li><p><strong>lon_col</strong> (<em>str</em>) – Nombre de la columna de longitud.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.geospatial.analisis_geoespacial.main">
+<span class="sig-prename descclassname"><span class="pre">src.geospatial.analisis_geoespacial.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/geospatial/analisis_geoespacial.html#main"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.geospatial.analisis_geoespacial.main" title="Link to this definition"></a></dt>
+<dd><p>Función principal que ejecuta el flujo completo de análisis geoespacial.</p>
+<ol class="arabic simple">
+<li><p>Carga y limpieza de datos.</p></li>
+<li><p>Identificación de columnas geográficas.</p></li>
+<li><p>Limpieza de datos geoespaciales.</p></li>
+<li><p>Visualizaciones y clustering.</p></li>
+<li><p>Generación de informe.</p></li>
+</ol>
+</dd></dl>
+
+</section>
+<section id="analisis-geoespacial-adaptativo-py">
+<h2>analisis_geoespacial_adaptativo.py<a class="headerlink" href="#analisis-geoespacial-adaptativo-py" title="Link to this heading"></a></h2>
+<p id="module-src.geospatial.analisis_geoespacial_adaptativo">Módulo de análisis geoespacial adaptativo.</p>
+<p>Este script permite realizar un análisis geoespacial flexible y robusto sobre un archivo CSV con datos de eventos o registros georreferenciados. El flujo incluye:</p>
+<ul class="simple">
+<li><p>Detección automática del delimitador del archivo.</p></li>
+<li><p>Carga y limpieza de datos, eliminando duplicados y valores inválidos.</p></li>
+<li><p>Identificación automática de columnas de latitud y longitud.</p></li>
+<li><p>Limpieza de filas con coordenadas inválidas o desconocidas.</p></li>
+<li><p>Visualización de la distribución geográfica de los puntos (scatter).</p></li>
+<li><p>Histogramas de latitud y longitud para entender la dispersión espacial.</p></li>
+<li><p>Clustering espacial con K-Means para identificar agrupaciones naturales.</p></li>
+<li><p>Gráfico de barras de cantidad de puntos por cluster.</p></li>
+<li><p>Mapa interactivo con Folium para explorar los datos geoespaciales.</p></li>
+<li><p>Generación de un informe Markdown con el resumen y las visualizaciones generadas.</p></li>
+</ul>
+<p>Dependencias principales: pandas, numpy, matplotlib, seaborn, folium, scikit-learn.</p>
+<p>Estructura del archivo:
+- Funciones utilitarias para carga, limpieza y visualización.
+- Un flujo principal (main) que orquesta todo el análisis.</p>
+<p>Autor: Anderson Zapata
+Fecha: 2025</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="src.geospatial.analisis_geoespacial_adaptativo.check_optional_imports">
+<span class="sig-prename descclassname"><span class="pre">src.geospatial.analisis_geoespacial_adaptativo.</span></span><span class="sig-name descname"><span class="pre">check_optional_imports</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/geospatial/analisis_geoespacial_adaptativo.html#check_optional_imports"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.geospatial.analisis_geoespacial_adaptativo.check_optional_imports" title="Link to this definition"></a></dt>
+<dd><p>Verifica e intenta importar bibliotecas opcionales para análisis geoespacial avanzado.</p>
+<p>Esta función intenta importar paquetes como <cite>folium</cite>, <cite>geopandas</cite>, <cite>shapely</cite>, <cite>sklearn.cluster</cite> y <cite>scipy.spatial</cite>.
+Devuelve un diccionario con el estado de disponibilidad de cada paquete y una lista de los que faltan.</p>
+<dl class="field-list">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Una tupla con (diccionario de paquetes disponibles, lista de paquetes faltantes).</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple(dict, list)</p>
+</dd>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">available</span><span class="p">,</span> <span class="n">missing</span> <span class="o">=</span> <span class="n">check_optional_imports</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">available</span><span class="p">[</span><span class="s1">&#39;folium&#39;</span><span class="p">])</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">missing</span><span class="p">)</span>
+<span class="go">[&#39;geopandas (Para análisis geoespacial)&#39;]</span>
+</pre></div>
+</div>
+</dd>
+<dt class="field-even">Note<span class="colon">:</span></dt>
+<dd class="field-even"><p>Esta función es útil para advertir al usuario sobre dependencias opcionales antes de ejecutar análisis avanzados.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.geospatial.analisis_geoespacial_adaptativo.create_results_dir">
+<span class="sig-prename descclassname"><span class="pre">src.geospatial.analisis_geoespacial_adaptativo.</span></span><span class="sig-name descname"><span class="pre">create_results_dir</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/geospatial/analisis_geoespacial_adaptativo.html#create_results_dir"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.geospatial.analisis_geoespacial_adaptativo.create_results_dir" title="Link to this definition"></a></dt>
+<dd><p>Crea el directorio de resultados “output” en la misma carpeta que el script si no existe.</p>
+<dl class="field-list">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Ruta absoluta al directorio de resultados creado o existente.</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+<dt class="field-odd">Example<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">results_dir</span> <span class="o">=</span> <span class="n">create_results_dir</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">results_dir</span><span class="p">)</span>
+<span class="go">&#39;/ruta/al/proyecto/src/geospatial/output&#39;</span>
+</pre></div>
+</div>
+</dd>
+<dt class="field-even">Note<span class="colon">:</span></dt>
+<dd class="field-even"><p>Si el directorio ya existe, no lo borra ni lo modifica.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.geospatial.analisis_geoespacial_adaptativo.detect_delimiter">
+<span class="sig-prename descclassname"><span class="pre">src.geospatial.analisis_geoespacial_adaptativo.</span></span><span class="sig-name descname"><span class="pre">detect_delimiter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_lines</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/geospatial/analisis_geoespacial_adaptativo.html#detect_delimiter"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.geospatial.analisis_geoespacial_adaptativo.detect_delimiter" title="Link to this definition"></a></dt>
+<dd><p>Detecta automáticamente el delimitador utilizado en un archivo CSV.</p>
+<p>Lee las primeras líneas del archivo y cuenta la frecuencia de los delimitadores más comunes
+(tabulación, coma, punto y coma, barra vertical). Devuelve el delimitador más frecuente.</p>
+<dl class="field-list">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_path</strong> (<em>str</em>) – Ruta al archivo CSV.</p></li>
+<li><p><strong>num_lines</strong> (<em>int</em>) – Número de líneas a analizar para la detección.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>El delimitador detectado (”        “, “,”, “;”, “|”).</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+<dt class="field-even">Example<span class="colon">:</span></dt>
+<dd class="field-even"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">detect_delimiter</span><span class="p">(</span><span class="s1">&#39;datos.csv&#39;</span><span class="p">)</span>
+<span class="go">&#39;,&#39;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.geospatial.analisis_geoespacial_adaptativo.load_and_clean_data">
+<span class="sig-prename descclassname"><span class="pre">src.geospatial.analisis_geoespacial_adaptativo.</span></span><span class="sig-name descname"><span class="pre">load_and_clean_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/geospatial/analisis_geoespacial_adaptativo.html#load_and_clean_data"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.geospatial.analisis_geoespacial_adaptativo.load_and_clean_data" title="Link to this definition"></a></dt>
+<dd><p>Carga y limpia un archivo CSV para análisis geoespacial.</p>
+<ul class="simple">
+<li><p>Detecta el delimitador automáticamente.</p></li>
+<li><p>Intenta cargar el archivo con diferentes codificaciones.</p></li>
+<li><p>Normaliza los nombres de las columnas.</p></li>
+<li><p>Elimina filas duplicadas.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – Ruta al archivo CSV.</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>DataFrame limpio y sin duplicados.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.geospatial.analisis_geoespacial_adaptativo.identify_geo_columns">
+<span class="sig-prename descclassname"><span class="pre">src.geospatial.analisis_geoespacial_adaptativo.</span></span><span class="sig-name descname"><span class="pre">identify_geo_columns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/geospatial/analisis_geoespacial_adaptativo.html#identify_geo_columns"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.geospatial.analisis_geoespacial_adaptativo.identify_geo_columns" title="Link to this definition"></a></dt>
+<dd><p>Identifica automáticamente las columnas de latitud y longitud en un DataFrame.</p>
+<p>Busca primero columnas con nombres típicos (“lat”, “latitude”, “lon”, “lng”, “longitude”).
+Si no las encuentra, busca columnas numéricas cuyos valores estén en los rangos válidos de latitud y longitud.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>pandas.DataFrame</em>) – DataFrame de entrada.</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>Nombres de las columnas de latitud y longitud.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple(str, str) o (None, None)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.geospatial.analisis_geoespacial_adaptativo.clean_geo_data">
+<span class="sig-prename descclassname"><span class="pre">src.geospatial.analisis_geoespacial_adaptativo.</span></span><span class="sig-name descname"><span class="pre">clean_geo_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon_col</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/geospatial/analisis_geoespacial_adaptativo.html#clean_geo_data"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.geospatial.analisis_geoespacial_adaptativo.clean_geo_data" title="Link to this definition"></a></dt>
+<dd><p>Filtra el DataFrame para conservar solo filas con coordenadas válidas.</p>
+<ul class="simple">
+<li><p>Elimina filas con valores nulos o “Desconocido” en latitud/longitud.</p></li>
+<li><p>Filtra coordenadas fuera de los rangos válidos.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – DataFrame de entrada.</p></li>
+<li><p><strong>lat_col</strong> (<em>str</em>) – Nombre de la columna de latitud.</p></li>
+<li><p><strong>lon_col</strong> (<em>str</em>) – Nombre de la columna de longitud.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>DataFrame filtrado con coordenadas válidas.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.geospatial.analisis_geoespacial_adaptativo.plot_geo_scatter">
+<span class="sig-prename descclassname"><span class="pre">src.geospatial.analisis_geoespacial_adaptativo.</span></span><span class="sig-name descname"><span class="pre">plot_geo_scatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geo_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results_dir</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/geospatial/analisis_geoespacial_adaptativo.html#plot_geo_scatter"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.geospatial.analisis_geoespacial_adaptativo.plot_geo_scatter" title="Link to this definition"></a></dt>
+<dd><p>Genera un mapa de dispersión de los puntos geográficos.</p>
+<p>Cada punto representa un evento o registro con coordenadas válidas.
+El gráfico se guarda como imagen PNG en el directorio de resultados.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>geo_df</strong> (<em>pandas.DataFrame</em>) – DataFrame con datos geoespaciales válidos.</p></li>
+<li><p><strong>lat_col</strong> (<em>str</em>) – Nombre de la columna de latitud.</p></li>
+<li><p><strong>lon_col</strong> (<em>str</em>) – Nombre de la columna de longitud.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.geospatial.analisis_geoespacial_adaptativo.plot_histograms">
+<span class="sig-prename descclassname"><span class="pre">src.geospatial.analisis_geoespacial_adaptativo.</span></span><span class="sig-name descname"><span class="pre">plot_histograms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geo_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results_dir</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/geospatial/analisis_geoespacial_adaptativo.html#plot_histograms"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.geospatial.analisis_geoespacial_adaptativo.plot_histograms" title="Link to this definition"></a></dt>
+<dd><p>Genera histogramas de latitud y longitud para analizar la dispersión espacial.</p>
+<p>Permite identificar concentraciones o vacíos geográficos en los datos.
+El gráfico se guarda como imagen PNG en el directorio de resultados.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>geo_df</strong> (<em>pandas.DataFrame</em>) – DataFrame con datos geoespaciales válidos.</p></li>
+<li><p><strong>lat_col</strong> (<em>str</em>) – Nombre de la columna de latitud.</p></li>
+<li><p><strong>lon_col</strong> (<em>str</em>) – Nombre de la columna de longitud.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.geospatial.analisis_geoespacial_adaptativo.plot_kmeans_clusters">
+<span class="sig-prename descclassname"><span class="pre">src.geospatial.analisis_geoespacial_adaptativo.</span></span><span class="sig-name descname"><span class="pre">plot_kmeans_clusters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geo_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results_dir</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/geospatial/analisis_geoespacial_adaptativo.html#plot_kmeans_clusters"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.geospatial.analisis_geoespacial_adaptativo.plot_kmeans_clusters" title="Link to this definition"></a></dt>
+<dd><p>Realiza clustering espacial con K-Means y genera el gráfico correspondiente.</p>
+<ul class="simple">
+<li><p>Normaliza las coordenadas para evitar sesgos por escala.</p></li>
+<li><p>Determina el número de clusters según la cantidad de datos.</p></li>
+<li><p>Asigna cada punto a un cluster y lo visualiza por color.</p></li>
+<li><p>El gráfico se guarda como imagen PNG en el directorio de resultados.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>geo_df</strong> (<em>pandas.DataFrame</em>) – DataFrame con datos geoespaciales válidos.</p></li>
+<li><p><strong>lat_col</strong> (<em>str</em>) – Nombre de la columna de latitud.</p></li>
+<li><p><strong>lon_col</strong> (<em>str</em>) – Nombre de la columna de longitud.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>DataFrame con columna “kmeans_cluster”.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.geospatial.analisis_geoespacial_adaptativo.plot_bar_by_cluster">
+<span class="sig-prename descclassname"><span class="pre">src.geospatial.analisis_geoespacial_adaptativo.</span></span><span class="sig-name descname"><span class="pre">plot_bar_by_cluster</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geo_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results_dir</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/geospatial/analisis_geoespacial_adaptativo.html#plot_bar_by_cluster"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.geospatial.analisis_geoespacial_adaptativo.plot_bar_by_cluster" title="Link to this definition"></a></dt>
+<dd><p>Genera un gráfico de barras con la cantidad de puntos por cluster K-Means.</p>
+<p>Permite visualizar la distribución de los datos entre los diferentes clusters.
+El gráfico se guarda como imagen PNG en el directorio de resultados.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>geo_df</strong> (<em>pandas.DataFrame</em>) – DataFrame con columna “kmeans_cluster”.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.geospatial.analisis_geoespacial_adaptativo.create_interactive_map">
+<span class="sig-prename descclassname"><span class="pre">src.geospatial.analisis_geoespacial_adaptativo.</span></span><span class="sig-name descname"><span class="pre">create_interactive_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geo_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results_dir</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/geospatial/analisis_geoespacial_adaptativo.html#create_interactive_map"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.geospatial.analisis_geoespacial_adaptativo.create_interactive_map" title="Link to this definition"></a></dt>
+<dd><p>Genera un mapa interactivo con Folium y clusters de puntos.</p>
+<ul class="simple">
+<li><p>Muestra los puntos en un mapa base OpenStreetMap.</p></li>
+<li><p>Agrupa los puntos en clusters interactivos.</p></li>
+<li><p>Añade un mapa de calor para visualizar densidad.</p></li>
+<li><p>El mapa se guarda como archivo HTML en el directorio de resultados.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>geo_df</strong> (<em>pandas.DataFrame</em>) – DataFrame con datos geoespaciales válidos.</p></li>
+<li><p><strong>lat_col</strong> (<em>str</em>) – Nombre de la columna de latitud.</p></li>
+<li><p><strong>lon_col</strong> (<em>str</em>) – Nombre de la columna de longitud.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.geospatial.analisis_geoespacial_adaptativo.generate_report">
+<span class="sig-prename descclassname"><span class="pre">src.geospatial.analisis_geoespacial_adaptativo.</span></span><span class="sig-name descname"><span class="pre">generate_report</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geo_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results_dir</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/geospatial/analisis_geoespacial_adaptativo.html#generate_report"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.geospatial.analisis_geoespacial_adaptativo.generate_report" title="Link to this definition"></a></dt>
+<dd><p>Genera un informe en formato Markdown con el resumen del análisis geoespacial adaptativo.</p>
+<p>El informe incluye:
+- Resumen de puntos válidos y rangos de coordenadas.
+- Resultados del clustering K-Means (si aplica).
+- Listado de visualizaciones generadas.
+- Conclusiones y recomendaciones.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>geo_df</strong> (<em>pandas.DataFrame</em>) – DataFrame con datos geoespaciales válidos.</p></li>
+<li><p><strong>lat_col</strong> (<em>str</em>) – Nombre de la columna de latitud.</p></li>
+<li><p><strong>lon_col</strong> (<em>str</em>) – Nombre de la columna de longitud.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.geospatial.analisis_geoespacial_adaptativo.detect_country_column">
+<span class="sig-prename descclassname"><span class="pre">src.geospatial.analisis_geoespacial_adaptativo.</span></span><span class="sig-name descname"><span class="pre">detect_country_column</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/geospatial/analisis_geoespacial_adaptativo.html#detect_country_column"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.geospatial.analisis_geoespacial_adaptativo.detect_country_column" title="Link to this definition"></a></dt>
+<dd><p>Detecta automáticamente la columna que representa el país en un DataFrame.</p>
+<p>Busca en los nombres de las columnas términos comunes relacionados con países,
+como “pais”, “country”, “codigo_pais”, “pais_codigo”. Retorna el nombre de la
+primera columna válida encontrada.</p>
+<dl class="field-list">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>pandas.DataFrame</em>) – DataFrame de entrada donde se buscará la columna de país.</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>Nombre de la columna que representa el país, o None si no se encuentra.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str or None</p>
+</dd>
+<dt class="field-even">Example<span class="colon">:</span></dt>
+<dd class="field-even"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">detect_country_column</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="go">&#39;pais_codigo&#39;</span>
+</pre></div>
+</div>
+</dd>
+<dt class="field-odd">Note<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Es útil para automatizar análisis geográficos cuando los nombres de columnas pueden variar entre archivos.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.geospatial.analisis_geoespacial_adaptativo.detect_year_column">
+<span class="sig-prename descclassname"><span class="pre">src.geospatial.analisis_geoespacial_adaptativo.</span></span><span class="sig-name descname"><span class="pre">detect_year_column</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/geospatial/analisis_geoespacial_adaptativo.html#detect_year_column"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.geospatial.analisis_geoespacial_adaptativo.detect_year_column" title="Link to this definition"></a></dt>
+<dd><p>Detecta automáticamente la columna que representa el año o la fecha en un DataFrame.</p>
+<p>Busca en los nombres de las columnas términos comunes relacionados con año o fecha,
+como “año”, “anio”, “year”, “fecha”, “date”. Intenta convertir los valores a fechas
+y retorna el nombre de la primera columna válida encontrada.</p>
+<dl class="field-list">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>pandas.DataFrame</em>) – DataFrame de entrada donde se buscará la columna de año o fecha.</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>Nombre de la columna que representa el año o fecha, o None si no se encuentra.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str or None</p>
+</dd>
+<dt class="field-even">Example<span class="colon">:</span></dt>
+<dd class="field-even"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">detect_year_column</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="go">&#39;año_evento&#39;</span>
+</pre></div>
+</div>
+</dd>
+<dt class="field-odd">Note<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Es útil para automatizar análisis temporales cuando los nombres de columnas pueden variar entre archivos.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.geospatial.analisis_geoespacial_adaptativo.detect_type_column">
+<span class="sig-prename descclassname"><span class="pre">src.geospatial.analisis_geoespacial_adaptativo.</span></span><span class="sig-name descname"><span class="pre">detect_type_column</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/geospatial/analisis_geoespacial_adaptativo.html#detect_type_column"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.geospatial.analisis_geoespacial_adaptativo.detect_type_column" title="Link to this definition"></a></dt>
+<dd><p>Detecta automáticamente la columna que representa el tipo, categoría o clase de suceso en un DataFrame.</p>
+<p>Busca en los nombres de las columnas términos comunes como “tipo”, “categoria”, “clase”, “evento”, “suceso”,
+“incident”, “event”, “category”. Retorna el nombre de la primera columna encontrada.</p>
+<dl class="field-list">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>pandas.DataFrame</em>) – DataFrame de entrada donde se buscará la columna de tipo/categoría.</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>Nombre de la columna que representa el tipo/categoría, o None si no se encuentra.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str or None</p>
+</dd>
+<dt class="field-even">Example<span class="colon">:</span></dt>
+<dd class="field-even"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">detect_type_column</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="go">&#39;tipo_evento&#39;</span>
+</pre></div>
+</div>
+</dd>
+<dt class="field-odd">Note<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Es útil para automatizar análisis categóricos cuando los nombres de columnas pueden variar entre archivos.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.geospatial.analisis_geoespacial_adaptativo.plot_top_countries">
+<span class="sig-prename descclassname"><span class="pre">src.geospatial.analisis_geoespacial_adaptativo.</span></span><span class="sig-name descname"><span class="pre">plot_top_countries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">country_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results_dir</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/geospatial/analisis_geoespacial_adaptativo.html#plot_top_countries"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.geospatial.analisis_geoespacial_adaptativo.plot_top_countries" title="Link to this definition"></a></dt>
+<dd><p>Genera un gráfico de barras con los 20 países que tienen más sucesos registrados.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – DataFrame que contiene los datos a graficar</p></li>
+<li><p><strong>country_col</strong> (<em>str</em>) – Nombre de la columna que contiene los países</p></li>
+<li><p><strong>results_dir</strong> (<em>str</em>) – Directorio donde se guardará el gráfico generado</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+<dt class="field-even">Muestra<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – Si la columna country_col no existe en el DataFrame</p></li>
+<li><p><strong>OSError</strong> – Si hay problemas al guardar el archivo en results_dir</p></li>
+</ul>
+</dd>
+</dl>
+<p>El gráfico generado muestra:</p>
+<ul class="simple">
+<li><p>Las 20 países con mayor número de sucesos</p></li>
+<li><p>El conteo de sucesos para cada país</p></li>
+<li><p>Una paleta de colores “viridis” para mejor visualización</p></li>
+</ul>
+<p>La imagen se guarda en formato PNG en el directorio especificado.</p>
+<dl class="field-list">
+<dt class="field-odd">Example<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;pais&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;ESP&#39;</span><span class="p">,</span><span class="s1">&#39;USA&#39;</span><span class="p">,</span><span class="s1">&#39;FRA&#39;</span><span class="p">,</span><span class="s1">&#39;ESP&#39;</span><span class="p">]})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_top_countries</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;pais&#39;</span><span class="p">,</span> <span class="s1">&#39;./output&#39;</span><span class="p">)</span>
+<span class="go">Generando gráfica: Top países con más sucesos...</span>
+<span class="go">Gráfico guardado: ./output/top_paises_sucesos.png</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.geospatial.analisis_geoespacial_adaptativo.plot_world_scatter">
+<span class="sig-prename descclassname"><span class="pre">src.geospatial.analisis_geoespacial_adaptativo.</span></span><span class="sig-name descname"><span class="pre">plot_world_scatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">country_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results_dir</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/geospatial/analisis_geoespacial_adaptativo.html#plot_world_scatter"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.geospatial.analisis_geoespacial_adaptativo.plot_world_scatter" title="Link to this definition"></a></dt>
+<dd><p>Genera un mapa mundial de dispersión con los sucesos georreferenciados.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – DataFrame que contiene los datos a graficar</p></li>
+<li><p><strong>lat_col</strong> (<em>str</em>) – Nombre de la columna que contiene las latitudes</p></li>
+<li><p><strong>lon_col</strong> (<em>str</em>) – Nombre de la columna que contiene las longitudes</p></li>
+<li><p><strong>country_col</strong> (<em>str</em>) – Nombre de la columna que contiene los países (opcional)</p></li>
+<li><p><strong>results_dir</strong> (<em>str</em>) – Directorio donde se guardará el gráfico generado</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+<dt class="field-even">Muestra<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – Si las columnas lat_col o lon_col no existen en el DataFrame</p></li>
+<li><p><strong>OSError</strong> – Si hay problemas al guardar el archivo en results_dir</p></li>
+</ul>
+</dd>
+</dl>
+<p>El mapa generado muestra:</p>
+<ul class="simple">
+<li><p>Puntos de dispersión para cada suceso sobre un mapa mundial</p></li>
+<li><p>Colores diferentes para cada país si se especifica country_col</p></li>
+<li><p>Filtrado de coordenadas inválidas</p></li>
+<li><p>Imagen de fondo del mapa mundial</p></li>
+</ul>
+<p>La imagen se guarda en formato PNG en el directorio especificado.</p>
+<dl class="field-list">
+<dt class="field-odd">Example<span class="colon">:</span></dt>
+<dd class="field-odd"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+<span class="gp">... </span>    <span class="s1">&#39;lat&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">40.4</span><span class="p">,</span> <span class="o">-</span><span class="mf">33.9</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="s1">&#39;lon&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">3.7</span><span class="p">,</span> <span class="mf">151.2</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="s1">&#39;pais&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;ESP&#39;</span><span class="p">,</span> <span class="s1">&#39;AUS&#39;</span><span class="p">]</span>
+<span class="gp">... </span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_world_scatter</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;lat&#39;</span><span class="p">,</span> <span class="s1">&#39;lon&#39;</span><span class="p">,</span> <span class="s1">&#39;pais&#39;</span><span class="p">,</span> <span class="s1">&#39;./output&#39;</span><span class="p">)</span>
+<span class="go">Generando mapa mundial de sucesos...</span>
+<span class="go">Datos originales: 2</span>
+<span class="go">Datos tras filtrado: 2</span>
+<span class="go">Gráfico guardado: ./output/mapa_mundial_sucesos.png</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>La función filtra automáticamente las coordenadas inválidas y muestra
+la cantidad de datos antes y después del filtrado.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Se requiere conexión a internet para descargar la imagen del mapa base.</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.geospatial.analisis_geoespacial_adaptativo.plot_world_heatmap">
+<span class="sig-prename descclassname"><span class="pre">src.geospatial.analisis_geoespacial_adaptativo.</span></span><span class="sig-name descname"><span class="pre">plot_world_heatmap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results_dir</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/geospatial/analisis_geoespacial_adaptativo.html#plot_world_heatmap"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.geospatial.analisis_geoespacial_adaptativo.plot_world_heatmap" title="Link to this definition"></a></dt>
+<dd><p>Genera un mapa de calor global de los sucesos utilizando una proyección equirectangular.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – DataFrame que contiene los datos a graficar.</p></li>
+<li><p><strong>lat_col</strong> (<em>str</em>) – Nombre de la columna que contiene las latitudes.</p></li>
+<li><p><strong>lon_col</strong> (<em>str</em>) – Nombre de la columna que contiene las longitudes.</p></li>
+<li><p><strong>results_dir</strong> (<em>str</em>) – Directorio donde se guardará el gráfico generado.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notas</p>
+<p>La función realiza las siguientes operaciones:
+- Carga una imagen base del mapa mundial
+- Filtra y limpia las coordenadas inválidas
+- Genera un mapa de calor usando kernel density estimation
+- Guarda el resultado como “mapa_calor_mundial.png”</p>
+<section id="requires">
+<h3>Requires<a class="headerlink" href="#requires" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Conexión a internet para descargar la imagen base del mapa</p></li>
+<li><p>Las bibliotecas matplotlib, seaborn y PIL</p></li>
+</ul>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.geospatial.analisis_geoespacial_adaptativo.plot_by_year">
+<span class="sig-prename descclassname"><span class="pre">src.geospatial.analisis_geoespacial_adaptativo.</span></span><span class="sig-name descname"><span class="pre">plot_by_year</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">year_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results_dir</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/geospatial/analisis_geoespacial_adaptativo.html#plot_by_year"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.geospatial.analisis_geoespacial_adaptativo.plot_by_year" title="Link to this definition"></a></dt>
+<dd><p>Genera un gráfico de barras mostrando la cantidad de sucesos por año.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – DataFrame que contiene los datos a graficar.</p></li>
+<li><p><strong>year_col</strong> (<em>str</em>) – Nombre de la columna que contiene los años.</p></li>
+<li><p><strong>results_dir</strong> (<em>str</em>) – Directorio donde se guardará el gráfico generado.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notas</p>
+<p>La función realiza las siguientes operaciones:
+- Convierte la columna de años a formato datetime
+- Genera un gráfico de barras con la frecuencia por año
+- Guarda el resultado como “sucesos_por_ano.png”</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.geospatial.analisis_geoespacial_adaptativo.plot_by_type">
+<span class="sig-prename descclassname"><span class="pre">src.geospatial.analisis_geoespacial_adaptativo.</span></span><span class="sig-name descname"><span class="pre">plot_by_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results_dir</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/geospatial/analisis_geoespacial_adaptativo.html#plot_by_type"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.geospatial.analisis_geoespacial_adaptativo.plot_by_type" title="Link to this definition"></a></dt>
+<dd><p>Genera un gráfico de barras horizontales mostrando los tipos más frecuentes de sucesos.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – DataFrame que contiene los datos a graficar.</p></li>
+<li><p><strong>type_col</strong> (<em>str</em>) – Nombre de la columna que contiene los tipos/categorías.</p></li>
+<li><p><strong>results_dir</strong> (<em>str</em>) – Directorio donde se guardará el gráfico generado.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notas</p>
+<p>La función realiza las siguientes operaciones:
+- Selecciona los 20 tipos más frecuentes
+- Genera un gráfico de barras horizontales usando seaborn
+- Guarda el resultado como “top_tipos_sucesos.png”</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.geospatial.analisis_geoespacial_adaptativo.main">
+<span class="sig-prename descclassname"><span class="pre">src.geospatial.analisis_geoespacial_adaptativo.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/geospatial/analisis_geoespacial_adaptativo.html#main"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.geospatial.analisis_geoespacial_adaptativo.main" title="Link to this definition"></a></dt>
+<dd><p>Función principal que ejecuta el flujo completo de análisis geoespacial adaptativo.
+1. Carga y limpieza de datos.
+2. Uso explícito de columnas “lat” y “lon”.
+3. Limpieza de datos geoespaciales.
+4. Visualizaciones y clustering.
+5. Generación de informe.
+Autor: Anderson Zapata</p>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="analysis.html" class="btn btn-neutral float-left" title="Módulo de Análisis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="web.html" class="btn btn-neutral float-right" title="Módulo Web" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, UN PASO AL EXITO.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

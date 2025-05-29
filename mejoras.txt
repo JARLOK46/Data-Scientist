@@ -1,0 +1,5 @@
+1- Separar los archivos de preferencia por carpetas.
+2- Crear carpetas para cada tipo de archivos
+3- Un archivo por responsabilidad de codigo o funcion.
+4- Documentar el codigo con sphinx
+5- Pruebas en python

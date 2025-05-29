@@ -1,0 +1,1002 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>src.geospatial.analisis_geoespacial_adaptativo &mdash; documentación de Analisis de Datos y Visualizacion - 1.0</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=4936afed"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/translations.js?v=f85f4cfb"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Analisis de Datos y Visualizacion
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guías de Usuario:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/instalacion.html">Guía de Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/casos_uso.html">Casos de Uso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/preguntas_frecuentes.html">Preguntas Frecuentes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Módulos Principales:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/analysis.html">Módulo de Análisis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/geospatial.html">Módulo Geoespacial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/web.html">Módulo Web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/dashboard.html">Módulo de Dashboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/visualization.html">Módulo de Visualización</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/utils.html">Módulo de Utilidades</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentación Técnica:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/guia_analisis_avanzado.html">Guía de Análisis Avanzado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/optimizacion_rendimiento.html">Optimización de Rendimiento</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/seguridad_datos.html">Seguridad de Datos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/referencia_tecnica_detallada.html">Referencia Técnica Detallada</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/integracion_herramientas.html">Integración de Herramientas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/modules.html">src</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Analisis de Datos y Visualizacion</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Código de módulo</a></li>
+      <li class="breadcrumb-item active">src.geospatial.analisis_geoespacial_adaptativo</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Código fuente para src.geospatial.analisis_geoespacial_adaptativo</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Módulo de análisis geoespacial adaptativo.</span>
+
+<span class="sd">Este script permite realizar un análisis geoespacial flexible y robusto sobre un archivo CSV con datos de eventos o registros georreferenciados. El flujo incluye:</span>
+
+<span class="sd">- Detección automática del delimitador del archivo.</span>
+<span class="sd">- Carga y limpieza de datos, eliminando duplicados y valores inválidos.</span>
+<span class="sd">- Identificación automática de columnas de latitud y longitud.</span>
+<span class="sd">- Limpieza de filas con coordenadas inválidas o desconocidas.</span>
+<span class="sd">- Visualización de la distribución geográfica de los puntos (scatter).</span>
+<span class="sd">- Histogramas de latitud y longitud para entender la dispersión espacial.</span>
+<span class="sd">- Clustering espacial con K-Means para identificar agrupaciones naturales.</span>
+<span class="sd">- Gráfico de barras de cantidad de puntos por cluster.</span>
+<span class="sd">- Mapa interactivo con Folium para explorar los datos geoespaciales.</span>
+<span class="sd">- Generación de un informe Markdown con el resumen y las visualizaciones generadas.</span>
+
+<span class="sd">Dependencias principales: pandas, numpy, matplotlib, seaborn, folium, scikit-learn.</span>
+
+<span class="sd">Estructura del archivo:</span>
+<span class="sd">- Funciones utilitarias para carga, limpieza y visualización.</span>
+<span class="sd">- Un flujo principal (main) que orquesta todo el análisis.</span>
+
+<span class="sd">Autor: Anderson Zapata</span>
+<span class="sd">Fecha: 2025</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">urllib.parse</span><span class="w"> </span><span class="kn">import</span> <span class="n">urlparse</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">folium</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">folium.plugins</span><span class="w"> </span><span class="kn">import</span> <span class="n">MarkerCluster</span><span class="p">,</span> <span class="n">HeatMap</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.cluster</span><span class="w"> </span><span class="kn">import</span> <span class="n">KMeans</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">urllib.request</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PIL</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+
+<span class="c1"># Suprimir advertencias</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+
+<span class="c1"># Configuración de visualización</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn-v0_8-whitegrid&#39;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_palette</span><span class="p">(</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+
+<span class="c1"># Verificar e importar bibliotecas opcionales</span>
+<div class="viewcode-block" id="check_optional_imports">
+<a class="viewcode-back" href="../../../modules/geospatial.html#src.geospatial.analisis_geoespacial_adaptativo.check_optional_imports">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">check_optional_imports</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Verifica e intenta importar bibliotecas opcionales para análisis geoespacial avanzado.</span>
+
+<span class="sd">    Esta función intenta importar paquetes como `folium`, `geopandas`, `shapely`, `sklearn.cluster` y `scipy.spatial`.</span>
+<span class="sd">    Devuelve un diccionario con el estado de disponibilidad de cada paquete y una lista de los que faltan.</span>
+
+<span class="sd">    :return: Una tupla con (diccionario de paquetes disponibles, lista de paquetes faltantes).</span>
+<span class="sd">    :rtype: tuple(dict, list)</span>
+<span class="sd">    :example:</span>
+<span class="sd">        &gt;&gt;&gt; available, missing = check_optional_imports()</span>
+<span class="sd">        &gt;&gt;&gt; print(available[&#39;folium&#39;])</span>
+<span class="sd">        True</span>
+<span class="sd">        &gt;&gt;&gt; print(missing)</span>
+<span class="sd">        [&#39;geopandas (Para análisis geoespacial)&#39;]</span>
+<span class="sd">    :note:</span>
+<span class="sd">        Esta función es útil para advertir al usuario sobre dependencias opcionales antes de ejecutar análisis avanzados.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">missing_packages</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">optional_packages</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;folium&#39;</span><span class="p">:</span> <span class="s1">&#39;Para mapas interactivos&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;geopandas&#39;</span><span class="p">:</span> <span class="s1">&#39;Para análisis geoespacial&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;shapely&#39;</span><span class="p">:</span> <span class="s1">&#39;Para geometrías espaciales&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;sklearn.cluster&#39;</span><span class="p">:</span> <span class="s1">&#39;Para clustering espacial&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;scipy.spatial&#39;</span><span class="p">:</span> <span class="s1">&#39;Para análisis espacial avanzado&#39;</span>
+    <span class="p">}</span>
+    
+    <span class="n">available_packages</span> <span class="o">=</span> <span class="p">{}</span>
+    
+    <span class="c1"># Intentar importar cada paquete</span>
+    <span class="k">for</span> <span class="n">package</span><span class="p">,</span> <span class="n">description</span> <span class="ow">in</span> <span class="n">optional_packages</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">package</span> <span class="o">==</span> <span class="s1">&#39;sklearn.cluster&#39;</span><span class="p">:</span>
+                <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.cluster</span><span class="w"> </span><span class="kn">import</span> <span class="n">DBSCAN</span><span class="p">,</span> <span class="n">KMeans</span>
+                <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+                <span class="n">available_packages</span><span class="p">[</span><span class="n">package</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">elif</span> <span class="n">package</span> <span class="o">==</span> <span class="s1">&#39;scipy.spatial&#39;</span><span class="p">:</span>
+                <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.spatial</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConvexHull</span>
+                <span class="n">available_packages</span><span class="p">[</span><span class="n">package</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">elif</span> <span class="n">package</span> <span class="o">==</span> <span class="s1">&#39;folium&#39;</span><span class="p">:</span>
+                <span class="kn">import</span><span class="w"> </span><span class="nn">folium</span>
+                <span class="kn">from</span><span class="w"> </span><span class="nn">folium.plugins</span><span class="w"> </span><span class="kn">import</span> <span class="n">MarkerCluster</span><span class="p">,</span> <span class="n">HeatMap</span>
+                <span class="n">available_packages</span><span class="p">[</span><span class="n">package</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">elif</span> <span class="n">package</span> <span class="o">==</span> <span class="s1">&#39;geopandas&#39;</span><span class="p">:</span>
+                <span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+                <span class="n">available_packages</span><span class="p">[</span><span class="n">package</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">elif</span> <span class="n">package</span> <span class="o">==</span> <span class="s1">&#39;shapely&#39;</span><span class="p">:</span>
+                <span class="kn">from</span><span class="w"> </span><span class="nn">shapely.geometry</span><span class="w"> </span><span class="kn">import</span> <span class="n">Point</span>
+                <span class="n">available_packages</span><span class="p">[</span><span class="n">package</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+            <span class="n">missing_packages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">package</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">description</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+            <span class="n">available_packages</span><span class="p">[</span><span class="n">package</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+    
+    <span class="k">return</span> <span class="n">available_packages</span><span class="p">,</span> <span class="n">missing_packages</span></div>
+
+
+<span class="c1"># Crear directorio para resultados si no existe</span>
+<div class="viewcode-block" id="create_results_dir">
+<a class="viewcode-back" href="../../../modules/geospatial.html#src.geospatial.analisis_geoespacial_adaptativo.create_results_dir">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_results_dir</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Crea el directorio de resultados &#39;output&#39; en la misma carpeta que el script si no existe.</span>
+
+<span class="sd">    :return: Ruta absoluta al directorio de resultados creado o existente.</span>
+<span class="sd">    :rtype: str</span>
+<span class="sd">    :example:</span>
+<span class="sd">        &gt;&gt;&gt; results_dir = create_results_dir()</span>
+<span class="sd">        &gt;&gt;&gt; print(results_dir)</span>
+<span class="sd">        &#39;/ruta/al/proyecto/src/geospatial/output&#39;</span>
+<span class="sd">    :note:</span>
+<span class="sd">        Si el directorio ya existe, no lo borra ni lo modifica.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">results_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)),</span> <span class="s1">&#39;output&#39;</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">results_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">results_dir</span></div>
+
+
+<div class="viewcode-block" id="detect_delimiter">
+<a class="viewcode-back" href="../../../modules/geospatial.html#src.geospatial.analisis_geoespacial_adaptativo.detect_delimiter">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">detect_delimiter</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">num_lines</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Detecta automáticamente el delimitador utilizado en un archivo CSV.</span>
+
+<span class="sd">    Lee las primeras líneas del archivo y cuenta la frecuencia de los delimitadores más comunes</span>
+<span class="sd">    (tabulación, coma, punto y coma, barra vertical). Devuelve el delimitador más frecuente.</span>
+
+<span class="sd">    :param file_path: Ruta al archivo CSV.</span>
+<span class="sd">    :type file_path: str</span>
+<span class="sd">    :param num_lines: Número de líneas a analizar para la detección.</span>
+<span class="sd">    :type num_lines: int</span>
+<span class="sd">    :return: El delimitador detectado (&#39;\t&#39;, &#39;,&#39;, &#39;;&#39;, &#39;|&#39;).</span>
+<span class="sd">    :rtype: str</span>
+<span class="sd">    :example:</span>
+<span class="sd">        &gt;&gt;&gt; detect_delimiter(&#39;datos.csv&#39;)</span>
+<span class="sd">        &#39;,&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Abrimos el archivo en modo lectura, ignorando errores de codificación</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="c1"># Leemos las primeras &#39;num_lines&#39; líneas para tener una muestra representativa</span>
+        <span class="n">sample</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">file</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_lines</span><span class="p">)])</span>
+    <span class="c1"># Inicializamos un diccionario para contar la frecuencia de cada delimitador</span>
+    <span class="n">delimiters</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;,&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;;&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;|&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+    <span class="k">for</span> <span class="n">delimiter</span> <span class="ow">in</span> <span class="n">delimiters</span><span class="p">:</span>
+        <span class="n">delimiters</span><span class="p">[</span><span class="n">delimiter</span><span class="p">]</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">delimiter</span><span class="p">)</span>
+    <span class="c1"># Devolvemos el delimitador que más veces aparece en la muestra</span>
+    <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">delimiters</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">delimiters</span><span class="o">.</span><span class="n">get</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="load_and_clean_data">
+<a class="viewcode-back" href="../../../modules/geospatial.html#src.geospatial.analisis_geoespacial_adaptativo.load_and_clean_data">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">load_and_clean_data</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Carga y limpia un archivo CSV para análisis geoespacial.</span>
+
+<span class="sd">    - Detecta el delimitador automáticamente.</span>
+<span class="sd">    - Intenta cargar el archivo con diferentes codificaciones.</span>
+<span class="sd">    - Normaliza los nombres de las columnas.</span>
+<span class="sd">    - Elimina filas duplicadas.</span>
+
+<span class="sd">    :param file_path: Ruta al archivo CSV.</span>
+<span class="sd">    :type file_path: str</span>
+<span class="sd">    :return: DataFrame limpio y sin duplicados.</span>
+<span class="sd">    :rtype: pandas.DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cargando datos desde: </span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">delimiter</span> <span class="o">=</span> <span class="n">detect_delimiter</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Delimitador detectado: &#39;</span><span class="si">{</span><span class="n">delimiter</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="n">delimiter</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error con encoding utf-8: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="n">delimiter</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin1&#39;</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error con encoding latin1: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Datos cargados. Dimensiones: </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="c1"># Normalizamos los nombres de las columnas para evitar problemas posteriores</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+    <span class="c1"># Eliminamos duplicados para evitar sesgos en el análisis</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">df</span></div>
+
+
+<div class="viewcode-block" id="identify_geo_columns">
+<a class="viewcode-back" href="../../../modules/geospatial.html#src.geospatial.analisis_geoespacial_adaptativo.identify_geo_columns">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">identify_geo_columns</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Identifica automáticamente las columnas de latitud y longitud en un DataFrame.</span>
+
+<span class="sd">    Busca primero columnas con nombres típicos (&#39;lat&#39;, &#39;latitude&#39;, &#39;lon&#39;, &#39;lng&#39;, &#39;longitude&#39;).</span>
+<span class="sd">    Si no las encuentra, busca columnas numéricas cuyos valores estén en los rangos válidos de latitud y longitud.</span>
+
+<span class="sd">    :param df: DataFrame de entrada.</span>
+<span class="sd">    :type df: pandas.DataFrame</span>
+<span class="sd">    :return: Nombres de las columnas de latitud y longitud.</span>
+<span class="sd">    :rtype: tuple(str, str) o (None, None)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Buscamos columnas con nombres típicos de latitud y longitud</span>
+    <span class="n">lat_candidates</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">term</span> <span class="ow">in</span> <span class="n">col</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">,</span> <span class="s1">&#39;latitude&#39;</span><span class="p">])]</span>
+    <span class="n">lon_candidates</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">term</span> <span class="ow">in</span> <span class="n">col</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">,</span> <span class="s1">&#39;lng&#39;</span><span class="p">,</span> <span class="s1">&#39;longitude&#39;</span><span class="p">])]</span>
+    <span class="k">if</span> <span class="n">lat_candidates</span> <span class="ow">and</span> <span class="n">lon_candidates</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">lat_candidates</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">lon_candidates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="c1"># Si no se encuentran, buscamos columnas numéricas en los rangos válidos</span>
+    <span class="n">numeric_cols</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">numeric_cols</span><span class="p">:</span>
+        <span class="n">vals</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">vals</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="o">-</span><span class="mi">90</span> <span class="ow">and</span> <span class="n">vals</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="mi">90</span><span class="p">:</span>
+            <span class="n">lat_candidates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">col</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">vals</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="o">-</span><span class="mi">180</span> <span class="ow">and</span> <span class="n">vals</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="mi">180</span><span class="p">:</span>
+            <span class="n">lon_candidates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">col</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">lat_candidates</span> <span class="ow">and</span> <span class="n">lon_candidates</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">lat_candidates</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">lon_candidates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span></div>
+
+
+<div class="viewcode-block" id="clean_geo_data">
+<a class="viewcode-back" href="../../../modules/geospatial.html#src.geospatial.analisis_geoespacial_adaptativo.clean_geo_data">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">clean_geo_data</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">lat_col</span><span class="p">,</span> <span class="n">lon_col</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Filtra el DataFrame para conservar solo filas con coordenadas válidas.</span>
+
+<span class="sd">    - Elimina filas con valores nulos o &#39;Desconocido&#39; en latitud/longitud.</span>
+<span class="sd">    - Filtra coordenadas fuera de los rangos válidos.</span>
+
+<span class="sd">    :param df: DataFrame de entrada.</span>
+<span class="sd">    :type df: pandas.DataFrame</span>
+<span class="sd">    :param lat_col: Nombre de la columna de latitud.</span>
+<span class="sd">    :type lat_col: str</span>
+<span class="sd">    :param lon_col: Nombre de la columna de longitud.</span>
+<span class="sd">    :type lon_col: str</span>
+<span class="sd">    :return: DataFrame filtrado con coordenadas válidas.</span>
+<span class="sd">    :rtype: pandas.DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Limpiando datos geoespaciales...&quot;</span><span class="p">)</span>
+    <span class="c1"># Eliminamos filas con valores nulos o &#39;Desconocido&#39;</span>
+    <span class="n">geo_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="n">lat_col</span><span class="p">,</span> <span class="n">lon_col</span><span class="p">])</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">geo_df</span> <span class="o">=</span> <span class="n">geo_df</span><span class="p">[(</span><span class="n">geo_df</span><span class="p">[</span><span class="n">lat_col</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">!=</span> <span class="s1">&#39;desconocido&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">geo_df</span><span class="p">[</span><span class="n">lon_col</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">!=</span> <span class="s1">&#39;desconocido&#39;</span><span class="p">)]</span>
+    <span class="c1"># Filtramos coordenadas fuera de rango</span>
+    <span class="n">geo_df</span> <span class="o">=</span> <span class="n">geo_df</span><span class="p">[(</span><span class="n">geo_df</span><span class="p">[</span><span class="n">lat_col</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="o">-</span><span class="mi">90</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">geo_df</span><span class="p">[</span><span class="n">lat_col</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">90</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">geo_df</span><span class="p">[</span><span class="n">lon_col</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="o">-</span><span class="mi">180</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">geo_df</span><span class="p">[</span><span class="n">lon_col</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">180</span><span class="p">)]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Datos geoespaciales válidos: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">geo_df</span><span class="p">)</span><span class="si">}</span><span class="s2"> de </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="si">}</span><span class="s2"> filas&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">geo_df</span></div>
+
+
+<div class="viewcode-block" id="plot_geo_scatter">
+<a class="viewcode-back" href="../../../modules/geospatial.html#src.geospatial.analisis_geoespacial_adaptativo.plot_geo_scatter">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_geo_scatter</span><span class="p">(</span><span class="n">geo_df</span><span class="p">,</span> <span class="n">lat_col</span><span class="p">,</span> <span class="n">lon_col</span><span class="p">,</span> <span class="n">results_dir</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Genera un mapa de dispersión de los puntos geográficos.</span>
+
+<span class="sd">    Cada punto representa un evento o registro con coordenadas válidas.</span>
+<span class="sd">    El gráfico se guarda como imagen PNG en el directorio de resultados.</span>
+
+<span class="sd">    :param geo_df: DataFrame con datos geoespaciales válidos.</span>
+<span class="sd">    :type geo_df: pandas.DataFrame</span>
+<span class="sd">    :param lat_col: Nombre de la columna de latitud.</span>
+<span class="sd">    :type lat_col: str</span>
+<span class="sd">    :param lon_col: Nombre de la columna de longitud.</span>
+<span class="sd">    :type lon_col: str</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Generando visualización: Mapa de dispersión...&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">geo_df</span><span class="p">[</span><span class="n">lon_col</span><span class="p">],</span> <span class="n">geo_df</span><span class="p">[</span><span class="n">lat_col</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Distribución Geográfica de Puntos (</span><span class="si">{</span><span class="n">lat_col</span><span class="si">}</span><span class="s1"> vs </span><span class="si">{</span><span class="n">lon_col</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Longitud&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Latitud&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">results_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;distribucion_geografica_</span><span class="si">{</span><span class="n">lat_col</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">lon_col</span><span class="si">}</span><span class="s1">.png&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gráfico guardado: </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="plot_histograms">
+<a class="viewcode-back" href="../../../modules/geospatial.html#src.geospatial.analisis_geoespacial_adaptativo.plot_histograms">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_histograms</span><span class="p">(</span><span class="n">geo_df</span><span class="p">,</span> <span class="n">lat_col</span><span class="p">,</span> <span class="n">lon_col</span><span class="p">,</span> <span class="n">results_dir</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Genera histogramas de latitud y longitud para analizar la dispersión espacial.</span>
+
+<span class="sd">    Permite identificar concentraciones o vacíos geográficos en los datos.</span>
+<span class="sd">    El gráfico se guarda como imagen PNG en el directorio de resultados.</span>
+
+<span class="sd">    :param geo_df: DataFrame con datos geoespaciales válidos.</span>
+<span class="sd">    :type geo_df: pandas.DataFrame</span>
+<span class="sd">    :param lat_col: Nombre de la columna de latitud.</span>
+<span class="sd">    :type lat_col: str</span>
+<span class="sd">    :param lon_col: Nombre de la columna de longitud.</span>
+<span class="sd">    :type lon_col: str</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Generando visualización: Histogramas de coordenadas...&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">geo_df</span><span class="p">[</span><span class="n">lat_col</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Distribución de </span><span class="si">{</span><span class="n">lat_col</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span><span class="si">}</span><span class="s1"> (Latitud)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Latitud&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">geo_df</span><span class="p">[</span><span class="n">lon_col</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Distribución de </span><span class="si">{</span><span class="n">lon_col</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span><span class="si">}</span><span class="s1"> (Longitud)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Longitud&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">results_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;histogramas_</span><span class="si">{</span><span class="n">lat_col</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">lon_col</span><span class="si">}</span><span class="s1">.png&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gráfico guardado: </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="plot_kmeans_clusters">
+<a class="viewcode-back" href="../../../modules/geospatial.html#src.geospatial.analisis_geoespacial_adaptativo.plot_kmeans_clusters">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_kmeans_clusters</span><span class="p">(</span><span class="n">geo_df</span><span class="p">,</span> <span class="n">lat_col</span><span class="p">,</span> <span class="n">lon_col</span><span class="p">,</span> <span class="n">results_dir</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Realiza clustering espacial con K-Means y genera el gráfico correspondiente.</span>
+
+<span class="sd">    - Normaliza las coordenadas para evitar sesgos por escala.</span>
+<span class="sd">    - Determina el número de clusters según la cantidad de datos.</span>
+<span class="sd">    - Asigna cada punto a un cluster y lo visualiza por color.</span>
+<span class="sd">    - El gráfico se guarda como imagen PNG en el directorio de resultados.</span>
+
+<span class="sd">    :param geo_df: DataFrame con datos geoespaciales válidos.</span>
+<span class="sd">    :type geo_df: pandas.DataFrame</span>
+<span class="sd">    :param lat_col: Nombre de la columna de latitud.</span>
+<span class="sd">    :type lat_col: str</span>
+<span class="sd">    :param lon_col: Nombre de la columna de longitud.</span>
+<span class="sd">    :type lon_col: str</span>
+<span class="sd">    :return: DataFrame con columna &#39;kmeans_cluster&#39;.</span>
+<span class="sd">    :rtype: pandas.DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Realizando clustering K-Means...&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">geo_df</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No hay suficientes datos para clustering.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="n">coords</span> <span class="o">=</span> <span class="n">geo_df</span><span class="p">[[</span><span class="n">lat_col</span><span class="p">,</span> <span class="n">lon_col</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+    <span class="n">coords_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">coords</span><span class="p">)</span>
+    <span class="n">n_clusters</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">geo_df</span><span class="p">)</span> <span class="o">//</span> <span class="mi">10</span><span class="p">)</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">geo_df</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">10</span> <span class="k">else</span> <span class="mi">2</span>
+    <span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">n_clusters</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+    <span class="n">geo_df</span><span class="p">[</span><span class="s1">&#39;kmeans_cluster&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">coords_scaled</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+    <span class="n">scatter</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">geo_df</span><span class="p">[</span><span class="n">lon_col</span><span class="p">],</span> <span class="n">geo_df</span><span class="p">[</span><span class="n">lat_col</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">geo_df</span><span class="p">[</span><span class="s1">&#39;kmeans_cluster&#39;</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;tab10&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">scatter</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Cluster K-Means&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Clustering Espacial K-Means (</span><span class="si">{</span><span class="n">lat_col</span><span class="si">}</span><span class="s1"> vs </span><span class="si">{</span><span class="n">lon_col</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Longitud&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Latitud&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">results_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;clusters_kmeans_</span><span class="si">{</span><span class="n">lat_col</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">lon_col</span><span class="si">}</span><span class="s1">.png&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gráfico guardado: </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">geo_df</span></div>
+
+
+<div class="viewcode-block" id="plot_bar_by_cluster">
+<a class="viewcode-back" href="../../../modules/geospatial.html#src.geospatial.analisis_geoespacial_adaptativo.plot_bar_by_cluster">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_bar_by_cluster</span><span class="p">(</span><span class="n">geo_df</span><span class="p">,</span> <span class="n">results_dir</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Genera un gráfico de barras con la cantidad de puntos por cluster K-Means.</span>
+
+<span class="sd">    Permite visualizar la distribución de los datos entre los diferentes clusters.</span>
+<span class="sd">    El gráfico se guarda como imagen PNG en el directorio de resultados.</span>
+
+<span class="sd">    :param geo_df: DataFrame con columna &#39;kmeans_cluster&#39;.</span>
+<span class="sd">    :type geo_df: pandas.DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Generando visualización: Gráfico de barras por cluster...&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s1">&#39;kmeans_cluster&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">geo_df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="k">return</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="n">geo_df</span><span class="p">[</span><span class="s1">&#39;kmeans_cluster&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">counts</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">counts</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Cantidad de Puntos por Cluster K-Means&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Cluster&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Cantidad de puntos&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">results_dir</span><span class="p">,</span> <span class="s1">&#39;puntos_por_cluster_kmeans.png&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gráfico guardado: </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="create_interactive_map">
+<a class="viewcode-back" href="../../../modules/geospatial.html#src.geospatial.analisis_geoespacial_adaptativo.create_interactive_map">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_interactive_map</span><span class="p">(</span><span class="n">geo_df</span><span class="p">,</span> <span class="n">lat_col</span><span class="p">,</span> <span class="n">lon_col</span><span class="p">,</span> <span class="n">results_dir</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Genera un mapa interactivo con Folium y clusters de puntos.</span>
+
+<span class="sd">    - Muestra los puntos en un mapa base OpenStreetMap.</span>
+<span class="sd">    - Agrupa los puntos en clusters interactivos.</span>
+<span class="sd">    - Añade un mapa de calor para visualizar densidad.</span>
+<span class="sd">    - El mapa se guarda como archivo HTML en el directorio de resultados.</span>
+
+<span class="sd">    :param geo_df: DataFrame con datos geoespaciales válidos.</span>
+<span class="sd">    :type geo_df: pandas.DataFrame</span>
+<span class="sd">    :param lat_col: Nombre de la columna de latitud.</span>
+<span class="sd">    :type lat_col: str</span>
+<span class="sd">    :param lon_col: Nombre de la columna de longitud.</span>
+<span class="sd">    :type lon_col: str</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Generando visualización: Mapa interactivo...&quot;</span><span class="p">)</span>
+    <span class="n">center_lat</span> <span class="o">=</span> <span class="n">geo_df</span><span class="p">[</span><span class="n">lat_col</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">center_lon</span> <span class="o">=</span> <span class="n">geo_df</span><span class="p">[</span><span class="n">lon_col</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="n">center_lat</span><span class="p">,</span> <span class="n">center_lon</span><span class="p">],</span> <span class="n">zoom_start</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">tiles</span><span class="o">=</span><span class="s1">&#39;OpenStreetMap&#39;</span><span class="p">)</span>
+    <span class="n">marker_cluster</span> <span class="o">=</span> <span class="n">MarkerCluster</span><span class="p">()</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+    <span class="c1"># Para no sobrecargar el mapa, limitamos a 1000 puntos</span>
+    <span class="n">sample_df</span> <span class="o">=</span> <span class="n">geo_df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">geo_df</span><span class="p">)))</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">geo_df</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1000</span> <span class="k">else</span> <span class="n">geo_df</span>
+    <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">sample_df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="n">popup_text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&lt;b&gt;Coordenadas:&lt;/b&gt; </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="n">lat_col</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="n">lon_col</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&lt;br&gt;&quot;</span>
+        <span class="k">if</span> <span class="s1">&#39;kmeans_cluster&#39;</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
+            <span class="n">popup_text</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;&lt;b&gt;Cluster:&lt;/b&gt; </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;kmeans_cluster&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;br&gt;&quot;</span>
+        <span class="n">folium</span><span class="o">.</span><span class="n">Marker</span><span class="p">(</span>
+            <span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="n">lat_col</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="n">lon_col</span><span class="p">]],</span>
+            <span class="n">popup</span><span class="o">=</span><span class="n">folium</span><span class="o">.</span><span class="n">Popup</span><span class="p">(</span><span class="n">popup_text</span><span class="p">,</span> <span class="n">max_width</span><span class="o">=</span><span class="mi">300</span><span class="p">),</span>
+            <span class="n">icon</span><span class="o">=</span><span class="n">folium</span><span class="o">.</span><span class="n">Icon</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">icon</span><span class="o">=</span><span class="s1">&#39;info-sign&#39;</span><span class="p">)</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">marker_cluster</span><span class="p">)</span>
+    <span class="c1"># Añadimos un mapa de calor para visualizar densidad</span>
+    <span class="n">heat_data</span> <span class="o">=</span> <span class="p">[[</span><span class="n">row</span><span class="p">[</span><span class="n">lat_col</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="n">lon_col</span><span class="p">]]</span> <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">sample_df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">()]</span>
+    <span class="n">HeatMap</span><span class="p">(</span><span class="n">heat_data</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+    <span class="n">map_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">results_dir</span><span class="p">,</span> <span class="s1">&#39;mapa_interactivo.html&#39;</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">map_path</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mapa interactivo guardado en: </span><span class="si">{</span><span class="n">map_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="generate_report">
+<a class="viewcode-back" href="../../../modules/geospatial.html#src.geospatial.analisis_geoespacial_adaptativo.generate_report">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">generate_report</span><span class="p">(</span><span class="n">geo_df</span><span class="p">,</span> <span class="n">lat_col</span><span class="p">,</span> <span class="n">lon_col</span><span class="p">,</span> <span class="n">results_dir</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Genera un informe en formato Markdown con el resumen del análisis geoespacial adaptativo.</span>
+
+<span class="sd">    El informe incluye:</span>
+<span class="sd">    - Resumen de puntos válidos y rangos de coordenadas.</span>
+<span class="sd">    - Resultados del clustering K-Means (si aplica).</span>
+<span class="sd">    - Listado de visualizaciones generadas.</span>
+<span class="sd">    - Conclusiones y recomendaciones.</span>
+
+<span class="sd">    :param geo_df: DataFrame con datos geoespaciales válidos.</span>
+<span class="sd">    :type geo_df: pandas.DataFrame</span>
+<span class="sd">    :param lat_col: Nombre de la columna de latitud.</span>
+<span class="sd">    :type lat_col: str</span>
+<span class="sd">    :param lon_col: Nombre de la columna de longitud.</span>
+<span class="sd">    :type lon_col: str</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Generando informe de análisis geoespacial...&quot;</span><span class="p">)</span>
+    <span class="n">md_report</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;# Informe de Análisis Geoespacial Adaptativo</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+    <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;**Fecha de análisis:** </span><span class="si">{</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M:%S&#39;</span><span class="p">)</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+    <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;## Resumen</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+    <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;- Total de puntos con coordenadas válidas: **</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">geo_df</span><span class="p">)</span><span class="si">}</span><span class="s2">**</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;- Rango de latitudes: **</span><span class="si">{</span><span class="n">geo_df</span><span class="p">[</span><span class="n">lat_col</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">** a **</span><span class="si">{</span><span class="n">geo_df</span><span class="p">[</span><span class="n">lat_col</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">**</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;- Rango de longitudes: **</span><span class="si">{</span><span class="n">geo_df</span><span class="p">[</span><span class="n">lon_col</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">** a **</span><span class="si">{</span><span class="n">geo_df</span><span class="p">[</span><span class="n">lon_col</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">**</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+    <span class="k">if</span> <span class="s1">&#39;kmeans_cluster&#39;</span> <span class="ow">in</span> <span class="n">geo_df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;## Clustering K-Means</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+        <span class="n">kmeans_counts</span> <span class="o">=</span> <span class="n">geo_df</span><span class="p">[</span><span class="s1">&#39;kmeans_cluster&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+        <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;- Número de clusters: **</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">kmeans_counts</span><span class="p">)</span><span class="si">}</span><span class="s2">**</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;- Distribución de puntos por cluster:</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="k">for</span> <span class="n">cluster</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">kmeans_counts</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;  - Cluster </span><span class="si">{</span><span class="n">cluster</span><span class="si">}</span><span class="s2">: **</span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2">** puntos (</span><span class="si">{</span><span class="n">count</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">geo_df</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%)</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">## Visualizaciones Generadas</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+    <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;- ![Distribución Geográfica de Puntos](</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">results_dir</span><span class="p">,</span><span class="w"> </span><span class="sa">f</span><span class="s1">&#39;distribucion_geografica_</span><span class="si">{</span><span class="n">lat_col</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">lon_col</span><span class="si">}</span><span class="s1">.png&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">)</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;  - Archivo: distribucion_geografica_</span><span class="si">{</span><span class="n">lat_col</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">lon_col</span><span class="si">}</span><span class="s2">.png</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;- ![Histogramas de Latitud y Longitud](</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">results_dir</span><span class="p">,</span><span class="w"> </span><span class="sa">f</span><span class="s1">&#39;histogramas_</span><span class="si">{</span><span class="n">lat_col</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">lon_col</span><span class="si">}</span><span class="s1">.png&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">)</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;  - Archivo: histogramas_</span><span class="si">{</span><span class="n">lat_col</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">lon_col</span><span class="si">}</span><span class="s2">.png</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="k">if</span> <span class="s1">&#39;kmeans_cluster&#39;</span> <span class="ow">in</span> <span class="n">geo_df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;- ![Clustering Espacial K-Means](</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">results_dir</span><span class="p">,</span><span class="w"> </span><span class="sa">f</span><span class="s1">&#39;clusters_kmeans_</span><span class="si">{</span><span class="n">lat_col</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">lon_col</span><span class="si">}</span><span class="s1">.png&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">)</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;  - Archivo: clusters_kmeans_</span><span class="si">{</span><span class="n">lat_col</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">lon_col</span><span class="si">}</span><span class="s2">.png</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;- ![Barras de cantidad de puntos por cluster](</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">results_dir</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;puntos_por_cluster_kmeans.png&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">)</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;  - Archivo: puntos_por_cluster_kmeans.png</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;- Mapa interactivo (HTML): mapa_interactivo.html</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">## Conclusiones</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+    <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;- Los datos muestran una distribución geográfica coherente.</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="k">if</span> <span class="s1">&#39;kmeans_cluster&#39;</span> <span class="ow">in</span> <span class="n">geo_df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">md_report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;- El clustering permite identificar agrupaciones espaciales relevantes.</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="n">md_report_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">results_dir</span><span class="p">,</span> <span class="s1">&#39;informe_analisis_geoespacial_adaptativo.md&#39;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">md_report_path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">md_report</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Informe en formato Markdown guardado en: </span><span class="si">{</span><span class="n">md_report_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="detect_country_column">
+<a class="viewcode-back" href="../../../modules/geospatial.html#src.geospatial.analisis_geoespacial_adaptativo.detect_country_column">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">detect_country_column</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Detecta automáticamente la columna que representa el país en un DataFrame.</span>
+
+<span class="sd">    Busca en los nombres de las columnas términos comunes relacionados con países,</span>
+<span class="sd">    como &#39;pais&#39;, &#39;country&#39;, &#39;codigo_pais&#39;, &#39;pais_codigo&#39;. Retorna el nombre de la</span>
+<span class="sd">    primera columna válida encontrada.</span>
+
+<span class="sd">    :param df: DataFrame de entrada donde se buscará la columna de país.</span>
+<span class="sd">    :type df: pandas.DataFrame</span>
+<span class="sd">    :return: Nombre de la columna que representa el país, o None si no se encuentra.</span>
+<span class="sd">    :rtype: str or None</span>
+<span class="sd">    :example:</span>
+<span class="sd">        &gt;&gt;&gt; detect_country_column(df)</span>
+<span class="sd">        &#39;pais_codigo&#39;</span>
+<span class="sd">    :note:</span>
+<span class="sd">        Es útil para automatizar análisis geográficos cuando los nombres de columnas pueden variar entre archivos.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">country_candidates</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">term</span> <span class="ow">in</span> <span class="n">col</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;pais&#39;</span><span class="p">,</span> <span class="s1">&#39;country&#39;</span><span class="p">,</span> <span class="s1">&#39;codigo_pais&#39;</span><span class="p">,</span> <span class="s1">&#39;pais_codigo&#39;</span><span class="p">])]</span>
+    <span class="k">return</span> <span class="n">country_candidates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">country_candidates</span> <span class="k">else</span> <span class="kc">None</span></div>
+
+
+<div class="viewcode-block" id="detect_year_column">
+<a class="viewcode-back" href="../../../modules/geospatial.html#src.geospatial.analisis_geoespacial_adaptativo.detect_year_column">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">detect_year_column</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Detecta automáticamente la columna que representa el año o la fecha en un DataFrame.</span>
+
+<span class="sd">    Busca en los nombres de las columnas términos comunes relacionados con año o fecha,</span>
+<span class="sd">    como &#39;año&#39;, &#39;anio&#39;, &#39;year&#39;, &#39;fecha&#39;, &#39;date&#39;. Intenta convertir los valores a fechas</span>
+<span class="sd">    y retorna el nombre de la primera columna válida encontrada.</span>
+
+<span class="sd">    :param df: DataFrame de entrada donde se buscará la columna de año o fecha.</span>
+<span class="sd">    :type df: pandas.DataFrame</span>
+<span class="sd">    :return: Nombre de la columna que representa el año o fecha, o None si no se encuentra.</span>
+<span class="sd">    :rtype: str or None</span>
+<span class="sd">    :example:</span>
+<span class="sd">        &gt;&gt;&gt; detect_year_column(df)</span>
+<span class="sd">        &#39;año_evento&#39;</span>
+<span class="sd">    :note:</span>
+<span class="sd">        Es útil para automatizar análisis temporales cuando los nombres de columnas pueden variar entre archivos.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">year_candidates</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">term</span> <span class="ow">in</span> <span class="n">col</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;año&#39;</span><span class="p">,</span> <span class="s1">&#39;anio&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;fecha&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">])]</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">year_candidates</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">vals</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">vals</span><span class="o">.</span><span class="n">notnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">col</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">continue</span>
+    <span class="k">return</span> <span class="kc">None</span></div>
+
+
+<div class="viewcode-block" id="detect_type_column">
+<a class="viewcode-back" href="../../../modules/geospatial.html#src.geospatial.analisis_geoespacial_adaptativo.detect_type_column">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">detect_type_column</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Detecta automáticamente la columna que representa el tipo, categoría o clase de suceso en un DataFrame.</span>
+
+<span class="sd">    Busca en los nombres de las columnas términos comunes como &#39;tipo&#39;, &#39;categoria&#39;, &#39;clase&#39;, &#39;evento&#39;, &#39;suceso&#39;,</span>
+<span class="sd">    &#39;incident&#39;, &#39;event&#39;, &#39;category&#39;. Retorna el nombre de la primera columna encontrada.</span>
+
+<span class="sd">    :param df: DataFrame de entrada donde se buscará la columna de tipo/categoría.</span>
+<span class="sd">    :type df: pandas.DataFrame</span>
+<span class="sd">    :return: Nombre de la columna que representa el tipo/categoría, o None si no se encuentra.</span>
+<span class="sd">    :rtype: str or None</span>
+<span class="sd">    :example:</span>
+<span class="sd">        &gt;&gt;&gt; detect_type_column(df)</span>
+<span class="sd">        &#39;tipo_evento&#39;</span>
+<span class="sd">    :note:</span>
+<span class="sd">        Es útil para automatizar análisis categóricos cuando los nombres de columnas pueden variar entre archivos.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">type_candidates</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">term</span> <span class="ow">in</span> <span class="n">col</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;tipo&#39;</span><span class="p">,</span> <span class="s1">&#39;categoria&#39;</span><span class="p">,</span> <span class="s1">&#39;clase&#39;</span><span class="p">,</span> <span class="s1">&#39;evento&#39;</span><span class="p">,</span> <span class="s1">&#39;suceso&#39;</span><span class="p">,</span> <span class="s1">&#39;incident&#39;</span><span class="p">,</span> <span class="s1">&#39;event&#39;</span><span class="p">,</span> <span class="s1">&#39;category&#39;</span><span class="p">])]</span>
+    <span class="k">return</span> <span class="n">type_candidates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">type_candidates</span> <span class="k">else</span> <span class="kc">None</span></div>
+
+
+<div class="viewcode-block" id="plot_top_countries">
+<a class="viewcode-back" href="../../../modules/geospatial.html#src.geospatial.analisis_geoespacial_adaptativo.plot_top_countries">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_top_countries</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">country_col</span><span class="p">,</span> <span class="n">results_dir</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Genera un gráfico de barras con los 20 países que tienen más sucesos registrados.</span>
+
+<span class="sd">    :param df: DataFrame que contiene los datos a graficar</span>
+<span class="sd">    :type df: pandas.DataFrame</span>
+<span class="sd">    :param country_col: Nombre de la columna que contiene los países</span>
+<span class="sd">    :type country_col: str </span>
+<span class="sd">    :param results_dir: Directorio donde se guardará el gráfico generado</span>
+<span class="sd">    :type results_dir: str</span>
+<span class="sd">    :return: None</span>
+<span class="sd">    :rtype: None</span>
+<span class="sd">    :raises ValueError: Si la columna country_col no existe en el DataFrame</span>
+<span class="sd">    :raises OSError: Si hay problemas al guardar el archivo en results_dir</span>
+<span class="sd">    </span>
+<span class="sd">    El gráfico generado muestra:</span>
+<span class="sd">    </span>
+<span class="sd">    * Las 20 países con mayor número de sucesos</span>
+<span class="sd">    * El conteo de sucesos para cada país</span>
+<span class="sd">    * Una paleta de colores &#39;viridis&#39; para mejor visualización</span>
+<span class="sd">    </span>
+<span class="sd">    La imagen se guarda en formato PNG en el directorio especificado.</span>
+<span class="sd">    </span>
+<span class="sd">    :example:</span>
+<span class="sd">        &gt;&gt;&gt; df = pd.DataFrame({&#39;pais&#39;: [&#39;ESP&#39;,&#39;USA&#39;,&#39;FRA&#39;,&#39;ESP&#39;]})</span>
+<span class="sd">        &gt;&gt;&gt; plot_top_countries(df, &#39;pais&#39;, &#39;./output&#39;)</span>
+<span class="sd">        Generando gráfica: Top países con más sucesos...</span>
+<span class="sd">        Gráfico guardado: ./output/top_paises_sucesos.png</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Generando gráfica: Top países con más sucesos...&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+    <span class="n">top_countries</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">country_col</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">top_countries</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">top_countries</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Top países con más sucesos registrados&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Cantidad de sucesos&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;País&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">results_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;top_paises_sucesos.png&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gráfico guardado: </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="plot_world_scatter">
+<a class="viewcode-back" href="../../../modules/geospatial.html#src.geospatial.analisis_geoespacial_adaptativo.plot_world_scatter">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_world_scatter</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">lat_col</span><span class="p">,</span> <span class="n">lon_col</span><span class="p">,</span> <span class="n">country_col</span><span class="p">,</span> <span class="n">results_dir</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Genera un mapa mundial de dispersión con los sucesos georreferenciados.</span>
+
+<span class="sd">    :param df: DataFrame que contiene los datos a graficar</span>
+<span class="sd">    :type df: pandas.DataFrame</span>
+<span class="sd">    :param lat_col: Nombre de la columna que contiene las latitudes</span>
+<span class="sd">    :type lat_col: str</span>
+<span class="sd">    :param lon_col: Nombre de la columna que contiene las longitudes </span>
+<span class="sd">    :type lon_col: str</span>
+<span class="sd">    :param country_col: Nombre de la columna que contiene los países (opcional)</span>
+<span class="sd">    :type country_col: str</span>
+<span class="sd">    :param results_dir: Directorio donde se guardará el gráfico generado</span>
+<span class="sd">    :type results_dir: str</span>
+<span class="sd">    :return: None</span>
+<span class="sd">    :rtype: None</span>
+<span class="sd">    :raises ValueError: Si las columnas lat_col o lon_col no existen en el DataFrame</span>
+<span class="sd">    :raises OSError: Si hay problemas al guardar el archivo en results_dir</span>
+
+<span class="sd">    El mapa generado muestra:</span>
+
+<span class="sd">    * Puntos de dispersión para cada suceso sobre un mapa mundial</span>
+<span class="sd">    * Colores diferentes para cada país si se especifica country_col</span>
+<span class="sd">    * Filtrado de coordenadas inválidas</span>
+<span class="sd">    * Imagen de fondo del mapa mundial</span>
+
+<span class="sd">    La imagen se guarda en formato PNG en el directorio especificado.</span>
+
+<span class="sd">    :example:</span>
+<span class="sd">        &gt;&gt;&gt; df = pd.DataFrame({</span>
+<span class="sd">        ...     &#39;lat&#39;: [40.4, -33.9],</span>
+<span class="sd">        ...     &#39;lon&#39;: [-3.7, 151.2], </span>
+<span class="sd">        ...     &#39;pais&#39;: [&#39;ESP&#39;, &#39;AUS&#39;]</span>
+<span class="sd">        ... })</span>
+<span class="sd">        &gt;&gt;&gt; plot_world_scatter(df, &#39;lat&#39;, &#39;lon&#39;, &#39;pais&#39;, &#39;./output&#39;)</span>
+<span class="sd">        Generando mapa mundial de sucesos...</span>
+<span class="sd">        Datos originales: 2</span>
+<span class="sd">        Datos tras filtrado: 2</span>
+<span class="sd">        Gráfico guardado: ./output/mapa_mundial_sucesos.png</span>
+
+<span class="sd">    .. note::</span>
+<span class="sd">        La función filtra automáticamente las coordenadas inválidas y muestra</span>
+<span class="sd">        la cantidad de datos antes y después del filtrado.</span>
+
+<span class="sd">    .. warning::</span>
+<span class="sd">        Se requiere conexión a internet para descargar la imagen del mapa base.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Generando mapa mundial de sucesos...&quot;</span><span class="p">)</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.colors</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mcolors</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://upload.wikimedia.org/wikipedia/commons/8/83/Equirectangular_projection_SW.jpg&#39;</span>
+    <span class="k">with</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="n">world</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">world</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">],</span> <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
+    <span class="c1"># Conversión y filtrado estricto</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Datos originales: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">lat_col</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">lat_col</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">lon_col</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">lon_col</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="n">lat_col</span><span class="p">,</span> <span class="n">lon_col</span><span class="p">])</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="n">lat_col</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="o">-</span><span class="mi">90</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">lat_col</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">90</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">lon_col</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="o">-</span><span class="mi">180</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">lon_col</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">180</span><span class="p">)]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Datos tras filtrado: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">df</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No hay datos válidos para graficar.&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">country_col</span><span class="p">:</span>
+        <span class="n">countries</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">country_col</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+        <span class="n">unique_countries</span> <span class="o">=</span> <span class="n">countries</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+        <span class="n">colors</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">unique_countries</span><span class="p">,</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s1">&#39;hls&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">unique_countries</span><span class="p">))))</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">unique_countries</span><span class="p">:</span>
+            <span class="n">mask</span> <span class="o">=</span> <span class="n">countries</span> <span class="o">==</span> <span class="n">c</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mask</span><span class="p">,</span> <span class="n">lon_col</span><span class="p">],</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mask</span><span class="p">,</span> <span class="n">lat_col</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">c</span><span class="p">],</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">lon_col</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="n">lat_col</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Ubicación geográfica de los sucesos a nivel mundial&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Longitud&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Latitud&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">180</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">results_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;mapa_mundial_sucesos.png&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gráfico guardado: </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="plot_world_heatmap">
+<a class="viewcode-back" href="../../../modules/geospatial.html#src.geospatial.analisis_geoespacial_adaptativo.plot_world_heatmap">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_world_heatmap</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">lat_col</span><span class="p">,</span> <span class="n">lon_col</span><span class="p">,</span> <span class="n">results_dir</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Genera un mapa de calor global de los sucesos utilizando una proyección equirectangular.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    df : pandas.DataFrame</span>
+<span class="sd">        DataFrame que contiene los datos a graficar.</span>
+<span class="sd">    lat_col : str</span>
+<span class="sd">        Nombre de la columna que contiene las latitudes.</span>
+<span class="sd">    lon_col : str</span>
+<span class="sd">        Nombre de la columna que contiene las longitudes.</span>
+<span class="sd">    results_dir : str</span>
+<span class="sd">        Directorio donde se guardará el gráfico generado.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    La función realiza las siguientes operaciones:</span>
+<span class="sd">    - Carga una imagen base del mapa mundial</span>
+<span class="sd">    - Filtra y limpia las coordenadas inválidas</span>
+<span class="sd">    - Genera un mapa de calor usando kernel density estimation</span>
+<span class="sd">    - Guarda el resultado como &#39;mapa_calor_mundial.png&#39;</span>
+
+<span class="sd">    Requires</span>
+<span class="sd">    --------</span>
+<span class="sd">    - Conexión a internet para descargar la imagen base del mapa</span>
+<span class="sd">    - Las bibliotecas matplotlib, seaborn y PIL</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Generando mapa de calor global...&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://upload.wikimedia.org/wikipedia/commons/8/83/Equirectangular_projection_SW.jpg&#39;</span>
+    <span class="k">with</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="n">world</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">world</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">],</span> <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
+    <span class="c1"># Conversión y filtrado estricto</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">lat_col</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">lat_col</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">lon_col</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">lon_col</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="n">lat_col</span><span class="p">,</span> <span class="n">lon_col</span><span class="p">])</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="n">lat_col</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="o">-</span><span class="mi">90</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">lat_col</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">90</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">lon_col</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="o">-</span><span class="mi">180</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">lon_col</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">180</span><span class="p">)]</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">lon_col</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">lat_col</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Reds&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">bw_adjust</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">thresh</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Mapa de calor global de sucesos&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Longitud&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Latitud&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">180</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">results_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;mapa_calor_mundial.png&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gráfico guardado: </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="plot_by_year">
+<a class="viewcode-back" href="../../../modules/geospatial.html#src.geospatial.analisis_geoespacial_adaptativo.plot_by_year">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_by_year</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">year_col</span><span class="p">,</span> <span class="n">results_dir</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Genera un gráfico de barras mostrando la cantidad de sucesos por año.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    df : pandas.DataFrame</span>
+<span class="sd">        DataFrame que contiene los datos a graficar.</span>
+<span class="sd">    year_col : str</span>
+<span class="sd">        Nombre de la columna que contiene los años.</span>
+<span class="sd">    results_dir : str</span>
+<span class="sd">        Directorio donde se guardará el gráfico generado.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    La función realiza las siguientes operaciones:</span>
+<span class="sd">    - Convierte la columna de años a formato datetime</span>
+<span class="sd">    - Genera un gráfico de barras con la frecuencia por año</span>
+<span class="sd">    - Guarda el resultado como &#39;sucesos_por_ano.png&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Generando gráfica: Sucesos por año...&quot;</span><span class="p">)</span>
+    <span class="n">vals</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">year_col</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">vals</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#3498db&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Cantidad de sucesos por año&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Año&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Cantidad de sucesos&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">results_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;sucesos_por_ano.png&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gráfico guardado: </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="plot_by_type">
+<a class="viewcode-back" href="../../../modules/geospatial.html#src.geospatial.analisis_geoespacial_adaptativo.plot_by_type">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_by_type</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">type_col</span><span class="p">,</span> <span class="n">results_dir</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Genera un gráfico de barras horizontales mostrando los tipos más frecuentes de sucesos.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    df : pandas.DataFrame</span>
+<span class="sd">        DataFrame que contiene los datos a graficar.</span>
+<span class="sd">    type_col : str</span>
+<span class="sd">        Nombre de la columna que contiene los tipos/categorías.</span>
+<span class="sd">    results_dir : str</span>
+<span class="sd">        Directorio donde se guardará el gráfico generado.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    La función realiza las siguientes operaciones:</span>
+<span class="sd">    - Selecciona los 20 tipos más frecuentes</span>
+<span class="sd">    - Genera un gráfico de barras horizontales usando seaborn</span>
+<span class="sd">    - Guarda el resultado como &#39;top_tipos_sucesos.png&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Generando gráfica: Sucesos por tipo/categoría...&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+    <span class="n">top_types</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">type_col</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">top_types</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">top_types</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;mako&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Top tipos/categorías de sucesos&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Cantidad de sucesos&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Tipo/Categoría&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">results_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;top_tipos_sucesos.png&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gráfico guardado: </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="main">
+<a class="viewcode-back" href="../../../modules/geospatial.html#src.geospatial.analisis_geoespacial_adaptativo.main">[documentos]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Función principal que ejecuta el flujo completo de análisis geoespacial adaptativo.</span>
+<span class="sd">    1. Carga y limpieza de datos.</span>
+<span class="sd">    2. Uso explícito de columnas &#39;lat&#39; y &#39;lon&#39;.</span>
+<span class="sd">    3. Limpieza de datos geoespaciales.</span>
+<span class="sd">    4. Visualizaciones y clustering.</span>
+<span class="sd">    5. Generación de informe.</span>
+<span class="sd">    Autor: Anderson Zapata</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== Análisis Geoespacial Adaptativo Mejorado ===</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">proyecto_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s1">&#39;../..&#39;</span><span class="p">))</span>
+    <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">proyecto_dir</span><span class="p">,</span> <span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;datos_limpios.csv&#39;</span><span class="p">)</span>
+    <span class="n">results_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)),</span> <span class="s1">&#39;output&#39;</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">results_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">load_and_clean_data</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">df</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No se pudieron cargar los datos. Finalizando análisis.&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="c1"># Forzar uso de columnas &#39;lat&#39; y &#39;lon&#39;</span>
+    <span class="n">lat_col</span><span class="p">,</span> <span class="n">lon_col</span> <span class="o">=</span> <span class="s1">&#39;lat&#39;</span><span class="p">,</span> <span class="s1">&#39;lon&#39;</span>
+    <span class="k">if</span> <span class="n">lat_col</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="ow">or</span> <span class="n">lon_col</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No se encontraron las columnas &#39;lat&#39; y &#39;lon&#39; en los datos. Finalizando.&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="n">geo_df</span> <span class="o">=</span> <span class="n">clean_geo_data</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">lat_col</span><span class="p">,</span> <span class="n">lon_col</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">geo_df</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No hay suficientes datos geoespaciales válidos para realizar el análisis. Finalizando.&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="n">plot_geo_scatter</span><span class="p">(</span><span class="n">geo_df</span><span class="p">,</span> <span class="n">lat_col</span><span class="p">,</span> <span class="n">lon_col</span><span class="p">,</span> <span class="n">results_dir</span><span class="p">)</span>
+    <span class="n">plot_histograms</span><span class="p">(</span><span class="n">geo_df</span><span class="p">,</span> <span class="n">lat_col</span><span class="p">,</span> <span class="n">lon_col</span><span class="p">,</span> <span class="n">results_dir</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">plot_kmeans_clusters</span><span class="p">(</span><span class="n">geo_df</span><span class="p">,</span> <span class="n">lat_col</span><span class="p">,</span> <span class="n">lon_col</span><span class="p">,</span> <span class="n">results_dir</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">geo_df</span> <span class="o">=</span> <span class="n">result</span>
+    <span class="n">plot_bar_by_cluster</span><span class="p">(</span><span class="n">geo_df</span><span class="p">,</span> <span class="n">results_dir</span><span class="p">)</span>
+    <span class="n">country_col</span> <span class="o">=</span> <span class="n">detect_country_column</span><span class="p">(</span><span class="n">geo_df</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">country_col</span><span class="p">:</span>
+        <span class="n">plot_top_countries</span><span class="p">(</span><span class="n">geo_df</span><span class="p">,</span> <span class="n">country_col</span><span class="p">,</span> <span class="n">results_dir</span><span class="p">)</span>
+    <span class="n">plot_world_scatter</span><span class="p">(</span><span class="n">geo_df</span><span class="p">,</span> <span class="n">lat_col</span><span class="p">,</span> <span class="n">lon_col</span><span class="p">,</span> <span class="n">country_col</span><span class="p">,</span> <span class="n">results_dir</span><span class="p">)</span>
+    <span class="n">plot_world_heatmap</span><span class="p">(</span><span class="n">geo_df</span><span class="p">,</span> <span class="n">lat_col</span><span class="p">,</span> <span class="n">lon_col</span><span class="p">,</span> <span class="n">results_dir</span><span class="p">)</span>
+    <span class="n">year_col</span> <span class="o">=</span> <span class="n">detect_year_column</span><span class="p">(</span><span class="n">geo_df</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">year_col</span><span class="p">:</span>
+        <span class="n">plot_by_year</span><span class="p">(</span><span class="n">geo_df</span><span class="p">,</span> <span class="n">year_col</span><span class="p">,</span> <span class="n">results_dir</span><span class="p">)</span>
+    <span class="n">type_col</span> <span class="o">=</span> <span class="n">detect_type_column</span><span class="p">(</span><span class="n">geo_df</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">type_col</span><span class="p">:</span>
+        <span class="n">plot_by_type</span><span class="p">(</span><span class="n">geo_df</span><span class="p">,</span> <span class="n">type_col</span><span class="p">,</span> <span class="n">results_dir</span><span class="p">)</span>
+    <span class="n">generate_report</span><span class="p">(</span><span class="n">geo_df</span><span class="p">,</span> <span class="n">lat_col</span><span class="p">,</span> <span class="n">lon_col</span><span class="p">,</span> <span class="n">results_dir</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Análisis Geoespacial Adaptativo Completado ===&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Todos los resultados guardados en: </span><span class="si">{</span><span class="n">results_dir</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, UN PASO AL EXITO.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

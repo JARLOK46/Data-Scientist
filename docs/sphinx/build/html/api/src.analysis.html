@@ -1,0 +1,459 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>src.analysis package &mdash; documentación de Analisis de Datos y Visualizacion - 1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=4936afed"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=f85f4cfb"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="src.data package" href="src.data.html" />
+    <link rel="prev" title="src package" href="src.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Analisis de Datos y Visualizacion
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Guías de Usuario:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules/instalacion.html">Guía de Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/casos_uso.html">Casos de Uso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/preguntas_frecuentes.html">Preguntas Frecuentes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Módulos Principales:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules/analysis.html">Módulo de Análisis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/geospatial.html">Módulo Geoespacial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/web.html">Módulo Web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/dashboard.html">Módulo de Dashboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/visualization.html">Módulo de Visualización</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/utils.html">Módulo de Utilidades</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentación Técnica:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../modules/guia_analisis_avanzado.html">Guía de Análisis Avanzado</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/optimizacion_rendimiento.html">Optimización de Rendimiento</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/seguridad_datos.html">Seguridad de Datos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/referencia_tecnica_detallada.html">Referencia Técnica Detallada</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/integracion_herramientas.html">Integración de Herramientas</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">src</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="src.html">src package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="src.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">src.analysis package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.data.html">src.data package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.visualization.html">src.visualization package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.web.html">src.web package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.html#module-src">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Analisis de Datos y Visualizacion</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">src</a></li>
+          <li class="breadcrumb-item"><a href="src.html">src package</a></li>
+      <li class="breadcrumb-item active">src.analysis package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/src.analysis.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="src-analysis-package">
+<h1>src.analysis package<a class="headerlink" href="#src-analysis-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-src.analysis.analisis_predictivo">
+<span id="src-analysis-analisis-predictivo-module"></span><h2>src.analysis.analisis_predictivo module<a class="headerlink" href="#module-src.analysis.analisis_predictivo" title="Link to this heading"></a></h2>
+<p>Módulo de análisis predictivo.</p>
+<p>Este script permite preparar datos, entrenar y evaluar modelos de regresión, y generar visualizaciones de resultados.</p>
+<p>Autor: Anderson Zapata
+Fecha: 2025</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="src.analysis.analisis_predictivo.detect_delimiter">
+<span class="sig-prename descclassname"><span class="pre">src.analysis.analisis_predictivo.</span></span><span class="sig-name descname"><span class="pre">detect_delimiter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_lines</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/analisis_predictivo.html#detect_delimiter"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.analysis.analisis_predictivo.detect_delimiter" title="Link to this definition"></a></dt>
+<dd><p>Detecta automáticamente el delimitador utilizado en un archivo CSV.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_path</strong> (<em>str</em>) – Ruta al archivo CSV.</p></li>
+<li><p><strong>num_lines</strong> (<em>int</em><em>, </em><em>optional</em>) – Número de líneas a analizar. Por defecto es 5.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>El delimitador detectado (tab, coma, punto y coma o pipe).</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.analysis.analisis_predictivo.load_and_prepare_data">
+<span class="sig-prename descclassname"><span class="pre">src.analysis.analisis_predictivo.</span></span><span class="sig-name descname"><span class="pre">load_and_prepare_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/analisis_predictivo.html#load_and_prepare_data"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.analysis.analisis_predictivo.load_and_prepare_data" title="Link to this definition"></a></dt>
+<dd><p>Carga y prepara los datos desde un archivo CSV para el análisis predictivo.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – Ruta al archivo CSV con los datos.</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Contiene el DataFrame completo, las características numéricas y categóricas,</dt><dd><p>y la variable objetivo si se encuentra.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.analysis.analisis_predictivo.select_features_target">
+<span class="sig-prename descclassname"><span class="pre">src.analysis.analisis_predictivo.</span></span><span class="sig-name descname"><span class="pre">select_features_target</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numeric_cols</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/analisis_predictivo.html#select_features_target"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.analysis.analisis_predictivo.select_features_target" title="Link to this definition"></a></dt>
+<dd><p>Selecciona automáticamente las características y la variable objetivo para el modelo predictivo.</p>
+<p>Esta función analiza las correlaciones entre variables numéricas para identificar la variable
+objetivo más adecuada (aquella con mayor correlación con otras variables) y selecciona las
+características numéricas y categóricas relevantes para el modelo.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – DataFrame con los datos preparados.</p></li>
+<li><p><strong>numeric_cols</strong> (<em>list</em>) – Lista de nombres de columnas numéricas en el DataFrame.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Contiene tres elementos:</dt><dd><ul class="simple">
+<li><p>feature_cols (list): Lista de columnas numéricas seleccionadas como características.</p></li>
+<li><p>categorical_cols (list): Lista de columnas categóricas relevantes (con menos de 20 categorías).</p></li>
+<li><p>target_col (str): Nombre de la columna seleccionada como variable objetivo.</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Nota:</dt><dd><p>Si solo hay una variable numérica disponible, esta será seleccionada como objetivo.
+Las columnas categóricas seleccionadas son aquellas con entre 2 y 19 categorías únicas.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.analysis.analisis_predictivo.create_preprocessing_pipeline">
+<span class="sig-prename descclassname"><span class="pre">src.analysis.analisis_predictivo.</span></span><span class="sig-name descname"><span class="pre">create_preprocessing_pipeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">numeric_features</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">categorical_features</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/analisis_predictivo.html#create_preprocessing_pipeline"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.analysis.analisis_predictivo.create_preprocessing_pipeline" title="Link to this definition"></a></dt>
+<dd><p>Crea un pipeline de preprocesamiento para características numéricas y categóricas.</p>
+<p>Esta función construye un pipeline de transformación de datos que incluye:
+- Para variables numéricas: imputación de valores faltantes con la mediana y estandarización.
+- Para variables categóricas: imputación de valores faltantes con “missing” y codificación one-hot.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>numeric_features</strong> (<em>list</em>) – Lista de nombres de columnas numéricas.</p></li>
+<li><p><strong>categorical_features</strong> (<em>list</em>) – Lista de nombres de columnas categóricas.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Un objeto ColumnTransformer configurado con los transformadores</dt><dd><p>para características numéricas y categóricas.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ColumnTransformer</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Nota:</dt><dd><p>El preprocesador resultante puede ser utilizado en un pipeline de scikit-learn
+junto con un modelo de aprendizaje automático.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.analysis.analisis_predictivo.train_evaluate_models">
+<span class="sig-prename descclassname"><span class="pre">src.analysis.analisis_predictivo.</span></span><span class="sig-name descname"><span class="pre">train_evaluate_models</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/analisis_predictivo.html#train_evaluate_models"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.analysis.analisis_predictivo.train_evaluate_models" title="Link to this definition"></a></dt>
+<dd><p>Entrena y evalúa múltiples modelos de regresión para seleccionar el mejor.</p>
+<p>Esta función entrena varios modelos de regresión (Lineal, Ridge, Lasso, Random Forest y Gradient Boosting)
+sobre los datos proporcionados, evalúa su rendimiento utilizando métricas como RMSE, MAE y R²,
+y selecciona el modelo con mejor coeficiente de determinación (R²).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>pandas.DataFrame</em>) – Características de entrada para el modelo.</p></li>
+<li><p><strong>y</strong> (<em>pandas.Series</em>) – Variable objetivo a predecir.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Contiene dos elementos:</dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt>results (dict): Diccionario con los resultados de cada modelo, incluyendo el modelo entrenado</dt><dd><p>y sus métricas de rendimiento (RMSE, MAE, R²).</p>
+</dd>
+</dl>
+</li>
+<li><p>best_model (str): Nombre del modelo con mejor rendimiento según R².</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Nota:</dt><dd><p>La función divide automáticamente los datos en conjuntos de entrenamiento (80%) y prueba (20%)
+utilizando una semilla aleatoria fija para garantizar reproducibilidad.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.analysis.analisis_predictivo.optimize_best_model">
+<span class="sig-prename descclassname"><span class="pre">src.analysis.analisis_predictivo.</span></span><span class="sig-name descname"><span class="pre">optimize_best_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">best_model_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preprocessor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/analisis_predictivo.html#optimize_best_model"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.analysis.analisis_predictivo.optimize_best_model" title="Link to this definition"></a></dt>
+<dd><p>Optimiza los hiperparámetros del mejor modelo seleccionado mediante validación cruzada.</p>
+<p>Esta función toma el nombre del mejor modelo identificado previamente y realiza una búsqueda
+de hiperparámetros utilizando GridSearchCV para encontrar la configuración óptima. Cada tipo
+de modelo tiene su propio conjunto de hiperparámetros a optimizar.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>best_model_name</strong> (<em>str</em>) – Nombre del mejor modelo seleccionado (“Linear Regression”,
+“Ridge Regression”, “Lasso Regression”, “Random Forest” o
+“Gradient Boosting”).</p></li>
+<li><p><strong>X</strong> (<em>pandas.DataFrame</em>) – Características de entrada para el modelo.</p></li>
+<li><p><strong>y</strong> (<em>pandas.Series</em>) – Variable objetivo a predecir.</p></li>
+<li><p><strong>preprocessor</strong> (<em>ColumnTransformer</em>) – Preprocesador para transformar las características.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Si hay hiperparámetros para optimizar, devuelve un objeto GridSearchCV</dt><dd><p>con el mejor modelo encontrado. Si no hay hiperparámetros para ajustar
+(como en Regresión Lineal), devuelve un Pipeline entrenado.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Pipeline o GridSearchCV</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Nota:</dt><dd><p>La función utiliza validación cruzada con 5 pliegues y optimiza según la métrica R².
+Para modelos sin hiperparámetros ajustables (como Regresión Lineal), simplemente entrena
+el modelo con el preprocesador.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.analysis.analisis_predictivo.visualize_results">
+<span class="sig-prename descclassname"><span class="pre">src.analysis.analisis_predictivo.</span></span><span class="sig-name descname"><span class="pre">visualize_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_test</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_col</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/analisis_predictivo.html#visualize_results"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.analysis.analisis_predictivo.visualize_results" title="Link to this definition"></a></dt>
+<dd><p>Genera y guarda visualizaciones de los resultados del modelo predictivo.</p>
+<p>Esta función crea tres tipos de visualizaciones para evaluar el rendimiento del modelo:
+1. Gráfico de comparación de modelos: muestra R² y RMSE para cada modelo evaluado.
+2. Gráfico de predicciones vs valores reales: compara los valores predichos con los reales.
+3. Histograma de errores: muestra la distribución de los errores de predicción.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>results</strong> (<em>dict</em>) – Diccionario con los resultados de cada modelo, incluyendo métricas de rendimiento.</p></li>
+<li><p><strong>y_test</strong> (<em>pandas.Series</em>) – Valores reales de la variable objetivo en el conjunto de prueba.</p></li>
+<li><p><strong>y_pred</strong> (<em>numpy.ndarray</em>) – Predicciones del modelo para el conjunto de prueba.</p></li>
+<li><p><strong>target_col</strong> (<em>str</em>) – Nombre de la columna objetivo que se está prediciendo.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>La función guarda las visualizaciones en el directorio “visualizaciones_predictivas”</dt><dd><p>y muestra mensajes de confirmación.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Nota:</dt><dd><p>Las visualizaciones se guardan en formato PNG en un subdirectorio “visualizaciones_predictivas”
+dentro del directorio del script.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.analysis.analisis_predictivo.save_model">
+<span class="sig-prename descclassname"><span class="pre">src.analysis.analisis_predictivo.</span></span><span class="sig-name descname"><span class="pre">save_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_cols</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">categorical_cols</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_col</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/analisis_predictivo.html#save_model"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.analysis.analisis_predictivo.save_model" title="Link to this definition"></a></dt>
+<dd><p>Guarda el modelo entrenado y sus metadatos asociados.</p>
+<p>Esta función serializa el modelo utilizando joblib y guarda información relevante
+sobre las características, columnas categóricas y variable objetivo en un archivo JSON
+de metadatos. Ambos archivos se guardan con una marca de tiempo para facilitar su
+identificación y seguimiento.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> – Modelo entrenado (puede ser un Pipeline, GridSearchCV u otro objeto de scikit-learn).</p></li>
+<li><p><strong>feature_cols</strong> (<em>list</em>) – Lista de nombres de columnas numéricas utilizadas como características.</p></li>
+<li><p><strong>categorical_cols</strong> (<em>list</em>) – Lista de nombres de columnas categóricas utilizadas.</p></li>
+<li><p><strong>target_col</strong> (<em>str</em>) – Nombre de la columna objetivo que se predice.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Contiene dos elementos:</dt><dd><ul class="simple">
+<li><p>model_filename (str): Ruta al archivo donde se guardó el modelo serializado.</p></li>
+<li><p>metadata_filename (str): Ruta al archivo donde se guardaron los metadatos.</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Nota:</dt><dd><p>Los archivos se guardan en el directorio “modelos” dentro del directorio del script,
+con nombres que incluyen una marca de tiempo para evitar sobrescrituras.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.analysis.analisis_predictivo.main">
+<span class="sig-prename descclassname"><span class="pre">src.analysis.analisis_predictivo.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/analisis_predictivo.html#main"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.analysis.analisis_predictivo.main" title="Link to this definition"></a></dt>
+<dd><p>Función principal que ejecuta el flujo completo de análisis predictivo.</p>
+<p>Esta función coordina todo el proceso de análisis predictivo, incluyendo:
+1. Carga y preparación de datos desde un archivo CSV.
+2. Selección automática de características y variable objetivo.
+3. Entrenamiento y evaluación de múltiples modelos de regresión.
+4. Optimización de hiperparámetros del mejor modelo.
+5. Visualización de resultados mediante gráficos comparativos.
+6. Almacenamiento del modelo optimizado y sus metadatos.</p>
+<p>La función utiliza un archivo CSV predefinido ubicado en el directorio de datos del proyecto
+y ejecuta todas las etapas del análisis de forma secuencial, mostrando información relevante
+en cada paso del proceso.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p><dl class="simple">
+<dt>La función no devuelve ningún valor, pero genera archivos de modelo, metadatos</dt><dd><p>y visualizaciones en los directorios correspondientes.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="src-analysis-analizar-csv-module">
+<h2>src.analysis.analizar_csv module<a class="headerlink" href="#src-analysis-analizar-csv-module" title="Link to this heading"></a></h2>
+</section>
+<section id="module-src.analysis.limpiar_analizar_csv">
+<span id="src-analysis-limpiar-analizar-csv-module"></span><h2>src.analysis.limpiar_analizar_csv module<a class="headerlink" href="#module-src.analysis.limpiar_analizar_csv" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="src.analysis.limpiar_analizar_csv.limpiar_analizar_csv">
+<span class="sig-prename descclassname"><span class="pre">src.analysis.limpiar_analizar_csv.</span></span><span class="sig-name descname"><span class="pre">limpiar_analizar_csv</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/src/analysis/limpiar_analizar_csv.html#limpiar_analizar_csv"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#src.analysis.limpiar_analizar_csv.limpiar_analizar_csv" title="Link to this definition"></a></dt>
+<dd><p>Limpieza avanzada: asigna nombres claros, elimina columnas/filas innecesarias,
+y deja el DataFrame listo para análisis geográfico, temporal y de eventos.</p>
+</dd></dl>
+
+</section>
+<section id="module-src.analysis">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-src.analysis" title="Link to this heading"></a></h2>
+<p>Este módulo contiene funciones para el análisis exploratorio y procesamiento de datos.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="src.html" class="btn btn-neutral float-left" title="src package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="src.data.html" class="btn btn-neutral float-right" title="src.data package" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, UN PASO AL EXITO.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

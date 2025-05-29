@@ -1,0 +1,312 @@
+
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Informe de Análisis de Datos</title>
+        <style>
+            body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 20px; color: #333; }
+            h1, h2, h3 { color: #2c3e50; }
+            .container { max-width: 1200px; margin: 0 auto; }
+            .header { background-color: #ecf0f1; padding: 20px; border-radius: 5px; margin-bottom: 20px; }
+            .section { margin-bottom: 30px; background-color: white; padding: 20px; border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+            .image-container { margin: 20px 0; text-align: center; }
+            img { max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 5px; }
+            table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+            th, td { padding: 12px 15px; border-bottom: 1px solid #ddd; text-align: left; }
+            th { background-color: #f8f9fa; }
+            tr:hover { background-color: #f1f1f1; }
+            .footer { text-align: center; margin-top: 30px; color: #7f8c8d; }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <h1>Informe de Análisis de Datos</h1>
+                <p>Generado automáticamente a partir del archivo CSV</p>
+            </div>
+            
+            <div class="section">
+                <h2>Resumen del Conjunto de Datos</h2>
+                <p>Dimensiones: 63482 filas x 18 columnas</p>
+                <p>Columnas numéricas: 7</p>
+                <p>Columnas categóricas: 11</p>
+                <p>Valores nulos totales: 0</p>
+                
+                <h3>Primeras filas del conjunto de datos:</h3>
+                <div style="overflow-x: auto;">
+                    <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id_evento</th>
+      <th>fecha_evento</th>
+      <th>año_evento</th>
+      <th>region</th>
+      <th>subregion</th>
+      <th>latitud</th>
+      <th>longitud</th>
+      <th>ubicacion</th>
+      <th>pais_codigo</th>
+      <th>region_codigo</th>
+      <th>lat</th>
+      <th>lon</th>
+      <th>ubicacion2</th>
+      <th>pais_codigo2</th>
+      <th>region_codigo2</th>
+      <th>fecha_evento2</th>
+      <th>fuente_url</th>
+      <th>fuente_url_domain</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1245887543</td>
+      <td>2024-05-25</td>
+      <td>2024</td>
+      <td>AFRICA</td>
+      <td>AFR</td>
+      <td>-5.577689</td>
+      <td>4</td>
+      <td>Kwazulu, Eastern Cape, South Africa</td>
+      <td>SF</td>
+      <td>SF05</td>
+      <td>-31.2895</td>
+      <td>29.4551</td>
+      <td>Kwazulu, Eastern Cape, South Africa</td>
+      <td>SF</td>
+      <td>SF05</td>
+      <td>20250525</td>
+      <td>http://europe.chinadaily.com.cn/a/202505/25/WS6832536aa310a04af22c1597.html</td>
+      <td>europe.chinadaily.com.cn</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1245887544</td>
+      <td>2024-05-25</td>
+      <td>2024</td>
+      <td>STUDENT</td>
+      <td>Desconocido</td>
+      <td>-0.604005</td>
+      <td>4</td>
+      <td>Dhaka, Dhaka, Bangladesh</td>
+      <td>BG</td>
+      <td>BG81</td>
+      <td>23.7231</td>
+      <td>90.4086</td>
+      <td>Dhaka, Dhaka, Bangladesh</td>
+      <td>BG</td>
+      <td>BG81</td>
+      <td>20250525</td>
+      <td>https://economictimes.indiatimes.com/news/india/chinese-checkers-indias-strategic-message-to-beijing-with-a-road-port-and-fest-in-the-east/articleshow/121384676.cms</td>
+      <td>economictimes.indiatimes.com</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1245887545</td>
+      <td>2024-05-25</td>
+      <td>2024</td>
+      <td>AUSTIN</td>
+      <td>USA</td>
+      <td>-2.442334</td>
+      <td>2</td>
+      <td>Texas, United States</td>
+      <td>US</td>
+      <td>USTX</td>
+      <td>31.1060</td>
+      <td>-97.6475</td>
+      <td>Israel</td>
+      <td>IS</td>
+      <td>IS</td>
+      <td>20250525</td>
+      <td>https://www.click2houston.com/news/texas/2025/05/24/political-appointees-would-have-more-control-over-texas-universities-courses-and-hiring-under-bill-okd-by-house/</td>
+      <td>www.click2houston.com</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1245887546</td>
+      <td>2024-05-25</td>
+      <td>2024</td>
+      <td>AUSTIN</td>
+      <td>USA</td>
+      <td>-2.442334</td>
+      <td>2</td>
+      <td>Texas, United States</td>
+      <td>US</td>
+      <td>USTX</td>
+      <td>31.1060</td>
+      <td>-97.6475</td>
+      <td>Texas, United States</td>
+      <td>US</td>
+      <td>USTX</td>
+      <td>20250525</td>
+      <td>https://www.click2houston.com/news/texas/2025/05/24/political-appointees-would-have-more-control-over-texas-universities-courses-and-hiring-under-bill-okd-by-house/</td>
+      <td>www.click2houston.com</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1245887547</td>
+      <td>2024-05-25</td>
+      <td>2024</td>
+      <td>AUSTIN</td>
+      <td>USA</td>
+      <td>-2.442334</td>
+      <td>2</td>
+      <td>Texas, United States</td>
+      <td>US</td>
+      <td>USTX</td>
+      <td>31.1060</td>
+      <td>-97.6475</td>
+      <td>Texas, United States</td>
+      <td>US</td>
+      <td>USTX</td>
+      <td>20250525</td>
+      <td>https://www.click2houston.com/news/texas/2025/05/24/political-appointees-would-have-more-control-over-texas-universities-courses-and-hiring-under-bill-okd-by-house/</td>
+      <td>www.click2houston.com</td>
+    </tr>
+  </tbody>
+</table>
+                </div>
+            </div>
+    
+            <div class="section">
+                <h2>Visualizaciones</h2>
+    
+                <div class="image-container">
+                    <h3>Proporcion Sucesos Pais</h3>
+                    <img src="proporcion_sucesos_pais.png" alt="Proporcion Sucesos Pais">
+                </div>
+        
+                <div class="image-container">
+                    <h3>Sucesos Por Ano</h3>
+                    <img src="sucesos_por_ano.png" alt="Sucesos Por Ano">
+                </div>
+        
+                <div class="image-container">
+                    <h3>Tasa Crecimiento Anual</h3>
+                    <img src="tasa_crecimiento_anual.png" alt="Tasa Crecimiento Anual">
+                </div>
+        
+            </div>
+    
+            <div class="section">
+                <h2>Estadísticas Descriptivas</h2>
+                <div style="overflow-x: auto;">
+                    <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id_evento</th>
+      <th>año_evento</th>
+      <th>latitud</th>
+      <th>longitud</th>
+      <th>lat</th>
+      <th>lon</th>
+      <th>fecha_evento2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>6.348200e+04</td>
+      <td>63482.000000</td>
+      <td>63482.000000</td>
+      <td>63482.000000</td>
+      <td>63482.000000</td>
+      <td>63482.000000</td>
+      <td>63482.0</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>1.245948e+09</td>
+      <td>2024.990816</td>
+      <td>-2.026467</td>
+      <td>2.934123</td>
+      <td>30.691201</td>
+      <td>5.983895</td>
+      <td>20250525.0</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>3.549542e+04</td>
+      <td>0.121534</td>
+      <td>4.239708</td>
+      <td>1.303604</td>
+      <td>19.751252</td>
+      <td>76.614127</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>1.245888e+09</td>
+      <td>2015.000000</td>
+      <td>-28.571429</td>
+      <td>1.000000</td>
+      <td>-85.622100</td>
+      <td>-179.983000</td>
+      <td>20250525.0</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>1.245916e+09</td>
+      <td>2025.000000</td>
+      <td>-4.918033</td>
+      <td>1.000000</td>
+      <td>24.000000</td>
+      <td>-77.036400</td>
+      <td>20250525.0</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>1.245949e+09</td>
+      <td>2025.000000</td>
+      <td>-1.972873</td>
+      <td>4.000000</td>
+      <td>34.098300</td>
+      <td>18.416700</td>
+      <td>20250525.0</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>1.245978e+09</td>
+      <td>2025.000000</td>
+      <td>0.911854</td>
+      <td>4.000000</td>
+      <td>42.149700</td>
+      <td>70.000000</td>
+      <td>20250525.0</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>1.246007e+09</td>
+      <td>2025.000000</td>
+      <td>20.805369</td>
+      <td>5.000000</td>
+      <td>78.000000</td>
+      <td>180.000000</td>
+      <td>20250525.0</td>
+    </tr>
+  </tbody>
+</table>
+                </div>
+            </div>
+    
+            <div class="section">
+                <h2>Recomendaciones</h2>
+                <ul>
+                    <li>Los datos contienen información geográfica. Considere realizar análisis de clustering espacial o visualizaciones en mapas interactivos.</li>
+                <li>Se han extraído dominios de URLs. Considere un análisis más profundo del contenido web relacionado con estos dominios.</li>
+                <li>Para un análisis más interactivo, instale las dependencias necesarias ejecutando: <code>pip install -r requirements_dashboard.txt</code> y luego ejecute el dashboard interactivo.</li>
+
+                </ul>
+            </div>
+            
+            <div class="footer">
+                <p>Informe generado automáticamente - © 2025 Análisis de Datos Avanzado</p>
+            </div>
+        </div>
+    </body>
+    </html>
+    
